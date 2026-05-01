@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operator Partners — Oak Ridge Management | CEH™ Standard</title>
+<meta name="description" content="Publish a CEH™-certified benchmark on your own infrastructure. Differentiate on energy efficiency. Get listed in the CEH™ Index with the certification mark.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://oakridgemanagement.net/partners/operators/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  main { padding-top: 60px; }
+
+  .hero { padding: 80px 0 70px; border-bottom: 1px solid var(--border); }
+
+  .track-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a1);
+    border: 1px solid var(--a1);
+    padding: 5px 12px;
+    margin-bottom: 24px;
+  }
+  .track-badge .dot { width: 5px; height: 5px; background: var(--a1); border-radius: 50%; }
+
+  .hero-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-top: 24px;
+  }
+  .hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+
+  /* ── WHY PUBLISH ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 32px;
+  }
+  @media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-card {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 24px;
+    position: relative;
+  }
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--a1), transparent 60%);
+  }
+  .why-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .why-card p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.75;
+  }
+  .why-card .wc-num {
+    font-family: var(--mono);
+    font-size: 32px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  /* ── 3-STEP PATH ── */
+  .steps { margin-top: 32px; display: flex; flex-direction: column; gap: 2px; }
+  .step {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    align-items: start;
+    transition: border-color 0.15s;
+  }
+  .step:hover { border-color: rgba(0,212,255,0.3); }
+  .step-num {
+    font-family: var(--mono);
+    font-size: 28px;
+    color: var(--muted);
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .step.active .step-num { color: var(--a1); }
+  .step-title {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .step-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+  .step-detail {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--label);
+    letter-spacing: 1px;
+  }
+
+  /* ── WHAT YOU GET ── */
+  .get-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 32px;
+  }
+  @media (max-width: 700px) { .get-grid { grid-template-columns: 1fr; } }
+  .get-card {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+  .get-card::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: var(--a1);
+    margin-bottom: 18px;
+  }
+  .get-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--a1);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .get-card p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ── DISCLOSURE CHECKLIST ── */
+  .checklist-wrap {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--a4);
+    padding: 24px 28px;
+    margin-top: 32px;
+  }
+  .checklist-intro {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+  }
+  @media (max-width: 600px) { .checklist-grid { grid-template-columns: 1fr; } }
+  .cl-item {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .cl-item::before {
+    content: '□';
+    color: var(--a4);
+    flex-shrink: 0;
+  }
+  .cl-note {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 16px;
+    line-height: 1.8;
+  }
+
+  /* ── GATE / CTA ── */
+  .gate-section { padding: 64px 0; }
+  .gate-wrap {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .gate-wrap { grid-template-columns: 1fr; } }
+  .gate-copy h2 { font-size: 32px; margin-bottom: 16px; }
+  .gate-copy p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .form-panel {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--a1);
+    padding: 28px;
+  }
+  .form-panel-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a1);
+    margin-bottom: 24px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ══════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag">Institutional Home · CEH™ Standard</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/partners/" aria-current="page">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <a href="/contact/" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="track-badge"><span class="dot"></span>Track 01 · Operator Partners · Certification</div>
+    <h1>Adopt the<br><em>Standard</em></h1>
+    <p class="hero-sub">
+      Publish a CEH™ (Compute Energy Hour)-certified benchmark on your own infrastructure.
+      Differentiate on energy efficiency — not just $/GPU-hr. Get listed in the CEH™ Index
+      with the certification mark, with methodology protection intact.
+    </p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn btn-outline-cyan">Apply for Certification</a>
+      <a href="/standard/benchmark/" class="btn btn-outline-cyan">View CEH™ Index →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY PUBLISH CEH™ ═════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr">Why Publish CEH™</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="wc-num">01</div>
+        <h3>Compete on Energy Efficiency</h3>
+        <p>
+          Hyperscalers and enterprise buyers increasingly evaluate infrastructure on total energy
+          cost per inference workload — not just raw GPU capacity. A published CEH™ benchmark
+          gives your infrastructure a neutral, auditable energy efficiency claim that $/GPU-hr
+          pricing cannot convey.
+        </p>
+      </div>
+      <div class="why-card">
+        <div class="wc-num">02</div>
+        <h3>Institutional Credibility</h3>
+        <p>
+          CEH™ v1.0 is a dated, versioned, open standard — comparable in structure to MLPerf
+          for ML performance or PUE for facility efficiency. Certification positions your
+          infrastructure within a reproducible methodology that procurement teams, boards,
+          and analysts can verify independently.
+        </p>
+      </div>
+      <div class="why-card">
+        <div class="wc-num">03</div>
+        <h3>Methodology Protection</h3>
+        <p>
+          Your underlying operational data remains proprietary. What is disclosed — TDP,
+          utilization, PUE, COU, throughput methodology, energy rate, carbon intensity source —
+          is a defined disclosure checklist, not open-ended access. The methodology
+          disclosure is structured so that the result is reproducible without exposing
+          your internal cost structure.
+        </p>
+      </div>
+      <div class="why-card">
+        <div class="wc-num">04</div>
+        <h3>First-Mover Index Position</h3>
+        <p>
+          CEH™ Index v1.0 currently benchmarks publicly reported hardware configurations.
+          Operators who certify early achieve permanent first-publication status for their
+          configuration in a versioned, dated index that is designed for long-term
+          institutional reference — the same model as PUE baseline disclosures.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CERTIFICATION PATH ═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr">The Certification Path</div>
+    <div class="steps">
+      <div class="step active">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Submit Methodology</div>
+          <p class="step-desc">
+            Complete the disclosure checklist (below) and submit your CEH™ benchmark
+            methodology to Oak Ridge Management for review. Submissions are reviewed
+            for completeness, reproducibility, and consistency with the CEH™ v1.0
+            standard formula. No proprietary cost data is required.
+          </p>
+          <div class="step-detail">Estimated timeline: 2–4 weeks from submission to initial review</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Independent Validation</div>
+          <p class="step-desc">
+            Oak Ridge Management coordinates an independent technical review of your
+            submitted CEH™ benchmark. The reviewer assesses: (a) consistency of
+            throughput methodology with COU definitions, (b) accuracy of disclosed
+            hardware TDP and PUE, and (c) reproducibility of the stated CEH™ rate.
+            You receive a written review memo with any required corrections.
+          </p>
+          <div class="step-detail">Estimated timeline: 4–8 weeks for validation review</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Publication in CEH™ Index</div>
+          <p class="step-desc">
+            Upon successful validation, your infrastructure configuration is published
+            in the CEH™ Index with your organization's name, configuration details,
+            and grade. You receive a license to use the CEH™ certification mark in
+            your materials alongside the specific published configuration. Index
+            entries are versioned and dated — your entry carries a permanent
+            publication timestamp.
+          </p>
+          <div class="step-detail">Publication is permanent and versioned · Mark license is configuration-specific</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT YOU GET ═════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr">What Certification Includes</div>
+    <div class="get-grid">
+      <div class="get-card">
+        <h4>Index Listing</h4>
+        <p>
+          Your configuration listed in the CEH™ Index v1.0 — with organization name,
+          hardware, CEH™ rate, grade, and publication date. Permanent, versioned,
+          searchable by operators and procurement teams.
+        </p>
+      </div>
+      <div class="get-card">
+        <h4>Certification Mark</h4>
+        <p>
+          License to use the CEH™ certification mark in marketing materials, RFP
+          responses, and investor presentations — specific to the published configuration
+          and grade. Usage guidelines provided on issuance.
+        </p>
+      </div>
+      <div class="get-card">
+        <h4>Methodology Protection</h4>
+        <p>
+          Your operational cost structure, full revenue data, and internal benchmarks
+          remain proprietary. Only the defined disclosure checklist is required.
+          The certification validates efficiency — not economics.
+        </p>
+      </div>
+    </div>
+
+    <!-- Disclosure Checklist -->
+    <div class="checklist-wrap">
+      <div class="section-hdr gold" style="margin-bottom:16px;">Required Disclosure Checklist</div>
+      <p class="checklist-intro">
+        The following information must be disclosed to obtain CEH™ certification.
+        This is the complete list — no additional operational data is required.
+        Proprietary cost structures, revenue, and internal pricing are explicitly excluded.
+      </p>
+      <div class="checklist-grid">
+        <div class="cl-item">Hardware TDP (W) — vendor datasheet or direct measurement</div>
+        <div class="cl-item">GPU/accelerator count per node</div>
+        <div class="cl-item">Average utilization (%) — measured or contractual</div>
+        <div class="cl-item">PUE — measured facility efficiency ratio</div>
+        <div class="cl-item">Compute Output Unit (COU) — workload class and definition</div>
+        <div class="cl-item">Throughput methodology — how output units are measured</div>
+        <div class="cl-item">Energy rate source — BTM, grid, or blended (not the $ value)</div>
+        <div class="cl-item">Carbon intensity source — eGRID region, PPA disclosure, or N/A</div>
+      </div>
+      <div class="cl-note">
+        ¹ Energy rate source type is disclosed (BTM / grid / blended) but not the specific $/kWh cost.
+        CEH™ Cost and CEH™ Carbon figures may be computed separately using the disclosed rate and intensity.
+        The standard CEH™ rate (kWh/output unit) requires no energy cost disclosure.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ APPLICATION FORM ══════════════════════════════════════════════ -->
+<section class="gate-section" id="apply">
+  <div class="wrap">
+    <div class="gate-wrap">
+
+      <div class="gate-copy">
+        <div class="section-hdr">Apply for Certification</div>
+        <h2>Operator<br>Certification<br>Application</h2>
+        <p>
+          Submit your intent to apply for CEH™ certification. A member of the
+          standards team will contact you within 5 business days with the full
+          submission package and review timeline.
+        </p>
+        <p>
+          Certification is available to any operator — data center, neo-cloud,
+          BTM compute developer, or colocation provider — running the benchmark
+          workload class against a reproducible hardware configuration.
+        </p>
+        <p>
+          The CEH™ standard is energy-agnostic: BTM, grid, nuclear, or any
+          combination of sources qualifies. What matters is accurate disclosure,
+          not which energy source powers your infrastructure.
+        </p>
+      </div>
+
+      <div class="form-panel">
+        <div class="form-panel-title">▸ Certification Inquiry</div>
+        <form
+          name="operator-certification"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          id="operator-form"
+        >
+          <p style="display:none;"><label>Don't fill: <input name="bot-field"></label></p>
+          <input type="hidden" name="form-name" value="operator-certification">
+          <input type="hidden" name="track" value="operators">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="op-first">First Name</label>
+              <input class="form-input" type="text" id="op-first" name="first-name" placeholder="First" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="op-last">Last Name</label>
+              <input class="form-input" type="text" id="op-last" name="last-name" placeholder="Last" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="op-org">Organization</label>
+            <input class="form-input" type="text" id="op-org" name="organization" placeholder="Data center / Neo-cloud / BTM operator" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="op-role">Role</label>
+            <input class="form-input" type="text" id="op-role" name="role" placeholder="CTO / Infrastructure Lead / Procurement" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="op-email">Email</label>
+            <input class="form-input" type="email" id="op-email" name="email" placeholder="name@company.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="op-hw">Primary Hardware Configuration</label>
+            <input class="form-input" type="text" id="op-hw" name="hardware" placeholder="e.g. NVIDIA H100 SXM · 8-GPU · PUE 1.15">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="op-energy">Energy Source Type</label>
+            <select class="form-select" id="op-energy" name="energy-source">
+              <option value="">Select source type</option>
+              <option value="grid">Grid (utility rate)</option>
+              <option value="btm">BTM generation (behind-the-meter)</option>
+              <option value="ppa">Renewable PPA</option>
+              <option value="blended">Blended / Mixed</option>
+              <option value="other">Other / Undisclosed</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="op-note">Additional Context</label>
+            <textarea class="form-textarea" id="op-note" name="note" placeholder="Workload type, scale, timeline, or specific questions about the certification process..."></textarea>
+          </div>
+          <button type="submit" class="form-submit cyan">Apply for Certification</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-mark">Oak Ridge <span>Management</span></div>
+      <div class="footer-tm">
+        CEH™ is a trademark of Oak Ridge Management.<br>
+        First published April 21, 2026. All rights reserved.
+      </div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/standard/">CEH™ Standard</a></li>
+      <li><a href="/standard/benchmark/">CEH™ Index</a></li>
+      <li><a href="/standard/methodology/">Methodology</a></li>
+      <li><a href="/partners/capital/">Capital Partners</a></li>
+      <li><a href="/partners/standards/">Research Partners</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+</script>
+</body>
+</html>

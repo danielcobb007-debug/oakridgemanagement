@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEH™ Index v1.0 — Compute Energy Hour Benchmark · Oak Ridge Management</title>
+<meta name="description" content="Full CEH™ (Compute Energy Hour) benchmark index v1.0 — 10 hardware configurations ranked by energy efficiency for LLM inference. Energy-agnostic. First published April 21, 2026.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://oakridgemanagement.net/standard/benchmark/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  main { padding-top: 60px; }
+  .page-header { padding: 60px 0 48px; border-bottom: 1px solid var(--border); }
+  .page-header-inner { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
+  .page-meta { text-align: right; }
+  .page-badge { font-family: var(--mono); font-size: 8px; letter-spacing: 2px; color: var(--a2); border: 1px solid var(--a2); padding: 4px 10px; display: inline-block; margin-bottom: 8px; }
+  .page-meta-note { font-family: var(--mono); font-size: 9px; color: var(--muted); line-height: 1.8; letter-spacing: 0.5px; }
+
+  .content { padding: 40px 0 80px; }
+
+  /* Provenance block */
+  .provenance-block {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--a4);
+    padding: 14px 24px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 24px;
+  }
+  @media (max-width: 640px) { .provenance-block { grid-template-columns: 1fr 1fr; } }
+  .prov-item { display: flex; flex-direction: column; gap: 3px; }
+  .prov-label { font-family: var(--mono); font-size: 8px; letter-spacing: 2px; color: var(--a4); text-transform: uppercase; }
+  .prov-value { font-family: var(--mono); font-size: 11px; color: var(--text); }
+
+  /* Summary tiles */
+  .summary-tiles { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-bottom: 32px; }
+  @media (max-width: 680px) { .summary-tiles { grid-template-columns: repeat(2,1fr); } }
+
+  /* Main table */
+  .chip-name { font-family: var(--display); font-size: 13px; font-weight: 600; color: #fff; }
+  .chip-gen  { font-family: var(--mono); font-size: 9px; color: var(--muted); display: block; margin-top: 2px; }
+  .badge-tag { font-family: var(--mono); font-size: 8px; letter-spacing: 1px; padding: 2px 6px; border: 1px solid; text-transform: uppercase; }
+  .badge-new { color: var(--a2); border-color: var(--a2); }
+  .badge-btm { color: var(--a3); border-color: var(--a3); }
+  .badge-legacy { color: var(--muted); border-color: var(--muted); }
+
+  .bar-bg { background: var(--s3); height: 5px; width: 80px; }
+  .bar-fill { height: 100%; }
+
+  .rank-gold   { color: var(--a4); font-weight: 700; }
+  .rank-silver { color: #c0c0c0; font-weight: 700; }
+  .rank-bronze { color: #cd7f32; font-weight: 700; }
+
+  /* Compare panels */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 32px 0; }
+  @media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-panel { background: var(--s1); border: 1px solid var(--border); padding: 22px; }
+  .compare-panel h3 { font-size: 15px; font-weight: 700; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+  .compare-panel h3 span { font-size: 10px; font-weight: 300; color: var(--label); margin-left: 6px; text-transform: none; }
+  .cr-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .cr-label { font-family: var(--mono); font-size: 9px; color: var(--label); width: 100px; flex-shrink: 0; }
+  .cr-bar-bg { flex: 1; height: 7px; background: var(--s3); }
+  .cr-bar { height: 100%; }
+  .cr-val { font-family: var(--mono); font-size: 10px; width: 70px; text-align: right; }
+
+  /* DGE&I callout */
+  .dgei-box {
+    background: rgba(57,255,20,0.03);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--a3);
+    padding: 24px 28px;
+    margin: 32px 0;
+  }
+  .dgei-box h3 { font-size: 16px; font-weight: 700; color: var(--a3); text-transform: uppercase; margin-bottom: 16px; }
+  .dgei-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  @media (max-width: 640px) { .dgei-grid { grid-template-columns: 1fr 1fr; } }
+  .dgei-stat { background: var(--s2); border: 1px solid var(--border); padding: 14px; }
+  .dgei-stat .ds-label { font-family: var(--mono); font-size: 8px; letter-spacing: 2px; color: var(--label); text-transform: uppercase; margin-bottom: 8px; }
+  .dgei-stat .ds-val { font-family: var(--mono); font-size: 20px; color: var(--a3); }
+  .dgei-stat .ds-sub { font-family: var(--mono); font-size: 9px; color: var(--muted); margin-top: 4px; }
+
+  /* Transparency */
+  .transparency-block {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text);
+    background: rgba(0,212,255,0.03);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--a1);
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+    line-height: 1.9;
+  }
+  .transparency-block .ts-label { font-size: 8px; letter-spacing: 3px; color: var(--a1); text-transform: uppercase; display: block; margin-bottom: 6px; }
+
+  .citation-block {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--a4);
+    padding: 14px 18px;
+    line-height: 1.9;
+  }
+  .citation-block .cite-label { font-size: 8px; letter-spacing: 3px; color: var(--a4); text-transform: uppercase; display: block; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag">Institutional Home · CEH™ Standard</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/standard/" aria-current="page">Standard</a></li>
+      <li><a href="/partners/">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <a href="/contact/" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <span class="eyebrow">▸ Energy-Agnostic Standard · Oak Ridge Management / DGE&amp;I</span>
+      <h1>CEH™ <em>Index</em></h1>
+      <div style="font-size:13px;font-weight:300;color:var(--label);letter-spacing:2px;text-transform:uppercase;margin-top:6px;">
+        Compute Energy Hour Benchmark · v1.0 · April 2026
+      </div>
+    </div>
+    <div class="page-meta">
+      <div class="page-badge">FIRST PUBLISH · v1.0</div>
+      <div class="page-meta-note">
+        Workload: LLM Inference (Llama-class models)<br>
+        Configuration: 8-GPU node · PUE 1.2 (uniform)<br>
+        Grid rate: $0.085/kWh US avg · 0.386 kg CO₂/kWh<br>
+        BTM rate: $0.035/kWh (source-agnostic benchmark range)<br>
+        Source data: MLPerf v5.1 · CUDO · Koyeb · Spheron · 2025–26
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- PROVENANCE -->
+  <div class="provenance-block">
+    <div class="prov-item"><span class="prov-label">First Published</span><span class="prov-value">April 21, 2026</span></div>
+    <div class="prov-item"><span class="prov-label">Methodology</span><span class="prov-value">Open · Auditable · Versioned (v1.0)</span></div>
+    <div class="prov-item"><span class="prov-label">arXiv Preprint</span><span class="prov-value">Pending submission</span></div>
+    <div class="prov-item"><span class="prov-label">Technical Review</span><span class="prov-value">Independent reviewer (pending credit)</span></div>
+    <div class="prov-item"><span class="prov-label">COU Definitions</span><span class="prov-value">Publicly declared · Workload-portable</span></div>
+    <div class="prov-item"><span class="prov-label">Standard Class</span><span class="prov-value">Energy-agnostic compute efficiency unit</span></div>
+  </div>
+
+  <!-- FORMULA BAR -->
+  <div class="formula-bar" style="margin-bottom:32px;">
+    <div class="f-label">CEH™ Formula</div>
+    <div class="f-eq">
+      <span class="c1">CEH™</span> = ( <span class="c2">TDP_W</span> × Units × Util% × PUE ) ÷ 1,000 ÷ <span class="c3">Output_Units_per_Hour</span>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <span class="c1">Cost</span> = CEH™ × <span class="c2">$/kWh</span>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <span class="c1">Carbon</span> = CEH™ × <span class="c3">kg CO₂/kWh</span>
+    </div>
+    <div class="f-cite">Full derivation: <a href="/standard/methodology/">oakridgemanagement.net/standard/methodology</a> · arXiv:[pending]</div>
+  </div>
+
+  <!-- SUMMARY TILES -->
+  <div class="section-hdr"><span class="pulse"></span>Index Summary · v1.0</div>
+  <div class="summary-tiles" style="margin-bottom:32px;">
+    <div class="tile t-green">
+      <div class="tile-label">Most Efficient</div>
+      <div class="tile-value">B200</div>
+      <div class="tile-sub">Grade S · Blackwell 2025</div>
+    </div>
+    <div class="tile t-cyan">
+      <div class="tile-label">Best $/M Tokens (Grid)</div>
+      <div class="tile-value">L40S</div>
+      <div class="tile-sub">$0.17/M tokens · Grade B</div>
+    </div>
+    <div class="tile t-orange">
+      <div class="tile-label">Worst Efficiency</div>
+      <div class="tile-value">V100</div>
+      <div class="tile-sub">7.4× worse CEH than H100</div>
+    </div>
+    <div class="tile t-gold">
+      <div class="tile-label">Grid vs BTM Delta</div>
+      <div class="tile-value">59%</div>
+      <div class="tile-sub">cost reduction BTM vs grid avg</div>
+    </div>
+  </div>
+
+  <!-- MAIN BENCHMARK TABLE -->
+  <div class="section-hdr">▸ Full CEH™ Benchmark Table · LLM Inference (10 Configurations)</div>
+  <div class="table-wrap" style="margin-bottom:8px;">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Hardware</th>
+          <th class="r">TDP/Unit (W)</th>
+          <th class="r">Tokens/sec (×8)</th>
+          <th class="r">kWh/hr</th>
+          <th class="r">CEH Rate</th>
+          <th class="r">Grid $/M tokens</th>
+          <th class="r">BTM $/M tokens</th>
+          <th class="r">CO₂/M tokens (g)</th>
+          <th>Grade</th>
+          <th>Efficiency</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+  <div style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-bottom:32px;letter-spacing:0.5px;">
+    Sorted by CEH™ Rate ascending (lower = better). Grid $0.085/kWh · BTM $0.035/kWh · PUE 1.2 · 0.386 kg CO₂/kWh.
+  </div>
+
+  <!-- COMPARE CHARTS -->
+  <div class="compare-grid">
+    <div class="compare-panel">
+      <h3>CEH™ Rate Comparison <span>lower = better</span></h3>
+      <div id="ceh-bars"></div>
+    </div>
+    <div class="compare-panel">
+      <h3>Grid vs BTM Cost <span>$/M tokens</span></h3>
+      <div id="cost-bars"></div>
+    </div>
+  </div>
+
+  <!-- DGE&I CALLOUT -->
+  <div class="dgei-box">
+    <h3>▸ DGE&amp;I Behind-the-Meter Advantage</h3>
+    <div style="font-size:13px;font-weight:300;color:var(--text);margin-bottom:16px;line-height:1.8;">
+      At a representative BTM generation rate of $0.035/kWh (source-agnostic benchmark range) vs. $0.085/kWh
+      grid average, DGE&amp;I's dispatchable behind-the-meter architecture creates a structural CEH™ cost advantage
+      that compounds at scale — a 59% reduction in the energy cost component of every compute hour.
+      <div style="font-size:10px;color:var(--label);margin-top:8px;font-family:var(--mono);">
+        BTM energy rates vary by generation type, geography, and contract structure. The value shown is a benchmark range achievable across multiple dispatchable and renewable configurations.
+      </div>
+    </div>
+    <div class="dgei-grid">
+      <div class="dgei-stat"><div class="ds-label">BTM Energy Rate</div><div class="ds-val">$0.035</div><div class="ds-sub">per kWh · any source · benchmark range</div></div>
+      <div class="dgei-stat"><div class="ds-label">CEH™ Cost Reduction</div><div class="ds-val">59%</div><div class="ds-sub">vs US grid avg $0.085/kWh</div></div>
+      <div class="dgei-stat"><div class="ds-label">H100 Node Savings/Yr</div><div class="ds-val">$26,800</div><div class="ds-sub">grid vs BTM · full utilization</div></div>
+      <div class="dgei-stat"><div class="ds-label">Carbon Offset (H100 8×)</div><div class="ds-val">~148 t</div><div class="ds-sub">CO₂/yr avoided vs grid avg</div></div>
+      <div class="dgei-stat"><div class="ds-label">CEH™ Arbitrage Window</div><div class="ds-val">Now</div><div class="ds-sub">No competitor has named this unit</div></div>
+      <div class="dgei-stat"><div class="ds-label">REC Monetization</div><div class="ds-val">Additive</div><div class="ds-sub">Green compute premium on top</div></div>
+    </div>
+  </div>
+
+  <!-- TRANSPARENCY + CITATION -->
+  <div class="transparency-block">
+    <span class="ts-label">Benchmark Transparency</span>
+    CEH™ Index v1.0 throughput figures are sourced from published third-party benchmark studies
+    (MLPerf v5.1, CUDO Compute, Koyeb, Spheron, 2025–26). Independent replication is invited.
+    DGE&amp;I does not operate all benchmarked hardware configurations directly.
+  </div>
+  <div class="footnote">
+    ¹ Tokens/sec based on Llama-class LLM inference, batch size 8, vLLM optimization. Sources: MLPerf v5.1, CUDO Compute, Koyeb, Spheron (2025–26).<br>
+    ² PUE 1.2 applied uniformly. BTM rate = $0.035/kWh (source-agnostic benchmark range; actual rates vary by type, geography, and contract structure). Grid = $0.085/kWh US average.<br>
+    ³ CEH™ (Compute Energy Hour) is a trademark of Oak Ridge Management. First introduced April 2026. Energy-agnostic. All rights reserved.<br>
+    ⁴ This index does not constitute investment advice. Hardware specs subject to change; verify with vendor datasheets.
+  </div>
+  <div class="citation-block" style="margin-top:16px;">
+    <span class="cite-label">Formal Citation</span>
+    Cobb, D. (2026). <em>CEH™: A Proposed Standard Unit of Measurement for Compute Energy Intensity.</em>
+    DGE&amp;I / Oak Ridge Management. First published April 21, 2026. arXiv: [pending submission].
+  </div>
+
+</div><!-- /content -->
+</div><!-- /wrap -->
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-mark">Oak Ridge <span>Management</span></div>
+      <div class="footer-tm">CEH™ is a trademark of Oak Ridge Management.<br>First published April 21, 2026. All rights reserved.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/standard/methodology/">Methodology</a></li>
+      <li><a href="/standard/calculator/">Calculator</a></li>
+      <li><a href="/partners/">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+// ── NAV SCROLL ─────────────────────────────────────────────────────────
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+
+// ── DATA ────────────────────────────────────────────────────────────────
+const hw = [
+  { rank:1,  name:'NVIDIA B200',       gen:'Blackwell · 2025',        tdp:1000, units:8, util:0.88, pue:1.2, tps:1200, badge:'badge-new',    badgeText:'NEW'       },
+  { rank:2,  name:'NVIDIA H200',       gen:'Hopper · 2024',           tdp:700,  units:8, util:0.87, pue:1.2, tps:420,  badge:'badge-new',    badgeText:'NEW'       },
+  { rank:3,  name:'NVIDIA H100 SXM',   gen:'Hopper · 2023',           tdp:700,  units:8, util:0.85, pue:1.2, tps:320,  badge:null,           badgeText:null        },
+  { rank:4,  name:'NVIDIA L40S',       gen:'Ada Lovelace · 2023',     tdp:350,  units:8, util:0.82, pue:1.2, tps:185,  badge:'badge-btm',   badgeText:'LOW CEH™'  },
+  { rank:5,  name:'NVIDIA A100 80GB',  gen:'Ampere · 2021',           tdp:400,  units:8, util:0.80, pue:1.2, tps:140,  badge:null,           badgeText:null        },
+  { rank:6,  name:'NVIDIA RTX 4090',   gen:'Ada Lovelace · Consumer', tdp:450,  units:8, util:0.78, pue:1.35,tps:110,  badge:null,           badgeText:null        },
+  { rank:7,  name:'Google TPU v4',     gen:'Google · 2023',           tdp:450,  units:8, util:0.90, pue:1.1, tps:290,  badge:null,           badgeText:null        },
+  { rank:8,  name:'AMD MI300X',        gen:'CDNA3 · 2024',            tdp:750,  units:8, util:0.82, pue:1.2, tps:280,  badge:null,           badgeText:null        },
+  { rank:9,  name:'NVIDIA V100',       gen:'Volta · 2018',            tdp:300,  units:8, util:0.75, pue:1.3, tps:38,   badge:'badge-legacy', badgeText:'LEGACY'    },
+  { rank:10, name:'CPU Cluster (EPYC)',gen:'x86 · No Accelerator',    tdp:280,  units:8, util:0.65, pue:1.45,tps:12,   badge:'badge-legacy', badgeText:'BASELINE'  },
+];
+
+const GRID_RATE = 0.085, BTM_RATE = 0.035, CO2_INTENSITY = 0.386;
+
+function calc(h) {
+  const kwh = (h.tdp * h.units * h.util * h.pue) / 1000;
+  const tph = h.tps * h.units * 3600;
+  const ceh = kwh / tph;
+  return {
+    kwh,
+    tph,
+    ceh,
+    gridCostPerM: ceh * GRID_RATE * 1e6,
+    btmCostPerM:  ceh * BTM_RATE  * 1e6,
+    co2PerM:      ceh * CO2_INTENSITY * 1e6 * 1000,
+  };
+}
+
+hw.forEach(h => Object.assign(h, calc(h)));
+hw.sort((a, b) => a.ceh - b.ceh);
+hw.forEach((h, i) => h.cehRank = i + 1);
+
+function grade(ceh) {
+  if (ceh < 2e-10)  return { g:'S', cls:'grade-S', bar:'#39ff14' };
+  if (ceh < 4e-10)  return { g:'A', cls:'grade-A', bar:'#00d4ff' };
+  if (ceh < 8e-10)  return { g:'B', cls:'grade-B', bar:'#4fa3ff' };
+  if (ceh < 15e-10) return { g:'C', cls:'grade-C', bar:'#ffd700' };
+  if (ceh < 30e-10) return { g:'D', cls:'grade-D', bar:'#ff6b00' };
+  return { g:'F', cls:'grade-F', bar:'#ff3b3b' };
+}
+
+const maxCeh  = Math.max(...hw.map(h => h.ceh));
+const maxGrid = Math.max(...hw.map(h => h.gridCostPerM));
+
+// ── RENDER TABLE ────────────────────────────────────────────────────────
+const tbody = document.getElementById('table-body');
+hw.forEach((h, i) => {
+  const g = grade(h.ceh);
+  const barPct = Math.round((1 - h.ceh / maxCeh) * 100);
+  const rankCls = i === 0 ? 'rank-gold' : i === 1 ? 'rank-silver' : i === 2 ? 'rank-bronze' : '';
+  const badgeHtml = h.badge ? `<span class="badge-tag ${h.badge}">${h.badgeText}</span>` : '';
+  tbody.innerHTML += `
+    <tr>
+      <td class="${rankCls}" style="font-family:var(--mono);font-size:11px;">${i+1}</td>
+      <td>
+        <span class="chip-name">${h.name}</span>
+        <span class="chip-gen">${h.gen} ${badgeHtml}</span>
+      </td>
+      <td class="r">${h.tdp.toLocaleString()}</td>
+      <td class="r">${(h.tps * h.units).toLocaleString()}</td>
+      <td class="r">${h.kwh.toFixed(2)}</td>
+      <td class="r ${g.cls}">${h.ceh.toExponential(2)}</td>
+      <td class="r">$${h.gridCostPerM.toFixed(2)}</td>
+      <td class="r green">$${h.btmCostPerM.toFixed(2)}</td>
+      <td class="r">${h.co2PerM.toFixed(1)}</td>
+      <td><span class="grade ${g.cls}">${g.g}</span></td>
+      <td>
+        <div class="bar-bg">
+          <div class="bar-fill" style="width:${barPct}%;background:${g.bar}"></div>
+        </div>
+      </td>
+    </tr>`;
+});
+
+// ── CEH RATE BAR CHART ──────────────────────────────────────────────────
+const cehBarsEl = document.getElementById('ceh-bars');
+hw.forEach(h => {
+  const g = grade(h.ceh);
+  const pct = Math.round((h.ceh / maxCeh) * 100);
+  const shortName = h.name.replace('NVIDIA ','').replace('Google ','').replace('AMD ','');
+  cehBarsEl.innerHTML += `
+    <div class="cr-row">
+      <span class="cr-label">${shortName}</span>
+      <div class="cr-bar-bg"><div class="cr-bar" style="width:${pct}%;background:${g.bar}"></div></div>
+      <span class="cr-val ${g.cls}">${h.ceh.toExponential(1)}</span>
+    </div>`;
+});
+
+// ── COST COMPARISON BARS ────────────────────────────────────────────────
+const costBarsEl = document.getElementById('cost-bars');
+hw.forEach(h => {
+  const g = grade(h.ceh);
+  const shortName = h.name.replace('NVIDIA ','').replace('Google ','').replace('AMD ','');
+  const pctGrid = Math.round((h.gridCostPerM / maxGrid) * 100);
+  const pctBtm  = Math.round((h.btmCostPerM  / maxGrid) * 100);
+  costBarsEl.innerHTML += `
+    <div style="margin-bottom:12px;">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--label);margin-bottom:3px;">${shortName}</div>
+      <div class="cr-row" style="margin:0 0 2px;">
+        <div class="cr-bar-bg" style="flex:1"><div class="cr-bar" style="width:${pctGrid}%;background:var(--muted)"></div></div>
+        <span style="font-family:var(--mono);font-size:9px;color:var(--text);width:44px;text-align:right;">$${h.gridCostPerM.toFixed(2)}</span>
+      </div>
+      <div class="cr-row" style="margin:0;">
+        <div class="cr-bar-bg" style="flex:1"><div class="cr-bar" style="width:${pctBtm}%;background:var(--a3)"></div></div>
+        <span style="font-family:var(--mono);font-size:9px;color:var(--a3);width:44px;text-align:right;">$${h.btmCostPerM.toFixed(2)}</span>
+      </div>
+    </div>`;
+});
+</script>
+</body>
+</html>

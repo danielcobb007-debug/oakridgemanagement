@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEH™ Methodology — Formula Derivation & Data Sources · Oak Ridge Management</title>
+<meta name="description" content="Full CEH™ (Compute Energy Hour) methodology disclosure — formula derivation, Compute Output Unit definitions, grade scale rationale, data sources, and version archive. Open and auditable.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://oakridgemanagement.net/standard/methodology/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  main { padding-top: 60px; }
+  .page-header { padding: 56px 0 44px; border-bottom: 1px solid var(--border); }
+  .content { padding: 48px 0 80px; display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
+  @media (max-width: 820px) { .content { grid-template-columns: 1fr; } }
+
+  /* TOC sidebar */
+  .toc { position: sticky; top: 80px; }
+  .toc-label { font-family: var(--mono); font-size: 8px; letter-spacing: 3px; color: var(--label); text-transform: uppercase; margin-bottom: 14px; }
+  .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+  .toc-list a {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    display: block;
+    padding: 6px 10px;
+    border-left: 2px solid var(--border);
+    transition: all 0.15s;
+  }
+  .toc-list a:hover { color: var(--a1); border-left-color: var(--a1); }
+  @media (max-width: 820px) { .toc { display: none; } }
+
+  /* sections */
+  .doc-section { margin-bottom: 56px; }
+  .doc-section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    padding-top: 8px;
+    border-top: 2px solid var(--a1);
+  }
+  .doc-section p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.85;
+    margin-bottom: 14px;
+  }
+
+  /* formula derivation */
+  .derivation-block {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--a1);
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text);
+    line-height: 2.2;
+  }
+  .derivation-block .c1 { color: var(--a1); }
+  .derivation-block .c2 { color: var(--a2); }
+  .derivation-block .c3 { color: var(--a3); }
+  .derivation-block .comment { color: var(--muted); font-size: 10px; }
+
+  /* var definitions */
+  .var-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  .var-table th { font-family: var(--mono); font-size: 8px; letter-spacing: 2px; color: var(--a1); text-transform: uppercase; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); font-weight: 400; }
+  .var-table td { font-family: var(--mono); font-size: 10px; color: var(--text); padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .var-table td:first-child { color: var(--a1); white-space: nowrap; }
+  .var-table tr:last-child td { border-bottom: none; }
+
+  /* source list */
+  .source-list { list-style: none; display: flex; flex-direction: column; gap: 2px; margin-top: 12px; }
+  .source-list li {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text);
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+  }
+  .source-list li .s-label { color: var(--label); }
+
+  /* version archive */
+  .version-row {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 80px 1fr 120px;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 2px;
+  }
+  .version-num { font-family: var(--mono); font-size: 14px; color: var(--a1); }
+  .version-details { font-size: 13px; font-weight: 300; color: var(--text); }
+  .version-date { font-family: var(--mono); font-size: 9px; color: var(--muted); text-align: right; }
+  .version-row.current { border-left: 3px solid var(--a3); }
+  .version-row.current .version-num { color: var(--a3); }
+
+  /* design rationale */
+  .rationale-item { margin-bottom: 20px; }
+  .rationale-item .ri-q { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .rationale-item .ri-a { font-size: 13px; font-weight: 300; color: var(--text); line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag">Institutional Home · CEH™ Standard</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/standard/" aria-current="page">Standard</a></li>
+      <li><a href="/partners/">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <a href="/contact/" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<div class="page-header">
+  <span class="eyebrow">▸ Open Methodology · Auditable · Versioned · Oak Ridge Management</span>
+  <h1>CEH™ <em>Methodology</em></h1>
+  <div style="font-size:13px;font-weight:300;color:var(--label);letter-spacing:2px;text-transform:uppercase;margin-top:6px;">
+    Formula Derivation · COU Definitions · Data Sources · Version Archive · v1.0
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- TOC -->
+  <aside class="toc">
+    <div class="toc-label">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#formula">Formula Derivation</a></li>
+      <li><a href="#variables">Variable Definitions</a></li>
+      <li><a href="#cou">COU Definitions</a></li>
+      <li><a href="#grade-scale">Grade Scale Rationale</a></li>
+      <li><a href="#design">Design Rationale</a></li>
+      <li><a href="#sources">Data Sources</a></li>
+      <li><a href="#replication">Replication Protocol</a></li>
+      <li><a href="#versions">Version Archive</a></li>
+      <li><a href="#citation">Citation</a></li>
+    </ul>
+  </aside>
+
+  <!-- BODY -->
+  <div>
+
+    <!-- FORMULA DERIVATION -->
+    <div class="doc-section" id="formula">
+      <h2>Formula Derivation</h2>
+      <p>
+        CEH™ (Compute Energy Hour) is defined as the kilowatt-hours of energy consumed per unit
+        of compute output, normalized for facility overhead. The formula is derived from first
+        principles of power consumption and throughput measurement.
+      </p>
+      <div class="derivation-block">
+        <span class="comment">// Step 1: Compute total draw (kW) for a hardware configuration</span><br>
+        Power_kW = ( <span class="c2">TDP_W</span> × Units × Util% × PUE ) ÷ 1,000<br><br>
+        <span class="comment">// Step 2: Compute output rate (output units per hour)</span><br>
+        Output_per_hour = <span class="c3">COU_rate</span> × Units × 3,600<br><br>
+        <span class="comment">// Step 3: CEH™ rate = energy per output unit</span><br>
+        <span class="c1">CEH™</span> = Power_kW ÷ Output_per_hour<br><br>
+        <span class="comment">// Derived: cost and carbon dimensions</span><br>
+        <span class="c1">CEH™ Cost</span>   = CEH™ × <span class="c2">$/kWh (any energy source)</span><br>
+        <span class="c1">CEH™ Carbon</span> = CEH™ × <span class="c3">kg CO₂/kWh (grid or facility mix)</span>
+      </div>
+      <p>
+        The result — CEH™ — is dimensionless in its normalized form: kWh of energy consumed per
+        output unit produced. It is a pure efficiency ratio. The cost and carbon dimensions are
+        derived by multiplying the efficiency ratio by the respective input (energy rate or
+        carbon intensity). This design ensures the core efficiency measure is
+        independent of energy price and source.
+      </p>
+    </div>
+
+    <!-- VARIABLE DEFINITIONS -->
+    <div class="doc-section" id="variables">
+      <h2>Variable Definitions</h2>
+      <table class="var-table">
+        <tr><th>Variable</th><th>Definition</th><th>Source / Method</th></tr>
+        <tr>
+          <td>TDP_W</td>
+          <td>Thermal Design Power per accelerator unit, in watts. Represents rated maximum draw under sustained load.</td>
+          <td>Vendor datasheet. Measured draw may be used where independently verified and documented.</td>
+        </tr>
+        <tr>
+          <td>Units</td>
+          <td>Count of accelerator units (GPUs, TPUs) in the reference configuration. CEH™ Index v1.0 uses 8-unit nodes.</td>
+          <td>Configuration declaration. Must match throughput measurement configuration exactly.</td>
+        </tr>
+        <tr>
+          <td>Util%</td>
+          <td>Average utilization rate of the compute hardware (0.0–1.0). Represents fraction of time hardware is active at rated throughput.</td>
+          <td>Operational measurement (preferred) or contractual utilization commitment. Must be disclosed.</td>
+        </tr>
+        <tr>
+          <td>PUE</td>
+          <td>Power Usage Effectiveness — total facility power draw divided by IT equipment draw. Captures cooling, power conversion, and overhead.</td>
+          <td>ASHRAE standard measurement or facility disclosure. PUE 1.2 applied uniformly in CEH™ Index v1.0 baselines.</td>
+        </tr>
+        <tr>
+          <td>COU_rate</td>
+          <td>Compute Output Units per second per accelerator unit. Workload-class dependent (see COU Definitions).</td>
+          <td>Third-party benchmark (MLPerf, CUDO, Koyeb, Spheron) or operator-disclosed measurement with methodology. Must specify batch size, model class, and framework.</td>
+        </tr>
+        <tr>
+          <td>$/kWh</td>
+          <td>Energy rate applied to compute CEH™ Cost. Source-agnostic — applies identically to grid, BTM, nuclear, or any blend.</td>
+          <td>Operator disclosure (type only — not the specific rate — for certification purposes). Benchmark uses $0.085/kWh (US grid avg) and $0.035/kWh (BTM source-agnostic range).</td>
+        </tr>
+        <tr>
+          <td>kg CO₂/kWh</td>
+          <td>Carbon intensity of the energy supply, in kilograms of CO₂ equivalent per kWh.</td>
+          <td>EPA eGRID 2024 (regional grid mix), PPA disclosure, or operator-declared for non-grid sources. CEH™ Index v1.0 uses 0.386 kg CO₂/kWh (US average, eGRID 2024).</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- COU DEFINITIONS -->
+    <div class="doc-section" id="cou">
+      <h2>Compute Output Unit (COU) Definitions</h2>
+      <p>
+        The Compute Output Unit (COU) is the workload-specific unit of output that defines the
+        denominator in the CEH™ formula. COU selection is workload-portable: CEH™ rates are
+        comparable across hardware within a workload class. Cross-class comparisons require
+        normalized COU translation.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Workload Class</th>
+              <th>COU</th>
+              <th>Measurement Basis</th>
+              <th>Normalization Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="white">LLM Inference</td>
+              <td class="cyan">Tokens / hour</td>
+              <td>Output tokens/sec measured at specified batch size and model class. vLLM or equivalent.</td>
+              <td>CEH™ Index v1.0: Llama-class models, batch size 8. Specify model class in disclosure.</td>
+            </tr>
+            <tr>
+              <td class="white">Model Training</td>
+              <td class="cyan">TFLOPS / hour</td>
+              <td>Sustained floating-point ops/sec at FP16/BF16 mixed precision.</td>
+              <td>Normalize by model parameter count for cross-configuration comparison.</td>
+            </tr>
+            <tr>
+              <td class="white">Rendering / VFX</td>
+              <td class="cyan">Frames / hour</td>
+              <td>GPU rasterization + ray tracing pipeline. Studio-grade reference scene required.</td>
+              <td>Frame complexity factor (FCF) must be declared. CEH™ grade thresholds scale to FCF.</td>
+            </tr>
+            <tr>
+              <td class="white">HPC / Simulation</td>
+              <td class="cyan">Iterations / hour</td>
+              <td>Simulation steps per second. Domain-specific measurement protocol.</td>
+              <td>Requires per-study COU normalization. Cross-study comparisons require declared normalization factor.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="footnote" style="margin-top:12px;">
+        Additional workload classes (video encoding, RAG retrieval, embedding generation) are under consideration for v2.0.
+        COU definitions for new workload classes require community review prior to index inclusion.
+      </div>
+    </div>
+
+    <!-- GRADE SCALE RATIONALE -->
+    <div class="doc-section" id="grade-scale">
+      <h2>Grade Scale Rationale</h2>
+      <p>
+        The S → F grade scale is calibrated to the LLM inference workload class (CEH™ Index v1.0).
+        Thresholds were set to reflect the practical distribution of hardware efficiency across
+        currently available commercial configurations, with S reserved for hardware achieving
+        best-class efficiency at the time of publication.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Grade</th>
+              <th>CEH™ Rate (kWh/token)</th>
+              <th>Calibration Basis</th>
+              <th>Operator Implication</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="grade grade-S">S</span></td><td class="green">&lt; 2.0 × 10⁻¹⁰</td><td>Best-class Blackwell-generation hardware at publication date</td><td>Deploy as primary inference hardware</td></tr>
+            <tr><td><span class="grade grade-A">A</span></td><td class="cyan">2.0 – 4.0 × 10⁻¹⁰</td><td>Current-generation flagship hardware (H200, TPU v4)</td><td>Cost-competitive at scale; preferred configuration</td></tr>
+            <tr><td><span class="grade grade-B">B</span></td><td style="color:#4fa3ff">4.0 – 8.0 × 10⁻¹⁰</td><td>Previous-generation compute hardware (H100, L40S)</td><td>Viable for mixed workloads; monitor utilization</td></tr>
+            <tr><td><span class="grade grade-C">C</span></td><td class="gold">8.0 – 15.0 × 10⁻¹⁰</td><td>Legacy accelerators (A100, older-gen consumer)</td><td>Suitable for low-priority or burst workloads</td></tr>
+            <tr><td><span class="grade grade-D">D</span></td><td class="orange">15.0 – 30.0 × 10⁻¹⁰</td><td>Older-generation hardware approaching end of productive life</td><td>Avoid for sustained production; energy cost excessive</td></tr>
+            <tr><td><span class="grade grade-F">F</span></td><td style="color:var(--red)">&gt; 30.0 × 10⁻¹⁰</td><td>Legacy hardware or non-accelerated configurations</td><td>Retire or limit to legacy / compatibility use only</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:12px;">
+        Grade thresholds for training (TFLOPS), rendering (frames), and HPC (iterations) are defined
+        proportionally to the efficiency distribution of reference hardware in each workload class.
+        These equivalent thresholds are published in the full methodology specification document
+        (CEH™ Whitepaper v1.0, available at <a href="/resources/" style="color:var(--a1)">/resources</a>).
+      </p>
+    </div>
+
+    <!-- DESIGN RATIONALE -->
+    <div class="doc-section" id="design">
+      <h2>Design Rationale</h2>
+      <div class="rationale-item">
+        <div class="ri-q">Why energy-agnostic?</div>
+        <div class="ri-a">
+          A standard that conflates energy efficiency with energy source is not measuring efficiency —
+          it is measuring source preference. CEH™ is designed to measure how efficiently a unit of
+          energy (regardless of origin) is converted into compute output. This design allows the
+          same standard to apply across grid-connected, BTM, nuclear, and renewable configurations
+          without making an implicit policy judgment about which source is preferable.
+        </div>
+      </div>
+      <div class="rationale-item">
+        <div class="ri-q">Why include PUE in the formula?</div>
+        <div class="ri-a">
+          PUE (Power Usage Effectiveness) captures facility overhead — cooling, power conversion,
+          lighting, and support systems — that directly affects the energy cost of compute output
+          but is not captured by hardware TDP alone. A configuration running in a PUE 1.5 facility
+          consumes 50% more energy per token than the same hardware in a PUE 1.0 facility.
+          Excluding PUE would make CEH™ a hardware benchmark, not an infrastructure benchmark.
+        </div>
+      </div>
+      <div class="rationale-item">
+        <div class="ri-q">Why separate CEH™ Cost and CEH™ Carbon from CEH™ Rate?</div>
+        <div class="ri-a">
+          The core efficiency ratio (kWh/output unit) is stable and comparable across configurations.
+          The cost and carbon dimensions vary based on operator-specific inputs (energy rate, carbon
+          intensity) that change over time and differ by geography. Keeping them as derived dimensions
+          prevents operators with expensive grid contracts from appearing less efficient than operators
+          with cheap BTM power when measuring hardware efficiency.
+        </div>
+      </div>
+      <div class="rationale-item">
+        <div class="ri-q">Why a letter grade scale rather than a continuous index?</div>
+        <div class="ri-a">
+          Grade scales communicate threshold-based risk more clearly than continuous indices for
+          procurement decisions. A continuous 0–100 score implies precision that the underlying
+          data does not support. The S → F model follows established practice in analogous standards
+          (energy appliance ratings, building efficiency ratings) and maps directly to operator
+          decision categories: deploy / monitor / phase out.
+        </div>
+      </div>
+    </div>
+
+    <!-- DATA SOURCES -->
+    <div class="doc-section" id="sources">
+      <h2>Data Sources</h2>
+      <p>
+        CEH™ Index v1.0 throughput figures are sourced from published third-party benchmarks.
+        Oak Ridge Management does not operate all benchmarked configurations directly.
+        Independent replication is invited and constitutes a contribution to the standard.
+      </p>
+      <ul class="source-list">
+        <li><span class="s-label">MLPerf v5.1</span>Industry-standard ML inference and training benchmark. Primary source for H100, H200, A100 throughput figures.</li>
+        <li><span class="s-label">CUDO Compute</span>Published cloud GPU benchmark data. Source for consumer and workstation GPU inference figures.</li>
+        <li><span class="s-label">Koyeb</span>Cloud inference platform benchmark disclosures. Supplementary throughput data (2025–26).</li>
+        <li><span class="s-label">Spheron</span>Decentralized compute benchmark data. Supplementary throughput and utilization data (2025–26).</li>
+        <li><span class="s-label">EPA eGRID 2024</span>US electricity grid carbon intensity by region. CEH™ Index v1.0 uses US national average: 0.386 kg CO₂/kWh.</li>
+        <li><span class="s-label">IEA Energy &amp; AI Report (Apr 2025)</span>Global AI energy demand projections. Referenced in thesis documentation.</li>
+        <li><span class="s-label">FERC Dec 2025 Order</span>Colocation rule reform for behind-the-meter compute. Regulatory basis for BTM configuration analysis.</li>
+        <li><span class="s-label">LevelTen PPA Price Index Q1 2026</span>Power purchase agreement pricing data. Referenced for BTM rate benchmark range.</li>
+        <li><span class="s-label">Vendor datasheets</span>TDP figures sourced from NVIDIA, AMD, and Google published hardware specifications as of benchmark date.</li>
+      </ul>
+    </div>
+
+    <!-- REPLICATION PROTOCOL -->
+    <div class="doc-section" id="replication">
+      <h2>Replication Protocol</h2>
+      <p>
+        Independent replication of the CEH™ Index is explicitly invited. The following protocol
+        defines how to reproduce any row in CEH™ Index v1.0.
+      </p>
+      <ul class="check-list" style="gap:12px;margin-bottom:20px;">
+        <li>Obtain hardware TDP from the vendor datasheet current at the replication date. Note any variance from the v1.0 source.</li>
+        <li>Configure an 8-GPU node matching the specified hardware. Apply PUE 1.2 or disclose your measured facility PUE.</li>
+        <li>Run the specified workload: LLM inference, Llama-class model (7B–70B), batch size 8, vLLM or equivalent inference framework.</li>
+        <li>Measure output tokens per second for a minimum 30-minute sustained run at the declared utilization rate.</li>
+        <li>Apply the CEH™ formula: (TDP × 8 × util × PUE) / 1000 / (tps × 8 × 3600).</li>
+        <li>Apply the grade scale thresholds to determine the CEH™ grade.</li>
+        <li>Publish results with: hardware version, firmware version, model class, batch size, framework version, measurement duration, and any deviation from v1.0 configuration.</li>
+      </ul>
+      <p>
+        Replications that produce materially different results (greater than ±15% CEH™ rate deviation
+        from v1.0 figures) should be submitted to Oak Ridge Management for review. Confirmed corrections
+        will be incorporated in the next versioned update with attribution to the replicating institution.
+      </p>
+    </div>
+
+    <!-- VERSION ARCHIVE -->
+    <div class="doc-section" id="versions">
+      <h2>Version Archive</h2>
+      <div class="version-row current">
+        <div class="version-num">v1.0</div>
+        <div class="version-details">
+          Initial publication. LLM Inference (Tokens) workload class. 10 hardware configurations.
+          Grade scale S → F calibrated to Blackwell-through-CPU-baseline distribution.
+          Energy-agnostic formula with BTM and Carbon derived dimensions.
+        </div>
+        <div class="version-date">April 21, 2026<br><span style="color:var(--a3);">CURRENT</span></div>
+      </div>
+      <div class="version-row" style="opacity:0.5;">
+        <div class="version-num" style="color:var(--muted);">v2.0</div>
+        <div class="version-details" style="color:var(--muted);">
+          Planned: Training (TFLOPS), Rendering (Frames), HPC (Iterations) workload class additions.
+          Expanded hardware configurations. arXiv preprint co-submission. Community review period.
+        </div>
+        <div class="version-date">TBD</div>
+      </div>
+    </div>
+
+    <!-- CITATION -->
+    <div class="doc-section" id="citation">
+      <h2>Citation</h2>
+      <div style="background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--a4);padding:18px 24px;font-family:var(--mono);font-size:10px;color:var(--text);line-height:1.9;">
+        <div style="font-size:8px;letter-spacing:3px;color:var(--a4);text-transform:uppercase;margin-bottom:8px;">Formal Citation · CEH™ v1.0</div>
+        Cobb, D. (2026). <em>CEH™: A Proposed Standard Unit of Measurement for Compute Energy Intensity.</em>
+        DGE&amp;I / Oak Ridge Management. First published April 21, 2026. arXiv: [pending submission].
+        Available at: <a href="https://oakridgemanagement.net/standard/methodology/" style="color:var(--a1)">oakridgemanagement.net/standard/methodology</a>
+      </div>
+      <div style="margin-top:12px;font-family:var(--mono);font-size:9px;color:var(--muted);line-height:1.8;">
+        CEH™ (Compute Energy Hour) is a trademark of Oak Ridge Management. v1.0 first published April 21, 2026.
+        The methodology is open and may be cited, replicated, and co-published with attribution.
+        The CEH™ name and mark require a license for use in commercial certification contexts.
+        Contact: <a href="/contact/" style="color:var(--a1)">oakridgemanagement.net/contact</a>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+</div><!-- /content -->
+</div><!-- /wrap -->
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-mark">Oak Ridge <span>Management</span></div>
+      <div class="footer-tm">CEH™ is a trademark of Oak Ridge Management.<br>First published April 21, 2026. All rights reserved.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/standard/benchmark/">CEH™ Index</a></li>
+      <li><a href="/standard/calculator/">Calculator</a></li>
+      <li><a href="/partners/standards/">Research Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+</script>
+</body>
+</html>

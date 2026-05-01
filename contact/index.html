@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Oak Ridge Management | CEH™ Standard</title>
+<meta name="description" content="Contact Oak Ridge Management for capital partner inquiries, CEH™ operator certification, research co-publication, or general questions about the CEH™ standard.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://oakridgemanagement.net/contact/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  main { padding-top: 60px; }
+  .hero { padding: 72px 0 64px; border-bottom: 1px solid var(--border); }
+  .hero-sub { font-size: 15px; font-weight: 300; color: var(--text); line-height: 1.8; max-width: 580px; margin-top: 22px; }
+
+  .contact-section { padding: 64px 0 80px; }
+  .contact-layout { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
+  @media (max-width: 860px) { .contact-layout { grid-template-columns: 1fr; } }
+
+  /* Track selector tabs */
+  .track-tabs { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-bottom: 32px; }
+  @media (max-width: 640px) { .track-tabs { grid-template-columns: 1fr 1fr; } }
+  .track-tab {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 14px 12px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+    position: relative;
+  }
+  .track-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: transparent;
+    transition: background 0.15s;
+  }
+  .track-tab:hover { color: var(--text); border-color: var(--border2); }
+  .track-tab.active { color: #fff; border-color: var(--border2); }
+  .track-tab[data-track="capital"].active::after { background: var(--a2); }
+  .track-tab[data-track="operators"].active::after { background: var(--a1); }
+  .track-tab[data-track="standards"].active::after { background: var(--a3); }
+  .track-tab[data-track="general"].active::after { background: var(--a4); }
+  .track-tab[data-track="capital"].active { color: var(--a2); }
+  .track-tab[data-track="operators"].active { color: var(--a1); }
+  .track-tab[data-track="standards"].active { color: var(--a3); }
+  .track-tab[data-track="general"].active { color: var(--a4); }
+
+  /* Forms */
+  .contact-form { display: none; }
+  .contact-form.active { display: block; }
+
+  .form-header { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .form-track-badge {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .badge-capital { color: var(--a2); border-color: var(--a2); }
+  .badge-operators { color: var(--a1); border-color: var(--a1); }
+  .badge-standards { color: var(--a3); border-color: var(--a3); }
+  .badge-general { color: var(--a4); border-color: var(--a4); }
+
+  .form-header h2 { font-size: 24px; font-weight: 700; text-transform: uppercase; color: #fff; margin-bottom: 8px; }
+  .form-header p { font-size: 13px; font-weight: 300; color: var(--text); line-height: 1.75; }
+
+  /* Sidebar info */
+  .contact-sidebar { display: flex; flex-direction: column; gap: 2px; }
+  .sidebar-block {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 20px 22px;
+  }
+  .sb-label { font-family: var(--mono); font-size: 8px; letter-spacing: 3px; color: var(--a1); text-transform: uppercase; margin-bottom: 10px; }
+  .sb-val { font-size: 13px; font-weight: 300; color: var(--text); line-height: 1.8; }
+  .sb-val a { color: var(--a1); }
+  .sb-val strong { color: #fff; font-weight: 500; }
+
+  .sidebar-block.note {
+    border-left: 3px solid var(--border2);
+    background: var(--s2);
+  }
+  .sb-note-text { font-family: var(--mono); font-size: 9px; color: var(--muted); line-height: 1.8; }
+
+  /* Confirmation message */
+  .form-confirm {
+    display: none;
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--a3);
+    padding: 36px 32px;
+    text-align: center;
+  }
+  .form-confirm h3 { font-size: 20px; font-weight: 700; text-transform: uppercase; color: var(--a3); margin-bottom: 12px; }
+  .form-confirm p { font-size: 13px; font-weight: 300; color: var(--text); line-height: 1.75; }
+</style>
+</head>
+<body>
+
+<!-- Netlify form detection bots — hidden forms so Netlify registers all four -->
+<form name="capital-inquiry" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="first-name">
+  <input type="text" name="last-name">
+  <input type="text" name="organization">
+  <input type="text" name="role">
+  <input type="email" name="email">
+  <select name="capital-type"><option>LP Equity</option></select>
+  <textarea name="note"></textarea>
+</form>
+<form name="operator-inquiry" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="first-name">
+  <input type="text" name="last-name">
+  <input type="text" name="organization">
+  <input type="text" name="role">
+  <input type="email" name="email">
+  <input type="text" name="hardware-config">
+  <select name="energy-source"><option>BTM</option></select>
+  <textarea name="note"></textarea>
+</form>
+<form name="standards-inquiry" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="first-name">
+  <input type="text" name="last-name">
+  <input type="text" name="organization">
+  <input type="text" name="role">
+  <input type="email" name="email">
+  <select name="engagement-type"><option>Academic Replication</option></select>
+  <input type="text" name="affiliation">
+  <textarea name="note"></textarea>
+</form>
+<form name="general-inquiry" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="first-name">
+  <input type="text" name="last-name">
+  <input type="text" name="organization">
+  <input type="email" name="email">
+  <textarea name="message"></textarea>
+</form>
+
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag">Institutional Home · CEH™ Standard</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/partners/">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <a href="/contact/" class="nav-cta" aria-current="page">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">▸ Capital · Operators · Research · General</span>
+    <h1>Contact<br><em>Oak Ridge</em></h1>
+    <p class="hero-sub">
+      Select the track that matches your inquiry. Each track routes to the
+      appropriate team and determines what information is most useful to provide.
+      Capital and standards inquiries are treated as confidential.
+    </p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="wrap">
+    <div class="contact-layout">
+
+      <div>
+        <!-- Track selector -->
+        <div class="track-tabs">
+          <button class="track-tab active" data-track="capital">Capital</button>
+          <button class="track-tab" data-track="operators">Operators</button>
+          <button class="track-tab" data-track="standards">Standards</button>
+          <button class="track-tab" data-track="general">General</button>
+        </div>
+
+        <!-- CAPITAL FORM -->
+        <div class="contact-form active" id="form-capital">
+          <div class="form-header">
+            <span class="form-track-badge badge-capital">Track 02 · Capital Partners</span>
+            <h2>Capital Partner Inquiry</h2>
+            <p>
+              For qualified capital partners interested in DGEI BTM compute infrastructure —
+              equity, project debt, tax equity, or offtake co-investment. LP package provided
+              to qualified inquiries after initial review. All submissions treated as confidential.
+            </p>
+          </div>
+          <form name="capital-inquiry" method="POST" netlify netlify-honeypot="bot-field" data-netlify="true">
+            <input type="hidden" name="form-name" value="capital-inquiry">
+            <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="cap-first">First Name</label>
+                <input class="form-input" type="text" id="cap-first" name="first-name" required placeholder="First">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cap-last">Last Name</label>
+                <input class="form-input" type="text" id="cap-last" name="last-name" required placeholder="Last">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="cap-org">Organization</label>
+                <input class="form-input" type="text" id="cap-org" name="organization" required placeholder="Firm / Institution">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cap-role">Role / Title</label>
+                <input class="form-input" type="text" id="cap-role" name="role" placeholder="Managing Director, CIO, etc.">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cap-email">Email Address</label>
+              <input class="form-input" type="email" id="cap-email" name="email" required placeholder="name@firm.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cap-type">Capital Interest</label>
+              <select class="form-select" id="cap-type" name="capital-type">
+                <option value="">Select capital type</option>
+                <option value="lp-equity">LP Equity</option>
+                <option value="senior-debt">Senior Project Debt</option>
+                <option value="tax-equity">Tax Equity</option>
+                <option value="offtake">Offtake Co-Investment</option>
+                <option value="strategic">Strategic Capital</option>
+                <option value="undecided">Undecided / Exploring</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cap-note">Brief Note <span style="color:var(--muted)">(optional)</span></label>
+              <textarea class="form-textarea" id="cap-note" name="note" placeholder="Capital range, deployment horizon, or any specific questions for the initial conversation."></textarea>
+            </div>
+            <button type="submit" class="form-submit orange">Request LP Package →</button>
+            <p style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:14px;line-height:1.7;">
+              For informational purposes only. Not an offer to sell or solicitation of an offer to purchase any security.
+              Qualified capital partners only. LP materials provided at Oak Ridge Management's discretion.
+            </p>
+          </form>
+        </div>
+
+        <!-- OPERATORS FORM -->
+        <div class="contact-form" id="form-operators">
+          <div class="form-header">
+            <span class="form-track-badge badge-operators">Track 01 · Operator Partners</span>
+            <h2>Certification Application</h2>
+            <p>
+              For data center operators, neo-cloud providers, and BTM compute developers seeking
+              CEH™ (Compute Energy Hour) certification and index listing. Submit your hardware
+              configuration and energy source type to begin the disclosure checklist process.
+            </p>
+          </div>
+          <form name="operator-inquiry" method="POST" netlify netlify-honeypot="bot-field" data-netlify="true">
+            <input type="hidden" name="form-name" value="operator-inquiry">
+            <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="op-first">First Name</label>
+                <input class="form-input" type="text" id="op-first" name="first-name" required placeholder="First">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="op-last">Last Name</label>
+                <input class="form-input" type="text" id="op-last" name="last-name" required placeholder="Last">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="op-org">Organization</label>
+                <input class="form-input" type="text" id="op-org" name="organization" required placeholder="Company name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="op-role">Role / Title</label>
+                <input class="form-input" type="text" id="op-role" name="role" placeholder="VP Infrastructure, etc.">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="op-email">Email Address</label>
+              <input class="form-input" type="email" id="op-email" name="email" required placeholder="name@company.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="op-hw">Primary Hardware Configuration <span style="color:var(--muted)">(optional)</span></label>
+              <input class="form-input" type="text" id="op-hw" name="hardware-config" placeholder="e.g. H100 SXM5 ×8 per node, 32 nodes">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="op-energy">Primary Energy Source Type</label>
+              <select class="form-select" id="op-energy" name="energy-source">
+                <option value="">Select energy source</option>
+                <option value="btm-solar">BTM Solar</option>
+                <option value="btm-gas">BTM Natural Gas</option>
+                <option value="btm-mixed">BTM Mixed / Hybrid</option>
+                <option value="grid-re">Grid — Renewable-Backed</option>
+                <option value="grid-standard">Grid — Standard Mix</option>
+                <option value="nuclear">Nuclear</option>
+                <option value="other">Other / Multiple</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="op-note">Additional Context <span style="color:var(--muted)">(optional)</span></label>
+              <textarea class="form-textarea" id="op-note" name="note" placeholder="Facility location, current PUE, scale of deployment, or questions about the disclosure checklist."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Apply for Certification →</button>
+          </form>
+        </div>
+
+        <!-- STANDARDS FORM -->
+        <div class="contact-form" id="form-standards">
+          <div class="form-header">
+            <span class="form-track-badge badge-standards">Track 03 · Research Partners</span>
+            <h2>Research &amp; Standards Inquiry</h2>
+            <p>
+              For standards bodies, academic institutions, and industry analysts interested in
+              CEH™ co-publication, independent replication, standards body co-submission, or
+              analyst licensing of the CEH™ Index. Full methodology package provided to reviewers on request.
+            </p>
+          </div>
+          <form name="standards-inquiry" method="POST" netlify netlify-honeypot="bot-field" data-netlify="true">
+            <input type="hidden" name="form-name" value="standards-inquiry">
+            <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="std-first">First Name</label>
+                <input class="form-input" type="text" id="std-first" name="first-name" required placeholder="First">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="std-last">Last Name</label>
+                <input class="form-input" type="text" id="std-last" name="last-name" required placeholder="Last">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="std-org">Organization / Institution</label>
+                <input class="form-input" type="text" id="std-org" name="organization" required placeholder="University, lab, standards body, or firm">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="std-role">Role / Title</label>
+                <input class="form-input" type="text" id="std-role" name="role" placeholder="Professor, Chair, Research Director, etc.">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="std-email">Email Address</label>
+              <input class="form-input" type="email" id="std-email" name="email" required placeholder="name@institution.edu">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="std-type">Engagement Type</label>
+              <select class="form-select" id="std-type" name="engagement-type">
+                <option value="">Select engagement type</option>
+                <option value="academic-replication">Academic Replication / Independent Verification</option>
+                <option value="standards-body">Standards Body Co-submission (IEEE / MLCommons / Green Grid / ASHRAE)</option>
+                <option value="analyst-licensing">Analyst Licensing — CEH™ Index for Research Reports</option>
+                <option value="methodology-review">Methodology Peer Review</option>
+                <option value="joint-benchmark">Joint Benchmarking</option>
+                <option value="arxiv-copub">arXiv Preprint Co-authorship</option>
+                <option value="other">Other / Exploratory</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="std-aff">Relevant Standards Affiliations <span style="color:var(--muted)">(optional)</span></label>
+              <input class="form-input" type="text" id="std-aff" name="affiliation" placeholder="e.g. MLCommons member, IEEE P2830 working group, etc.">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="std-note">Research Context <span style="color:var(--muted)">(optional)</span></label>
+              <textarea class="form-textarea" id="std-note" name="note" placeholder="Describe the research context, proposed collaboration scope, or specific questions about the methodology."></textarea>
+            </div>
+            <button type="submit" class="form-submit green">Open a Conversation →</button>
+          </form>
+        </div>
+
+        <!-- GENERAL FORM -->
+        <div class="contact-form" id="form-general">
+          <div class="form-header">
+            <span class="form-track-badge badge-general">General Inquiry</span>
+            <h2>General Contact</h2>
+            <p>
+              For press inquiries, CEH™ methodology questions, or inquiries that don't
+              fit the partner tracks above. Media inquiries can also be directed here —
+              see the <a href="/resources/" style="color:var(--a1)">Press &amp; Media section</a> for more detail.
+            </p>
+          </div>
+          <form name="general-inquiry" method="POST" netlify netlify-honeypot="bot-field" data-netlify="true">
+            <input type="hidden" name="form-name" value="general-inquiry">
+            <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="gen-first">First Name</label>
+                <input class="form-input" type="text" id="gen-first" name="first-name" required placeholder="First">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="gen-last">Last Name</label>
+                <input class="form-input" type="text" id="gen-last" name="last-name" required placeholder="Last">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="gen-org">Organization <span style="color:var(--muted)">(optional)</span></label>
+              <input class="form-input" type="text" id="gen-org" name="organization" placeholder="Company, publication, institution">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="gen-email">Email Address</label>
+              <input class="form-input" type="email" id="gen-email" name="email" required placeholder="name@domain.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="gen-msg">Message</label>
+              <textarea class="form-textarea" id="gen-msg" name="message" required placeholder="Your question or inquiry."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Message →</button>
+          </form>
+        </div>
+
+      </div><!-- /form column -->
+
+      <!-- SIDEBAR -->
+      <div class="contact-sidebar">
+        <div class="sidebar-block">
+          <div class="sb-label">Response Time</div>
+          <div class="sb-val">
+            <strong>Capital:</strong> 2–3 business days<br>
+            <strong>Operators:</strong> 3–5 business days<br>
+            <strong>Standards:</strong> 5 business days<br>
+            <strong>General / Press:</strong> 3–5 business days
+          </div>
+        </div>
+        <div class="sidebar-block">
+          <div class="sb-label">Direct Contact</div>
+          <div class="sb-val">
+            Daniel Cobb, Founder<br>
+            Oak Ridge Management, LLC<br>
+            Atlanta, Georgia
+          </div>
+        </div>
+        <div class="sidebar-block">
+          <div class="sb-label">CEH™ Resources</div>
+          <div class="sb-val">
+            <a href="/resources/">Whitepaper &amp; Citation Guide →</a><br>
+            <a href="/standard/methodology/">Methodology →</a><br>
+            <a href="/standard/benchmark/">CEH™ Index →</a>
+          </div>
+        </div>
+        <div class="sidebar-block">
+          <div class="sb-label">External Sites</div>
+          <div class="sb-val">
+            <a href="https://cehstandard.com" target="_blank" rel="noopener">cehstandard.com ↗</a><br>
+            <a href="https://www.cehinfrastructureindex.com" target="_blank" rel="noopener">cehinfrastructureindex.com ↗</a>
+          </div>
+        </div>
+        <div class="sidebar-block note">
+          <div class="sb-label" style="color:var(--muted)">Disclosure</div>
+          <div class="sb-note-text">
+            Capital track submissions are treated as confidential and are not solicitations.
+            LP materials are provided at Oak Ridge Management's discretion to qualified inquiries only.
+            Nothing herein constitutes an offer to sell or solicitation of an offer to purchase any security.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-mark">Oak Ridge <span>Management</span></div>
+      <div class="footer-tm">CEH™ is a trademark of Oak Ridge Management.<br>First published April 21, 2026. All rights reserved.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/standard/benchmark/">CEH™ Index</a></li>
+      <li><a href="/standard/methodology/">Methodology</a></li>
+      <li><a href="/partners/">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+
+// Track tab switching
+const tabs = document.querySelectorAll('.track-tab');
+const forms = document.querySelectorAll('.contact-form');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.track;
+    tabs.forEach(t => t.classList.remove('active'));
+    forms.forEach(f => f.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('form-' + target).classList.add('active');
+  });
+});
+
+// Pre-select track from URL hash (e.g. /contact/#capital)
+function applyHash() {
+  const hash = window.location.hash.replace('#', '');
+  const tab = document.querySelector(`.track-tab[data-track="${hash}"]`);
+  if (tab) tab.click();
+}
+applyHash();
+window.addEventListener('hashchange', applyHash);
+</script>
+</body>
+</html>

@@ -3,827 +3,378 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oak Ridge Management</title>
+<title>Oak Ridge Management — Institutional Home of the CEH™ Standard</title>
+<meta name="description" content="Oak Ridge Management is the originator and institutional home of CEH™ (Compute Energy Hour), the independent standard unit for measuring AI compute energy efficiency. First published April 21, 2026.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://oakridgemanagement.net/">
+<meta property="og:title" content="Oak Ridge Management — Institutional Home of the CEH™ Standard">
+<meta property="og:description" content="Originator of CEH™ — the standard unit for compute energy efficiency. Energy-agnostic. Auditable. First published April 21, 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oakridgemanagement.net">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/shared.css">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --black:   #0a0a08;
-    --off-black: #111110;
-    --rule:    #1e1e1c;
-    --mid:     #2e2e2b;
-    --muted:   #5a5a54;
-    --subtle:  #8a8a82;
-    --light:   #c8c8be;
-    --off-white: #e8e8df;
-    --white:   #f4f4ee;
-    --accent:  #c8a96e;   /* warm gold — restrained */
-    --accent2: #4a7c59;   /* forest — DGEI / infrastructure */
-    --mono: 'IBM Plex Mono', monospace;
-    --sans: 'IBM Plex Sans', sans-serif;
-    --serif: 'Playfair Display', serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--black);
-    color: var(--off-white);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── LAYOUT ── */
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
-
-  hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
-  hr.rule-mid { border: none; border-top: 1px solid var(--mid); margin: 0; }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(10,10,8,0.94);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--rule);
-  }
-  .nav-inner {
-    max-width: 1100px; margin: 0 auto; padding: 0 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 58px;
-  }
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--white);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--accent); }
-  .nav-links {
-    display: flex; gap: 32px; list-style: none;
-  }
-  .nav-links a {
-    font-family: var(--mono); font-size: 10px; font-weight: 400;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--subtle); text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--white); }
-  .nav-cta {
-    font-family: var(--mono); font-size: 10px; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--accent); text-decoration: none;
-    border: 1px solid var(--accent);
-    padding: 7px 16px;
-    transition: all 0.2s;
-  }
-  .nav-cta:hover { background: var(--accent); color: var(--black); }
+  /* ── PAGE OFFSET ── */
+  main { padding-top: 60px; }
 
   /* ── HERO ── */
   .hero {
-    padding: 160px 0 100px;
-    border-bottom: 1px solid var(--rule);
-    position: relative;
-    overflow: hidden;
+    padding: 80px 0 70px;
+    border-bottom: 1px solid var(--border);
   }
-  .hero::before {
-    content: '';
-    position: absolute; top: 0; right: 0;
-    width: 480px; height: 480px;
-    background: radial-gradient(circle, rgba(200,169,110,0.04) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-eyebrow {
-    font-family: var(--mono); font-size: 10px; font-weight: 400;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 28px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .hero-eyebrow::before {
-    content: ''; display: block;
-    width: 28px; height: 1px; background: var(--accent);
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(38px, 5vw, 62px);
-    font-weight: 400; line-height: 1.12;
-    color: var(--white);
-    max-width: 720px;
-    margin-bottom: 32px;
-  }
-  .hero h1 em {
-    font-style: italic; color: var(--accent);
-  }
-  .hero-sub {
-    font-family: var(--sans); font-size: 16px; font-weight: 300;
-    color: var(--subtle); max-width: 500px;
-    line-height: 1.7; margin-bottom: 52px;
-  }
-  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-  .btn-primary {
-    font-family: var(--mono); font-size: 10px; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    background: var(--accent); color: var(--black);
-    padding: 14px 28px; text-decoration: none;
-    transition: opacity 0.2s;
-    display: inline-block;
-  }
-  .btn-primary:hover { opacity: 0.88; }
-  .btn-ghost {
-    font-family: var(--mono); font-size: 10px; font-weight: 400;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--subtle); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: color 0.2s;
-  }
-  .btn-ghost:hover { color: var(--white); }
-  .btn-ghost::after { content: '→'; font-size: 12px; }
-
-  /* Hero stats strip */
-  .hero-stats {
-    margin-top: 72px; padding-top: 40px;
-    border-top: 1px solid var(--rule);
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-  }
-  .stat {
-    padding: 0 32px 0 0;
-    border-right: 1px solid var(--rule);
-  }
-  .stat:first-child { padding-left: 0; }
-  .stat:last-child { border-right: none; }
-  .stat-val {
-    font-family: var(--serif); font-size: 28px; font-weight: 400;
-    color: var(--white); display: block; margin-bottom: 4px;
-  }
-  .stat-val span { color: var(--accent); }
-  .stat-label {
-    font-family: var(--mono); font-size: 9px; font-weight: 400;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  /* ── SECTION BASE ── */
-  section { padding: 88px 0; border-bottom: 1px solid var(--rule); }
-  .section-header { margin-bottom: 56px; }
-  .section-tag {
-    font-family: var(--mono); font-size: 9px; font-weight: 500;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 16px; display: block;
-  }
-  .section-title {
-    font-family: var(--serif); font-size: clamp(26px, 3.5vw, 38px);
-    font-weight: 400; color: var(--white); line-height: 1.18;
-    max-width: 580px;
-  }
-  .section-title em { font-style: italic; color: var(--accent); }
-  .section-desc {
-    margin-top: 20px; font-size: 15px; font-weight: 300;
-    color: var(--subtle); max-width: 480px; line-height: 1.72;
-  }
-
-  /* ── ENTITY CARDS ── */
-  .entity-card {
-    padding: 36px;
-    border: 1px solid var(--rule);
-    background: var(--off-black);
-    position: relative;
-    transition: border-color 0.25s;
-  }
-  .entity-card:hover { border-color: var(--mid); }
-  .entity-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0;
-    width: 3px; height: 100%;
-  }
-  .entity-card.gold::before { background: var(--accent); }
-  .entity-card.green::before { background: var(--accent2); }
-  .entity-card.slate::before { background: var(--muted); }
-  .entity-tag {
-    font-family: var(--mono); font-size: 9px; font-weight: 500;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 20px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .entity-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); display: inline-block;
-  }
-  .entity-dot.green { background: var(--accent2); }
-  .entity-dot.slate { background: var(--muted); }
-  .entity-name {
-    font-family: var(--serif); font-size: 20px; font-weight: 600;
-    color: var(--white); margin-bottom: 8px;
-  }
-  .entity-desc {
-    font-size: 13px; font-weight: 300; color: var(--subtle);
-    line-height: 1.65; margin-bottom: 24px;
-  }
-  .entity-metrics { display: flex; flex-direction: column; gap: 8px; }
-  .entity-metric {
-    display: flex; justify-content: space-between;
-    font-family: var(--mono); font-size: 10px;
-    padding: 8px 0; border-top: 1px solid var(--rule);
-    color: var(--muted);
-  }
-  .entity-metric span:last-child { color: var(--light); }
-
-  /* ── CEH SECTION ── */
-  .ceh-feature {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 0; border: 1px solid var(--rule);
-  }
-  .ceh-left {
-    padding: 52px; background: var(--off-black);
-    border-right: 1px solid var(--rule);
-  }
-  .ceh-right { padding: 52px; }
-  .ceh-formula {
-    font-family: var(--mono); font-size: 12px; font-weight: 400;
-    color: var(--accent);
-    background: var(--rule);
-    padding: 20px 24px;
-    margin: 28px 0;
-    letter-spacing: 0.04em;
-    line-height: 1.8;
-    border-left: 2px solid var(--accent);
-  }
-  .ceh-grade-row {
-    display: flex; align-items: center; gap: 14px;
-    padding: 10px 0; border-bottom: 1px solid var(--rule);
-    font-family: var(--mono); font-size: 11px;
-  }
-  .ceh-grade-row:last-child { border-bottom: none; }
-  .grade-badge {
-    width: 28px; height: 28px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 500;
-    flex-shrink: 0;
-  }
-  .grade-S { background: #c8a96e22; color: var(--accent); border: 1px solid var(--accent); }
-  .grade-A { background: #4a7c5922; color: var(--accent2); border: 1px solid var(--accent2); }
-  .grade-B { background: #3a6a8022; color: #6ab0c8; border: 1px solid #3a6a80; }
-  .grade-C { background: #60606022; color: var(--subtle); border: 1px solid var(--mid); }
-  .grade-D { background: #80402022; color: #c87050; border: 1px solid #803020; }
-  .grade-F { background: #60101022; color: #a04040; border: 1px solid #601010; }
-  .grade-hw { color: var(--light); flex: 1; }
-  .grade-rate { color: var(--muted); font-size: 10px; margin-left: auto; }
-
-  /* ── BTM STRIP ── */
-  .btm-strip {
-    background: var(--off-black);
-    border: 1px solid var(--rule);
-    padding: 52px;
+  .hero-inner {
     display: grid;
-    grid-template-columns: 1fr 2px 1fr 2px 1fr 2px 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr 420px;
+    gap: 60px;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .hero-inner { grid-template-columns: 1fr; } }
+
+  .hero-thesis {
+    margin-top: 24px;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    max-width: 560px;
+    letter-spacing: 0.2px;
+  }
+
+  .hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* KPI PANEL */
+  .kpi-panel {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--a1);
+    padding: 24px;
+    margin-top: 8px;
+  }
+  .kpi-panel-header {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--label);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
   }
-  .btm-divider { background: var(--rule); height: 100%; }
-  .btm-stat { text-align: center; }
-  .btm-val {
-    font-family: var(--serif); font-size: 34px; font-weight: 400;
-    color: var(--accent); display: block; margin-bottom: 6px;
+  .kpi-live {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--a3);
   }
-  .btm-label {
-    font-family: var(--mono); font-size: 9px; font-weight: 400;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  /* ── THESIS / MOAT ── */
-  .moat-item {
-    padding: 28px 0; border-bottom: 1px solid var(--rule);
-    display: grid; grid-template-columns: 48px 1fr; gap: 28px;
-    align-items: start;
-  }
-  .moat-item:last-child { border-bottom: none; }
-  .moat-num {
-    font-family: var(--mono); font-size: 11px; font-weight: 500;
-    letter-spacing: 0.1em; color: var(--muted);
-    padding-top: 3px;
-  }
-  .moat-content h4 {
-    font-family: var(--sans); font-size: 14px; font-weight: 500;
-    color: var(--white); margin-bottom: 6px;
-  }
-  .moat-content p {
-    font-size: 13px; font-weight: 300;
-    color: var(--subtle); line-height: 1.65;
-  }
-  .moat-tag {
-    display: inline-block; margin-top: 10px;
-    font-family: var(--mono); font-size: 9px; font-weight: 400;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--accent2); border: 1px solid var(--accent2);
-    padding: 2px 8px;
-  }
-
-  /* ── TIMELINE ── */
-  .timeline { position: relative; }
-  .timeline-track {
-    position: absolute; left: 0; top: 12px; bottom: 12px;
-    width: 1px; background: var(--rule);
-  }
-  .timeline-item {
-    padding: 0 0 40px 36px;
-    position: relative;
-  }
-  .timeline-item:last-child { padding-bottom: 0; }
-  .timeline-dot {
-    position: absolute; left: -5px; top: 2px;
-    width: 11px; height: 11px;
+  .kpi-live-dot {
+    width: 5px; height: 5px;
+    background: var(--a3);
     border-radius: 50%;
-    border: 1px solid var(--mid);
-    background: var(--black);
+    animation: pls 2s infinite;
   }
-  .timeline-dot.active {
-    background: var(--accent);
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px rgba(200,169,110,0.12);
+  .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .kpi-item {
+    background: var(--s2);
+    padding: 16px;
+    border: 1px solid var(--border);
   }
-  .timeline-phase {
-    font-family: var(--mono); font-size: 9px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 6px;
+  .kpi-val {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--a1);
+    margin-bottom: 4px;
   }
-  .timeline-title {
-    font-family: var(--sans); font-size: 14px; font-weight: 500;
-    color: var(--white); margin-bottom: 8px;
-  }
-  .timeline-items { list-style: none; }
-  .timeline-items li {
-    font-size: 12px; font-weight: 300; color: var(--subtle);
-    padding: 3px 0;
-    display: flex; align-items: flex-start; gap: 8px;
-  }
-  .timeline-items li::before {
-    content: '–'; color: var(--muted); flex-shrink: 0; margin-top: 1px;
-  }
-
-  /* ── CONTACT ── */
-  .contact-block {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-    align-items: start;
-  }
-  .contact-item {
-    padding: 28px 0;
-    border-top: 1px solid var(--rule);
-  }
-  .contact-label {
-    font-family: var(--mono); font-size: 9px; font-weight: 400;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 8px;
-  }
-  .contact-val {
-    font-size: 14px; font-weight: 300; color: var(--light);
-  }
-  .contact-val a { color: var(--accent); text-decoration: none; }
-  .contact-val a:hover { text-decoration: underline; }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 40px 0;
-    background: var(--off-black);
-  }
-  .footer-inner {
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 16px;
-  }
-  .footer-left {
-    font-family: var(--mono); font-size: 10px; font-weight: 400;
-    letter-spacing: 0.12em; color: var(--muted);
-  }
-  .footer-left span { color: var(--accent); }
-  .footer-right {
-    font-family: var(--mono); font-size: 9px; font-weight: 400;
-    letter-spacing: 0.12em; text-transform: uppercase;
+  .kpi-desc {
+    font-family: var(--mono);
+    font-size: 8px;
     color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.5;
   }
 
-  /* ── UTILITY ── */
-  .text-accent { color: var(--accent); }
-  .text-muted { color: var(--muted); }
-  .mono { font-family: var(--mono); }
-  .mb-8 { margin-bottom: 8px; }
-  .mt-40 { margin-top: 40px; }
-
-  /* ── RESPONSIVE ── */
-  /* ── FORM ── */
-  .form-group { margin-bottom: 20px; }
-  .form-label {
-    display: block;
-    font-family: var(--mono); font-size: 9px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 8px;
+  /* ── THREE-TRACK SECTION ── */
+  .tracks {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border);
   }
-  .form-input, .form-select, .form-textarea {
-    width: 100%;
-    background: var(--off-black);
-    border: 1px solid var(--rule);
-    color: var(--off-white);
-    font-family: var(--sans); font-size: 14px; font-weight: 300;
-    padding: 12px 16px;
-    outline: none;
+  .tracks-intro {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    font-family: var(--mono);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    text-align: center;
+  }
+  .track-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  @media (max-width: 768px) { .track-grid { grid-template-columns: 1fr; } }
+
+  .track-card {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     transition: border-color 0.2s;
-    -webkit-appearance: none;
   }
-  .form-input:focus, .form-select:focus, .form-textarea:focus {
-    border-color: var(--accent);
-  }
-  .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
-  .form-textarea { resize: vertical; min-height: 110px; line-height: 1.65; }
-  .form-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5a54'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
-  .form-select option { background: var(--off-black); }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .btn-submit {
-    font-family: var(--mono); font-size: 10px; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    background: var(--accent); color: var(--black);
-    border: none; cursor: pointer;
-    padding: 14px 32px; width: 100%;
+  .track-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
     transition: opacity 0.2s;
-    margin-top: 4px;
   }
-  .btn-submit:hover { opacity: 0.88; }
-  .form-success {
-    display: none;
-    text-align: center; padding: 40px 20px;
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.1em; color: var(--accent);
-    border: 1px solid var(--accent);
+  .track-card.cyan::before   { background: var(--a1); }
+  .track-card.orange::before { background: var(--a2); }
+  .track-card.green::before  { background: var(--a3); }
+  .track-card.cyan:hover   { border-color: rgba(0,212,255,0.4); }
+  .track-card.orange:hover { border-color: rgba(255,107,0,0.4); }
+  .track-card.green:hover  { border-color: rgba(57,255,20,0.4); }
+
+  .track-num {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .track-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .track-card.cyan   .track-title { color: var(--a1); }
+  .track-card.orange .track-title { color: var(--a2); }
+  .track-card.green  .track-title { color: var(--a3); }
+
+  .track-audience {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--label);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .track-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 28px;
+  }
+  .track-cta {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid var(--border);
+    transition: gap 0.2s;
+  }
+  .track-card.cyan   .track-cta { color: var(--a1); }
+  .track-card.orange .track-cta { color: var(--a2); }
+  .track-card.green  .track-cta { color: var(--a3); }
+  .track-card:hover .track-cta { gap: 16px; }
+
+  /* ── FORMULA & INDEX ── */
+  .standard-section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border);
   }
 
-  /* ── FOUNDER ── */
-  .founder-block {
-    display: flex; gap: 24px; align-items: flex-start;
-    padding: 32px; border: 1px solid var(--rule);
-    background: var(--off-black); margin-bottom: 32px;
-    border-left: 3px solid var(--accent);
+  /* Index preview table */
+  .index-preview { margin-top: 32px; }
+  .chip-name { font-size: 12px; color: #fff; font-family: var(--display); font-weight: 600; }
+  .chip-gen  { font-family: var(--mono); font-size: 9px; color: var(--muted); display: block; }
+  .badge-tag {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 1px;
+    padding: 2px 6px;
+    border: 1px solid;
+    text-transform: uppercase;
+    margin-left: 4px;
+    vertical-align: middle;
   }
-  .founder-avatar {
-    width: 52px; height: 52px; flex-shrink: 0;
-    background: var(--rule);
-    border: 1px solid var(--mid);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--serif); font-size: 20px; color: var(--accent);
-  }
-  .founder-name {
-    font-family: var(--serif); font-size: 18px; font-weight: 600;
-    color: var(--white); margin-bottom: 4px;
-  }
-  .founder-title {
-    font-family: var(--mono); font-size: 8px; font-weight: 400;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 14px; line-height: 1.6;
-  }
-  .founder-bio { font-size: 12px; font-weight: 300; color: var(--subtle); line-height: 1.75; }
-  .bio-toggle {
-    background: none; border: none; cursor: pointer;
-    font-family: var(--mono); font-size: 9px; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--accent); padding: 12px 0 0; display: block;
-    transition: color 0.2s;
-  }
-  .bio-toggle:hover { color: var(--white); }
+  .badge-new  { color: var(--a2); border-color: var(--a2); }
+  .badge-btm  { color: var(--a3); border-color: var(--a3); }
 
-  @media (max-width: 768px) {
-    .container { padding: 0 20px; }
-    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 32px; }
-    .hero-stats { grid-template-columns: 1fr 1fr; }
-    .ceh-feature { grid-template-columns: 1fr; }
-    .ceh-left { border-right: none; border-bottom: 1px solid var(--rule); }
-    .btm-strip { grid-template-columns: 1fr 1fr; }
-    .btm-divider { display: none; }
-    .contact-block { grid-template-columns: 1fr; gap: 0; }
-    .nav-links { display: none; }
-    .footer-inner { flex-direction: column; align-items: flex-start; }
+  .index-footer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
   }
+  .index-footer a {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--a1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+  .index-footer a:hover { gap: 12px; }
+
+  /* ── IS / IS NOT ── */
+  .isnot-section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .isnot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 32px;
+  }
+  @media (max-width: 640px) { .isnot-grid { grid-template-columns: 1fr; } }
+  .isnot-panel {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+  .isnot-panel h3 {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .isnot-panel.is h3   { color: var(--a3); }
+  .isnot-panel.isnot h3 { color: var(--red); }
+  .isnot-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .isnot-icon {
+    font-family: var(--mono);
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .isnot-panel.is .isnot-icon   { color: var(--a3); }
+  .isnot-panel.isnot .isnot-icon { color: var(--red); }
+
+  /* ── CITATION FOOTER ── */
+  .citation-section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .citation-block {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--a4);
+    padding: 18px 24px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text);
+    line-height: 1.9;
+    letter-spacing: 0.3px;
+  }
+  .citation-block .cite-label {
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a4);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .citation-block em { font-style: italic; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
+<!-- ═══ NAV ══════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="site-nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">Oak Ridge <span>Management</span></a>
+    <a href="/" class="nav-logo" aria-label="Oak Ridge Management">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag">Institutional Home · CEH™ Standard</span>
+    </a>
     <ul class="nav-links">
-      <li><a href="#entities">Entities</a></li>
-      <li><a href="https://cehstandard.com" target="_blank" rel="noopener">CEH™ Standard ↗</a></li>
-      <li><a href="#thesis">Thesis</a></li>
-      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/partners/">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Contact</a>
+    <a href="/contact/" class="nav-cta">Contact</a>
+    <button class="nav-mobile-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- HERO -->
+<main>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-eyebrow">Oak Ridge Management · Atlanta, Georgia</div>
-    <h1>Capital allocation at the intersection of <em>energy</em> and compute infrastructure.</h1>
-    <p class="hero-sub">A private holding company deploying capital across AI infrastructure, distributed energy generation, real estate, and standards origination. Structured for durability, not velocity.</p>
-    <div class="hero-actions">
-      <a href="#ceh" class="btn-primary">CEH™ Standard</a>
-      <a href="#thesis" class="btn-ghost">Investment Thesis</a>
-    </div>
-
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-val">CEH<span>™</span></span>
-        <span class="stat-label">Standard Originated · April 2026</span>
-      </div>
-      <div class="stat">
-        <span class="stat-val">59<span>%</span></span>
-        <span class="stat-label">CEH™ Cost Reduction · BTM vs Grid</span>
-      </div>
-      <div class="stat">
-        <span class="stat-val">8<span>×</span></span>
-        <span class="stat-label">Efficiency Variance · Current Hardware Market</span>
-      </div>
-      <div class="stat">
-        <span class="stat-val">$500<span>B</span></span>
-        <span class="stat-label">Annual AI Infra Expenditure · 2025</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ENTITIES -->
-<section id="entities">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Portfolio</span>
-      <h2 class="section-title">Capital deployed across <em>five distinct verticals</em> with clean structural separation.</h2>
-      <p class="section-desc">Each entity operates in a defined lane. ORM allocates and governs. Operating entities execute. Fiduciary boundaries are structural, not procedural.</p>
-    </div>
-
-    <!-- Row 1: ORM + DGEI -->
-    <div class="grid-2" style="gap:40px;margin-bottom:40px;">
-      <div class="entity-card gold">
-        <div class="entity-tag"><span class="entity-dot"></span>Holdco · Capital Allocation</div>
-        <div class="entity-name">Oak Ridge Management</div>
-        <div class="entity-desc">Single-member LLC. Title-holding vehicle for equipment leasing, consulting fee income, and HoldCo-level capital allocation. Governance node and standards origination entity for CEH™.</div>
-        <div class="entity-metrics">
-          <div class="entity-metric"><span>Structure</span><span>Single-Member LLC</span></div>
-          <div class="entity-metric"><span>Role</span><span>Capital Allocation · Title Holding</span></div>
-          <div class="entity-metric"><span>CEH™ Trademark</span><span>Origin Entity</span></div>
-        </div>
-      </div>
-      <div class="entity-card green">
-        <div class="entity-tag"><span class="entity-dot green"></span>Infrastructure · Development</div>
-        <div class="entity-name">DGEI</div>
-        <div class="entity-desc">Distributed Generation &amp; Energy Infrastructure. Operates at the intersection of behind-the-meter power assets and AI compute deployment. First operator to benchmark performance in CEH™.</div>
-        <div class="entity-metrics">
-          <div class="entity-metric"><span>Focus</span><span>BTM Generation · AI Compute</span></div>
-          <div class="entity-metric"><span>Arbitrage</span><span>$0.040–$0.055/kWh spread</span></div>
-          <div class="entity-metric"><span>Sites</span><span>6 active project locations</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 2: Real Estate + Server Leasing + QumulusAI -->
-    <div class="grid-3" style="margin-bottom:40px;">
-      <div class="entity-card slate">
-        <div class="entity-tag"><span class="entity-dot slate"></span>Real Estate · Development &amp; Ownership</div>
-        <div class="entity-name">Real Estate Ventures</div>
-        <div class="entity-desc">Active development and ownership in self-storage facilities and mobile home communities. Asset classes characterized by durable cash flow, low operational complexity, and strong performance across economic cycles.</div>
-        <div class="entity-metrics">
-          <div class="entity-metric"><span>Asset Classes</span><span>Self Storage · MHC</span></div>
-          <div class="entity-metric"><span>Role</span><span>Development · Ownership</span></div>
-          <div class="entity-metric"><span>Profile</span><span>Cash Flow · Cycle-Resilient</span></div>
-        </div>
-      </div>
-      <div class="entity-card slate">
-        <div class="entity-tag"><span class="entity-dot slate"></span>AI Hardware · Leasing</div>
-        <div class="entity-name">Server Leasing</div>
-        <div class="entity-desc">Acquires and deploys GPU server infrastructure, leasing capacity to neo-cloud operators and AI compute platforms. ORM holds title and takes depreciation. Hardware is benchmarked and reported in CEH™.</div>
-        <div class="entity-metrics">
-          <div class="entity-metric"><span>Model</span><span>Buy · Deploy · Lease</span></div>
-          <div class="entity-metric"><span>Counterparties</span><span>Neo-Cloud Operators</span></div>
-          <div class="entity-metric"><span>Reporting</span><span>CEH™ Benchmarked</span></div>
-        </div>
-      </div>
-      <div class="entity-card slate">
-        <div class="entity-tag"><span class="entity-dot slate"></span>AI Infrastructure · Early Stake</div>
-        <div class="entity-name">QumulusAI</div>
-        <div class="entity-desc">Early investor and stakeholder in QumulusAI, an AI infrastructure and compute deployment platform. Participation positions ORM at the operational layer of the AI hardware stack — aligning financial and strategic exposure.</div>
-        <div class="entity-metrics">
-          <div class="entity-metric"><span>Role</span><span>Early Investor · Stakeholder</span></div>
-          <div class="entity-metric"><span>Sector</span><span>AI Compute Infrastructure</span></div>
-          <div class="entity-metric"><span>Alignment</span><span>Strategic + Financial</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 3: VFG / Inventec — full-width featured -->
-    <div class="entity-card green" style="border-left-color:var(--accent);">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
-        <div>
-          <div class="entity-tag"><span class="entity-dot"></span>Hardware Distribution · Strategic Partnership</div>
-          <div class="entity-name">VFG Group &amp; Inventec</div>
-          <div class="entity-desc" style="max-width:480px;">Strategic partnership with VFG Group, which holds a distribution agreement with Inventec — one of the world's largest ODM manufacturers and a primary production partner for major hyperscalers. The arrangement provides ORM and DGEI access to server hardware at the distribution layer, supporting both the server leasing program and DGEI's AI compute infrastructure buildout.</div>
-        </div>
-        <div>
-          <div class="entity-metrics" style="margin-top:8px;">
-            <div class="entity-metric"><span>Partner</span><span>VFG Group</span></div>
-            <div class="entity-metric"><span>Manufacturer</span><span>Inventec · ODM · Hyperscaler-Grade</span></div>
-            <div class="entity-metric"><span>Agreement</span><span>Distribution · Hardware Supply</span></div>
-            <div class="entity-metric"><span>Strategic Value</span><span>Supply Chain Access · Cost Basis Advantage</span></div>
-            <div class="entity-metric"><span>Downstream</span><span>Server Leasing · DGEI Infrastructure</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CEH -->
-<section id="ceh">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Standards Origination</span>
-      <h2 class="section-title">CEH™ — The unit AI infrastructure was missing.</h2>
-      <p class="section-desc">Compute Energy Hour. The first standard unit to bridge hardware performance, energy economics, and carbon accounting into a single auditable number. Originated by Oak Ridge Management, April 2026.</p>
-    </div>
-
-    <div class="ceh-feature">
-      <div class="ceh-left">
-        <span class="section-tag">Formal Definition</span>
-        <p style="font-size:14px;font-weight:300;color:var(--subtle);line-height:1.7;margin-bottom:20px;">CEH™ is defined as kilowatt-hours of facility energy consumed per unit of compute output per hour, adjusted for hardware utilization and facility overhead.</p>
-        <div class="ceh-formula">
-CEH™ = ( TDP_W × N × u × PUE ) ÷ 1,000 ÷ COU/hr
-
-CEH™ Cost  = CEH™ × $/kWh
-CEH™ Carbon = CEH™ × kg CO₂/kWh
-        </div>
-        <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.65;">Energy-agnostic. Workload-portable. Reproducible by any party from disclosed inputs. Lower CEH™ = greater energy efficiency per unit of useful compute output.</p>
-        <div style="margin-top:28px;display:flex;gap:16px;flex-wrap:wrap;">
-          <a href="https://cehstandard.com" target="_blank" class="btn-primary">CEH Standard Site</a>
-          <a href="#contact" class="btn-ghost">arXiv Paper</a>
-        </div>
-      </div>
-      <div class="ceh-right">
-        <span class="section-tag">v1.0 Benchmark Index · LLM Inference</span>
-        <div class="ceh-grade-row" style="border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:4px;">
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);width:28px;">Grd</span>
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);flex:1;">Hardware</span>
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);">CEH™ Rate</span>
-        </div>
-        <div class="ceh-grade-row">
-          <span class="grade-badge grade-S">S</span>
-          <span class="grade-hw">NVIDIA B200 <span class="text-muted" style="font-size:10px;">Blackwell 2025</span></span>
-          <span class="grade-rate">2.44×10⁻⁷</span>
-        </div>
-        <div class="ceh-grade-row">
-          <span class="grade-badge grade-A">A</span>
-          <span class="grade-hw">Google TPU v4 <span class="text-muted" style="font-size:10px;">2023</span></span>
-          <span class="grade-rate">4.27×10⁻⁷</span>
-        </div>
-        <div class="ceh-grade-row">
-          <span class="grade-badge grade-A">A</span>
-          <span class="grade-hw">NVIDIA H200 <span class="text-muted" style="font-size:10px;">Hopper 2024</span></span>
-          <span class="grade-rate">4.83×10⁻⁷</span>
-        </div>
-        <div class="ceh-grade-row">
-          <span class="grade-badge grade-A">A</span>
-          <span class="grade-hw">NVIDIA L40S <span class="text-muted" style="font-size:10px;">Ada Lovelace</span></span>
-          <span class="grade-rate">5.17×10⁻⁷</span>
-        </div>
-        <div class="ceh-grade-row">
-          <span class="grade-badge grade-A">A</span>
-          <span class="grade-hw">NVIDIA H100 SXM <span class="text-muted" style="font-size:10px;">Hopper 2023</span></span>
-          <span class="grade-rate">6.20×10⁻⁷</span>
-        </div>
-        <div class="ceh-grade-row">
-          <span class="grade-badge grade-B">B</span>
-          <span class="grade-hw">AMD MI300X <span class="text-muted" style="font-size:10px;">CDNA3</span></span>
-          <span class="grade-rate">7.32×10⁻⁷</span>
-        </div>
-        <div class="ceh-grade-row">
-          <span class="grade-badge grade-B">B</span>
-          <span class="grade-hw">NVIDIA A100 <span class="text-muted" style="font-size:10px;">Ampere</span></span>
-          <span class="grade-rate">7.62×10⁻⁷</span>
-        </div>
-        <div class="ceh-grade-row">
-          <span class="grade-badge grade-C">C</span>
-          <span class="grade-hw">NVIDIA RTX 4090 <span class="text-muted" style="font-size:10px;">Ada Consumer</span></span>
-          <span class="grade-rate">1.20×10⁻⁶</span>
-        </div>
-        <div class="ceh-grade-row">
-          <span class="grade-badge grade-D">D</span>
-          <span class="grade-hw">NVIDIA V100 <span class="text-muted" style="font-size:10px;">Volta 2018</span></span>
-          <span class="grade-rate">2.14×10⁻⁶</span>
-        </div>
-        <div class="ceh-grade-row">
-          <span class="grade-badge grade-F">F</span>
-          <span class="grade-hw">CPU Cluster (EPYC) <span class="text-muted" style="font-size:10px;">x86 Baseline</span></span>
-          <span class="grade-rate">6.11×10⁻⁶</span>
-        </div>
-        <p style="margin-top:16px;font-family:var(--mono);font-size:9px;color:var(--muted);line-height:1.6;">PUE 1.2 · Grid $0.085/kWh · BTM $0.035/kWh · Sources: MLPerf v5.1, CUDO, Koyeb, Spheron 2025–26</p>
-      </div>
-    </div>
-
-    <!-- BTM advantage strip -->
-    <div class="btm-strip mt-40">
-      <div class="btm-stat">
-        <span class="btm-val">59%</span>
-        <span class="btm-label">CEH™ Cost Reduction · BTM vs Grid</span>
-      </div>
-      <div class="btm-divider"></div>
-      <div class="btm-stat">
-        <span class="btm-val">$0.035</span>
-        <span class="btm-label">Representative BTM Rate · $/kWh</span>
-      </div>
-      <div class="btm-divider"></div>
-      <div class="btm-stat">
-        <span class="btm-val">93%</span>
-        <span class="btm-label">CEH™ Carbon Reduction · BTM vs Grid</span>
-      </div>
-      <div class="btm-divider"></div>
-      <div class="btm-stat">
-        <span class="btm-val">$224K</span>
-        <span class="btm-label">Annual Energy Saving · 10-Node Cluster</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- THESIS -->
-<section id="thesis">
-  <div class="container">
-    <div class="grid-2" style="gap:80px;align-items:start;">
+  <div class="wrap">
+    <div class="hero-inner">
       <div>
-        <div class="section-header">
-          <span class="section-tag">Investment Thesis</span>
-          <h2 class="section-title">AI demand is outpacing grid capacity. <em>BTM generation</em> is the structural answer.</h2>
-          <p class="section-desc">PJM interconnection queues now exceed 8 years. Grid rates are rising. Behind-the-meter dispatchable generation delivers firm power at $0.030–$0.045/kWh — source-agnostic — while grid operators compete for capacity that doesn't exist.</p>
-        </div>
-        <div>
-          <div class="moat-item">
-            <div class="moat-num">01</div>
-            <div class="moat-content">
-              <h4>Power as Infrastructure Moat</h4>
-              <p>Grid interconnection queues in PJM exceed 8 years. BTM firm generation bypasses the queue entirely. The constraint is real estate and permitting — not technology. DGEI's distributed project portfolio creates multiple BTM positions that compound over time.</p>
-              <span class="moat-tag">Structural</span>
-            </div>
-          </div>
-          <div class="moat-item">
-            <div class="moat-num">02</div>
-            <div class="moat-content">
-              <h4>CEH™ Standard Ownership</h4>
-              <p>First to name and define the unit of compute energy intensity. Citation gravity builds over time — once analysts, investors, and regulators reference CEH™, ORM owns the conversation. This is not a product. It is a market definition tool.</p>
-              <span class="moat-tag">First-Mover</span>
-            </div>
-          </div>
-          <div class="moat-item">
-            <div class="moat-num">03</div>
-            <div class="moat-content">
-              <h4>Vertical Integration · Both Sides of the Spread</h4>
-              <p>Owning both the energy asset and the compute asset means capturing both the CEH™ rate arbitrage and the inference revenue. Most competitors own one side. Both layers compound at every compute hour delivered.</p>
-              <span class="moat-tag">Structural</span>
-            </div>
-          </div>
-          <div class="moat-item">
-            <div class="moat-num">04</div>
-            <div class="moat-content">
-              <h4>FERC Dec 2025 Timing Window</h4>
-              <p>FERC's unanimous December 2025 ruling reformed BTM generation rules effective January 2026. This is a 12–18 month window before the market standardizes. DGEI's existing DG infrastructure positions it to move in Q2/Q3 2026 while competitors clear regulatory diligence.</p>
-              <span class="moat-tag">Timing</span>
-            </div>
-          </div>
+        <span class="eyebrow">▸ Institutional Home of the CEH™ Standard</span>
+        <h1>Oak Ridge<br><em>Management</em></h1>
+        <p class="hero-thesis">
+          Oak Ridge Management is the originator and institutional home of CEH™ (Compute Energy Hour) —
+          the independent, auditable standard unit for measuring how efficiently energy is converted
+          into compute output. Energy-agnostic. Reproducible. Open for industry validation.
+        </p>
+        <div class="hero-actions">
+          <a href="/standard/" class="btn btn-outline-cyan">Explore the Standard</a>
+          <a href="/partners/" class="btn btn-outline-orange">Partner With Us</a>
         </div>
       </div>
       <div>
-        <span class="section-tag">Market Context</span>
-        <div style="display:flex;flex-direction:column;gap:0;">
-          <div style="padding:24px;border:1px solid var(--rule);background:var(--off-black);border-bottom:none;">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Grid Supply Collapse</div>
-            <div style="font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:6px;">8+ Years</div>
-            <div style="font-size:12px;font-weight:300;color:var(--subtle);line-height:1.65;">PJM interconnection queue. AI demand growing 30% annually (IEA). Data centers compete directly with residential consumers for capacity.</div>
+        <div class="kpi-panel">
+          <div class="kpi-panel-header">
+            <span>Status · v1.0</span>
+            <span class="kpi-live">
+              <span class="kpi-live-dot"></span>Published
+            </span>
           </div>
-          <div style="padding:24px;border:1px solid var(--rule);background:var(--off-black);border-bottom:none;">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Private Capital Inflow</div>
-            <div style="font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:6px;">$580B</div>
-            <div style="font-size:12px;font-weight:300;color:var(--subtle);line-height:1.65;">Global AI infrastructure spend in 2025. Apollo, KKR, Energy Capital Partners backing compute + power co-location. Hyperscalers signed 46 GW of renewable PPAs in 2024 alone.</div>
-          </div>
-          <div style="padding:24px;border:1px solid var(--rule);background:var(--off-black);border-bottom:none;">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">CEH™ Arbitrage Spread</div>
-            <div style="font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:6px;">$0.040–$0.055</div>
-            <div style="font-size:12px;font-weight:300;color:var(--subtle);line-height:1.65;">Per kWh spread on every compute hour flowing through DGEI infrastructure. At 10 MW scale: $3.5M–$4.8M/year pure CEH™ rate arbitrage.</div>
-          </div>
-          <div style="padding:24px;border:1px solid var(--rule);background:var(--off-black);">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">FERC Regulatory Clearance</div>
-            <div style="font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:6px;">Dec 2025</div>
-            <div style="font-size:12px;font-weight:300;color:var(--subtle);line-height:1.65;">Unanimous FERC order reformed BTM generation rules, created 3 new transmission service options for data center co-location. BTM compute is now the fastest legally cleared path to new AI capacity.</div>
+          <div class="kpi-grid">
+            <div class="kpi-item">
+              <div class="kpi-val">April 21, 2026</div>
+              <div class="kpi-desc">First Published</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-val">10</div>
+              <div class="kpi-desc">Benchmark Configurations</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-val">S → F</div>
+              <div class="kpi-desc">Grade Scale</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-val">Yes</div>
+              <div class="kpi-desc">Energy-Agnostic</div>
+            </div>
           </div>
         </div>
       </div>
@@ -831,273 +382,301 @@ CEH™ Carbon = CEH™ × kg CO₂/kWh
   </div>
 </section>
 
-<!-- ROADMAP -->
-<section id="roadmap">
-  <div class="container">
-    <div class="grid-2" style="gap:80px;">
-      <div>
-        <div class="section-header">
-          <span class="section-tag">Execution Roadmap</span>
-          <h2 class="section-title">Phased build from <em>standard origination</em> to infrastructure platform.</h2>
-        </div>
-        <div class="timeline">
-          <div class="timeline-track"></div>
-          <div class="timeline-item">
-            <div class="timeline-dot active"></div>
-            <div class="timeline-phase">Q2 2026 · Now</div>
-            <div class="timeline-title">Foundation</div>
-            <ul class="timeline-items">
-              <li>CEH™ Standard v1.0 published</li>
-              <li>Site power assessments · BTM viability</li>
-              <li>PPA term sheet negotiations initiated</li>
-              <li>Capital stack structure finalized</li>
-              <li>arXiv paper submission</li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-phase">Q3–Q4 2026</div>
-            <div class="timeline-title">First BTM Node</div>
-            <ul class="timeline-items">
-              <li>First BTM PPA executed</li>
-              <li>Pilot GPU cluster · 8–16 nodes</li>
-              <li>CEH™ benchmarking live</li>
-              <li>First inference revenue</li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-phase">2027</div>
-            <div class="timeline-title">Scale</div>
-            <ul class="timeline-items">
-              <li>Multi-site BTM expansion</li>
-              <li>Green compute premium offering</li>
-              <li>REC monetization active</li>
-              <li>CEH™ Index v2.0 published</li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-phase">2028+</div>
-            <div class="timeline-title">Platform</div>
-            <ul class="timeline-items">
-              <li>CEH™ as industry reference standard</li>
-              <li>DGEI as infrastructure operator at scale</li>
-              <li>Energy arbitrage >$10M/yr</li>
-              <li>Standards body engagement · IEEE, Green Grid</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div>
-        <span class="section-tag" style="margin-bottom:24px;display:block;">Project Site Portfolio</span>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);">
-          <div style="padding:20px;background:var(--off-black);">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Site 01</div>
-            <div style="font-size:14px;font-weight:500;color:var(--white);">St. Paul</div>
-            <div style="font-size:11px;font-weight:300;color:var(--muted);margin-top:2px;">MN · Active</div>
-          </div>
-          <div style="padding:20px;background:var(--off-black);">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Site 02</div>
-            <div style="font-size:14px;font-weight:500;color:var(--white);">Bowman</div>
-            <div style="font-size:11px;font-weight:300;color:var(--muted);margin-top:2px;">ND · Active</div>
-          </div>
-          <div style="padding:20px;background:var(--off-black);">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Site 03</div>
-            <div style="font-size:14px;font-weight:500;color:var(--white);">Cordele</div>
-            <div style="font-size:11px;font-weight:300;color:var(--muted);margin-top:2px;">GA · Active</div>
-          </div>
-          <div style="padding:20px;background:var(--off-black);">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Site 04</div>
-            <div style="font-size:14px;font-weight:500;color:var(--white);">Union Parish</div>
-            <div style="font-size:11px;font-weight:300;color:var(--muted);margin-top:2px;">LA · Active</div>
-          </div>
-          <div style="padding:20px;background:var(--off-black);">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Site 05</div>
-            <div style="font-size:14px;font-weight:500;color:var(--white);">Montgomery</div>
-            <div style="font-size:11px;font-weight:300;color:var(--muted);margin-top:2px;">AL · Active</div>
-          </div>
-          <div style="padding:20px;background:var(--off-black);">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Site 06</div>
-            <div style="font-size:14px;font-weight:500;color:var(--white);">Nevada</div>
-            <div style="font-size:11px;font-weight:300;color:var(--muted);margin-top:2px;">NV · Active</div>
-          </div>
-        </div>
-        <p style="margin-top:16px;font-family:var(--mono);font-size:9px;color:var(--muted);line-height:1.65;">Distributed geographic optionality. Multiple grid interconnection points, multiple regulatory jurisdictions, multiple energy market exposures. No single-point-of-failure in the power strategy.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ═══ THREE TRACKS ═════════════════════════════════════════════════ -->
+<section class="tracks">
+  <div class="wrap">
+    <div class="section-hdr">How to engage</div>
+    <p class="tracks-intro">Three distinct audiences. Three distinct paths.</p>
+    <div class="track-grid">
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-block">
+      <!-- TRACK 1: ADOPT THE STANDARD -->
+      <a href="/partners/operators/" class="track-card cyan">
+        <div class="track-num">01 · Operators</div>
+        <div class="track-title">Adopt the Standard</div>
+        <div class="track-audience">Data center operators · Neo-clouds · BTM Developers</div>
+        <p class="track-desc">
+          Publish a CEH™-certified benchmark on your own infrastructure.
+          Differentiate on energy efficiency — not just $/GPU-hr.
+          Get listed in the CEH™ Index with your certification mark.
+        </p>
+        <span class="track-cta">Apply for certification →</span>
+      </a>
 
-      <!-- LEFT: Founder + context links -->
-      <div>
-        <div class="section-header">
-          <span class="section-tag">Leadership</span>
-          <h2 class="section-title">Inquiries regarding <em>capital allocation</em>, CEH™ licensing, and infrastructure development.</h2>
-        </div>
+      <!-- TRACK 2: INVEST IN THE INFRASTRUCTURE -->
+      <a href="/partners/capital/" class="track-card orange">
+        <div class="track-num">02 · Capital</div>
+        <div class="track-title">Invest in the Infrastructure</div>
+        <div class="track-audience">Infrastructure LPs · Family offices · Strategic capital</div>
+        <p class="track-desc">
+          DGEI is the first commercial BTM compute infrastructure deployment
+          built on CEH™ measurement. Structural energy cost advantage.
+          300 MW anchor offtake. Qualified capital partners only.
+        </p>
+        <span class="track-cta">Request the LP package →</span>
+      </a>
 
-        <div class="founder-block">
-          <div class="founder-avatar">DC</div>
-          <div>
-            <div class="founder-name">Daniel Cobb</div>
-            <div class="founder-title">Founder · Oak Ridge Management &nbsp;·&nbsp; Managing Director, Platform Strategy &amp; Risk · Strategic Benefit Resources</div>
-            <div class="founder-bio">
-              <p style="margin-bottom:10px;">Daniel Cobb is the Founder of Oak Ridge Management, a platform built to operate at the intersection of infrastructure, capital, and applied intelligence.</p>
-              <div id="bio-more" style="display:none;">
-                <p style="margin-bottom:10px;">He currently serves as Managing Director, Platform Strategy &amp; Risk at Strategic Benefit Resources, where he has built and manages one of the largest stop-loss books in the country, approaching $100 million in premium. His work centers on structuring risk, aligning incentives, and delivering measurable outcomes for employers navigating increasingly complex cost environments.</p>
-                <p style="margin-bottom:10px;">Cobb's career has evolved from advising on risk to architecting platforms — bringing together capital partners, operators, and demand into cohesive, scalable systems. His work spans large-scale infrastructure initiatives, AI hardware deployment, and real asset ownership — including self-storage and mobile home community development — as well as his role as President of Platform Capital &amp; Commercial Strategy for DG Energy &amp; Infrastructure, where he focuses on capital formation, offtake strategy, and integrated platform economics in the data center and energy sectors.</p>
-                <p style="margin-bottom:10px;">At Oak Ridge, he is building independent intellectual property and market frameworks designed to standardize and unlock value across emerging industries. This includes the development of <strong style="color:var(--light);font-weight:500;">Compute Energy Hour (CEH™)</strong> — a proposed industry benchmark that connects compute output, energy consumption, and cost into a single measurable unit. Alongside CEH™, he holds an early investor and stakeholder position in QumulusAI, acquires and leases GPU server infrastructure to neo-cloud operators, and has established a strategic partnership with VFG Group, which holds a distribution agreement with Inventec — providing supply chain access to hyperscaler-grade server hardware at the distribution layer.</p>
-                <p style="margin-bottom:10px;">Cobb is known for his ability to connect disparate systems — capital, infrastructure, and demand — and translate them into executable strategies. His approach is grounded in a simple principle: if it can be measured, it can be improved; if it can be structured, it can scale.</p>
-                <p style="margin-bottom:10px;">Before his career in business, Cobb was a Division I quarterback, playing at both the University of Georgia and Auburn University, where he led teams at the highest levels of college football. His path — including early adversity, transfer, and return to elite competition — shaped the mindset that now defines his work: discipline, accountability, and a relentless focus on execution.</p>
-                <p>He brings that same philosophy to Oak Ridge Management — building platforms designed not just to participate in markets, but to define them.</p>
-              </div>
-              <button class="bio-toggle" id="bio-toggle" onclick="toggleBio()">Read more ↓</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-label">Entity</div>
-          <div class="contact-val">Oak Ridge Management, LLC · Atlanta, Georgia</div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-label">CEH™ Standard</div>
-          <div class="contact-val"><a href="https://cehstandard.com" target="_blank" rel="noopener">cehstandard.com ↗</a></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-label">Infrastructure Development</div>
-          <div class="contact-val">DGEI — contact via form</div>
-        </div>
-
-        <div style="margin-top:36px;">
-          <span class="section-tag">Disclosures</span>
-          <p style="font-size:11px;font-weight:300;color:var(--muted);line-height:1.72;margin-top:12px;">For informational purposes only. Nothing herein constitutes an offer to sell or solicitation of an offer to purchase any security. CEH™ is a trademark of Oak Ridge Management. v1.0 first published April 21, 2026.</p>
-          <p style="font-size:11px;font-weight:300;color:var(--muted);line-height:1.72;margin-top:10px;">BTM energy rates are benchmark range figures. Actual rates vary by generation type, geography, project scale, and contract vintage. Market data: IEA · FERC Dec 2025 · LevelTen Q1 2026 · EPA eGRID 2024 · EIA 2025 · MLPerf v5.1.</p>
-        </div>
-      </div>
-
-      <!-- RIGHT: Contact form (Netlify) -->
-      <div style="padding-top:20px;">
-        <span class="section-tag" style="margin-bottom:24px;display:block;">Send a Message</span>
-
-        <!-- Netlify form: name="contact" netlify netlify-honeypot="bot-field" -->
-        <form
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          id="contact-form"
-        >
-          <!-- Honeypot (hidden from humans, traps bots) -->
-          <p style="display:none;">
-            <label>Don't fill this out: <input name="bot-field"></label>
-          </p>
-          <!-- Required hidden field for Netlify -->
-          <input type="hidden" name="form-name" value="contact">
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="first-name">First Name</label>
-              <input class="form-input" type="text" id="first-name" name="first-name" placeholder="First" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="last-name">Last Name</label>
-              <input class="form-input" type="text" id="last-name" name="last-name" placeholder="Last" required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="email">Email Address</label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="you@organization.com" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="organization">Organization</label>
-            <input class="form-input" type="text" id="organization" name="organization" placeholder="Firm / Company (optional)">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="inquiry-type">Inquiry Type</label>
-            <select class="form-select" id="inquiry-type" name="inquiry-type" required>
-              <option value="" disabled selected>Select category</option>
-              <option value="capital-allocation">Capital Allocation / Investment</option>
-              <option value="ceh-licensing">CEH™ Standard · Licensing or Validation</option>
-              <option value="infrastructure">Infrastructure Development · DGEI</option>
-              <option value="server-leasing">Server Leasing / Hardware Deployment</option>
-              <option value="real-estate">Real Estate · Self Storage / MHC</option>
-              <option value="qumulus">QumulusAI · Platform Inquiry</option>
-              <option value="vfg-inventec">Hardware Supply · VFG / Inventec</option>
-              <option value="partnership">Partnership / Co-investment</option>
-              <option value="media">Media / Press</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="message">Message</label>
-            <textarea class="form-textarea" id="message" name="message" placeholder="Describe your inquiry..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn-submit">Submit Inquiry</button>
-        </form>
-
-        <div class="form-success" id="form-success">
-          ✓ &nbsp; Message received. We'll respond within 2 business days.
-        </div>
-      </div>
+      <!-- TRACK 3: CO-PUBLISH THE RESEARCH -->
+      <a href="/partners/standards/" class="track-card green">
+        <div class="track-num">03 · Research</div>
+        <div class="track-title">Co-Publish the Research</div>
+        <div class="track-audience">Standards bodies · Academic labs · Industry analysts</div>
+        <p class="track-desc">
+          CEH™ methodology is open, versioned, and dated. We invite
+          independent replication, co-publication, and standards body
+          submission — MLCommons, Green Grid, IEEE, and university partners.
+        </p>
+        <span class="track-cta">Open a conversation →</span>
+      </a>
 
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <span>Oak Ridge Management</span> · CEH™ Standard Originator · Atlanta, Georgia · Est. 2026
+<!-- ═══ FORMULA + INDEX PREVIEW ══════════════════════════════════════ -->
+<section class="standard-section">
+  <div class="wrap">
+
+    <div class="section-hdr">CEH™ Standard</div>
+
+    <!-- Formula bar -->
+    <div class="formula-bar">
+      <div class="f-label">CEH™ Formula</div>
+      <div class="f-eq">
+        <span class="c1">CEH™</span> = ( <span class="c2">TDP_W</span> × Units × Util% × PUE ) ÷ 1,000 ÷ <span class="c3">Output_Units/hr</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="c1">CEH™ Cost</span> = CEH™ × <span class="c2">$/kWh (any energy source)</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="c1">CEH™ Carbon</span> = CEH™ × <span class="c3">kg CO₂/kWh</span>
       </div>
-      <div class="footer-right">
-        CEH™ is a trademark of Oak Ridge Management · All rights reserved
+      <div class="f-cite">
+        CEH™ (Compute Energy Hour) is a trademark of Oak Ridge Management.
+        v1.0 first published April 21, 2026. arXiv preprint: pending submission.
+        Full derivation: <a href="/standard/methodology/" style="color:var(--a1)">Methodology ↗</a>
       </div>
     </div>
+
+    <!-- Index preview -->
+    <div class="index-preview">
+      <div class="section-hdr" style="margin-top:40px;">
+        <span class="pulse"></span>CEH™ Index Preview · LLM Inference · Top 5
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Hardware</th>
+              <th class="r">CEH Rate (kWh/token)</th>
+              <th class="r">Grid $/M Tokens</th>
+              <th class="r">BTM $/M Tokens</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--a4);font-weight:700">1</td>
+              <td>
+                <span class="chip-name">NVIDIA B200</span>
+                <span class="chip-gen">Blackwell · 2025 <span class="badge-tag badge-new">NEW</span></span>
+              </td>
+              <td class="r green">1.07 × 10⁻¹⁰</td>
+              <td class="r">$0.009</td>
+              <td class="r green">$0.004</td>
+              <td><span class="grade grade-S">S</span></td>
+            </tr>
+            <tr>
+              <td style="color:#c0c0c0;font-weight:700">2</td>
+              <td>
+                <span class="chip-name">NVIDIA H200</span>
+                <span class="chip-gen">Hopper · 2024 <span class="badge-tag badge-new">NEW</span></span>
+              </td>
+              <td class="r cyan">2.21 × 10⁻¹⁰</td>
+              <td class="r">$0.019</td>
+              <td class="r green">$0.008</td>
+              <td><span class="grade grade-A">A</span></td>
+            </tr>
+            <tr>
+              <td style="color:#cd7f32;font-weight:700">3</td>
+              <td>
+                <span class="chip-name">Google TPU v4</span>
+                <span class="chip-gen">Google · 2023</span>
+              </td>
+              <td class="r cyan">2.63 × 10⁻¹⁰</td>
+              <td class="r">$0.022</td>
+              <td class="r green">$0.009</td>
+              <td><span class="grade grade-A">A</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>
+                <span class="chip-name">NVIDIA H100 SXM</span>
+                <span class="chip-gen">Hopper · 2023</span>
+              </td>
+              <td class="r cyan">3.18 × 10⁻¹⁰</td>
+              <td class="r">$0.027</td>
+              <td class="r green">$0.011</td>
+              <td><span class="grade grade-A">A</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>
+                <span class="chip-name">NVIDIA L40S</span>
+                <span class="chip-gen">Ada Lovelace · 2023 <span class="badge-tag badge-btm">LOW CEH™</span></span>
+              </td>
+              <td class="r" style="color:#4fa3ff">5.43 × 10⁻¹⁰</td>
+              <td class="r">$0.046</td>
+              <td class="r green">$0.019</td>
+              <td><span class="grade grade-B">B</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="index-footer">
+        <a href="/standard/benchmark/">View full CEH™ Index (10 configs) →</a>
+      </div>
+    </div>
+
+    <!-- Grade scale callout -->
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(6,1fr);gap:2px;">
+      <div class="tile" style="padding:14px 12px;">
+        <div class="tile-label">S</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--a3);">Exceptional</div>
+        <div class="tile-sub">&lt; 2.0 × 10⁻¹⁰</div>
+      </div>
+      <div class="tile" style="padding:14px 12px;">
+        <div class="tile-label">A</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--a1);">Excellent</div>
+        <div class="tile-sub">2.0 – 4.0 × 10⁻¹⁰</div>
+      </div>
+      <div class="tile" style="padding:14px 12px;">
+        <div class="tile-label">B</div>
+        <div style="font-family:var(--mono);font-size:11px;color:#4fa3ff;">Good</div>
+        <div class="tile-sub">4.0 – 8.0 × 10⁻¹⁰</div>
+      </div>
+      <div class="tile" style="padding:14px 12px;">
+        <div class="tile-label">C</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--a4);">Marginal</div>
+        <div class="tile-sub">8.0 – 15.0 × 10⁻¹⁰</div>
+      </div>
+      <div class="tile" style="padding:14px 12px;">
+        <div class="tile-label">D</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--a2);">Poor</div>
+        <div class="tile-sub">15.0 – 30.0 × 10⁻¹⁰</div>
+      </div>
+      <div class="tile" style="padding:14px 12px;">
+        <div class="tile-label">F</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--red);">Unacceptable</div>
+        <div class="tile-sub">&gt; 30.0 × 10⁻¹⁰</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ WHAT CEH™ IS / IS NOT ════════════════════════════════════════ -->
+<section class="isnot-section">
+  <div class="wrap">
+    <div class="section-hdr">Understanding CEH™</div>
+    <div class="isnot-grid">
+
+      <div class="isnot-panel is">
+        <h3>▸ What CEH™ Is</h3>
+        <div class="isnot-row">
+          <span class="isnot-icon">+</span>
+          <span>An auditable, reproducible standard unit: kWh of energy consumed per output unit of compute work</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">+</span>
+          <span>Energy-agnostic — the formula applies identically to grid power, BTM generation, nuclear, or any source</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">+</span>
+          <span>Workload-portable across LLM inference, model training, HPC simulation, and rendering via Compute Output Unit (COU) definitions</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">+</span>
+          <span>A published, versioned, dated standard — v1.0 first published April 21, 2026 by Oak Ridge Management</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">+</span>
+          <span>Open for independent replication, co-publication, and third-party validation</span>
+        </div>
+      </div>
+
+      <div class="isnot-panel isnot">
+        <h3>✕ What CEH™ Is Not</h3>
+        <div class="isnot-row">
+          <span class="isnot-icon">−</span>
+          <span>Not a product, tool, or service — CEH™ is a measurement standard, like PUE for facilities or MLPerf for ML performance</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">−</span>
+          <span>Not specific to "renewable" or "solar" compute — CEH™ is energy-source agnostic by design</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">−</span>
+          <span>Not an investment product — Oak Ridge Management's capital activities are separate from and do not constitute the CEH™ standard</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">−</span>
+          <span>Not a closed or proprietary standard — methodology is publicly disclosed and open to challenge and replication</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">−</span>
+          <span>Not finalized — the standard invites industry comment, co-publication, and formal submission to recognized standards bodies</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CITATION ══════════════════════════════════════════════════════ -->
+<section class="citation-section">
+  <div class="wrap">
+    <div class="section-hdr gold">Formal Citation</div>
+    <div class="citation-block">
+      <span class="cite-label">How to cite CEH™ v1.0</span>
+      Cobb, D. (2026). <em>CEH™: A Proposed Standard Unit of Measurement for Compute Energy Intensity.</em>
+      DGE&I / Oak Ridge Management. First published April 21, 2026. arXiv: [pending submission].
+      Available at: <a href="https://oakridgemanagement.net/standard/" style="color:var(--a1)">oakridgemanagement.net/standard</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-mark">Oak Ridge <span>Management</span></div>
+      <div class="footer-tm">
+        CEH™ is a trademark of Oak Ridge Management.<br>
+        First published April 21, 2026. All rights reserved.
+      </div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/standard/benchmark/">CEH™ Index</a></li>
+      <li><a href="/standard/methodology/">Methodology</a></li>
+      <li><a href="/partners/capital/">Capital Partners</a></li>
+      <li><a href="/partners/operators/">Operators</a></li>
+      <li><a href="/partners/standards/">Research Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><a href="https://www.cehinfrastructureindex.com" target="_blank" rel="noopener">CEH™ Infrastructure Index ↗</a></li>
+      <li><a href="https://cehstandard.com" target="_blank" rel="noopener">cehstandard.com ↗</a></li>
+    </ul>
   </div>
 </footer>
 
 <script>
-  function toggleBio() {
-    const more = document.getElementById('bio-more');
-    const btn = document.getElementById('bio-toggle');
-    const open = more.style.display === 'none';
-    more.style.display = open ? 'block' : 'none';
-    btn.textContent = open ? 'Read less ↑' : 'Read more ↓';
-  }
-
-  // Netlify form AJAX submission for SPA-style success state
-  const form = document.getElementById('contact-form');
-  const success = document.getElementById('form-success');
-  if (form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const data = new FormData(form);
-      try {
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(data).toString()
-        });
-        form.style.display = 'none';
-        success.style.display = 'block';
-      } catch(err) {
-        // Fallback: let native submit handle it
-        form.submit();
-      }
-    });
-  }
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
 </script>
 </body>
 </html>
