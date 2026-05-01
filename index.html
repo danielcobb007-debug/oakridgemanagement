@@ -12,152 +12,136 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://oakridgemanagement.net">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/shared.css">
 <style>
-  /* ── PAGE OFFSET ── */
-  main { padding-top: 60px; }
+  main { padding-top: 64px; }
+
+  /* ── TICKER ── */
+  /* (defined in shared.css) */
 
   /* ── HERO ── */
   .hero {
-    padding: 80px 0 70px;
+    padding: 72px 0 0;
     border-bottom: 1px solid var(--border);
   }
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr 420px;
-    gap: 60px;
-    align-items: start;
-  }
-  @media (max-width: 860px) { .hero-inner { grid-template-columns: 1fr; } }
-
-  .hero-thesis {
-    margin-top: 24px;
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1.8;
-    max-width: 560px;
-    letter-spacing: 0.2px;
-  }
-
-  .hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
-
-  /* KPI PANEL */
-  .kpi-panel {
-    background: var(--s1);
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--a1);
-    padding: 24px;
-    margin-top: 8px;
-  }
-  .kpi-panel-header {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 3px;
-    color: var(--label);
-    text-transform: uppercase;
-    margin-bottom: 20px;
+  .hero-meta {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
   }
-  .kpi-live {
+  .hero-meta .live-dot {
     display: flex;
     align-items: center;
     gap: 6px;
     color: var(--a3);
   }
-  .kpi-live-dot {
-    width: 5px; height: 5px;
+  .hero-meta .live-dot::before {
+    content: '';
+    width: 6px; height: 6px;
     background: var(--a3);
     border-radius: 50%;
     animation: pls 2s infinite;
   }
-  .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-  .kpi-item {
-    background: var(--s2);
-    padding: 16px;
-    border: 1px solid var(--border);
-  }
-  .kpi-val {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--a1);
-    margin-bottom: 4px;
-  }
-  .kpi-desc {
-    font-family: var(--mono);
-    font-size: 8px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.5;
+  .hero-meta .sep { color: var(--border2); }
+
+  .hero h1 { margin-bottom: 28px; }
+
+  .hero-thesis {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.65;
+    max-width: 640px;
+    margin-bottom: 48px;
+    letter-spacing: 0.1px;
   }
 
-  /* ── THREE-TRACK SECTION ── */
+  /* Editorial sub-nav strip */
+  .hero-subnav {
+    display: flex;
+    border-top: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .hero-subnav::-webkit-scrollbar { display: none; }
+  .hero-subnav a {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    padding: 16px 28px;
+    border-right: 1px solid var(--border);
+    white-space: nowrap;
+    transition: color 0.15s, background 0.15s;
+    letter-spacing: 0.2px;
+  }
+  .hero-subnav a:first-child { padding-left: 0; }
+  .hero-subnav a:hover { color: #fff; }
+  .hero-subnav a.primary {
+    color: #000;
+    background: var(--a1);
+    margin-left: auto;
+    padding-left: 28px;
+  }
+  .hero-subnav a.primary:hover { background: #33ddff; }
+  @media (max-width: 640px) { .hero-subnav a.primary { margin-left: 0; } }
+
+  /* ── THREE TRACKS ── */
   .tracks {
     padding: 72px 0;
     border-bottom: 1px solid var(--border);
   }
-  .tracks-intro {
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--muted);
-    font-family: var(--mono);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 36px;
-    text-align: center;
-  }
   .track-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
   }
   @media (max-width: 768px) { .track-grid { grid-template-columns: 1fr; } }
 
   .track-card {
-    background: var(--s1);
-    border: 1px solid var(--border);
-    padding: 32px 28px;
-    position: relative;
+    background: var(--bg);
+    padding: 36px 32px;
     display: flex;
     flex-direction: column;
-    transition: border-color 0.2s;
+    transition: background 0.2s;
   }
-  .track-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    transition: opacity 0.2s;
+  .track-card:hover { background: var(--s1); }
+
+  .track-accent {
+    height: 2px;
+    margin-bottom: 28px;
   }
-  .track-card.cyan::before   { background: var(--a1); }
-  .track-card.orange::before { background: var(--a2); }
-  .track-card.green::before  { background: var(--a3); }
-  .track-card.cyan:hover   { border-color: rgba(0,212,255,0.4); }
-  .track-card.orange:hover { border-color: rgba(255,107,0,0.4); }
-  .track-card.green:hover  { border-color: rgba(57,255,20,0.4); }
+  .track-card.cyan   .track-accent { background: var(--a1); }
+  .track-card.orange .track-accent { background: var(--a2); }
+  .track-card.green  .track-accent { background: var(--a3); }
 
   .track-num {
     font-family: var(--mono);
     font-size: 9px;
     letter-spacing: 2px;
     color: var(--muted);
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   .track-title {
-    font-size: 22px;
+    font-family: var(--display);
+    font-size: 26px;
     font-weight: 900;
-    color: #fff;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1.1;
-    margin-bottom: 16px;
+    line-height: 1.05;
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
   }
   .track-card.cyan   .track-title { color: var(--a1); }
   .track-card.orange .track-title { color: var(--a2); }
@@ -169,12 +153,14 @@
     letter-spacing: 2px;
     color: var(--label);
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
+    line-height: 1.7;
   }
   .track-desc {
-    font-size: 13px;
+    font-family: var(--display);
+    font-size: 14px;
     font-weight: 300;
-    color: var(--text);
+    color: #888;
     line-height: 1.7;
     flex: 1;
     margin-bottom: 28px;
@@ -184,11 +170,11 @@
     font-size: 9px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 10px 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
     display: flex;
     align-items: center;
     gap: 10px;
-    border-top: 1px solid var(--border);
     transition: gap 0.2s;
   }
   .track-card.cyan   .track-cta { color: var(--a1); }
@@ -196,16 +182,14 @@
   .track-card.green  .track-cta { color: var(--a3); }
   .track-card:hover .track-cta { gap: 16px; }
 
-  /* ── FORMULA & INDEX ── */
+  /* ── STANDARD / INDEX ── */
   .standard-section {
     padding: 72px 0;
     border-bottom: 1px solid var(--border);
   }
 
-  /* Index preview table */
-  .index-preview { margin-top: 32px; }
-  .chip-name { font-size: 12px; color: #fff; font-family: var(--display); font-weight: 600; }
-  .chip-gen  { font-family: var(--mono); font-size: 9px; color: var(--muted); display: block; }
+  .chip-name { font-size: 13px; color: #fff; font-family: var(--display); font-weight: 600; }
+  .chip-gen  { font-family: var(--mono); font-size: 9px; color: var(--muted); display: block; margin-top: 2px; }
   .badge-tag {
     font-family: var(--mono);
     font-size: 8px;
@@ -213,14 +197,14 @@
     padding: 2px 6px;
     border: 1px solid;
     text-transform: uppercase;
-    margin-left: 4px;
+    margin-left: 6px;
     vertical-align: middle;
   }
   .badge-new  { color: var(--a2); border-color: var(--a2); }
   .badge-btm  { color: var(--a3); border-color: var(--a3); }
 
   .index-footer {
-    margin-top: 12px;
+    margin-top: 14px;
     display: flex;
     justify-content: flex-end;
   }
@@ -237,6 +221,49 @@
   }
   .index-footer a:hover { gap: 12px; }
 
+  /* Grade scale strip */
+  .grade-strip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 40px;
+  }
+  @media (max-width: 600px) { .grade-strip { grid-template-columns: repeat(3, 1fr); } }
+  .grade-cell {
+    background: var(--bg);
+    padding: 16px 14px;
+  }
+  .grade-letter {
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .gs-S .grade-letter { color: var(--a3); }
+  .gs-A .grade-letter { color: var(--a1); }
+  .gs-B .grade-letter { color: #4fa3ff; }
+  .gs-C .grade-letter { color: var(--a4); }
+  .gs-D .grade-letter { color: var(--a2); }
+  .gs-F .grade-letter { color: var(--red); }
+  .grade-word {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--label);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .grade-threshold {
+    font-family: var(--mono);
+    font-size: 8px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
   /* ── IS / IS NOT ── */
   .isnot-section {
     padding: 72px 0;
@@ -245,21 +272,22 @@
   .isnot-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2px;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
     margin-top: 32px;
   }
   @media (max-width: 640px) { .isnot-grid { grid-template-columns: 1fr; } }
-  .isnot-panel {
-    background: var(--s1);
-    border: 1px solid var(--border);
-    padding: 28px;
-  }
+  .isnot-panel { background: var(--bg); padding: 32px 28px; }
   .isnot-panel h3 {
-    font-size: 18px;
+    font-family: var(--display);
+    font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
   }
   .isnot-panel.is h3   { color: var(--a3); }
   .isnot-panel.isnot h3 { color: var(--red); }
@@ -267,36 +295,28 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    margin-bottom: 14px;
-    font-size: 13px;
+    margin-bottom: 16px;
+    font-family: var(--display);
+    font-size: 14px;
     font-weight: 300;
-    color: var(--text);
-    line-height: 1.6;
+    color: #888;
+    line-height: 1.65;
   }
-  .isnot-icon {
-    font-family: var(--mono);
-    font-size: 11px;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .isnot-panel.is .isnot-icon   { color: var(--a3); }
+  .isnot-icon { font-family: var(--mono); font-size: 11px; flex-shrink: 0; margin-top: 2px; }
+  .isnot-panel.is    .isnot-icon { color: var(--a3); }
   .isnot-panel.isnot .isnot-icon { color: var(--red); }
 
-  /* ── CITATION FOOTER ── */
-  .citation-section {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--border);
-  }
+  /* ── CITATION ── */
+  .citation-section { padding: 48px 0; }
   .citation-block {
     background: var(--s1);
     border: 1px solid var(--border);
-    border-left: 3px solid var(--a4);
-    padding: 18px 24px;
+    border-left: 2px solid var(--a4);
+    padding: 20px 24px;
     font-family: var(--mono);
     font-size: 10px;
     color: var(--text);
     line-height: 1.9;
-    letter-spacing: 0.3px;
   }
   .citation-block .cite-label {
     font-size: 8px;
@@ -304,14 +324,13 @@
     text-transform: uppercase;
     color: var(--a4);
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .citation-block em { font-style: italic; }
 </style>
 </head>
 <body>
 
-<!-- ═══ NAV ══════════════════════════════════════════════════════════ -->
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo" aria-label="Oak Ridge Management">
@@ -333,67 +352,75 @@
 
 <main>
 
+<!-- ═══ CEH™ DATA TICKER ══════════════════════════════════════════════ -->
+<div class="ceh-ticker">
+  <div class="ticker-label">CEH™ Index</div>
+  <div class="ticker-scroll">
+    <div class="ticker-track">
+      <span class="t-item"><span class="t-hw">NVIDIA B200</span><span class="t-div">·</span><span class="t-grade gs">S</span><span class="t-div">·</span><span class="t-rate">1.07×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.009/M grid · $0.004/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA H200</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">2.21×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.019/M grid · $0.008/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">Google TPU v4</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">2.63×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.022/M grid · $0.009/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA H100 SXM</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">3.18×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.027/M grid · $0.011/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA L40S</span><span class="t-div">·</span><span class="t-grade gb">B</span><span class="t-div">·</span><span class="t-rate">5.43×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.046/M grid · $0.019/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">AMD MI300X</span><span class="t-div">·</span><span class="t-grade gb">B</span><span class="t-div">·</span><span class="t-rate">6.11×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.052/M grid · $0.021/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA A100 SXM</span><span class="t-div">·</span><span class="t-grade gc">C</span><span class="t-div">·</span><span class="t-rate">8.92×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.076/M grid · $0.031/M BTM</span></span>
+      <!-- Duplicate set for seamless loop -->
+      <span class="t-item"><span class="t-hw">NVIDIA B200</span><span class="t-div">·</span><span class="t-grade gs">S</span><span class="t-div">·</span><span class="t-rate">1.07×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.009/M grid · $0.004/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA H200</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">2.21×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.019/M grid · $0.008/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">Google TPU v4</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">2.63×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.022/M grid · $0.009/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA H100 SXM</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">3.18×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.027/M grid · $0.011/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA L40S</span><span class="t-div">·</span><span class="t-grade gb">B</span><span class="t-div">·</span><span class="t-rate">5.43×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.046/M grid · $0.019/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">AMD MI300X</span><span class="t-div">·</span><span class="t-grade gb">B</span><span class="t-div">·</span><span class="t-rate">6.11×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.052/M grid · $0.021/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA A100 SXM</span><span class="t-div">·</span><span class="t-grade gc">C</span><span class="t-div">·</span><span class="t-rate">8.92×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.076/M grid · $0.031/M BTM</span></span>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="wrap">
-    <div class="hero-inner">
-      <div>
-        <span class="eyebrow">▸ Institutional Home of the CEH™ Standard</span>
-        <h1>Oak Ridge<br><em>Management</em></h1>
-        <p class="hero-thesis">
-          Oak Ridge Management is the originator and institutional home of CEH™ (Compute Energy Hour) —
-          the independent, auditable standard unit for measuring how efficiently energy is converted
-          into compute output. Energy-agnostic. Reproducible. Open for industry validation.
-        </p>
-        <div class="hero-actions">
-          <a href="/standard/" class="btn btn-outline-cyan">Explore the Standard</a>
-          <a href="/partners/" class="btn btn-outline-orange">Partner With Us</a>
-        </div>
-      </div>
-      <div>
-        <div class="kpi-panel">
-          <div class="kpi-panel-header">
-            <span>Status · v1.0</span>
-            <span class="kpi-live">
-              <span class="kpi-live-dot"></span>Published
-            </span>
-          </div>
-          <div class="kpi-grid">
-            <div class="kpi-item">
-              <div class="kpi-val">April 21, 2026</div>
-              <div class="kpi-desc">First Published</div>
-            </div>
-            <div class="kpi-item">
-              <div class="kpi-val">10</div>
-              <div class="kpi-desc">Benchmark Configurations</div>
-            </div>
-            <div class="kpi-item">
-              <div class="kpi-val">S → F</div>
-              <div class="kpi-desc">Grade Scale</div>
-            </div>
-            <div class="kpi-item">
-              <div class="kpi-val">Yes</div>
-              <div class="kpi-desc">Energy-Agnostic</div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+    <div class="hero-meta">
+      <span>Oak Ridge Management</span>
+      <span class="sep">·</span>
+      <span>Atlanta, Georgia</span>
+      <span class="sep">·</span>
+      <span>v1.0 · April 21, 2026</span>
+      <span class="sep">·</span>
+      <span class="live-dot">Active Standard</span>
     </div>
+
+    <h1>AI Infrastructure<br><em>Standard</em></h1>
+
+    <p class="hero-thesis">
+      CEH™ (Compute Energy Hour) — the independent, auditable unit for measuring
+      how efficiently energy is converted into compute output.
+      Energy-agnostic. Reproducible. Open for industry validation.
+    </p>
+
+    <nav class="hero-subnav" aria-label="Standard sections">
+      <a href="/standard/">Standard</a>
+      <a href="/standard/benchmark/">CEH™ Index</a>
+      <a href="/standard/methodology/">Methodology</a>
+      <a href="/partners/">Partners</a>
+      <a href="/resources/">Resources</a>
+      <a href="/standard/benchmark/" class="primary">View Full Index →</a>
+    </nav>
+
   </div>
 </section>
 
 <!-- ═══ THREE TRACKS ═════════════════════════════════════════════════ -->
 <section class="tracks">
   <div class="wrap">
-    <div class="section-hdr">How to engage</div>
-    <p class="tracks-intro">Three distinct audiences. Three distinct paths.</p>
+    <div class="section-hdr">How to Engage</div>
     <div class="track-grid">
 
-      <!-- TRACK 1: ADOPT THE STANDARD -->
       <a href="/partners/operators/" class="track-card cyan">
+        <div class="track-accent"></div>
         <div class="track-num">01 · Operators</div>
         <div class="track-title">Adopt the Standard</div>
-        <div class="track-audience">Data center operators · Neo-clouds · BTM Developers</div>
+        <div class="track-audience">Data center operators · Neo-clouds · BTM developers</div>
         <p class="track-desc">
           Publish a CEH™-certified benchmark on your own infrastructure.
           Differentiate on energy efficiency — not just $/GPU-hr.
@@ -402,28 +429,28 @@
         <span class="track-cta">Apply for certification →</span>
       </a>
 
-      <!-- TRACK 2: INVEST IN THE INFRASTRUCTURE -->
       <a href="/partners/capital/" class="track-card orange">
+        <div class="track-accent"></div>
         <div class="track-num">02 · Capital</div>
         <div class="track-title">Invest in the Infrastructure</div>
         <div class="track-audience">Infrastructure LPs · Family offices · Strategic capital</div>
         <p class="track-desc">
           DGEI is the first commercial BTM compute infrastructure deployment
-          built on CEH™ measurement. Structural energy cost advantage.
-          300 MW anchor offtake. Qualified capital partners only.
+          built on CEH™ measurement. 300 MW anchor offtake. Structural energy
+          cost advantage. Qualified capital partners only.
         </p>
         <span class="track-cta">Request the LP package →</span>
       </a>
 
-      <!-- TRACK 3: CO-PUBLISH THE RESEARCH -->
       <a href="/partners/standards/" class="track-card green">
+        <div class="track-accent"></div>
         <div class="track-num">03 · Research</div>
         <div class="track-title">Co-Publish the Research</div>
         <div class="track-audience">Standards bodies · Academic labs · Industry analysts</div>
         <p class="track-desc">
-          CEH™ methodology is open, versioned, and dated. We invite
-          independent replication, co-publication, and standards body
-          submission — MLCommons, Green Grid, IEEE, and university partners.
+          CEH™ methodology is open, versioned, and dated. Independent
+          replication, co-publication, and standards body submission —
+          MLCommons, Green Grid, IEEE, and university partners invited.
         </p>
         <span class="track-cta">Open a conversation →</span>
       </a>
@@ -438,7 +465,6 @@
 
     <div class="section-hdr">CEH™ Standard</div>
 
-    <!-- Formula bar -->
     <div class="formula-bar">
       <div class="f-label">CEH™ Formula</div>
       <div class="f-eq">
@@ -449,15 +475,14 @@
         <span class="c1">CEH™ Carbon</span> = CEH™ × <span class="c3">kg CO₂/kWh</span>
       </div>
       <div class="f-cite">
-        CEH™ (Compute Energy Hour) is a trademark of Oak Ridge Management.
-        v1.0 first published April 21, 2026. arXiv preprint: pending submission.
+        CEH™ (Compute Energy Hour) is a trademark of Oak Ridge Management. v1.0 first published April 21, 2026.
         Full derivation: <a href="/standard/methodology/" style="color:var(--a1)">Methodology ↗</a>
       </div>
     </div>
 
     <!-- Index preview -->
-    <div class="index-preview">
-      <div class="section-hdr" style="margin-top:40px;">
+    <div style="margin-top:40px;">
+      <div class="section-hdr cyan">
         <span class="pulse"></span>CEH™ Index Preview · LLM Inference · Top 5
       </div>
       <div class="table-wrap">
@@ -521,7 +546,7 @@
               <td>5</td>
               <td>
                 <span class="chip-name">NVIDIA L40S</span>
-                <span class="chip-gen">Ada Lovelace · 2023 <span class="badge-tag badge-btm">LOW CEH™</span></span>
+                <span class="chip-gen">Ada Lovelace · 2023 <span class="badge-tag badge-btm">BTM ADVANTAGE</span></span>
               </td>
               <td class="r" style="color:#4fa3ff">5.43 × 10⁻¹⁰</td>
               <td class="r">$0.046</td>
@@ -532,41 +557,41 @@
         </table>
       </div>
       <div class="index-footer">
-        <a href="/standard/benchmark/">View full CEH™ Index (10 configs) →</a>
+        <a href="/standard/benchmark/">View full CEH™ Index — 10 configurations →</a>
       </div>
     </div>
 
-    <!-- Grade scale callout -->
-    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(6,1fr);gap:2px;">
-      <div class="tile" style="padding:14px 12px;">
-        <div class="tile-label">S</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--a3);">Exceptional</div>
-        <div class="tile-sub">&lt; 2.0 × 10⁻¹⁰</div>
+    <!-- Grade scale -->
+    <div class="grade-strip">
+      <div class="grade-cell gs-S">
+        <div class="grade-letter">S</div>
+        <div class="grade-word">Exceptional</div>
+        <div class="grade-threshold">&lt; 2.0 × 10⁻¹⁰</div>
       </div>
-      <div class="tile" style="padding:14px 12px;">
-        <div class="tile-label">A</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--a1);">Excellent</div>
-        <div class="tile-sub">2.0 – 4.0 × 10⁻¹⁰</div>
+      <div class="grade-cell gs-A">
+        <div class="grade-letter">A</div>
+        <div class="grade-word">Excellent</div>
+        <div class="grade-threshold">2.0 – 4.0 × 10⁻¹⁰</div>
       </div>
-      <div class="tile" style="padding:14px 12px;">
-        <div class="tile-label">B</div>
-        <div style="font-family:var(--mono);font-size:11px;color:#4fa3ff;">Good</div>
-        <div class="tile-sub">4.0 – 8.0 × 10⁻¹⁰</div>
+      <div class="grade-cell gs-B">
+        <div class="grade-letter">B</div>
+        <div class="grade-word">Good</div>
+        <div class="grade-threshold">4.0 – 8.0 × 10⁻¹⁰</div>
       </div>
-      <div class="tile" style="padding:14px 12px;">
-        <div class="tile-label">C</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--a4);">Marginal</div>
-        <div class="tile-sub">8.0 – 15.0 × 10⁻¹⁰</div>
+      <div class="grade-cell gs-C">
+        <div class="grade-letter">C</div>
+        <div class="grade-word">Marginal</div>
+        <div class="grade-threshold">8.0 – 15.0 × 10⁻¹⁰</div>
       </div>
-      <div class="tile" style="padding:14px 12px;">
-        <div class="tile-label">D</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--a2);">Poor</div>
-        <div class="tile-sub">15.0 – 30.0 × 10⁻¹⁰</div>
+      <div class="grade-cell gs-D">
+        <div class="grade-letter">D</div>
+        <div class="grade-word">Poor</div>
+        <div class="grade-threshold">15.0 – 30.0 × 10⁻¹⁰</div>
       </div>
-      <div class="tile" style="padding:14px 12px;">
-        <div class="tile-label">F</div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--red);">Unacceptable</div>
-        <div class="tile-sub">&gt; 30.0 × 10⁻¹⁰</div>
+      <div class="grade-cell gs-F">
+        <div class="grade-letter">F</div>
+        <div class="grade-word">Unacceptable</div>
+        <div class="grade-threshold">&gt; 30.0 × 10⁻¹⁰</div>
       </div>
     </div>
 
@@ -580,7 +605,7 @@
     <div class="isnot-grid">
 
       <div class="isnot-panel is">
-        <h3>▸ What CEH™ Is</h3>
+        <h3>What CEH™ Is</h3>
         <div class="isnot-row">
           <span class="isnot-icon">+</span>
           <span>An auditable, reproducible standard unit: kWh of energy consumed per output unit of compute work</span>
@@ -604,7 +629,7 @@
       </div>
 
       <div class="isnot-panel isnot">
-        <h3>✕ What CEH™ Is Not</h3>
+        <h3>What CEH™ Is Not</h3>
         <div class="isnot-row">
           <span class="isnot-icon">−</span>
           <span>Not a product, tool, or service — CEH™ is a measurement standard, like PUE for facilities or MLPerf for ML performance</span>
@@ -638,7 +663,7 @@
     <div class="citation-block">
       <span class="cite-label">How to cite CEH™ v1.0</span>
       Cobb, D. (2026). <em>CEH™: A Proposed Standard Unit of Measurement for Compute Energy Intensity.</em>
-      DGE&I / Oak Ridge Management. First published April 21, 2026. arXiv: [pending submission].
+      DGE&amp;I / Oak Ridge Management. First published April 21, 2026. arXiv: [pending submission].
       Available at: <a href="https://oakridgemanagement.net/standard/" style="color:var(--a1)">oakridgemanagement.net/standard</a>
     </div>
   </div>
@@ -646,7 +671,6 @@
 
 </main>
 
-<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
