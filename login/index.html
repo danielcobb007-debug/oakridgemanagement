@@ -117,6 +117,7 @@
     <button class="login-btn" id="login-btn">
       <span id="btn-text">Authenticate →</span>
     </button>
+    <p id="error-msg" style="display:none;color:var(--red);font-family:var(--mono);font-size:9px;margin-top:16px;line-height:1.9;letter-spacing:0.3px;"></p>
   </div>
 
   <div class="login-footer">
@@ -128,24 +129,51 @@
 
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
-  const btn     = document.getElementById('login-btn');
-  const btnText = document.getElementById('btn-text');
+  const btn      = document.getElementById('login-btn');
+  const btnText  = document.getElementById('btn-text');
+  const errorMsg = document.getElementById('error-msg');
+
+  function hasInvestorRole(user) {
+    const roles = (user.app_metadata && user.app_metadata.roles) || [];
+    return roles.includes('investor');
+  }
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.style.display = 'block';
+    btn.classList.remove('loading');
+    btnText.textContent = 'Try Again →';
+  }
 
   netlifyIdentity.on('init', user => {
     if (user) {
-      window.location.replace('/investor/platform/');
+      if (hasInvestorRole(user)) {
+        window.location.replace('/investor/platform/');
+      } else {
+        // Logged in but role not assigned — log out to prevent loop
+        netlifyIdentity.logout();
+        showError('Access not yet activated for this account.\nContact dpc@oakridgemanagement.net to request access.');
+      }
     } else {
       netlifyIdentity.open('login');
     }
   });
 
-  netlifyIdentity.on('login', () => {
-    btnText.textContent = 'Authenticated — Redirecting…';
-    btn.classList.add('loading');
-    window.location.replace('/investor/platform/');
+  netlifyIdentity.on('login', user => {
+    if (hasInvestorRole(user)) {
+      btnText.textContent = 'Authenticated — Redirecting…';
+      btn.classList.add('loading');
+      window.location.replace('/investor/platform/');
+    } else {
+      netlifyIdentity.logout();
+      showError('Access not yet activated for this account.\nContact dpc@oakridgemanagement.net to request access.');
+    }
   });
 
-  btn.addEventListener('click', () => netlifyIdentity.open('login'));
+  btn.addEventListener('click', () => {
+    errorMsg.style.display = 'none';
+    netlifyIdentity.open('login');
+  });
 </script>
 </body>
 </html>

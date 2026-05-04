@@ -703,5 +703,17 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 10);
 }, { passive: true });
 </script>
+
+<!-- Netlify Identity: handles #invite_token and #recovery_token hashes from email links -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  netlifyIdentity.on('init', user => {
+    if (!user) {
+      netlifyIdentity.on('login', () => {
+        window.location.href = '/investor/';
+      });
+    }
+  });
+</script>
 </body>
 </html>
