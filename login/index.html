@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investor Access — DGE&amp;I | Oak Ridge Management</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%23ff6b00'>DGI</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .login-wrap {
+    width: 100%;
+    max-width: 420px;
+    padding: 0 24px;
+  }
+  .login-brand {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .login-orm {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  .login-orm span { color: var(--a2); }
+  .login-tag {
+    display: block;
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .login-card {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--a2);
+    padding: 40px 36px;
+  }
+  .login-card h2 {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .login-card p {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    line-height: 1.9;
+    margin-bottom: 32px;
+  }
+  .login-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--a2);
+    color: var(--a2);
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .login-btn:hover { background: var(--a2); color: #000; }
+  .login-btn.loading { opacity: 0.45; cursor: default; pointer-events: none; }
+  .login-footer {
+    margin-top: 32px;
+    font-family: var(--mono);
+    font-size: 8px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 2;
+    letter-spacing: 0.3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="login-wrap">
+
+  <div class="login-brand">
+    <div class="login-orm">OAK RIDGE <span>MANAGEMENT</span></div>
+    <span class="login-tag">DGE&amp;I Investor Portal · Restricted Access</span>
+  </div>
+
+  <div class="login-card">
+    <h2>Investor Access</h2>
+    <p>
+      This portal is restricted to authorized DGE&amp;I investors<br>
+      and Oak Ridge Management personnel.<br>
+      Credentialed access required.
+    </p>
+    <button class="login-btn" id="login-btn">
+      <span id="btn-text">Authenticate →</span>
+    </button>
+  </div>
+
+  <div class="login-footer">
+    Access restricted to credentialed parties only.<br>
+    Unauthorized access is prohibited. All sessions are logged.
+  </div>
+
+</div>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  const btn     = document.getElementById('login-btn');
+  const btnText = document.getElementById('btn-text');
+
+  netlifyIdentity.on('init', user => {
+    if (user) {
+      window.location.replace('/investor/platform/');
+    } else {
+      netlifyIdentity.open('login');
+    }
+  });
+
+  netlifyIdentity.on('login', () => {
+    btnText.textContent = 'Authenticated — Redirecting…';
+    btn.classList.add('loading');
+    window.location.replace('/investor/platform/');
+  });
+
+  btn.addEventListener('click', () => netlifyIdentity.open('login'));
+</script>
+</body>
+</html>

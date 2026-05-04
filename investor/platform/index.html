@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform Valuation — DGE&amp;I | Confidential</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%23ff6b00'>DGI</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  /* ── CLASSIFICATION BANNER ── */
+  .classif-banner {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 300;
+    background: #110500;
+    border-bottom: 1px solid var(--a2);
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a2);
+  }
+  .classif-banner .cb-sep { color: var(--border2); }
+
+  /* Shift nav + main to clear classification bar */
+  .site-nav { top: 28px; }
+  main { padding-top: 92px; }
+
+  /* ── NAV CUSTOMIZATION ── */
+  .nav-logo-tag-inv {
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: var(--a2);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 3px;
+  }
+  .nav-logout-btn {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--border2);
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav-logout-btn:hover { color: var(--red); border-color: var(--red); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 72px 0 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 { margin-bottom: 20px; }
+  .hero-sub {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-bottom: 40px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── CAPABILITIES GRID ── */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  @media (max-width: 768px) { .cap-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .cap-grid { grid-template-columns: 1fr; } }
+  .cap-card {
+    background: var(--bg);
+    padding: 28px 24px;
+    transition: background 0.2s;
+  }
+  .cap-card:hover { background: var(--s1); }
+  .cap-num {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .cap-title {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--a2);
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+  }
+  .cap-desc {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .cap-metric {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--a2);
+    margin-top: 12px;
+    padding: 6px 10px;
+    background: var(--s2);
+    border-left: 2px solid var(--a2);
+    display: inline-block;
+  }
+
+  /* ── 125% ARCHITECTURE ── */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  @media (max-width: 680px) { .arch-grid { grid-template-columns: 1fr; } }
+  .arch-panel {
+    background: var(--s1);
+    padding: 36px 32px;
+  }
+  .arch-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a2);
+    margin-bottom: 16px;
+  }
+  .arch-panel h3 {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .arch-panel p {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .rev-flow {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .rf-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--s2);
+    border: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text);
+  }
+  .rf-arrow { color: var(--a3); flex-shrink: 0; }
+  .rf-result { color: var(--a3); margin-left: auto; font-weight: 700; }
+
+  /* ── SKU COMPARISON ── */
+  .sku-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  @media (max-width: 900px) { .sku-grid { grid-template-columns: 1fr; } }
+  .sku-card {
+    background: var(--bg);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .sku-card.flagship { background: var(--s1); }
+  .sku-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--a3);
+    border: 1px solid var(--a3);
+    padding: 2px 6px;
+  }
+  .sku-accent { height: 2px; margin-bottom: 24px; }
+  .sku-ac   .sku-accent { background: var(--muted); }
+  .sku-cdc  .sku-accent { background: var(--a1); }
+  .sku-edc  .sku-accent { background: var(--a2); }
+
+  .sku-num {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .sku-name {
+    font-family: var(--display);
+    font-size: 21px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  .sku-ac  .sku-name { color: var(--label); }
+  .sku-cdc .sku-name { color: var(--a1); }
+  .sku-edc .sku-name { color: var(--a2); }
+
+  .sku-arch {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sku-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  .sku-spec {
+    padding: 10px 12px;
+    background: var(--s2);
+    border: 1px solid var(--border);
+  }
+  .spec-lbl {
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+    display: block;
+  }
+  .spec-val {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .sku-efficiency {
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    padding: 18px 12px 14px;
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-top-width: 2px;
+  }
+  .sku-ac  .sku-efficiency { color: var(--muted);  border-top-color: var(--border2); }
+  .sku-cdc .sku-efficiency { color: var(--a1);     border-top-color: var(--a1); }
+  .sku-edc .sku-efficiency { color: var(--a2);     border-top-color: var(--a2); }
+  .sku-eff-lbl {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── DEEP DIVE ── */
+  .dd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  @media (max-width: 680px) { .dd-grid { grid-template-columns: 1fr; } }
+  .dd-panel { background: var(--s1); padding: 36px 32px; }
+  .dd-tag {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .dd-cdc .dd-tag { color: var(--a1); }
+  .dd-edc .dd-tag { color: var(--a2); }
+  .dd-panel h3 {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dd-cdc h3 { color: var(--a1); }
+  .dd-edc h3 { color: var(--a2); }
+  .dd-subarch {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dd-points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .dd-pt {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.65;
+  }
+  .dd-icon { font-family: var(--mono); font-size: 10px; flex-shrink: 0; margin-top: 2px; }
+  .dd-cdc .dd-icon { color: var(--a1); }
+  .dd-edc .dd-icon { color: var(--a2); }
+  .dd-verdict {
+    margin-top: 22px;
+    padding: 14px 16px;
+    background: var(--s2);
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 1.7;
+    border-left: 2px solid;
+  }
+  .dd-cdc .dd-verdict { color: var(--a1); border-color: var(--a1); }
+  .dd-edc .dd-verdict { color: var(--a2); border-color: var(--a2); }
+
+  /* ── CEH™ VALIDATION ── */
+  .val-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  @media (max-width: 768px) { .val-grid { grid-template-columns: 1fr; } }
+  .val-card {
+    background: var(--s1);
+    padding: 28px 24px;
+  }
+  .val-tag {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--a3);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .val-card h3 {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .val-card p {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .val-data {
+    margin-top: 14px;
+    padding: 8px 12px;
+    background: var(--s2);
+    border-left: 2px solid var(--a3);
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--a3);
+    line-height: 1.6;
+  }
+
+  /* ── PLACEHOLDER SECTIONS ── */
+  .placeholder-block {
+    margin-top: 32px;
+    border: 1px dashed var(--border2);
+    padding: 64px 40px;
+    text-align: center;
+    background: var(--s2);
+  }
+  .ph-icon {
+    font-family: var(--mono);
+    font-size: 28px;
+    color: var(--border2);
+    margin-bottom: 16px;
+  }
+  .ph-title {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--label);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .ph-desc {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    line-height: 2;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── CONFIDENTIAL FOOTER ── */
+  .conf-footer {
+    background: var(--s1);
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    margin-top: 80px;
+  }
+  .conf-footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .cf-brand {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  .cf-brand span { color: var(--a2); }
+  .cf-notice {
+    font-family: var(--mono);
+    font-size: 8px;
+    color: var(--muted);
+    line-height: 1.9;
+    letter-spacing: 0.3px;
+    max-width: 560px;
+  }
+</style>
+</head>
+<body style="visibility:hidden">
+
+<!-- ═══ CLASSIFICATION BANNER ══════════════════════════════════════════ -->
+<div class="classif-banner">
+  <span>Confidential</span>
+  <span class="cb-sep">·</span>
+  <span>DGE&amp;I — Restricted Distribution</span>
+  <span class="cb-sep">·</span>
+  <span>Authorized Investors Only</span>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag-inv">DGE&amp;I Investor Portal</span>
+    </div>
+    <button class="nav-logout-btn" id="logout-btn">Log Out</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow orange">▸ DGE&amp;I · Platform Valuation · Confidential</span>
+    <h1>Platform<br><em class="orange">Valuation</em></h1>
+    <p class="hero-sub">
+      DGE&amp;I (Distributed Generation Energy &amp; Infrastructure) is the first
+      commercial BTM compute infrastructure deployment built on CEH™ measurement.
+      The Power Block platform delivers structural energy cost advantage validated
+      against the CEH™ standard.
+    </p>
+
+    <div class="tile-row">
+      <div class="tile t-orange">
+        <div class="tile-label">Generation Architecture</div>
+        <div class="tile-value">125%</div>
+        <div class="tile-sub">of rated nameplate · 4 PB + N+1</div>
+      </div>
+      <div class="tile t-orange">
+        <div class="tile-label">Power Block SKUs</div>
+        <div class="tile-value">3</div>
+        <div class="tile-sub">AC · Core DC · Edge DC</div>
+      </div>
+      <div class="tile t-orange">
+        <div class="tile-label">Rack Density (Current)</div>
+        <div class="tile-value">400+ kW</div>
+        <div class="tile-sub">per rack · DG Edge DC</div>
+      </div>
+      <div class="tile t-green">
+        <div class="tile-label">Rack Density (2027 Target)</div>
+        <div class="tile-value">1 MW+</div>
+        <div class="tile-sub">NVIDIA roadmap · Rubin gen</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ POWER BLOCK SYSTEMS ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr orange">Power Block Systems</div>
+    <p style="font-size:15px;font-weight:300;color:var(--text);line-height:1.8;max-width:700px;margin-bottom:8px;">
+      Built on Bloom Energy solid-oxide fuel cells, the Power Block platform combines
+      three interchangeable SKUs, an intelligent Energy Management System (EMS), and
+      a 125% generation architecture. Because AI compute rarely runs at 100% utilization
+      24/7/365, the EMS automatically exports every unused kilowatt-hour while preserving
+      full N+1+1 redundancy. The result: power becomes a profit center rather than a cost.
+    </p>
+    <div class="footnote" style="border:none;padding:0;margin-bottom:0;">
+      Foundation technology: Bloom Energy solid-oxide fuel cells · native ~800 V DC output ·
+      clean generation · minimal water use
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-num">01 · Efficiency</div>
+        <div class="cap-title">Unprecedented Rack Density</div>
+        <p class="cap-desc">250–400+ kW per rack today with current CDU limits, scaling to 1 MW+ racks as the NVIDIA ecosystem matures through the Kyber and Rubin generations.</p>
+        <span class="cap-metric">Current: 250–400+ kW/rack</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">02 · Flexibility</div>
+        <div class="cap-title">Multi-Architecture</div>
+        <p class="cap-desc">True architecture flexibility — AC, standard DC (~400 VDC), and NVIDIA-native 800 VDC pods can coexist within the same building, enabling mixed brownfield/greenfield deployments.</p>
+        <span class="cap-metric">AC · Core DC · Edge DC</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">03 · Redundancy</div>
+        <div class="cap-title">N+1+1 Architecture</div>
+        <p class="cap-desc">Utility grid operates as an active, revenue-generating partner rather than a passive backup. N+1+1 configuration maintains full compute availability while enabling continuous export.</p>
+        <span class="cap-metric">Grid = revenue partner</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">04 · Revenue</div>
+        <div class="cap-title">Dynamic Microgrid Export</div>
+        <p class="cap-desc">Variable AI workloads create continuous surplus generation. The EMS converts every unused kilowatt-hour into a net-positive revenue stream via dynamic microgrid export to the utility tie.</p>
+        <span class="cap-metric">Export → net-positive revenue</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">05 · Grid Services</div>
+        <div class="cap-title">Active Grid Stabilization</div>
+        <p class="cap-desc">Synthetic inertia, sub-second frequency response, voltage support, and peak shaving delivered as active grid stabilization services — creating additional revenue and utility partnership value.</p>
+        <span class="cap-metric">Sub-second frequency response</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">06 · Environment</div>
+        <div class="cap-title">Near-Zero Impact</div>
+        <p class="cap-desc">Minimal water consumption and clean solid-oxide fuel cell generation. No cooling towers, no combustion exhaust at rack level. Compatible with strict environmental permitting profiles.</p>
+        <span class="cap-metric">Minimal H₂O · Clean SOFC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 125% ARCHITECTURE ══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr orange">125% Generation Architecture</div>
+    <div class="arch-grid">
+
+      <div class="arch-panel">
+        <div class="arch-label">▸ Design Principle</div>
+        <h3>Oversized by Design</h3>
+        <p>
+          Every DGE&amp;I facility is sized to generate 125% of maximum rated
+          nameplate capacity (4 Power Blocks + N+1). This is not backup headroom
+          — it is a deliberate revenue architecture.
+        </p>
+        <p>
+          AI inference and training workloads are inherently bursty. Peak GPU
+          utilization across a fleet rarely sustains 100% for extended periods.
+          The delta between actual consumption and generation capacity is the
+          monetizable surplus.
+        </p>
+        <p>
+          The EMS tracks utilization in real time and routes every unused
+          kilowatt-hour to the utility tie automatically, while maintaining
+          full N+1+1 redundancy for the compute load.
+        </p>
+      </div>
+
+      <div class="arch-panel">
+        <div class="arch-label">▸ Revenue Flow</div>
+        <h3>Power as Profit Center</h3>
+        <p>
+          Traditional data center economics treat power as a fixed operating cost.
+          The DGE&amp;I 125% architecture inverts this model.
+        </p>
+        <div class="rev-flow">
+          <div class="rf-row">
+            <span class="rf-arrow">▸</span>
+            <span>Bloom SOFC generates 125% of rated nameplate</span>
+          </div>
+          <div class="rf-row">
+            <span class="rf-arrow">▸</span>
+            <span>Compute load consumes ~70–85% at typical utilization</span>
+          </div>
+          <div class="rf-row">
+            <span class="rf-arrow">▸</span>
+            <span>EMS identifies surplus in real time · preserves N+1 reserve</span>
+          </div>
+          <div class="rf-row">
+            <span class="rf-arrow">▸</span>
+            <span>Surplus exported to utility tie via DC-AC inversion</span>
+          </div>
+          <div class="rf-row">
+            <span class="rf-arrow">▸</span>
+            <span>Grid stabilization services billed additionally</span>
+            <span class="rf-result">Power = Revenue</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKU COMPARISON ═════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr orange">Power Block SKUs — Three Interchangeable Architectures</div>
+    <p style="font-size:14px;font-weight:300;color:var(--text);line-height:1.8;max-width:680px;margin-bottom:8px;">
+      All three SKUs share the same Bloom SOFC foundation and EMS platform.
+      Architecture selection is driven by customer infrastructure profile, utility
+      interconnection constraints, and target rack density requirements.
+    </p>
+
+    <div class="sku-grid">
+
+      <!-- SKU 1: REV1 AC -->
+      <div class="sku-card sku-ac">
+        <div class="sku-accent"></div>
+        <div class="sku-num">SKU 01 · Legacy / Brownfield</div>
+        <div class="sku-name">DG Core<br>Power Block</div>
+        <div class="sku-arch">REV1 AC · DC → AC (415Y / 240 V)</div>
+        <div class="sku-specs">
+          <div class="sku-spec">
+            <span class="spec-lbl">Max Practical kW / Rack</span>
+            <span class="spec-val">~209 – 250 kW</span>
+          </div>
+          <div class="sku-spec">
+            <span class="spec-lbl">Off-the-Shelf Gear</span>
+            <span class="spec-val">Highest — 5,000 A AC panels, breakers, Starline HPB AC skids. Fully catalog items.</span>
+          </div>
+          <div class="sku-spec">
+            <span class="spec-lbl">Best For</span>
+            <span class="spec-val">Legacy sites, conservative utilities, brownfield, non-AI workloads</span>
+          </div>
+          <div class="sku-spec">
+            <span class="spec-lbl">Key Constraint</span>
+            <span class="spec-val">AC conversion losses cap practical rack density</span>
+          </div>
+        </div>
+        <div class="sku-efficiency">
+          Baseline
+          <span class="sku-eff-lbl">Efficiency vs REV1 AC</span>
+        </div>
+      </div>
+
+      <!-- SKU 2: Core DC -->
+      <div class="sku-card sku-cdc">
+        <div class="sku-accent"></div>
+        <div class="sku-num">SKU 02 · Efficiency Upgrade</div>
+        <div class="sku-name">DG Core<br>DC</div>
+        <div class="sku-arch">Standard DC-to-DC · ~400 VDC</div>
+        <div class="sku-specs">
+          <div class="sku-spec">
+            <span class="spec-lbl">Max Practical kW / Rack</span>
+            <span class="spec-val">~230 – 270 kW</span>
+          </div>
+          <div class="sku-spec">
+            <span class="spec-lbl">Off-the-Shelf Gear</span>
+            <span class="spec-val">Medium — DC-rated breakers / busway. Newer but not yet as ubiquitous as 5,000 A AC gear.</span>
+          </div>
+          <div class="sku-spec">
+            <span class="spec-lbl">Best For</span>
+            <span class="spec-val">Customers wanting DC efficiency today without full NVIDIA 800 V reference design</span>
+          </div>
+          <div class="sku-spec">
+            <span class="spec-lbl">Efficiency Driver</span>
+            <span class="spec-val">Eliminates Bloom skid AC conversion and rack rectification — lower losses free up headroom</span>
+          </div>
+        </div>
+        <div class="sku-efficiency">
+          +7 – 10%
+          <span class="sku-eff-lbl">Efficiency vs REV1 AC</span>
+        </div>
+      </div>
+
+      <!-- SKU 3: Edge DC -->
+      <div class="sku-card sku-edc flagship">
+        <div class="sku-badge">Flagship</div>
+        <div class="sku-accent"></div>
+        <div class="sku-num">SKU 03 · New AI Factories</div>
+        <div class="sku-name">DG Edge<br>DC</div>
+        <div class="sku-arch">NVIDIA-Native · 800 VDC</div>
+        <div class="sku-specs">
+          <div class="sku-spec">
+            <span class="spec-lbl">Max Practical kW / Rack</span>
+            <span class="spec-val">250 – 400+ kW · MW-scale future-proof</span>
+          </div>
+          <div class="sku-spec">
+            <span class="spec-lbl">Off-the-Shelf Gear</span>
+            <span class="spec-val">Medium-to-High — NVIDIA ecosystem + Bloom-native. Ramping fast: TI, Delta, Eaton and others.</span>
+          </div>
+          <div class="sku-spec">
+            <span class="spec-lbl">Best For</span>
+            <span class="spec-val">New AI factories — GB300 / Blackwell / Kyber / Rubin generation hardware</span>
+          </div>
+          <div class="sku-spec">
+            <span class="spec-lbl">Key Advantage</span>
+            <span class="spec-val">Bloom SOFC outputs ~800 V DC natively. Direct feed to rack PDUs. Fewest conversion stages.</span>
+          </div>
+        </div>
+        <div class="sku-efficiency">
+          +8 – 12%
+          <span class="sku-eff-lbl">Efficiency vs REV1 AC</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CORE DC vs EDGE DC DEEP DIVE ═══════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr orange">Architecture Deep Dive — Core DC vs Edge DC</div>
+    <p style="font-size:14px;font-weight:300;color:var(--text);line-height:1.8;max-width:680px;margin-bottom:8px;">
+      The real distinction between Core DC and Edge DC is not only rack density — it is
+      scalability ceiling and ecosystem alignment.
+    </p>
+    <div class="dd-grid">
+
+      <div class="dd-panel dd-cdc">
+        <div class="dd-tag">▸ SKU 02 · Practical DC-Native</div>
+        <h3>Core DC</h3>
+        <div class="dd-subarch">Standard DC-to-DC · ~400 VDC</div>
+        <div class="dd-points">
+          <div class="dd-pt">
+            <span class="dd-icon">+</span>
+            <span>Step-up from AC — still requires some custom DC-rated gear (breakers, busway, protection) but is not tied to NVIDIA's exact 800 V reference spec.</span>
+          </div>
+          <div class="dd-pt">
+            <span class="dd-icon">+</span>
+            <span>Efficiency gain comes primarily from eliminating the Bloom skid AC conversion stage and rack-level rectification.</span>
+          </div>
+          <div class="dd-pt">
+            <span class="dd-icon">+</span>
+            <span>kW per rack headroom improves meaningfully over REV1 AC due to reduced waste heat — but not as dramatically as 800 V.</span>
+          </div>
+          <div class="dd-pt">
+            <span class="dd-icon">+</span>
+            <span>Good for customers who want DC efficiency today without committing to NVIDIA's 800 V reference design across the full facility.</span>
+          </div>
+        </div>
+        <div class="dd-verdict">
+          Core DC = better efficiency + moderate density uplift with "good enough" DC gear.
+        </div>
+      </div>
+
+      <div class="dd-panel dd-edc">
+        <div class="dd-tag">▸ SKU 03 · Flagship Architecture</div>
+        <h3>Edge DC</h3>
+        <div class="dd-subarch">NVIDIA-Native 800 VDC · Bloom-Native</div>
+        <div class="dd-points">
+          <div class="dd-pt">
+            <span class="dd-icon">+</span>
+            <span>Flagship because Bloom fuel cells already output ~800 V DC natively, and NVIDIA designed the entire GB300 / Blackwell / Kyber / Rubin ecosystem around this voltage.</span>
+          </div>
+          <div class="dd-pt">
+            <span class="dd-icon">+</span>
+            <span>800 V slashes current dramatically → far less copper, smaller busway, lower I²R losses. Enables sustained rack densities beyond the current 250 kW CDU limit (NVIDIA roadmap: 1 MW+ racks by 2027).</span>
+          </div>
+          <div class="dd-pt">
+            <span class="dd-icon">+</span>
+            <span>Fewest conversion stages overall — direct 800 V feed to rack PDUs / DC-DC converters in SuperMicro B300 and successor clusters.</span>
+          </div>
+          <div class="dd-pt">
+            <span class="dd-icon">+</span>
+            <span>Simplifies N+1 export / sell-back: DC-AC inversion occurs only at the utility tie point, not distributed across the compute floor.</span>
+          </div>
+        </div>
+        <div class="dd-verdict">
+          Edge DC = maximum allowable kW/rack + future-proof because it is the exact architecture NVIDIA, Bloom, TI, Delta, Eaton, and the broader ecosystem are building around.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CEH™ METHODOLOGY VALIDATION ═══════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr green">
+      <span class="pulse"></span>CEH™ Methodology Validation
+    </div>
+    <p style="font-size:14px;font-weight:300;color:var(--text);line-height:1.8;max-width:700px;margin-bottom:8px;">
+      The Power Block platform is the commercial BTM deployment that validates the CEH™
+      standard with real measured data. Every DGE&amp;I facility produces verifiable inputs
+      to the CEH™ formula — closing the loop between the published standard and
+      live infrastructure performance.
+    </p>
+    <div class="val-grid">
+      <div class="val-card">
+        <div class="val-tag"><span class="pulse"></span>BTM Energy Rate</div>
+        <h3>BTM Cost Advantage</h3>
+        <p>
+          Grid-connected operators pay $0.085–0.12 / kWh or more in primary AI
+          infrastructure markets. DGE&amp;I BTM facilities using Bloom SOFC target
+          $0.035–0.045 / kWh — the structural advantage captured in the BTM
+          column of every CEH™ Index row.
+        </p>
+        <div class="val-data">
+          BTM cost input to CEH™ formula<br>
+          ~50–60% below grid rate · measurable · auditable
+        </div>
+      </div>
+      <div class="val-card">
+        <div class="val-tag"><span class="pulse"></span>Hardware Throughput</div>
+        <h3>Measured Token Output</h3>
+        <p>
+          Real throughput data from deployed B300 / H100 clusters — tokens/sec
+          under vLLM batch inference — provides the Output_Units_per_Hour
+          denominator in the CEH™ formula. DGE&amp;I deployments are the primary
+          source of verified BTM CEH™ rate measurements.
+        </p>
+        <div class="val-data">
+          COU: tokens / hour · Llama-class · batch 8 · vLLM<br>
+          Source: live DGE&amp;I facility telemetry
+        </div>
+      </div>
+      <div class="val-card">
+        <div class="val-tag"><span class="pulse"></span>Generation Data</div>
+        <h3>125% Export Verification</h3>
+        <p>
+          The 125% architecture provides continuous metered data on actual vs.
+          rated generation. Export records and utility meter data create an
+          auditable chain from Bloom SOFC output to compute floor consumption —
+          enabling independent CEH™ methodology replication.
+        </p>
+        <div class="val-data">
+          4 PB + N+1 · continuous EMS telemetry<br>
+          Auditable generation-to-compute chain
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-bar" style="margin-top:32px;">
+      <div class="f-label">CEH™ Formula — validated by DGE&amp;I deployments</div>
+      <div class="f-eq">
+        <span class="c1">CEH™</span> = ( <span class="c2">TDP_W</span> × Units × Util% × PUE ) ÷ 1,000 ÷ <span class="c3">Output_Units/hr</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="c1">CEH™ Cost</span> = CEH™ × <span class="c2">$/kWh (BTM: ~$0.04 vs grid: ~$0.10)</span>
+      </div>
+      <div class="f-cite">
+        Power Block BTM deployments provide the $/kWh and Output_Units/hr inputs that drive the BTM advantage column in the CEH™ Index.
+        Full methodology: <a href="/standard/methodology/" style="color:var(--a1)">oakridgemanagement.net/standard/methodology ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SITE PORTFOLIO ═════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr orange">DGE&amp;I Site Portfolio</div>
+    <div class="placeholder-block">
+      <div class="ph-icon">[ ]</div>
+      <div class="ph-title">Content Pending</div>
+      <p class="ph-desc">
+        Site portfolio — locations, capacity (MW), status, anchor offtake details,<br>
+        and timeline will be populated here.<br>
+        Provide site data to complete this section.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LP MATERIALS ════════════════════════════════════════════════════ -->
+<section class="section" style="border-bottom:none;padding-bottom:80px;">
+  <div class="wrap">
+    <div class="section-hdr orange">LP Materials &amp; Financial Summary</div>
+    <div class="placeholder-block">
+      <div class="ph-icon">[ ]</div>
+      <div class="ph-title">Content Pending</div>
+      <p class="ph-desc">
+        Fund structure, return profile, investment minimums, LP terms,<br>
+        and downloadable LP package will be placed here.<br>
+        Provide LP materials to complete this section.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ CONFIDENTIAL FOOTER ════════════════════════════════════════════ -->
+<footer class="conf-footer">
+  <div class="conf-footer-inner">
+    <div class="cf-brand">OAK RIDGE <span>MANAGEMENT</span> / DGE&amp;I</div>
+    <div class="cf-notice">
+      CONFIDENTIAL — This document contains proprietary and commercially sensitive information
+      of Oak Ridge Management / DGE&amp;I. Distribution is strictly restricted to authorized
+      investors and personnel. Unauthorized disclosure is prohibited. All access is logged.
+      CEH™ is a trademark of Oak Ridge Management. First published April 21, 2026.
+    </div>
+  </div>
+</footer>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  netlifyIdentity.on('init', user => {
+    if (!user) {
+      window.location.replace('/login/');
+    } else {
+      document.body.style.visibility = 'visible';
+    }
+  });
+
+  netlifyIdentity.on('logout', () => {
+    window.location.replace('/login/');
+  });
+
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    netlifyIdentity.logout();
+  });
+
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+</script>
+</body>
+</html>

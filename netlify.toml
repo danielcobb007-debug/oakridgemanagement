@@ -61,3 +61,33 @@
 
 [build.environment]
   NODE_VERSION = "18"
+
+# ── INVESTOR PORTAL — role-based access (Netlify Identity) ───────────
+# Pass through if request carries a valid investor-role JWT
+[[redirects]]
+  from = "/investor/*"
+  to   = "/investor/:splat"
+  status = 200
+  conditions = {Role = ["investor"]}
+
+# Everyone else → login
+[[redirects]]
+  from = "/investor/*"
+  to   = "/login/"
+  status = 302
+
+# Trailing-slash canonicalization
+[[redirects]]
+  from = "/login"
+  to   = "/login/"
+  status = 301
+
+[[redirects]]
+  from = "/investor"
+  to   = "/investor/platform/"
+  status = 302
+
+[[redirects]]
+  from = "/investor/platform"
+  to   = "/investor/platform/"
+  status = 301
