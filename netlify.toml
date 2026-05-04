@@ -63,16 +63,18 @@
   NODE_VERSION = "18"
 
 # ── INVESTOR PORTAL — role-based access (Netlify Identity) ───────────
+# /investor/ is public. Only /investor/platform/ and below is gated.
+
 # Pass through if request carries a valid investor-role JWT
 [[redirects]]
-  from = "/investor/*"
-  to   = "/investor/:splat"
+  from = "/investor/platform/*"
+  to   = "/investor/platform/:splat"
   status = 200
   conditions = {Role = ["investor"]}
 
 # Everyone else → login
 [[redirects]]
-  from = "/investor/*"
+  from = "/investor/platform/*"
   to   = "/login/"
   status = 302
 
@@ -84,8 +86,8 @@
 
 [[redirects]]
   from = "/investor"
-  to   = "/investor/platform/"
-  status = 302
+  to   = "/investor/"
+  status = 301
 
 [[redirects]]
   from = "/investor/platform"

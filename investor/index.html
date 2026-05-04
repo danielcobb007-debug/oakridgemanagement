@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investor Portal — DGE&amp;I | Oak Ridge Management</title>
+<meta name="description" content="DGE&amp;I investor portal. Access platform valuation, Power Block specifications, site portfolio, and LP materials. Qualified investors only.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://oakridgemanagement.net/investor/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%23ff6b00'>DGI</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  main { padding-top: 64px; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 0 72px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 { margin-bottom: 24px; }
+  .hero-sub {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    max-width: 580px;
+    margin-bottom: 40px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .hero-login {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-login:hover { color: #fff; }
+
+  /* ── ACCESS NOTICE ── */
+  .access-notice {
+    margin-top: 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--a2);
+    padding: 18px 22px;
+    max-width: 580px;
+  }
+  .an-icon {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--a2);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .an-text {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.9;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── WHAT'S INSIDE ── */
+  .section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .inside-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  @media (max-width: 900px) { .inside-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .inside-grid { grid-template-columns: 1fr; } }
+  .inside-card {
+    background: var(--s1);
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .inside-card::after {
+    content: '🔒';
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    font-size: 14px;
+    opacity: 0.18;
+  }
+  .ic-accent {
+    height: 2px;
+    background: var(--a2);
+    margin-bottom: 20px;
+  }
+  .ic-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--a2);
+    margin-bottom: 12px;
+  }
+  .ic-title {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+  }
+  .ic-desc {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .ic-redacted {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .ic-line {
+    height: 8px;
+    background: var(--border2);
+    border-radius: 0;
+  }
+  .ic-line.short { width: 60%; }
+  .ic-line.med   { width: 80%; }
+  .ic-line.full  { width: 100%; }
+
+  /* ── WHO QUALIFIES ── */
+  .qualify-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  @media (max-width: 640px) { .qualify-grid { grid-template-columns: 1fr; } }
+  .qualify-panel {
+    background: var(--s1);
+    padding: 36px 32px;
+  }
+  .qp-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a2);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── REQUEST SECTION ── */
+  .request-section {
+    padding: 72px 0;
+  }
+  .request-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  @media (max-width: 720px) { .request-inner { grid-template-columns: 1fr; } }
+  .request-panel {
+    background: var(--s1);
+    padding: 40px 36px;
+  }
+  .request-panel.login-panel { background: var(--s2); }
+  .rp-eyebrow {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .request-panel h2 {
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
+  }
+  .request-panel p {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag">Institutional Home · CEH™ Standard</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/partners/">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <a href="/investor/" class="nav-investor-cta" aria-current="page">Investor</a>
+    <a href="/contact/" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow orange">▸ DGE&amp;I · Investor Portal · Restricted Access</span>
+    <h1>Investor<br><em class="orange">Portal</em></h1>
+    <p class="hero-sub">
+      Platform valuation materials, Power Block specifications, the DGE&amp;I
+      site portfolio, and LP documentation — available to qualified investors
+      by invitation only.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/contact/" class="btn btn-outline-orange">Request Access →</a>
+      <a href="/login/" class="hero-login">Existing investor? Log in ↗</a>
+    </div>
+
+    <div class="access-notice">
+      <span class="an-icon">▸</span>
+      <span class="an-text">
+        Access is by invitation only. Submit a request via the Capital Partner inquiry
+        form and Oak Ridge Management will respond to qualified inquiries.
+        All submissions are treated as confidential.
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT'S INSIDE ══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr orange">What's Inside</div>
+    <div class="inside-grid">
+
+      <div class="inside-card">
+        <div class="ic-accent"></div>
+        <div class="ic-label">01 · Valuation</div>
+        <div class="ic-title">Platform Valuation</div>
+        <p class="ic-desc">Full DGE&amp;I infrastructure platform overview, key financial metrics, and investment thesis.</p>
+        <div class="ic-redacted">
+          <div class="ic-line full"></div>
+          <div class="ic-line med"></div>
+          <div class="ic-line short"></div>
+        </div>
+      </div>
+
+      <div class="inside-card">
+        <div class="ic-accent"></div>
+        <div class="ic-label">02 · Technology</div>
+        <div class="ic-title">Power Block Specs</div>
+        <p class="ic-desc">Proprietary BTM power architecture — three SKU comparison, 125% generation design, and CEH™ validation data.</p>
+        <div class="ic-redacted">
+          <div class="ic-line full"></div>
+          <div class="ic-line full"></div>
+          <div class="ic-line med"></div>
+        </div>
+      </div>
+
+      <div class="inside-card">
+        <div class="ic-accent"></div>
+        <div class="ic-label">03 · Portfolio</div>
+        <div class="ic-title">Site Portfolio</div>
+        <p class="ic-desc">DGE&amp;I site locations, capacity, operational status, and anchor offtake detail by facility.</p>
+        <div class="ic-redacted">
+          <div class="ic-line med"></div>
+          <div class="ic-line full"></div>
+          <div class="ic-line short"></div>
+        </div>
+      </div>
+
+      <div class="inside-card">
+        <div class="ic-accent"></div>
+        <div class="ic-label">04 · LP Materials</div>
+        <div class="ic-title">Fund Documents</div>
+        <p class="ic-desc">Capital stack structure, return profile, DSCR projections, and LP package documentation.</p>
+        <div class="ic-redacted">
+          <div class="ic-line short"></div>
+          <div class="ic-line full"></div>
+          <div class="ic-line med"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHO QUALIFIES ══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr orange">Who Qualifies</div>
+    <div class="qualify-grid">
+
+      <div class="qualify-panel">
+        <div class="qp-label">▸ Capital Partners</div>
+        <ul class="check-list orange">
+          <li>Infrastructure LPs and institutional capital</li>
+          <li>Family offices with real asset / energy focus</li>
+          <li>Strategic capital aligned with AI infrastructure</li>
+          <li>Project debt lenders and senior secured lenders</li>
+          <li>Tax equity and ITC bridge providers</li>
+          <li>Offtake co-investment partners</li>
+        </ul>
+      </div>
+
+      <div class="qualify-panel">
+        <div class="qp-label">▸ Access Process</div>
+        <ul class="check-list orange">
+          <li>Submit a Capital Partner inquiry via the Contact page</li>
+          <li>Oak Ridge Management reviews and responds to qualified inquiries</li>
+          <li>Approved parties receive a secure portal invitation by email</li>
+          <li>All portal sessions are logged and access is revocable</li>
+          <li>Content is confidential and subject to NDA on request</li>
+          <li>Nothing in the portal constitutes an offer to sell securities</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REQUEST / LOGIN ════════════════════════════════════════════════ -->
+<section class="request-section">
+  <div class="wrap">
+    <div class="request-inner">
+
+      <div class="request-panel">
+        <span class="rp-eyebrow" style="color:var(--a2)">▸ New Inquiry</span>
+        <h2>Request Access</h2>
+        <p>
+          Submit a Capital Partner inquiry and Oak Ridge Management
+          will respond to qualified parties with a secure portal invitation.
+          Responses are typically within 2 business days.
+        </p>
+        <a href="/contact/" class="btn btn-outline-orange">Submit Capital Partner Inquiry →</a>
+      </div>
+
+      <div class="request-panel login-panel">
+        <span class="rp-eyebrow" style="color:var(--muted)">▸ Existing Investor</span>
+        <h2>Log In</h2>
+        <p>
+          If you have already received a portal invitation and set up
+          your credentials, log in to access the Platform Valuation page
+          and all DGE&amp;I materials.
+        </p>
+        <a href="/login/" class="btn btn-outline-cyan">Investor Login →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-mark">Oak Ridge <span>Management</span></div>
+      <div class="footer-tm">
+        DGE&amp;I (Dahlhauser Galbraith Energy &amp; Infrastructure) · Investor Portal<br>
+        Access restricted to credentialed parties. CEH™ trademark of Oak Ridge Management.
+      </div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/investor/">Investor Portal</a></li>
+      <li><a href="/login/">Investor Login</a></li>
+      <li><a href="/contact/">Request Access</a></li>
+      <li><a href="/standard/">CEH™ Standard</a></li>
+      <li><a href="/partners/capital/">Capital Partners</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+</script>
+</body>
+</html>
