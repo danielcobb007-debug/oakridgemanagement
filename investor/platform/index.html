@@ -923,15 +923,234 @@
 <!-- ═══ SITE PORTFOLIO ═════════════════════════════════════════════════ -->
 <section class="section">
   <div class="wrap">
-    <div class="section-hdr orange">DGE&amp;I Site Portfolio</div>
-    <div class="placeholder-block">
-      <div class="ph-icon">[ ]</div>
-      <div class="ph-title">Content Pending</div>
-      <p class="ph-desc">
-        Site portfolio — locations, capacity (MW), status, anchor offtake details,<br>
-        and timeline will be populated here.<br>
-        Provide site data to complete this section.
-      </p>
+    <div class="section-hdr orange">DGE&amp;I Site Portfolio — Master Valuation Table</div>
+    <p style="font-size:14px;font-weight:300;color:var(--text);line-height:1.8;max-width:700px;margin-bottom:28px;">
+      11 sites across two tiers. As-Is → Shovel-Ready valuations based on April 2026 market comparables.
+      ⭑ denotes flagship sites. Ownership color: <span style="color:var(--a3);">Contract</span> ·
+      <span style="color:var(--a1);">Owned</span> · <span style="color:var(--a4);">LOI / PSA</span>.
+    </p>
+
+    <!-- Platform summary -->
+    <div class="tile-row" style="margin-bottom:32px;">
+      <div class="tile t-orange">
+        <div class="tile-label">Total Sites</div>
+        <div class="tile-value">11</div>
+        <div class="tile-sub">5 Tier 1 · 6 Tier 2</div>
+      </div>
+      <div class="tile t-orange">
+        <div class="tile-label">Gross Platform Capacity</div>
+        <div class="tile-value">5.25 GW</div>
+        <div class="tile-sub">4.05 GW Net IT · 3.05 GW Compute</div>
+      </div>
+      <div class="tile t-orange">
+        <div class="tile-label">As-Is Mid Value</div>
+        <div class="tile-value">$1.49B</div>
+        <div class="tile-sub">April 2026 market comps</div>
+      </div>
+      <div class="tile t-green">
+        <div class="tile-label">Shovel-Ready Value</div>
+        <div class="tile-value">$2.86B</div>
+        <div class="tile-sub">~93% avg uplift · $385M controlled</div>
+      </div>
+    </div>
+
+    <!-- Master valuation table -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Site</th>
+            <th>Ownership</th>
+            <th class="r">Gross MW</th>
+            <th class="r">Net IT MW</th>
+            <th class="r">IT Compute</th>
+            <th class="r">As-Is Mid</th>
+            <th class="r">Shovel-Ready</th>
+            <th class="r">Uplift</th>
+            <th class="r">Control Cost</th>
+            <th>Delivery</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- ── TIER 1 ── -->
+          <tr style="background:var(--s2);">
+            <td colspan="10" style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--a2);padding:10px 14px;border-top:1px solid var(--border2);">
+              Tier 1 · Advanced Adaptive Reuse · 793.8 MW Gross · 612.4 MW Net IT · 5 Sites
+            </td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">St. Paul</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Minnesota · Near-Ready</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a3);">Under Contract</span></td>
+            <td class="r">48.6 MW</td>
+            <td class="r">37.4 MW</td>
+            <td class="r">28.2 MW</td>
+            <td class="r white">$60M</td>
+            <td class="r orange">$95M</td>
+            <td class="r green">+58%</td>
+            <td class="r">$16M</td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2027</td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Savannah</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Georgia · Contract Imminent (~60d)</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a3);">Under Contract</span></td>
+            <td class="r">153.9 MW</td>
+            <td class="r">118.8 MW</td>
+            <td class="r">89.3 MW</td>
+            <td class="r white">$170M</td>
+            <td class="r orange">$240M</td>
+            <td class="r green">+41%</td>
+            <td class="r">$75M</td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2027–2028</td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Montgomery</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Alabama · Gas Available</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a1);">Owned</span></td>
+            <td class="r">48.6 MW</td>
+            <td class="r">37.5 MW</td>
+            <td class="r">28.2 MW</td>
+            <td class="r white">$50M</td>
+            <td class="r orange">$70M</td>
+            <td class="r green">+40%</td>
+            <td class="r">$30M <span style="color:var(--a1);font-size:8px;letter-spacing:1px;">owned</span></td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028</td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">North Charleston</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">South Carolina · Transmission &lt;1 Mile</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a4);">Under LOI / PSA</span></td>
+            <td class="r">388.8 MW</td>
+            <td class="r">300.0 MW</td>
+            <td class="r">225.7 MW</td>
+            <td class="r white">$250M</td>
+            <td class="r orange">$380M</td>
+            <td class="r green">+52%</td>
+            <td class="r">$130M</td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028–2029</td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Vanore</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Tennessee · Existing Power + Upgrade</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a4);">Under LOI / PSA</span></td>
+            <td class="r">153.9 MW</td>
+            <td class="r">118.8 MW</td>
+            <td class="r">89.3 MW</td>
+            <td class="r white">$115M</td>
+            <td class="r orange">$170M</td>
+            <td class="r green">+48%</td>
+            <td class="r">$30M</td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028</td>
+          </tr>
+
+          <!-- ── TIER 2 ── -->
+          <tr style="background:var(--s2);">
+            <td colspan="10" style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--a2);padding:10px 14px;border-top:1px solid var(--border2);">
+              Tier 2 · De-Risked Greenfield · 4.46 GW Gross · 3.44 GW Net IT · 6 Sites · ⭑ Flagship
+            </td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Bowman ⭑</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">South Carolina · LOI Signed ✓</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a1);">Owned / LOI / PSA</span></td>
+            <td class="r">1.30 GW</td>
+            <td class="r">1.00 GW</td>
+            <td class="r">752.2 MW</td>
+            <td class="r white">$250M</td>
+            <td class="r orange">$600M</td>
+            <td class="r green">+140%</td>
+            <td class="r">$21M</td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2029–2032</td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Jefferson</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Georgia · Contract ~90 Days</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a3);">Under Contract</span></td>
+            <td class="r">388.8 MW</td>
+            <td class="r">300.0 MW</td>
+            <td class="r">225.7 MW</td>
+            <td class="r white">$130M</td>
+            <td class="r orange">$300M</td>
+            <td class="r green">+131%</td>
+            <td class="r">$13M</td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028–2029</td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Union Parish ⭑</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Louisiana · LOI In Negotiation</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a4);">Under PSA</span></td>
+            <td class="r">2.59 GW</td>
+            <td class="r">2.00 GW</td>
+            <td class="r">1.50 GW</td>
+            <td class="r white">$400M</td>
+            <td class="r orange">$900M</td>
+            <td class="r green">+125%</td>
+            <td class="r">$100M</td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2030–2032</td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Silver Springs</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Nevada · LOI Signed ✓</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a1);">Owned</span></td>
+            <td class="r">129.6 MW</td>
+            <td class="r">100.0 MW</td>
+            <td class="r">75.2 MW</td>
+            <td class="r white">$40M</td>
+            <td class="r orange">$70M</td>
+            <td class="r green">+75%</td>
+            <td class="r">$15M <span style="color:var(--a1);font-size:8px;letter-spacing:1px;">owned</span></td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028–2029</td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Reno</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Nevada · LOI Pending</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a1);">Owned</span></td>
+            <td class="r">16.2 MW</td>
+            <td class="r">12.5 MW</td>
+            <td class="r">9.4 MW</td>
+            <td class="r white">$7M</td>
+            <td class="r orange">$13M</td>
+            <td class="r green">+86%</td>
+            <td class="r">$5M <span style="color:var(--a1);font-size:8px;letter-spacing:1px;">owned</span></td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028</td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Macon</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Georgia · LOI Pending</span></td>
+            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a1);">Owned</span></td>
+            <td class="r">32.4 MW</td>
+            <td class="r">25.0 MW</td>
+            <td class="r">18.8 MW</td>
+            <td class="r white">$13M</td>
+            <td class="r orange">$23M</td>
+            <td class="r green">+73%</td>
+            <td class="r">$4M <span style="color:var(--a1);font-size:8px;letter-spacing:1px;">owned</span></td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028–2029</td>
+          </tr>
+
+          <!-- ── PLATFORM TOTAL ── -->
+          <tr style="background:var(--s1);border-top:2px solid var(--a2);">
+            <td colspan="2" style="font-family:var(--mono);font-size:10px;color:#fff;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;">Platform Total · 11 Sites</td>
+            <td class="r" style="color:#fff;font-weight:700;">5.25 GW</td>
+            <td class="r" style="color:#fff;font-weight:700;">4.05 GW</td>
+            <td class="r" style="color:#fff;font-weight:700;">3.05 GW</td>
+            <td class="r orange" style="font-size:13px;font-weight:700;">$1.49B</td>
+            <td class="r green"  style="font-size:13px;font-weight:700;">$2.86B</td>
+            <td class="r green"  style="font-size:13px;font-weight:700;">~93%</td>
+            <td class="r" style="color:var(--text);">$385M controlled</td>
+            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2027–2032</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footnote">
+      Master Valuation Table · All sites · As-Is → Shovel-Ready · April 2026 Market Comps · Mid valuations shown.
+      ⭑ Flagship sites: Bowman SC (1.30 GW) and Union Parish LA (2.59 GW).
+      Full site packages, title chain, and environmental reports available to qualified capital partners on request.
     </div>
   </div>
 </section>
