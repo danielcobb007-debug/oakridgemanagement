@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/dpc/OneDrive - Oak Ridge Management \\(1\\)/ORM/01_DGEI_Infrastructure/**)",
+      "Bash(node create_cw_leasing_form.js)",
+      "Bash(npm install *)"
+    ]
+  }
+}
