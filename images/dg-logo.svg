@@ -1,55 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
 
   <!-- White background -->
   <rect width="600" height="450" fill="white"/>
 
   <!-- Main dark badge -->
-  <rect x="80" y="22" width="440" height="320" fill="#252d3c"/>
+  <rect x="80" y="22" width="440" height="318" fill="#252d3c"/>
 
   <!-- Inner thin border -->
-  <rect x="89" y="31" width="422" height="302" fill="none" stroke="#5a6272" stroke-width="1.5"/>
+  <rect x="89" y="31" width="422" height="300" fill="none" stroke="#5a6272" stroke-width="1.5"/>
 
-  <!-- White square for DG monogram -->
-  <rect x="152" y="56" width="296" height="224" fill="white"/>
+  <!-- White square for monogram -->
+  <rect x="152" y="56" width="296" height="222" fill="white"/>
 
-  <!-- DG Monogram: compound evenodd path = D letterform with inner counter cutout -->
+  <!--
+    DG Monogram — compound path, fill-rule="evenodd"
+    Outer subpath  = full D letterform (thick)
+    Inner subpath  = counter (hole) punched inside the D's bowl
+    G crossbar rect drawn on top fills the lower-right of the counter
+  -->
   <path fill-rule="evenodd" fill="#252d3c" d="
-    M 176,74
-    L 354,74
-    Q 426,74 426,168
-    Q 426,262 354,262
-    L 176,262
+    M 176,78
+    L 355,78
+    C 436,78 436,260 355,260
+    L 176,260
     Z
-    M 226,118
-    L 332,118
-    Q 378,118 378,168
-    Q 378,218 332,218
-    L 226,218
+
+    M 228,120
+    L 336,120
+    C 386,120 386,218 336,218
+    L 228,218
     Z
   "/>
 
-  <!-- G crossbar shelf — fills lower-right of counter, creating the G -->
-  <rect x="308" y="168" width="70" height="50" fill="#252d3c"/>
+  <!-- G crossbar: fills lower-right portion of the counter, forming the G shelf -->
+  <rect x="308" y="168" width="78" height="50" fill="#252d3c"/>
 
-  <!-- "ENERGY & INFRASTRUCTURE" inside badge, below white square -->
+  <!-- "ENERGY & INFRASTRUCTURE" — inside badge below the white square -->
   <text
-    x="300" y="316"
+    x="300" y="315"
     font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
     font-size="13"
     font-weight="400"
     letter-spacing="4.5"
-    fill="#c5cdd8"
+    fill="#c2cad5"
     text-anchor="middle">ENERGY &amp; INFRASTRUCTURE</text>
 
-  <!-- "D G E & I" below the badge on white background -->
+  <!-- "D G E & I" — below the badge on white background -->
   <text
     x="300" y="408"
     font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
     font-size="27"
     font-weight="300"
     letter-spacing="16"
-    fill="#858fa0"
+    fill="#828ea0"
     text-anchor="middle">D G E &amp; I</text>
 
 </svg>
