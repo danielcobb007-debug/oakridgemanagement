@@ -12,6 +12,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="/css/shared.css">
 <style>
+  /* ── INVESTOR PAGE: dark navy palette ── */
+  :root {
+    --bg:      #0d1117;
+    --s1:      #121820;
+    --s2:      #17202b;
+    --s3:      #1c2837;
+    --border:  #1f2e40;
+    --border2: #283c52;
+  }
+  body { background: var(--bg); }
+  .site-nav { background: var(--bg); }
+
   main { padding-top: 64px; }
 
   /* ── HERO ── */
@@ -173,6 +185,34 @@
     border-bottom: 1px solid var(--border);
   }
 
+  /* ── DG LOGO HERO ── */
+  .hero-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 56px;
+  }
+  .hero-content { flex: 1; min-width: 0; }
+  .hero-dg-stamp {
+    flex-shrink: 0;
+    width: 220px;
+    margin-top: 8px;
+  }
+  .hero-dg-stamp img {
+    width: 100%;
+    display: block;
+    opacity: 0.92;
+  }
+  .dg-stamp-label {
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 10px;
+    text-align: center;
+  }
+  @media (max-width: 800px) { .hero-dg-stamp { display: none; } }
+
   /* ── REQUEST SECTION ── */
   .request-section {
     padding: 72px 0;
@@ -241,26 +281,35 @@
 <!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow orange">▸ DGE&amp;I · Investor Portal · Restricted Access</span>
-    <h1>Investor<br><em class="orange">Portal</em></h1>
-    <p class="hero-sub">
-      Platform valuation materials, Power Block specifications, the DGE&amp;I
-      site portfolio, and LP documentation — available to qualified investors
-      by invitation only.
-    </p>
+    <div class="hero-layout">
+      <div class="hero-content">
+        <span class="eyebrow orange">▸ DGE&amp;I · Investor Portal · Restricted Access</span>
+        <h1>Investor<br><em class="orange">Portal</em></h1>
+        <p class="hero-sub">
+          Platform valuation materials, Power Block specifications, the DGE&amp;I
+          site portfolio, and LP documentation — available to qualified investors
+          by invitation only.
+        </p>
 
-    <div class="hero-actions">
-      <a href="/contact/" class="btn btn-outline-orange">Request Access →</a>
-      <a href="/login/" class="hero-login">Existing investor? Log in ↗</a>
-    </div>
+        <div class="hero-actions">
+          <a href="/contact/" class="btn btn-outline-orange">Request Access →</a>
+          <a href="/login/" class="hero-login">Existing investor? Log in ↗</a>
+        </div>
 
-    <div class="access-notice">
-      <span class="an-icon">▸</span>
-      <span class="an-text">
-        Access is by invitation only. Submit a request via the Capital Partner inquiry
-        form and Oak Ridge Management will respond to qualified inquiries.
-        All submissions are treated as confidential.
-      </span>
+        <div class="access-notice">
+          <span class="an-icon">▸</span>
+          <span class="an-text">
+            Access is by invitation only. Submit a request via the Capital Partner inquiry
+            form and Oak Ridge Management will respond to qualified inquiries.
+            All submissions are treated as confidential.
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-dg-stamp">
+        <img src="/images/dg-logo.svg" alt="Dahlhauser Galbraith Energy &amp; Infrastructure">
+        <div class="dg-stamp-label">Dahlhauser Galbraith E&amp;I</div>
+      </div>
     </div>
   </div>
 </section>
@@ -392,11 +441,14 @@
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-mark">Oak Ridge <span>Management</span></div>
-      <div class="footer-tm">
-        DGE&amp;I (Dahlhauser Galbraith Energy &amp; Infrastructure) · Investor Portal<br>
-        Access restricted to credentialed parties. CEH™ trademark of Oak Ridge Management.
+    <div class="footer-brand" style="display:flex;align-items:flex-start;gap:20px;">
+      <img src="/images/dg-logo.svg" alt="DGE&amp;I" style="height:52px;width:auto;opacity:0.85;flex-shrink:0;">
+      <div>
+        <div class="footer-mark">Oak Ridge <span>Management</span></div>
+        <div class="footer-tm">
+          DGE&amp;I (Dahlhauser Galbraith Energy &amp; Infrastructure) · Investor Portal<br>
+          Access restricted to credentialed parties. CEH™ trademark of Oak Ridge Management.
+        </div>
       </div>
     </div>
     <ul class="footer-links">

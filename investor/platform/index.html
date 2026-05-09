@@ -10,6 +10,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="/css/shared.css">
 <style>
+  /* ── INVESTOR PAGE: dark navy palette ── */
+  :root {
+    --bg:      #0d1117;
+    --s1:      #121820;
+    --s2:      #17202b;
+    --s3:      #1c2837;
+    --border:  #1f2e40;
+    --border2: #283c52;
+  }
+  body { background: var(--bg); }
+  .site-nav { background: var(--bg); }
+
   /* ── CLASSIFICATION BANNER ── */
   .classif-banner {
     position: fixed;
@@ -33,6 +45,22 @@
   /* Shift nav + main to clear classification bar */
   .site-nav { top: 28px; }
   main { padding-top: 92px; }
+
+  /* ── NAV: DG logo + brand group ── */
+  .nav-brand-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .nav-dg-logo {
+    height: 40px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+    border-right: 1px solid var(--border2);
+    padding-right: 16px;
+    opacity: 0.9;
+  }
 
   /* ── NAV CUSTOMIZATION ── */
   .nav-logo-tag-inv {
@@ -506,9 +534,12 @@
 <!-- ═══ NAV ════════════════════════════════════════════════════════════ -->
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
-    <div class="nav-logo">
-      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
-      <span class="nav-logo-tag-inv">DGE&amp;I Investor Portal</span>
+    <div class="nav-brand-group">
+      <img src="/images/dg-logo.svg" alt="DGE&amp;I" class="nav-dg-logo">
+      <div class="nav-logo">
+        <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+        <span class="nav-logo-tag-inv">DGE&amp;I Investor Portal</span>
+      </div>
     </div>
     <button class="nav-logout-btn" id="logout-btn">Log Out</button>
   </div>
@@ -519,6 +550,8 @@
 <!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="wrap">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:0;">
     <span class="eyebrow orange">▸ DGE&amp;I · Platform Valuation · Confidential</span>
     <h1>Platform<br><em class="orange">Valuation</em></h1>
     <p class="hero-sub">
@@ -548,6 +581,11 @@
         <div class="tile-label">Rack Density (2027 Target)</div>
         <div class="tile-value">1 MW+</div>
         <div class="tile-sub">NVIDIA roadmap · Rubin gen</div>
+      </div>
+    </div>
+      </div>
+      <div style="flex-shrink:0;padding-top:12px;">
+        <img src="/images/dg-logo.svg" alt="Dahlhauser Galbraith Energy &amp; Infrastructure" style="width:200px;display:block;opacity:0.9;">
       </div>
     </div>
   </div>
@@ -1176,7 +1214,10 @@
 <!-- ═══ CONFIDENTIAL FOOTER ════════════════════════════════════════════ -->
 <footer class="conf-footer">
   <div class="conf-footer-inner">
-    <div class="cf-brand">OAK RIDGE <span>MANAGEMENT</span> / DGE&amp;I</div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <img src="/images/dg-logo.svg" alt="DGE&amp;I" style="height:44px;width:auto;opacity:0.8;flex-shrink:0;">
+      <div class="cf-brand">OAK RIDGE <span>MANAGEMENT</span> / DGE&amp;I</div>
+    </div>
     <div class="cf-notice">
       CONFIDENTIAL — This document contains proprietary and commercially sensitive information
       of Oak Ridge Management / DGE&amp;I. Distribution is strictly restricted to authorized
