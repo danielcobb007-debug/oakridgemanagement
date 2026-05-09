@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standards &amp; Research Partners — Oak Ridge Management | CEH™ Standard</title>
+<meta name="description" content="CEH™ methodology is open, versioned, and dated. We invite independent replication, co-publication, and standards body submission from MLCommons, Green Grid, IEEE, and academic labs.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://oakridgemanagement.net/partners/standards/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  main { padding-top: 60px; }
+
+  .hero { padding: 80px 0 70px; border-bottom: 1px solid var(--border); }
+
+  .track-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a3);
+    border: 1px solid var(--a3);
+    padding: 5px 12px;
+    margin-bottom: 24px;
+  }
+  .track-badge .dot { width: 5px; height: 5px; background: var(--a3); border-radius: 50%; }
+
+  .hero-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-top: 24px;
+  }
+  .hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+
+  /* ── OPEN STANDARD ── */
+  .open-block {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--a3);
+    padding: 28px 32px;
+    margin-top: 32px;
+  }
+  .open-block .ob-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--a3);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .open-block p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.85;
+    margin-bottom: 12px;
+  }
+  .provenance-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 24px;
+  }
+  @media (max-width: 640px) { .provenance-row { grid-template-columns: 1fr 1fr; } }
+  .prov-item {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+  }
+  .prov-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--a4);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .prov-value {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* ── CO-PUBLICATION ── */
+  .copub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 32px;
+  }
+  @media (max-width: 640px) { .copub-grid { grid-template-columns: 1fr; } }
+  .copub-card {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 26px;
+    position: relative;
+  }
+  .copub-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--a3), transparent 60%);
+  }
+  .copub-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--a3);
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .copub-card p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  /* ── AUDIENCE TRACKS ── */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 32px;
+  }
+  @media (max-width: 760px) { .audience-grid { grid-template-columns: 1fr; } }
+  .audience-card {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+  .audience-card .ac-num {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--label);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .audience-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .audience-card p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .ac-meta {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--label);
+    line-height: 1.8;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  /* ── NAMED ORGS ── */
+  .org-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .org-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    color: var(--label);
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .org-tag:hover { border-color: var(--a3); color: var(--a3); }
+
+  /* ── GATE / CTA ── */
+  .gate-section { padding: 64px 0; }
+  .gate-wrap {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .gate-wrap { grid-template-columns: 1fr; } }
+  .gate-copy h2 { font-size: 32px; margin-bottom: 16px; }
+  .gate-copy p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .form-panel {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--a3);
+    padding: 28px;
+  }
+  .form-panel-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a3);
+    margin-bottom: 24px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ══════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag">Institutional Home · CEH™ Standard</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/partners/" aria-current="page">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <a href="/investor/" class="nav-investor-cta">Investor</a>
+    <a href="/contact/" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="track-badge"><span class="dot"></span>Track 03 · Standards &amp; Research Partners</div>
+    <h1>Co-Publish the<br><em class="green">Research</em></h1>
+    <p class="hero-sub">
+      CEH™ (Compute Energy Hour) methodology is open, versioned, and dated —
+      designed from the outset for independent replication and co-publication.
+      We invite standards bodies, academic labs, and industry analysts to
+      engage: review the methodology, replicate the index, and co-publish.
+    </p>
+    <div class="hero-actions">
+      <a href="#conversation" class="btn btn-outline-green">Open a Conversation</a>
+      <a href="/standard/methodology/" class="btn btn-outline-cyan">Read the Methodology →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE STANDARD IS OPEN ═════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr green">The Standard Is Open</div>
+
+    <div class="open-block">
+      <span class="ob-label">▸ Methodology Status</span>
+      <p>
+        CEH™ (Compute Energy Hour) v1.0 was first published April 21, 2026 by Oak Ridge Management /
+        DGE&I. The methodology is publicly disclosed: the formula, the Compute Output Unit (COU)
+        definitions, the grade scale thresholds, the disclosure checklist, and the benchmark
+        configuration parameters are all available without restriction.
+      </p>
+      <p>
+        CEH™ is designed to function like PUE for facility efficiency or MLPerf for ML performance —
+        a neutral, methodology-first standard where the credibility of the measurement derives from
+        reproducibility, not from the authority of any single originator. Independent replication
+        is not only permitted — it is the explicit goal.
+      </p>
+      <p>
+        The standard is energy-agnostic by design: the CEH™ rate (kWh per output unit) applies
+        identically to grid power, BTM generation, nuclear, or any source. This design choice is
+        intentional — it ensures CEH™ can serve as infrastructure for a broader measurement
+        ecosystem, not as advocacy for any particular energy technology.
+      </p>
+
+      <div class="provenance-row">
+        <div class="prov-item">
+          <div class="prov-label">First Published</div>
+          <div class="prov-value">April 21, 2026</div>
+        </div>
+        <div class="prov-item">
+          <div class="prov-label">Standard Version</div>
+          <div class="prov-value">v1.0 · Dated · Versioned</div>
+        </div>
+        <div class="prov-item">
+          <div class="prov-label">Methodology</div>
+          <div class="prov-value">Open · Auditable · Reproducible</div>
+        </div>
+        <div class="prov-item">
+          <div class="prov-label">arXiv Preprint</div>
+          <div class="prov-value">Pending submission</div>
+        </div>
+        <div class="prov-item">
+          <div class="prov-label">Formula Access</div>
+          <div class="prov-value">Public · No restriction</div>
+        </div>
+        <div class="prov-item">
+          <div class="prov-label">IP Owner</div>
+          <div class="prov-value">Oak Ridge Management</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CO-PUBLICATION INVITATION ════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr green">Co-Publication Invitation</div>
+    <div class="copub-grid">
+      <div class="copub-card">
+        <h3>Methodology Review</h3>
+        <p>
+          We invite technical review of the CEH™ v1.0 methodology by any qualified
+          independent party — standards body, academic institution, or industry analyst.
+          Reviewers receive the full technical specification package, including formula
+          derivation, COU definitions, grade scale calibration rationale, and benchmark
+          configuration parameters.
+        </p>
+        <p>
+          Methodology review is distinct from certification: it is an academic review
+          of the standard itself, not a submission of a specific infrastructure
+          configuration.
+        </p>
+        <ul class="check-list green" style="margin-top:8px;">
+          <li>Full specification package provided on request</li>
+          <li>Review memo published alongside the standard on agreement</li>
+          <li>Reviewer credit in CEH™ Index methodology disclosure</li>
+        </ul>
+      </div>
+      <div class="copub-card">
+        <h3>Joint Benchmarking</h3>
+        <p>
+          Standards bodies and research institutions are invited to run the CEH™
+          benchmark against independently acquired hardware configurations and
+          publish their results — independently, or as a co-authored addendum
+          to CEH™ v1.0.
+        </p>
+        <p>
+          Joint benchmarking expands the index beyond publicly reported data
+          and creates a replication record that strengthens the standard's
+          institutional standing.
+        </p>
+        <ul class="check-list green" style="margin-top:8px;">
+          <li>Reference configuration package available</li>
+          <li>COU definitions and throughput measurement protocol provided</li>
+          <li>Results published in versioned index addendum</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Standards Body Submission -->
+    <div class="open-block" style="margin-top:16px;border-left-color:var(--a4);">
+      <span class="ob-label" style="color:var(--a4);">▸ Standards Body Submission</span>
+      <p>
+        Oak Ridge Management is preparing CEH™ v1.0 for submission to recognized standards bodies
+        as a candidate specification. We specifically seek co-submission partners from the following
+        ecosystems — parties with established standing in the relevant body who would co-author the
+        submission and lend institutional credibility to the process.
+      </p>
+      <div class="org-list">
+        <span class="org-tag">MLCommons</span>
+        <span class="org-tag">Green Grid</span>
+        <span class="org-tag">IEEE · P2510 / P2830</span>
+        <span class="org-tag">ASHRAE TC 9.9</span>
+        <span class="org-tag">The Open Compute Project</span>
+        <span class="org-tag">Climate Neutral Data Centre Pact</span>
+        <span class="org-tag">SNIA Green Storage</span>
+        <span class="org-tag">IEA EDSG</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THREE AUDIENCE TRACKS ════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr green">Engagement By Audience</div>
+    <div class="audience-grid">
+
+      <div class="audience-card">
+        <div class="ac-num">Track A · Academic</div>
+        <h3>Academic &amp; Replication Partners</h3>
+        <p>
+          University labs and research groups are invited to access the reference
+          configuration dataset and COU measurement protocol for independent
+          replication studies. Citation protocol is defined; results are welcomed
+          as independent verification of CEH™ v1.0.
+        </p>
+        <ul class="check-list green" style="margin-bottom:14px;">
+          <li>Reference configuration dataset</li>
+          <li>COU measurement protocol and hardware specs</li>
+          <li>Citation guide and arXiv preprint co-author consideration</li>
+        </ul>
+        <div class="ac-meta">
+          Suitable for: CS / EE / Energy Systems / Operations Research departments
+        </div>
+      </div>
+
+      <div class="audience-card">
+        <div class="ac-num">Track B · Standards Bodies</div>
+        <h3>Standards Body Co-Submission</h3>
+        <p>
+          Organizations with established standing in IEEE, MLCommons, Green Grid,
+          ASHRAE, or similar bodies are invited to co-author a standards body
+          submission for CEH™ as a candidate specification. We provide the full
+          technical package; you provide institutional standing and co-authorship.
+        </p>
+        <ul class="check-list green" style="margin-bottom:14px;">
+          <li>Full technical specification for submission package</li>
+          <li>Named co-author / co-submitter on the application</li>
+          <li>Joint roadmap for v2.0 methodology enhancements</li>
+        </ul>
+        <div class="ac-meta">
+          Suitable for: IEEE members, MLCommons working group participants, Green Grid members
+        </div>
+      </div>
+
+      <div class="audience-card">
+        <div class="ac-num">Track C · Industry Analysts</div>
+        <h3>Analyst Licensing &amp; Coverage</h3>
+        <p>
+          Industry analyst firms are invited to license the CEH™ Index for inclusion
+          in research reports and benchmarking publications. A licensing agreement
+          covers use of the CEH™ Index data, grade scale, and methodology citation
+          in published analyst reports.
+        </p>
+        <ul class="check-list green" style="margin-bottom:14px;">
+          <li>CEH™ Index data license for analyst reports</li>
+          <li>Methodology briefing and Q&amp;A session</li>
+          <li>Advance notice of CEH™ v2.0 publication</li>
+        </ul>
+        <div class="ac-meta">
+          Suitable for: 451 Research, Gartner, IDC, Forrester, Wood Mackenzie, BloombergNEF
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA / FORM ════════════════════════════════════════════════════ -->
+<section class="gate-section" id="conversation">
+  <div class="wrap">
+    <div class="gate-wrap">
+
+      <div class="gate-copy">
+        <div class="section-hdr green">Open a Conversation</div>
+        <h2>Co-Publication<br>Inquiry</h2>
+        <p>
+          Whether you are a standards body member exploring co-submission, a
+          university lab interested in replication, or an analyst firm considering
+          licensing the CEH™ Index — start here.
+        </p>
+        <p>
+          We will respond within 5 business days with the appropriate materials
+          package for your track. There is no commercial gate on the methodology
+          documentation — the standard is open.
+        </p>
+        <p>
+          Co-publication and standards body submission are collaborative processes.
+          We approach this as peers in the standards community, not as a vendor
+          seeking approval.
+        </p>
+      </div>
+
+      <div class="form-panel">
+        <div class="form-panel-title">▸ Research &amp; Standards Inquiry</div>
+        <form
+          name="standards-copub"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          id="standards-form"
+        >
+          <p style="display:none;"><label>Don't fill: <input name="bot-field"></label></p>
+          <input type="hidden" name="form-name" value="standards-copub">
+          <input type="hidden" name="track" value="standards">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="std-first">First Name</label>
+              <input class="form-input" type="text" id="std-first" name="first-name" placeholder="First" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="std-last">Last Name</label>
+              <input class="form-input" type="text" id="std-last" name="last-name" placeholder="Last" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="std-org">Organization</label>
+            <input class="form-input" type="text" id="std-org" name="organization" placeholder="Standards body / University / Analyst firm" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="std-role">Role</label>
+            <input class="form-input" type="text" id="std-role" name="role" placeholder="Professor / Working Group Chair / Research Director" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="std-email">Email</label>
+            <input class="form-input" type="email" id="std-email" name="email" placeholder="name@institution.edu" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="std-track">Engagement Type</label>
+            <select class="form-select" id="std-track" name="engagement-type" required>
+              <option value="">Select track</option>
+              <option value="academic">Academic Replication</option>
+              <option value="standards-body">Standards Body Co-submission</option>
+              <option value="analyst">Analyst Licensing / Coverage</option>
+              <option value="methodology-review">Methodology Review</option>
+              <option value="joint-benchmark">Joint Benchmarking</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="std-affiliations">Relevant Affiliations</label>
+            <input class="form-input" type="text" id="std-affiliations" name="affiliations" placeholder="e.g. IEEE senior member, MLCommons working group, ASHRAE TC 9.9">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="std-note">Context &amp; Intent</label>
+            <textarea class="form-textarea" id="std-note" name="note" placeholder="Brief description of your interest, intended use of CEH™ methodology, and any specific questions..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit green">Open a Co-Publication Conversation</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-mark">Oak Ridge <span>Management</span></div>
+      <div class="footer-tm">
+        CEH™ is a trademark of Oak Ridge Management.<br>
+        First published April 21, 2026. All rights reserved.
+      </div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/standard/">CEH™ Standard</a></li>
+      <li><a href="/standard/methodology/">Methodology</a></li>
+      <li><a href="/partners/capital/">Capital Partners</a></li>
+      <li><a href="/partners/operators/">Operators</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+</script>
+</body>
+</html>

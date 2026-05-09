@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+
+  <!-- White background -->
+  <rect width="600" height="450" fill="white"/>
+
+  <!-- Main dark badge -->
+  <rect x="80" y="22" width="440" height="318" fill="#252d3c"/>
+
+  <!-- Inner thin border -->
+  <rect x="89" y="31" width="422" height="300" fill="none" stroke="#5a6272" stroke-width="1.5"/>
+
+  <!-- White square for monogram -->
+  <rect x="152" y="56" width="296" height="222" fill="white"/>
+
+  <!--
+    DG Monogram — arc-based D letterform + G crossbar
+    Outer path: D shape — left vertical bar + perfect semicircular arc bowl
+    Inner path: counter hole punched inside D's bowl (fill-rule evenodd)
+    G crossbar rect: overlaid dark rect in lower-right of counter, forming G shelf
+    Arc center for both: (308, 167). Outer R=92, inner r=46.
+  -->
+  <path fill-rule="evenodd" fill="#252d3c" d="
+    M 190,75
+    L 308,75
+    A 92,92 0 1 1 308,259
+    L 190,259
+    Z
+
+    M 242,121
+    L 308,121
+    A 46,46 0 1 1 308,213
+    L 242,213
+    Z
+  "/>
+
+  <!-- G crossbar: fills lower-right of the counter, forming the G shelf -->
+  <rect x="278" y="167" width="76" height="46" fill="#252d3c"/>
+
+  <!-- "ENERGY & INFRASTRUCTURE" — inside badge below the white square -->
+  <text
+    x="300" y="315"
+    font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="13"
+    font-weight="400"
+    letter-spacing="4.5"
+    fill="#c2cad5"
+    text-anchor="middle">ENERGY &amp; INFRASTRUCTURE</text>
+
+  <!-- "D G E & I" — below the badge on white background -->
+  <text
+    x="300" y="408"
+    font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="27"
+    font-weight="300"
+    letter-spacing="16"
+    fill="#828ea0"
+    text-anchor="middle">D G E &amp; I</text>
+
+</svg>

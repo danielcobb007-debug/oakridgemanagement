@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capital Partners — Oak Ridge Management | CEH™ Standard</title>
+<meta name="description" content="DGE&amp;I BTM compute infrastructure JV — the first commercial AI infrastructure deployment built on CEH™ measurement. For qualified capital partners.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://oakridgemanagement.net/partners/capital/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  main { padding-top: 60px; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 0 70px;
+    border-bottom: 1px solid var(--border);
+  }
+  .track-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a2);
+    border: 1px solid var(--a2);
+    padding: 5px 12px;
+    margin-bottom: 24px;
+  }
+  .track-badge .dot {
+    width: 5px; height: 5px;
+    background: var(--a2);
+    border-radius: 50%;
+  }
+  .hero-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-top: 24px;
+    letter-spacing: 0.2px;
+  }
+  .hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* ── THESIS ── */
+  .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+
+  .thesis-block {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--a3);
+    padding: 24px 28px;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.85;
+    letter-spacing: 0.2px;
+  }
+  .thesis-block .tf-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--a3);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  /* ── STAT ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 32px;
+  }
+  @media (max-width: 700px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+  .stat-card {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 24px 20px;
+    position: relative;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .sc-1::before { background: var(--a1); }
+  .sc-2::before { background: var(--a2); }
+  .sc-3::before { background: var(--a3); }
+  .sc-4::before { background: var(--a4); }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--label);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .stat-value {
+    font-family: var(--mono);
+    font-size: 26px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .sc-1 .stat-value { color: var(--a1); }
+  .sc-2 .stat-value { color: var(--a2); }
+  .sc-3 .stat-value { color: var(--a3); }
+  .sc-4 .stat-value { color: var(--a4); }
+  .stat-sub {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── CAPITAL STACK ── */
+  .stack-item {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 3px;
+  }
+  .stack-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--label);
+    width: 220px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 16px;
+  }
+  .stack-bar-wrap {
+    flex: 1;
+    background: var(--s2);
+    height: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stack-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: #000;
+    transition: width 0.8s ease;
+  }
+  .stack-pct {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text);
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+    width: 80px;
+    flex-shrink: 0;
+  }
+  .stack-section-lbl {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--a1);
+    text-transform: uppercase;
+    padding: 12px 0 6px;
+    display: block;
+  }
+
+  /* ── OFFTAKE / LOOKING FOR ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 32px;
+  }
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+  .info-panel {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+  .info-panel h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+
+  /* ── GATE / CTA ── */
+  .gate-section {
+    padding: 64px 0;
+  }
+  .gate-wrap {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .gate-wrap { grid-template-columns: 1fr; } }
+  .gate-copy h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .gate-copy p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .gate-note {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--a2);
+    padding: 12px 16px;
+    margin-top: 20px;
+  }
+  .form-panel {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--a2);
+    padding: 28px;
+  }
+  .form-panel-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a2);
+    margin-bottom: 24px;
+  }
+  .form-success {
+    display: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--a3);
+    padding: 16px;
+    border: 1px solid var(--a3);
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  /* IC warning */
+  .ic-strip {
+    background: rgba(255,107,0,0.05);
+    border: 1px solid rgba(255,107,0,0.3);
+    border-left: 3px solid var(--a2);
+    padding: 14px 20px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--label);
+    line-height: 1.8;
+    margin-top: 32px;
+  }
+  .ic-strip strong { color: var(--a2); }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ══════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag">Institutional Home · CEH™ Standard</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/partners/" aria-current="page">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <a href="/investor/" class="nav-investor-cta">Investor</a>
+    <a href="/contact/" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="track-badge"><span class="dot"></span>Track 02 · Capital Partners · JV</div>
+    <h1>Invest in the<br><em class="orange">Infrastructure</em></h1>
+    <p class="hero-sub">
+      DGE&amp;I (Dahlhauser Galbraith Energy &amp; Infrastructure) is the first commercial
+      BTM compute infrastructure deployment built on CEH™ measurement — positioned at
+      the intersection of dispatchable generation and AI inference demand.
+      Qualified capital partners only.
+    </p>
+    <div class="hero-actions">
+      <a href="#request" class="btn btn-outline-orange">Request the LP Package</a>
+      <a href="/standard/" class="btn btn-outline-cyan">CEH™ Standard →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THESIS ═══════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr orange">Investment Thesis</div>
+    <div class="thesis-block">
+      <span class="tf-label">▸ Core Thesis</span>
+      AI inference demand is structurally outpacing grid capacity — PJM interconnection queues
+      now exceed 8 years, and data center operators pay grid rates of $0.085–$0.12/kWh while
+      locking in 10–15 year capacity commitments. Dispatchable, behind-the-meter generation
+      assets co-located with compute infrastructure deliver firm power at $0.030–$0.045/kWh —
+      source-agnostic. CEH™ (Compute Energy Hour) is the unit that quantifies the resulting
+      energy cost advantage. DGE&amp;I is positioned at the intersection of BTM generation and
+      AI compute, producing structurally lower CEH™ than grid-dependent operators — regardless
+      of which generation technology delivers the power.
+    </div>
+
+    <!-- 4-stat row -->
+    <div class="stats-row">
+      <div class="stat-card sc-1">
+        <div class="stat-label">CEH™ Cost Spread</div>
+        <div class="stat-value">$0.045</div>
+        <div class="stat-sub">per kWh advantage<br>vs US grid avg $0.085</div>
+      </div>
+      <div class="stat-card sc-2">
+        <div class="stat-label">Pipeline</div>
+        <div class="stat-value">300 MW</div>
+        <div class="stat-sub">anchor offtake contracted<br>QumulusAI · active</div>
+      </div>
+      <div class="stat-card sc-3">
+        <div class="stat-label">CEH™ Cost Reduction</div>
+        <div class="stat-value">59%</div>
+        <div class="stat-sub">vs grid at full utilization<br>BTM generation (any source)</div>
+      </div>
+      <div class="stat-card sc-4">
+        <div class="stat-label">Target IRR Band</div>
+        <div class="stat-value">Gated</div>
+        <div class="stat-sub">LP package only<br>request access below</div>
+      </div>
+    </div>
+
+    <!-- IC strip -->
+    <div class="ic-strip">
+      <strong>Lender-Grade Framing:</strong>
+      &nbsp;Returns language, DSCR projections, contracted revenue schedules, and downside case
+      analysis are included in the LP package and are available only to qualified capital partners
+      who complete the form below. Nothing on this public page constitutes an offer to sell or
+      solicitation of an offer to purchase any security.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAPITAL STACK ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-hdr orange">Capital Stack · At a Glance</div>
+
+    <div style="background:var(--s1);border:1px solid var(--border);padding:24px;margin-bottom:24px;">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-bottom:20px;letter-spacing:1px;">
+        ILLUSTRATIVE STRUCTURE · FULL MODEL IN LP PACKAGE
+      </div>
+
+      <span class="stack-section-lbl">▸ Equity Layer</span>
+      <div class="stack-item">
+        <div class="stack-label">Sponsor Equity</div>
+        <div class="stack-bar-wrap">
+          <div class="stack-bar" style="width:20%;background:var(--a2);">20%</div>
+        </div>
+        <div class="stack-pct">~20%</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-label">Institutional LP Equity</div>
+        <div class="stack-bar-wrap">
+          <div class="stack-bar" style="width:30%;background:rgba(255,107,0,0.5);">30%</div>
+        </div>
+        <div class="stack-pct">~30%</div>
+      </div>
+
+      <span class="stack-section-lbl">▸ Debt Layer</span>
+      <div class="stack-item">
+        <div class="stack-label">Senior Project Debt</div>
+        <div class="stack-bar-wrap">
+          <div class="stack-bar" style="width:40%;background:var(--a1);">40%</div>
+        </div>
+        <div class="stack-pct">~40%</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-label">Tax Equity / ITC Bridge</div>
+        <div class="stack-bar-wrap">
+          <div class="stack-bar" style="width:10%;background:var(--a4);">10%</div>
+        </div>
+        <div class="stack-pct">~10%</div>
+      </div>
+
+      <div class="footnote" style="margin-top:16px;">
+        Percentages are illustrative. Actual allocation per project tranche is detailed in the LP package.
+        DSCR targets, contracted revenue, and downside case are gated to qualified capital partners.
+      </div>
+    </div>
+
+    <!-- Offtake + Looking For -->
+    <div class="two-col">
+      <div class="info-panel">
+        <h3>▸ Anchor Offtake</h3>
+        <ul class="check-list orange" style="gap:14px;">
+          <li>
+            <strong style="color:#fff;">QumulusAI — 300 MW</strong><br>
+            <span style="color:var(--muted);font-size:11px;">AI inference compute demand · active engagement · named anchor offtake partner</span>
+          </li>
+          <li>Offtake structure supports contracted revenue underwriting for senior project debt</li>
+          <li>DGE&amp;I BTM architecture enables firm delivery commitment regardless of grid interconnection queue position</li>
+          <li>Additional offtake capacity available for co-investment partners and second-tranche deployment</li>
+        </ul>
+      </div>
+      <div class="info-panel">
+        <h3>▸ What We Are Looking For</h3>
+        <ul class="check-list orange">
+          <li>Equity investors — project-level LP stakes in operating assets</li>
+          <li>Senior project debt — lender-grade underwriting; contracted revenue base</li>
+          <li>Tax equity — ITC monetization; eligible generation sources</li>
+          <li>Anchor offtake co-investment — take-or-pay adjacent compute infrastructure</li>
+          <li>Strategic capital — infrastructure family offices, energy transition funds</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GATED FORM ════════════════════════════════════════════════════ -->
+<section class="gate-section" id="request">
+  <div class="wrap">
+    <div class="gate-wrap">
+
+      <div class="gate-copy">
+        <div class="section-hdr orange">Request LP Package</div>
+        <h2>Capital Partner<br>Inquiry</h2>
+        <p>
+          The LP package includes the full capital stack model, DSCR projections,
+          contracted revenue schedule, downside case analysis, and project site overview.
+          Available to qualified institutional capital partners.
+        </p>
+        <p>
+          After form submission, a member of Oak Ridge Management's capital team
+          will contact you within 2 business days to confirm fit and distribute
+          materials under NDA where applicable.
+        </p>
+        <div class="gate-note">
+          Nothing herein constitutes an offer to sell or solicitation of an offer to
+          purchase any security. The LP package is distributed to qualified investors
+          only. CEH™ is a trademark of Oak Ridge Management.
+        </div>
+      </div>
+
+      <div class="form-panel">
+        <div class="form-panel-title">▸ Capital Partner Inquiry</div>
+        <form
+          name="capital-partner"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          id="capital-form"
+        >
+          <p style="display:none;"><label>Don't fill: <input name="bot-field"></label></p>
+          <input type="hidden" name="form-name" value="capital-partner">
+          <input type="hidden" name="track" value="capital">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="cap-first">First Name</label>
+              <input class="form-input" type="text" id="cap-first" name="first-name" placeholder="First" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cap-last">Last Name</label>
+              <input class="form-input" type="text" id="cap-last" name="last-name" placeholder="Last" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cap-org">Organization</label>
+            <input class="form-input" type="text" id="cap-org" name="organization" placeholder="Firm / Fund / Family Office" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cap-role">Role</label>
+            <input class="form-input" type="text" id="cap-role" name="role" placeholder="Managing Partner / CIO / Portfolio Manager" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cap-email">Email</label>
+            <input class="form-input" type="email" id="cap-email" name="email" placeholder="name@firm.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cap-type">Capital Interest</label>
+            <select class="form-select" id="cap-type" name="capital-type" required>
+              <option value="">Select interest type</option>
+              <option value="equity">Project-level LP Equity</option>
+              <option value="debt">Senior Project Debt</option>
+              <option value="tax-equity">Tax Equity / ITC</option>
+              <option value="offtake-coinvest">Anchor Offtake Co-investment</option>
+              <option value="strategic">Strategic Capital / Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cap-note">Short Note</label>
+            <textarea class="form-textarea" id="cap-note" name="note" placeholder="Brief context on your mandate, capital size, or specific questions..."></textarea>
+          </div>
+          <button type="submit" class="form-submit orange">Request LP Package</button>
+        </form>
+        <div class="form-success" id="cap-success">
+          ▸ Inquiry received. We will contact you within 2 business days.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-mark">Oak Ridge <span>Management</span></div>
+      <div class="footer-tm">
+        CEH™ is a trademark of Oak Ridge Management.<br>
+        First published April 21, 2026. All rights reserved.
+      </div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/standard/">CEH™ Standard</a></li>
+      <li><a href="/partners/capital/">Capital Partners</a></li>
+      <li><a href="/partners/operators/">Operators</a></li>
+      <li><a href="/partners/standards/">Research Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+// Animate stack bars on load
+document.querySelectorAll('.stack-bar').forEach(bar => {
+  const target = bar.style.width;
+  bar.style.width = '0';
+  setTimeout(() => { bar.style.width = target; }, 200);
+});
+</script>
+</body>
+</html>

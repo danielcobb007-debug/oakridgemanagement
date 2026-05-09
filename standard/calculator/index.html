@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEH™ Calculator — BTM vs Grid Cost Model · Oak Ridge Management</title>
+<meta name="description" content="Interactive CEH™ (Compute Energy Hour) cost model. Input your BTM generation capacity, compute configuration, and energy rates to calculate CEH™ rate, cost, and the BTM vs grid spread.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://oakridgemanagement.net/standard/calculator/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  main { padding-top: 60px; }
+  .page-header { padding: 56px 0 44px; border-bottom: 1px solid var(--border); }
+  .page-header-inner { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; }
+  .page-meta-note { font-family: var(--mono); font-size: 9px; color: var(--muted); line-height: 1.8; letter-spacing: 0.5px; text-align: right; }
+
+  .content { padding: 40px 0 80px; }
+
+  /* ── LAYOUT ── */
+  .model-layout { display: grid; grid-template-columns: 340px 1fr; gap: 16px; }
+  @media (max-width: 820px) { .model-layout { grid-template-columns: 1fr; } }
+
+  /* ── INPUTS PANEL ── */
+  .inputs-panel {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+  .ip-section { margin-bottom: 24px; }
+  .ip-section-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--a1);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ip-section.s2 .ip-section-label { color: var(--a2); }
+  .ip-section.s3 .ip-section-label { color: var(--a3); }
+
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: var(--label); text-transform: uppercase; margin-bottom: 5px; }
+  .field-row { display: flex; background: var(--s2); border: 1px solid var(--border); }
+  .field-row input, .field-row select {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: #fff; font-family: var(--mono); font-size: 13px; padding: 9px 12px;
+  }
+  .field-row select option { background: var(--s2); }
+  .field-row:focus-within { border-color: var(--a1); }
+  .field-unit {
+    font-family: var(--mono); font-size: 9px; color: var(--muted);
+    padding: 9px 10px; border-left: 1px solid var(--border);
+    display: flex; align-items: center; white-space: nowrap;
+  }
+
+  .run-btn {
+    width: 100%;
+    background: transparent;
+    border: 2px solid var(--a3);
+    color: var(--a3);
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .run-btn:hover { background: var(--a3); color: #000; }
+
+  /* ── OUTPUT CARDS ── */
+  .outputs-panel { display: flex; flex-direction: column; gap: 12px; }
+
+  .out-card {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    padding: 18px 20px;
+    position: relative;
+  }
+  .out-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .oc-energy::before  { background: var(--a1); }
+  .oc-capital::before { background: var(--a2); }
+  .oc-profit::before  { background: var(--a3); }
+  .oc-returns::before { background: var(--a4); }
+  .oc-ceh::before     { background: #cc88ff; }
+
+  .out-label { font-family: var(--mono); font-size: 8px; letter-spacing: 3px; color: var(--label); text-transform: uppercase; margin-bottom: 12px; }
+  .out-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .out-stat { background: var(--s2); padding: 12px; border: 1px solid var(--border); }
+  .os-label { font-family: var(--mono); font-size: 8px; letter-spacing: 1px; color: var(--label); text-transform: uppercase; margin-bottom: 6px; }
+  .os-val { font-family: var(--mono); font-size: 17px; color: #fff; }
+  .os-sub { font-family: var(--mono); font-size: 9px; color: var(--muted); margin-top: 3px; }
+  .os-val.green  { color: var(--a3); }
+  .os-val.cyan   { color: var(--a1); }
+  .os-val.orange { color: var(--a2); }
+  .os-val.gold   { color: var(--a4); }
+  .os-val.purple { color: #cc88ff; }
+
+  /* Spread bar */
+  .spread-bar-wrap { margin-top: 12px; }
+  .spread-bar-labels { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 9px; color: var(--muted); margin-bottom: 4px; }
+  .spread-bar-outer { height: 8px; background: var(--s3); }
+  .spread-bar-btm { height: 100%; background: var(--a3); transition: width 0.5s ease; }
+
+  /* disclaimer */
+  .calc-note { font-family: var(--mono); font-size: 9px; color: var(--muted); line-height: 1.8; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 14px; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag">Institutional Home · CEH™ Standard</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/standard/" aria-current="page">Standard</a></li>
+      <li><a href="/partners/">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <a href="/investor/" class="nav-investor-cta">Investor</a>
+    <a href="/contact/" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <span class="eyebrow">▸ Interactive Model · CEH™ Standard · Oak Ridge Management</span>
+      <h1>CEH™ <em>Calculator</em></h1>
+      <div style="font-size:13px;font-weight:300;color:var(--label);letter-spacing:2px;text-transform:uppercase;margin-top:6px;">
+        BTM vs Grid Cost Model · Energy-Agnostic
+      </div>
+    </div>
+    <div class="page-meta-note">
+      Formula: CEH™ = (TDP × Units × Util × PUE) ÷ 1,000 ÷ Tokens/hr<br>
+      CEH™ Cost = CEH™ × $/kWh · BTM rate is source-agnostic<br>
+      Results are illustrative; not investment advice
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- Formula bar -->
+  <div class="formula-bar" style="margin-bottom:28px;">
+    <div class="f-label">CEH™ Formula</div>
+    <div class="f-eq">
+      <span class="c1">CEH™</span> = ( <span class="c2">TDP_W</span> × Units × Util% × PUE ) ÷ 1,000 ÷ <span class="c3">Output_Units/hr</span>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <span class="c1">CEH™ Cost</span> = CEH™ × <span class="c2">$/kWh (any energy source)</span>
+    </div>
+  </div>
+
+  <div class="model-layout">
+
+    <!-- ── INPUTS ── -->
+    <div class="inputs-panel">
+
+      <div class="ip-section">
+        <div class="ip-section-label">Energy Infrastructure</div>
+        <div class="field">
+          <label>BTM Generation Capacity</label>
+          <div class="field-row"><input type="number" id="btm-mw" value="10" min="1" max="500"><span class="field-unit">MW</span></div>
+        </div>
+        <div class="field">
+          <label>BTM Energy Rate (any source)</label>
+          <div class="field-row"><input type="number" id="btm-rate" value="0.035" step="0.001" min="0.01"><span class="field-unit">$/kWh</span></div>
+        </div>
+        <div class="field">
+          <label>Grid Rate (avoided cost)</label>
+          <div class="field-row"><input type="number" id="grid-rate" value="0.085" step="0.001" min="0.01"><span class="field-unit">$/kWh</span></div>
+        </div>
+        <div class="field">
+          <label>Capacity Factor (generation source)</label>
+          <div class="field-row"><input type="number" id="cap-factor" value="25" min="5" max="95"><span class="field-unit">%</span></div>
+        </div>
+        <div class="field">
+          <label>Generation CapEx (all-in)</label>
+          <div class="field-row"><input type="number" id="gen-capex" value="1.2" step="0.1" min="0.3"><span class="field-unit">$/W</span></div>
+        </div>
+      </div>
+
+      <div class="ip-section s2">
+        <div class="ip-section-label">Compute Infrastructure</div>
+        <div class="field">
+          <label>GPU Configuration</label>
+          <div class="field-row">
+            <select id="gpu-type">
+              <option value="b200">NVIDIA B200 (8×) · 1000W · 1200 tok/s</option>
+              <option value="h200">NVIDIA H200 (8×) · 700W · 420 tok/s</option>
+              <option value="h100" selected>NVIDIA H100 SXM (8×) · 700W · 320 tok/s</option>
+              <option value="l40s">NVIDIA L40S (8×) · 350W · 185 tok/s</option>
+              <option value="a100">NVIDIA A100 80GB (8×) · 400W · 140 tok/s</option>
+              <option value="mi300x">AMD MI300X (8×) · 750W · 280 tok/s</option>
+              <option value="tpuv4">Google TPU v4 (8×) · 450W · 290 tok/s</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Number of 8-GPU Nodes</label>
+          <div class="field-row"><input type="number" id="nodes" value="20" min="1" max="5000"><span class="field-unit">nodes</span></div>
+        </div>
+        <div class="field">
+          <label>Average Utilization</label>
+          <div class="field-row"><input type="number" id="utilization" value="80" min="10" max="100"><span class="field-unit">%</span></div>
+        </div>
+        <div class="field">
+          <label>PUE</label>
+          <div class="field-row"><input type="number" id="pue" value="1.2" step="0.05" min="1.0" max="2.5"><span class="field-unit">ratio</span></div>
+        </div>
+        <div class="field">
+          <label>Compute Revenue (inference)</label>
+          <div class="field-row"><input type="number" id="compute-rev" value="2.25" step="0.25" min="0.25"><span class="field-unit">$/GPU-hr</span></div>
+        </div>
+      </div>
+
+      <button class="run-btn" onclick="runModel()">▸ Calculate CEH™</button>
+    </div>
+
+    <!-- ── OUTPUTS ── -->
+    <div class="outputs-panel" id="outputs">
+
+      <div class="out-card oc-ceh">
+        <div class="out-label">▸ CEH™ Rate · Energy Efficiency</div>
+        <div class="out-grid">
+          <div class="out-stat"><div class="os-label">CEH™ Rate (BTM)</div><div class="os-val purple" id="out-ceh-btm">—</div><div class="os-sub">kWh/token</div></div>
+          <div class="out-stat"><div class="os-label">CEH™ Rate (Grid)</div><div class="os-val" id="out-ceh-grid">—</div><div class="os-sub">kWh/token</div></div>
+          <div class="out-stat"><div class="os-label">CEH™ Grade</div><div class="os-val purple" id="out-grade">—</div><div class="os-sub">efficiency grade</div></div>
+        </div>
+      </div>
+
+      <div class="out-card oc-energy">
+        <div class="out-label">▸ Energy Infrastructure</div>
+        <div class="out-grid">
+          <div class="out-stat"><div class="os-label">BTM Energy Output</div><div class="os-val cyan" id="out-btm-gwh">—</div><div class="os-sub">GWh/year</div></div>
+          <div class="out-stat"><div class="os-label">Compute Power Draw</div><div class="os-val" id="out-compute-mw">—</div><div class="os-sub">MW total</div></div>
+          <div class="out-stat"><div class="os-label">BTM Coverage</div><div class="os-val cyan" id="out-btm-coverage">—</div><div class="os-sub">% of compute demand</div></div>
+        </div>
+        <div class="spread-bar-wrap">
+          <div class="spread-bar-labels"><span>BTM Coverage</span><span id="out-btm-pct">0%</span></div>
+          <div class="spread-bar-outer"><div class="spread-bar-btm" id="spread-bar" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div class="out-card oc-capital">
+        <div class="out-label">▸ CEH™ Cost · Energy Arbitrage</div>
+        <div class="out-grid">
+          <div class="out-stat"><div class="os-label">BTM CEH™ Cost/M Tokens</div><div class="os-val green" id="out-cost-btm">—</div><div class="os-sub">$/M tokens</div></div>
+          <div class="out-stat"><div class="os-label">Grid CEH™ Cost/M Tokens</div><div class="os-val orange" id="out-cost-grid">—</div><div class="os-sub">$/M tokens</div></div>
+          <div class="out-stat"><div class="os-label">CEH™ Spread</div><div class="os-val orange" id="out-spread">—</div><div class="os-sub">$/M tokens saved</div></div>
+        </div>
+      </div>
+
+      <div class="out-card oc-profit">
+        <div class="out-label">▸ Annual Economics (at capacity)</div>
+        <div class="out-grid">
+          <div class="out-stat"><div class="os-label">Energy Cost Saving/Yr</div><div class="os-val green" id="out-energy-saving">—</div><div class="os-sub">BTM vs grid avoided cost</div></div>
+          <div class="out-stat"><div class="os-label">Gross Compute Revenue</div><div class="os-val" id="out-compute-rev">—</div><div class="os-sub">at stated $/GPU-hr</div></div>
+          <div class="out-stat"><div class="os-label">Generation CapEx</div><div class="os-val" id="out-capex">—</div><div class="os-sub">all-in, stated $/W</div></div>
+        </div>
+      </div>
+
+      <div class="out-card oc-returns">
+        <div class="out-label">▸ Carbon Efficiency</div>
+        <div class="out-grid">
+          <div class="out-stat"><div class="os-label">CO₂/M Tokens (Grid mix)</div><div class="os-val" id="out-co2">—</div><div class="os-sub">grams CO₂</div></div>
+          <div class="out-stat"><div class="os-label">Annual CO₂ Avoided</div><div class="os-val gold" id="out-co2-avoided">—</div><div class="os-sub">tonnes CO₂/yr (BTM offset)</div></div>
+          <div class="out-stat"><div class="os-label">Carbon Intensity Source</div><div class="os-val" style="font-size:11px;color:var(--muted);">US eGRID avg</div><div class="os-sub">0.386 kg CO₂/kWh</div></div>
+        </div>
+      </div>
+
+      <div class="calc-note">
+        Results are illustrative. CEH™ rate uses formula: (TDP × units × util × PUE) / 1000 / (tps × units × 3600).
+        BTM energy rate is source-agnostic — applies to any dispatchable generation type.
+        Revenue and CapEx figures are inputs, not projections. This tool does not constitute investment advice.
+        CEH™ is a trademark of Oak Ridge Management. First published April 21, 2026.
+      </div>
+
+    </div><!-- /outputs -->
+  </div><!-- /model-layout -->
+</div><!-- /content -->
+</div><!-- /wrap -->
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-mark">Oak Ridge <span>Management</span></div>
+      <div class="footer-tm">CEH™ is a trademark of Oak Ridge Management.<br>First published April 21, 2026. All rights reserved.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/standard/benchmark/">CEH™ Index</a></li>
+      <li><a href="/standard/methodology/">Methodology</a></li>
+      <li><a href="/partners/capital/">Capital Partners</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+
+const GPU_CONFIGS = {
+  b200:  { tdp: 1000, tps: 1200 },
+  h200:  { tdp: 700,  tps: 420  },
+  h100:  { tdp: 700,  tps: 320  },
+  l40s:  { tdp: 350,  tps: 185  },
+  a100:  { tdp: 400,  tps: 140  },
+  mi300x:{ tdp: 750,  tps: 280  },
+  tpuv4: { tdp: 450,  tps: 290  },
+};
+
+function grade(ceh) {
+  if (ceh < 2e-10)  return 'S';
+  if (ceh < 4e-10)  return 'A';
+  if (ceh < 8e-10)  return 'B';
+  if (ceh < 15e-10) return 'C';
+  if (ceh < 30e-10) return 'D';
+  return 'F';
+}
+
+function fmt(n, dec=2) { return n.toLocaleString(undefined, {minimumFractionDigits:dec, maximumFractionDigits:dec}); }
+function fmtM(n) { return n >= 1e6 ? `$${(n/1e6).toFixed(1)}M` : n >= 1e3 ? `$${(n/1e3).toFixed(0)}K` : `$${fmt(n,0)}`; }
+
+function runModel() {
+  const btmMW    = +document.getElementById('btm-mw').value;
+  const btmRate  = +document.getElementById('btm-rate').value;
+  const gridRate = +document.getElementById('grid-rate').value;
+  const capFactor = +document.getElementById('cap-factor').value / 100;
+  const genCapex = +document.getElementById('gen-capex').value;
+  const gpuKey   = document.getElementById('gpu-type').value;
+  const nodes    = +document.getElementById('nodes').value;
+  const util     = +document.getElementById('utilization').value / 100;
+  const pue      = +document.getElementById('pue').value;
+  const compRev  = +document.getElementById('compute-rev').value;
+
+  const gpu = GPU_CONFIGS[gpuKey];
+  const UNITS = 8;
+  const CO2 = 0.386;
+
+  // CEH™ rate
+  const kwh = (gpu.tdp * UNITS * util * pue) / 1000;
+  const tph = gpu.tps * UNITS * 3600;
+  const ceh = kwh / tph;
+  const cehGrade = grade(ceh);
+
+  const costBtm  = ceh * btmRate  * 1e6;
+  const costGrid = ceh * gridRate * 1e6;
+  const spread   = costGrid - costBtm;
+  const co2perM  = ceh * CO2 * 1e6 * 1000;
+
+  // Energy infrastructure
+  const btmGWh = btmMW * capFactor * 8760 / 1000;
+  const computeMW = (gpu.tdp * UNITS * nodes * util * pue) / 1e6;
+  const computeGWh = computeMW * 8760;
+  const btmCoverage = Math.min(100, (btmGWh / computeGWh) * 100);
+
+  // Annual economics
+  const btmEnergyGWh = Math.min(btmGWh, computeGWh);
+  const energySaving = btmEnergyGWh * 1e6 * (gridRate - btmRate);
+  const gpuHoursPerYear = nodes * UNITS * 8760 * util;
+  const grossRev = gpuHoursPerYear * compRev;
+  const capexTotal = btmMW * 1e6 * genCapex;
+  const co2AvoidedT = btmEnergyGWh * 1e6 * CO2 / 1000;
+
+  // Render
+  document.getElementById('out-ceh-btm').textContent  = ceh.toExponential(2);
+  document.getElementById('out-ceh-grid').textContent = ceh.toExponential(2);
+  document.getElementById('out-grade').textContent    = cehGrade;
+  document.getElementById('out-grade').className      = `os-val grade-${cehGrade}`;
+
+  document.getElementById('out-btm-gwh').textContent      = fmt(btmGWh,1);
+  document.getElementById('out-compute-mw').textContent   = fmt(computeMW,1);
+  document.getElementById('out-btm-coverage').textContent = fmt(btmCoverage,1) + '%';
+  document.getElementById('out-btm-pct').textContent      = fmt(btmCoverage,1) + '%';
+  document.getElementById('spread-bar').style.width       = Math.min(100, btmCoverage) + '%';
+
+  document.getElementById('out-cost-btm').textContent  = '$' + fmt(costBtm);
+  document.getElementById('out-cost-grid').textContent = '$' + fmt(costGrid);
+  document.getElementById('out-spread').textContent    = '$' + fmt(spread);
+
+  document.getElementById('out-energy-saving').textContent = fmtM(energySaving);
+  document.getElementById('out-compute-rev').textContent   = fmtM(grossRev);
+  document.getElementById('out-capex').textContent         = fmtM(capexTotal);
+
+  document.getElementById('out-co2').textContent        = fmt(co2perM, 1) + 'g';
+  document.getElementById('out-co2-avoided').textContent = fmt(co2AvoidedT, 0) + 't';
+}
+
+// Run on load with defaults
+runModel();
+</script>
+</body>
+</html>

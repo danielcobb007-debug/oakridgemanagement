@@ -1,0 +1,95 @@
+[build]
+  publish = "."
+
+# Trailing-slash canonicalization — top-level routes
+[[redirects]]
+  from = "/partners"
+  to = "/partners/"
+  status = 301
+
+[[redirects]]
+  from = "/standard"
+  to = "/standard/"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/resources"
+  to = "/resources/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/"
+  status = 301
+
+# Trailing-slash canonicalization — partner sub-routes
+[[redirects]]
+  from = "/partners/capital"
+  to = "/partners/capital/"
+  status = 301
+
+[[redirects]]
+  from = "/partners/operators"
+  to = "/partners/operators/"
+  status = 301
+
+[[redirects]]
+  from = "/partners/standards"
+  to = "/partners/standards/"
+  status = 301
+
+# Trailing-slash canonicalization — standard sub-routes
+[[redirects]]
+  from = "/standard/benchmark"
+  to = "/standard/benchmark/"
+  status = 301
+
+[[redirects]]
+  from = "/standard/calculator"
+  to = "/standard/calculator/"
+  status = 301
+
+[[redirects]]
+  from = "/standard/methodology"
+  to = "/standard/methodology/"
+  status = 301
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# ── INVESTOR PORTAL — role-based access (Netlify Identity) ───────────
+# /investor/ is public. Only /investor/platform/ and below is gated.
+
+# Pass through if request carries a valid investor-role JWT
+[[redirects]]
+  from = "/investor/platform/*"
+  to   = "/investor/platform/:splat"
+  status = 200
+  conditions = {Role = ["investor"]}
+
+# Everyone else → login
+[[redirects]]
+  from = "/investor/platform/*"
+  to   = "/login/"
+  status = 302
+
+# Trailing-slash canonicalization
+[[redirects]]
+  from = "/login"
+  to   = "/login/"
+  status = 301
+
+[[redirects]]
+  from = "/investor"
+  to   = "/investor/"
+  status = 301
+
+[[redirects]]
+  from = "/investor/platform"
+  to   = "/investor/platform/"
+  status = 301

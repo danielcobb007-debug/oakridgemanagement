@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oak Ridge Management — Institutional Home of the CEH™ Standard</title>
+<meta name="description" content="Oak Ridge Management is the originator and institutional home of CEH™ (Compute Energy Hour), the independent standard unit for measuring AI compute energy efficiency. First published April 21, 2026.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://oakridgemanagement.net/">
+<meta property="og:title" content="Oak Ridge Management — Institutional Home of the CEH™ Standard">
+<meta property="og:description" content="Originator of CEH™ — the standard unit for compute energy efficiency. Energy-agnostic. Auditable. First published April 21, 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oakridgemanagement.net">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%2300d4ff'>ORM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/css/shared.css">
+<style>
+  main { padding-top: 64px; }
+
+  /* ── TICKER ── */
+  /* (defined in shared.css) */
+
+  /* ── HERO ── */
+  .hero {
+    padding: 72px 0 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 28px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hero-meta .live-dot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--a3);
+  }
+  .hero-meta .live-dot::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--a3);
+    border-radius: 50%;
+    animation: pls 2s infinite;
+  }
+  .hero-meta .sep { color: var(--border2); }
+
+  .hero h1 { margin-bottom: 28px; }
+
+  .hero-thesis {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.65;
+    max-width: 640px;
+    margin-bottom: 48px;
+    letter-spacing: 0.1px;
+  }
+
+  /* Editorial sub-nav strip */
+  .hero-subnav {
+    display: flex;
+    border-top: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .hero-subnav::-webkit-scrollbar { display: none; }
+  .hero-subnav a {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    padding: 16px 28px;
+    border-right: 1px solid var(--border);
+    white-space: nowrap;
+    transition: color 0.15s, background 0.15s;
+    letter-spacing: 0.2px;
+  }
+  .hero-subnav a:first-child { padding-left: 0; }
+  .hero-subnav a:hover { color: #fff; }
+  .hero-subnav a.primary {
+    color: #000;
+    background: var(--a1);
+    margin-left: auto;
+    padding-left: 28px;
+  }
+  .hero-subnav a.primary:hover { background: #33ddff; }
+  @media (max-width: 640px) { .hero-subnav a.primary { margin-left: 0; } }
+
+  /* ── THREE TRACKS ── */
+  .tracks {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .track-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  @media (max-width: 768px) { .track-grid { grid-template-columns: 1fr; } }
+
+  .track-card {
+    background: var(--bg);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s;
+  }
+  .track-card:hover { background: var(--s1); }
+
+  .track-accent {
+    height: 2px;
+    margin-bottom: 28px;
+  }
+  .track-card.cyan   .track-accent { background: var(--a1); }
+  .track-card.orange .track-accent { background: var(--a2); }
+  .track-card.green  .track-accent { background: var(--a3); }
+
+  .track-num {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .track-title {
+    font-family: var(--display);
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
+  }
+  .track-card.cyan   .track-title { color: var(--a1); }
+  .track-card.orange .track-title { color: var(--a2); }
+  .track-card.green  .track-title { color: var(--a3); }
+
+  .track-audience {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--label);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  .track-desc {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 28px;
+  }
+  .track-cta {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: gap 0.2s;
+  }
+  .track-card.cyan   .track-cta { color: var(--a1); }
+  .track-card.orange .track-cta { color: var(--a2); }
+  .track-card.green  .track-cta { color: var(--a3); }
+  .track-card:hover .track-cta { gap: 16px; }
+
+  /* ── STANDARD / INDEX ── */
+  .standard-section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .chip-name { font-size: 13px; color: #fff; font-family: var(--display); font-weight: 600; }
+  .chip-gen  { font-family: var(--mono); font-size: 9px; color: var(--muted); display: block; margin-top: 2px; }
+  .badge-tag {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 1px;
+    padding: 2px 6px;
+    border: 1px solid;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .badge-new  { color: var(--a2); border-color: var(--a2); }
+  .badge-btm  { color: var(--a3); border-color: var(--a3); }
+
+  .index-footer {
+    margin-top: 14px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .index-footer a {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--a1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+  .index-footer a:hover { gap: 12px; }
+
+  /* Grade scale strip */
+  .grade-strip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 40px;
+  }
+  @media (max-width: 600px) { .grade-strip { grid-template-columns: repeat(3, 1fr); } }
+  .grade-cell {
+    background: var(--bg);
+    padding: 16px 14px;
+  }
+  .grade-letter {
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .gs-S .grade-letter { color: var(--a3); }
+  .gs-A .grade-letter { color: var(--a1); }
+  .gs-B .grade-letter { color: #4fa3ff; }
+  .gs-C .grade-letter { color: var(--a4); }
+  .gs-D .grade-letter { color: var(--a2); }
+  .gs-F .grade-letter { color: var(--red); }
+  .grade-word {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--label);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .grade-threshold {
+    font-family: var(--mono);
+    font-size: 8px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── IS / IS NOT ── */
+  .isnot-section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .isnot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  @media (max-width: 640px) { .isnot-grid { grid-template-columns: 1fr; } }
+  .isnot-panel { background: var(--bg); padding: 32px 28px; }
+  .isnot-panel h3 {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .isnot-panel.is h3   { color: var(--a3); }
+  .isnot-panel.isnot h3 { color: var(--red); }
+  .isnot-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.65;
+  }
+  .isnot-icon { font-family: var(--mono); font-size: 11px; flex-shrink: 0; margin-top: 2px; }
+  .isnot-panel.is    .isnot-icon { color: var(--a3); }
+  .isnot-panel.isnot .isnot-icon { color: var(--red); }
+
+  /* ── CITATION ── */
+  .citation-section { padding: 48px 0; }
+  .citation-block {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--a4);
+    padding: 20px 24px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text);
+    line-height: 1.9;
+  }
+  .citation-block .cite-label {
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--a4);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .citation-block em { font-style: italic; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Oak Ridge Management">
+      <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
+      <span class="nav-logo-tag">Institutional Home · CEH™ Standard</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/partners/">Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <a href="/investor/" class="nav-investor-cta">Investor</a>
+    <a href="/contact/" class="nav-cta">Contact</a>
+    <button class="nav-mobile-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ CEH™ DATA TICKER ══════════════════════════════════════════════ -->
+<div class="ceh-ticker">
+  <div class="ticker-label">CEH™ Index</div>
+  <div class="ticker-scroll">
+    <div class="ticker-track">
+      <span class="t-item"><span class="t-hw">NVIDIA B200</span><span class="t-div">·</span><span class="t-grade gs">S</span><span class="t-div">·</span><span class="t-rate">1.07×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.009/M grid · $0.004/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA H200</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">2.21×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.019/M grid · $0.008/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">Google TPU v4</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">2.63×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.022/M grid · $0.009/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA H100 SXM</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">3.18×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.027/M grid · $0.011/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA L40S</span><span class="t-div">·</span><span class="t-grade gb">B</span><span class="t-div">·</span><span class="t-rate">5.43×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.046/M grid · $0.019/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">AMD MI300X</span><span class="t-div">·</span><span class="t-grade gb">B</span><span class="t-div">·</span><span class="t-rate">6.11×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.052/M grid · $0.021/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA A100 SXM</span><span class="t-div">·</span><span class="t-grade gc">C</span><span class="t-div">·</span><span class="t-rate">8.92×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.076/M grid · $0.031/M BTM</span></span>
+      <!-- Duplicate set for seamless loop -->
+      <span class="t-item"><span class="t-hw">NVIDIA B200</span><span class="t-div">·</span><span class="t-grade gs">S</span><span class="t-div">·</span><span class="t-rate">1.07×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.009/M grid · $0.004/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA H200</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">2.21×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.019/M grid · $0.008/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">Google TPU v4</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">2.63×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.022/M grid · $0.009/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA H100 SXM</span><span class="t-div">·</span><span class="t-grade ga">A</span><span class="t-div">·</span><span class="t-rate">3.18×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.027/M grid · $0.011/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA L40S</span><span class="t-div">·</span><span class="t-grade gb">B</span><span class="t-div">·</span><span class="t-rate">5.43×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.046/M grid · $0.019/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">AMD MI300X</span><span class="t-div">·</span><span class="t-grade gb">B</span><span class="t-div">·</span><span class="t-rate">6.11×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.052/M grid · $0.021/M BTM</span></span>
+      <span class="t-item"><span class="t-hw">NVIDIA A100 SXM</span><span class="t-div">·</span><span class="t-grade gc">C</span><span class="t-div">·</span><span class="t-rate">8.92×10⁻¹⁰ kWh/tok</span><span class="t-div">·</span><span class="t-cost">$0.076/M grid · $0.031/M BTM</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap">
+
+    <div class="hero-meta">
+      <span>Oak Ridge Management</span>
+      <span class="sep">·</span>
+      <span>Atlanta, Georgia</span>
+      <span class="sep">·</span>
+      <span>v1.0 · April 21, 2026</span>
+      <span class="sep">·</span>
+      <span class="live-dot">Active Standard</span>
+    </div>
+
+    <h1>AI Infrastructure<br><em>Standard</em></h1>
+
+    <p class="hero-thesis">
+      CEH™ (Compute Energy Hour) — the independent, auditable unit for measuring
+      how efficiently energy is converted into compute output.
+      Energy-agnostic. Reproducible. Open for industry validation.
+    </p>
+
+    <nav class="hero-subnav" aria-label="Standard sections">
+      <a href="/standard/">Standard</a>
+      <a href="/standard/benchmark/">CEH™ Index</a>
+      <a href="/standard/methodology/">Methodology</a>
+      <a href="/partners/">Partners</a>
+      <a href="/resources/">Resources</a>
+      <a href="/standard/benchmark/" class="primary">View Full Index →</a>
+    </nav>
+
+  </div>
+</section>
+
+<!-- ═══ THREE TRACKS ═════════════════════════════════════════════════ -->
+<section class="tracks">
+  <div class="wrap">
+    <div class="section-hdr">How to Engage</div>
+    <div class="track-grid">
+
+      <a href="/partners/operators/" class="track-card cyan">
+        <div class="track-accent"></div>
+        <div class="track-num">01 · Operators</div>
+        <div class="track-title">Adopt the Standard</div>
+        <div class="track-audience">Data center operators · Neo-clouds · BTM developers</div>
+        <p class="track-desc">
+          Publish a CEH™-certified benchmark on your own infrastructure.
+          Differentiate on energy efficiency — not just $/GPU-hr.
+          Get listed in the CEH™ Index with your certification mark.
+        </p>
+        <span class="track-cta">Apply for certification →</span>
+      </a>
+
+      <a href="/partners/capital/" class="track-card orange">
+        <div class="track-accent"></div>
+        <div class="track-num">02 · Capital</div>
+        <div class="track-title">Invest in the Infrastructure</div>
+        <div class="track-audience">Infrastructure LPs · Family offices · Strategic capital</div>
+        <p class="track-desc">
+          DGE&amp;I is the first commercial BTM compute infrastructure deployment
+          built on CEH™ measurement. 300 MW anchor offtake. Structural energy
+          cost advantage. Qualified capital partners only.
+        </p>
+        <span class="track-cta">Request the LP package →</span>
+      </a>
+
+      <a href="/partners/standards/" class="track-card green">
+        <div class="track-accent"></div>
+        <div class="track-num">03 · Research</div>
+        <div class="track-title">Co-Publish the Research</div>
+        <div class="track-audience">Standards bodies · Academic labs · Industry analysts</div>
+        <p class="track-desc">
+          CEH™ methodology is open, versioned, and dated. Independent
+          replication, co-publication, and standards body submission —
+          MLCommons, Green Grid, IEEE, and university partners invited.
+        </p>
+        <span class="track-cta">Open a conversation →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FORMULA + INDEX PREVIEW ══════════════════════════════════════ -->
+<section class="standard-section">
+  <div class="wrap">
+
+    <div class="section-hdr">CEH™ Standard</div>
+
+    <div class="formula-bar">
+      <div class="f-label">CEH™ Formula</div>
+      <div class="f-eq">
+        <span class="c1">CEH™</span> = ( <span class="c2">TDP_W</span> × Units × Util% × PUE ) ÷ 1,000 ÷ <span class="c3">Output_Units/hr</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="c1">CEH™ Cost</span> = CEH™ × <span class="c2">$/kWh (any energy source)</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="c1">CEH™ Carbon</span> = CEH™ × <span class="c3">kg CO₂/kWh</span>
+      </div>
+      <div class="f-cite">
+        CEH™ (Compute Energy Hour) is a trademark of Oak Ridge Management. v1.0 first published April 21, 2026.
+        Full derivation: <a href="/standard/methodology/" style="color:var(--a1)">Methodology ↗</a>
+      </div>
+    </div>
+
+    <!-- Index preview -->
+    <div style="margin-top:40px;">
+      <div class="section-hdr cyan">
+        <span class="pulse"></span>CEH™ Index Preview · LLM Inference · Top 5
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Hardware</th>
+              <th class="r">CEH Rate (kWh/token)</th>
+              <th class="r">Grid $/M Tokens</th>
+              <th class="r">BTM $/M Tokens</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--a4);font-weight:700">1</td>
+              <td>
+                <span class="chip-name">NVIDIA B200</span>
+                <span class="chip-gen">Blackwell · 2025 <span class="badge-tag badge-new">NEW</span></span>
+              </td>
+              <td class="r green">1.07 × 10⁻¹⁰</td>
+              <td class="r">$0.009</td>
+              <td class="r green">$0.004</td>
+              <td><span class="grade grade-S">S</span></td>
+            </tr>
+            <tr>
+              <td style="color:#c0c0c0;font-weight:700">2</td>
+              <td>
+                <span class="chip-name">NVIDIA H200</span>
+                <span class="chip-gen">Hopper · 2024 <span class="badge-tag badge-new">NEW</span></span>
+              </td>
+              <td class="r cyan">2.21 × 10⁻¹⁰</td>
+              <td class="r">$0.019</td>
+              <td class="r green">$0.008</td>
+              <td><span class="grade grade-A">A</span></td>
+            </tr>
+            <tr>
+              <td style="color:#cd7f32;font-weight:700">3</td>
+              <td>
+                <span class="chip-name">Google TPU v4</span>
+                <span class="chip-gen">Google · 2023</span>
+              </td>
+              <td class="r cyan">2.63 × 10⁻¹⁰</td>
+              <td class="r">$0.022</td>
+              <td class="r green">$0.009</td>
+              <td><span class="grade grade-A">A</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>
+                <span class="chip-name">NVIDIA H100 SXM</span>
+                <span class="chip-gen">Hopper · 2023</span>
+              </td>
+              <td class="r cyan">3.18 × 10⁻¹⁰</td>
+              <td class="r">$0.027</td>
+              <td class="r green">$0.011</td>
+              <td><span class="grade grade-A">A</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>
+                <span class="chip-name">NVIDIA L40S</span>
+                <span class="chip-gen">Ada Lovelace · 2023 <span class="badge-tag badge-btm">BTM ADVANTAGE</span></span>
+              </td>
+              <td class="r" style="color:#4fa3ff">5.43 × 10⁻¹⁰</td>
+              <td class="r">$0.046</td>
+              <td class="r green">$0.019</td>
+              <td><span class="grade grade-B">B</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="index-footer">
+        <a href="/standard/benchmark/">View full CEH™ Index — 10 configurations →</a>
+      </div>
+    </div>
+
+    <!-- Grade scale -->
+    <div class="grade-strip">
+      <div class="grade-cell gs-S">
+        <div class="grade-letter">S</div>
+        <div class="grade-word">Exceptional</div>
+        <div class="grade-threshold">&lt; 2.0 × 10⁻¹⁰</div>
+      </div>
+      <div class="grade-cell gs-A">
+        <div class="grade-letter">A</div>
+        <div class="grade-word">Excellent</div>
+        <div class="grade-threshold">2.0 – 4.0 × 10⁻¹⁰</div>
+      </div>
+      <div class="grade-cell gs-B">
+        <div class="grade-letter">B</div>
+        <div class="grade-word">Good</div>
+        <div class="grade-threshold">4.0 – 8.0 × 10⁻¹⁰</div>
+      </div>
+      <div class="grade-cell gs-C">
+        <div class="grade-letter">C</div>
+        <div class="grade-word">Marginal</div>
+        <div class="grade-threshold">8.0 – 15.0 × 10⁻¹⁰</div>
+      </div>
+      <div class="grade-cell gs-D">
+        <div class="grade-letter">D</div>
+        <div class="grade-word">Poor</div>
+        <div class="grade-threshold">15.0 – 30.0 × 10⁻¹⁰</div>
+      </div>
+      <div class="grade-cell gs-F">
+        <div class="grade-letter">F</div>
+        <div class="grade-word">Unacceptable</div>
+        <div class="grade-threshold">&gt; 30.0 × 10⁻¹⁰</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ WHAT CEH™ IS / IS NOT ════════════════════════════════════════ -->
+<section class="isnot-section">
+  <div class="wrap">
+    <div class="section-hdr">Understanding CEH™</div>
+    <div class="isnot-grid">
+
+      <div class="isnot-panel is">
+        <h3>What CEH™ Is</h3>
+        <div class="isnot-row">
+          <span class="isnot-icon">+</span>
+          <span>An auditable, reproducible standard unit: kWh of energy consumed per output unit of compute work</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">+</span>
+          <span>Energy-agnostic — the formula applies identically to grid power, BTM generation, nuclear, or any source</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">+</span>
+          <span>Workload-portable across LLM inference, model training, HPC simulation, and rendering via Compute Output Unit (COU) definitions</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">+</span>
+          <span>A published, versioned, dated standard — v1.0 first published April 21, 2026 by Oak Ridge Management</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">+</span>
+          <span>Open for independent replication, co-publication, and third-party validation</span>
+        </div>
+      </div>
+
+      <div class="isnot-panel isnot">
+        <h3>What CEH™ Is Not</h3>
+        <div class="isnot-row">
+          <span class="isnot-icon">−</span>
+          <span>Not a product, tool, or service — CEH™ is a measurement standard, like PUE for facilities or MLPerf for ML performance</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">−</span>
+          <span>Not specific to "renewable" or "solar" compute — CEH™ is energy-source agnostic by design</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">−</span>
+          <span>Not an investment product — Oak Ridge Management's capital activities are separate from and do not constitute the CEH™ standard</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">−</span>
+          <span>Not a closed or proprietary standard — methodology is publicly disclosed and open to challenge and replication</span>
+        </div>
+        <div class="isnot-row">
+          <span class="isnot-icon">−</span>
+          <span>Not finalized — the standard invites industry comment, co-publication, and formal submission to recognized standards bodies</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CITATION ══════════════════════════════════════════════════════ -->
+<section class="citation-section">
+  <div class="wrap">
+    <div class="section-hdr gold">Formal Citation</div>
+    <div class="citation-block">
+      <span class="cite-label">How to cite CEH™ v1.0</span>
+      Cobb, D. (2026). <em>CEH™: A Proposed Standard Unit of Measurement for Compute Energy Intensity.</em>
+      DGE&amp;I / Oak Ridge Management. First published April 21, 2026. arXiv: [pending submission].
+      Available at: <a href="https://oakridgemanagement.net/standard/" style="color:var(--a1)">oakridgemanagement.net/standard</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-mark">Oak Ridge <span>Management</span></div>
+      <div class="footer-tm">
+        CEH™ is a trademark of Oak Ridge Management.<br>
+        First published April 21, 2026. All rights reserved.
+      </div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/standard/">Standard</a></li>
+      <li><a href="/standard/benchmark/">CEH™ Index</a></li>
+      <li><a href="/standard/methodology/">Methodology</a></li>
+      <li><a href="/partners/capital/">Capital Partners</a></li>
+      <li><a href="/partners/operators/">Operators</a></li>
+      <li><a href="/partners/standards/">Research Partners</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><a href="https://www.cehinfrastructureindex.com" target="_blank" rel="noopener">CEH™ Infrastructure Index ↗</a></li>
+      <li><a href="https://cehstandard.com" target="_blank" rel="noopener">cehstandard.com ↗</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+</script>
+
+<!-- Netlify Identity: handles #invite_token and #recovery_token hashes from email links -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  netlifyIdentity.on('init', user => {
+    if (!user) {
+      netlifyIdentity.on('login', () => {
+        window.location.href = '/investor/';
+      });
+    }
+  });
+</script>
+</body>
+</html>
