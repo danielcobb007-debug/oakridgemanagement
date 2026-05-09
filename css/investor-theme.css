@@ -129,9 +129,12 @@ a:hover { text-decoration: underline; }
   flex-shrink: 0;
 }
 .nav-dg-logo {
-  height: 38px;
+  /* Logo viewBox is 600x450; badge+text fills roughly top 370px.
+     At 52px height the badge portion renders at a legible ~45px tall. */
+  height: 52px;
   width: auto;
   display: block;
+  margin-top: -4px;
 }
 .nav-brand-divider {
   width: 1px;
@@ -319,7 +322,7 @@ h3 {
   transition: color 0.15s;
 }
 .hero-login:hover { color: var(--navy); text-decoration: underline; }
-.hero-dg-stamp    { flex-shrink: 0; width: 200px; margin-top: 8px; }
+.hero-dg-stamp    { flex-shrink: 0; width: 220px; margin-top: 8px; }
 .hero-dg-stamp img { width: 100%; display: block; }
 .dg-stamp-label {
   font-family: var(--mono);
