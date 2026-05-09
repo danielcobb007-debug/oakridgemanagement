@@ -14,27 +14,28 @@
   <rect x="152" y="56" width="296" height="222" fill="white"/>
 
   <!--
-    DG Monogram — compound path, fill-rule="evenodd"
-    Outer subpath  = full D letterform (thick)
-    Inner subpath  = counter (hole) punched inside the D's bowl
-    G crossbar rect drawn on top fills the lower-right of the counter
+    DG Monogram — arc-based D letterform + G crossbar
+    Outer path: D shape — left vertical bar + perfect semicircular arc bowl
+    Inner path: counter hole punched inside D's bowl (fill-rule evenodd)
+    G crossbar rect: overlaid dark rect in lower-right of counter, forming G shelf
+    Arc center for both: (308, 167). Outer R=92, inner r=46.
   -->
   <path fill-rule="evenodd" fill="#252d3c" d="
-    M 176,78
-    L 355,78
-    C 436,78 436,260 355,260
-    L 176,260
+    M 190,75
+    L 308,75
+    A 92,92 0 1 1 308,259
+    L 190,259
     Z
 
-    M 228,120
-    L 336,120
-    C 386,120 386,218 336,218
-    L 228,218
+    M 242,121
+    L 308,121
+    A 46,46 0 1 1 308,213
+    L 242,213
     Z
   "/>
 
-  <!-- G crossbar: fills lower-right portion of the counter, forming the G shelf -->
-  <rect x="308" y="168" width="78" height="50" fill="#252d3c"/>
+  <!-- G crossbar: fills lower-right of the counter, forming the G shelf -->
+  <rect x="278" y="167" width="76" height="46" fill="#252d3c"/>
 
   <!-- "ENERGY & INFRASTRUCTURE" — inside badge below the white square -->
   <text
