@@ -5,540 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Platform Valuation — DGE&amp;I | Confidential</title>
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23040608'/><text x='3' y='22' font-family='monospace' font-weight='700' font-size='14' fill='%23ff6b00'>DGI</text></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231a365d'/><text x='4' y='22' font-family='serif' font-weight='700' font-size='13' fill='%23ffffff'>DG</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/css/shared.css">
+<link rel="stylesheet" href="/css/investor-theme.css">
 <style>
-  /* ── INVESTOR PAGE: dark navy palette ── */
-  :root {
-    --bg:      #0d1117;
-    --s1:      #121820;
-    --s2:      #17202b;
-    --s3:      #1c2837;
-    --border:  #1f2e40;
-    --border2: #283c52;
-  }
-  body { background: var(--bg); }
-  .site-nav { background: var(--bg); }
-
-  /* ── CLASSIFICATION BANNER ── */
-  .classif-banner {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 300;
-    background: #110500;
-    border-bottom: 1px solid var(--a2);
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--a2);
-  }
-  .classif-banner .cb-sep { color: var(--border2); }
-
-  /* Shift nav + main to clear classification bar */
-  .site-nav { top: 28px; }
-  main { padding-top: 92px; }
-
-  /* ── NAV: DG logo + brand group ── */
-  .nav-brand-group {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .nav-dg-logo {
-    height: 40px;
-    width: auto;
-    display: block;
-    flex-shrink: 0;
-    border-right: 1px solid var(--border2);
-    padding-right: 16px;
-    opacity: 0.9;
-  }
-
-  /* ── NAV CUSTOMIZATION ── */
-  .nav-logo-tag-inv {
-    font-family: var(--mono);
-    font-size: 7px;
-    letter-spacing: 2px;
-    color: var(--a2);
-    text-transform: uppercase;
-    display: block;
-    margin-top: 3px;
-  }
-  .nav-logout-btn {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-    background: transparent;
-    border: 1px solid var(--border2);
-    padding: 7px 14px;
-    cursor: pointer;
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .nav-logout-btn:hover { color: var(--red); border-color: var(--red); }
-
-  /* ── HERO ── */
-  .hero {
-    padding: 72px 0 64px;
-    border-bottom: 1px solid var(--border);
-  }
-  .hero h1 { margin-bottom: 20px; }
-  .hero-sub {
-    font-family: var(--display);
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1.8;
-    max-width: 620px;
-    margin-bottom: 40px;
-  }
-
-  /* ── SECTIONS ── */
-  .section {
-    padding: 72px 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  /* ── CAPABILITIES GRID ── */
-  .cap-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 32px;
-  }
-  @media (max-width: 768px) { .cap-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 480px) { .cap-grid { grid-template-columns: 1fr; } }
-  .cap-card {
-    background: var(--bg);
-    padding: 28px 24px;
-    transition: background 0.2s;
-  }
-  .cap-card:hover { background: var(--s1); }
-  .cap-num {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-  .cap-title {
-    font-family: var(--display);
-    font-size: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--a2);
-    margin-bottom: 10px;
-    letter-spacing: 0.3px;
-  }
-  .cap-desc {
-    font-family: var(--display);
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1.7;
-  }
-  .cap-metric {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--a2);
-    margin-top: 12px;
-    padding: 6px 10px;
-    background: var(--s2);
-    border-left: 2px solid var(--a2);
-    display: inline-block;
-  }
-
-  /* ── 125% ARCHITECTURE ── */
-  .arch-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 32px;
-  }
-  @media (max-width: 680px) { .arch-grid { grid-template-columns: 1fr; } }
-  .arch-panel {
-    background: var(--s1);
-    padding: 36px 32px;
-  }
-  .arch-label {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--a2);
-    margin-bottom: 16px;
-  }
-  .arch-panel h3 {
-    font-family: var(--display);
-    font-size: 22px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 16px;
-  }
-  .arch-panel p {
-    font-family: var(--display);
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1.75;
-    margin-bottom: 12px;
-  }
-  .rev-flow {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .rf-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 14px;
-    background: var(--s2);
-    border: 1px solid var(--border);
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text);
-  }
-  .rf-arrow { color: var(--a3); flex-shrink: 0; }
-  .rf-result { color: var(--a3); margin-left: auto; font-weight: 700; }
-
-  /* ── SKU COMPARISON ── */
-  .sku-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 32px;
-  }
-  @media (max-width: 900px) { .sku-grid { grid-template-columns: 1fr; } }
-  .sku-card {
-    background: var(--bg);
-    padding: 32px 28px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-  .sku-card.flagship { background: var(--s1); }
-  .sku-badge {
-    position: absolute;
-    top: 16px; right: 16px;
-    font-family: var(--mono);
-    font-size: 7px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--a3);
-    border: 1px solid var(--a3);
-    padding: 2px 6px;
-  }
-  .sku-accent { height: 2px; margin-bottom: 24px; }
-  .sku-ac   .sku-accent { background: var(--muted); }
-  .sku-cdc  .sku-accent { background: var(--a1); }
-  .sku-edc  .sku-accent { background: var(--a2); }
-
-  .sku-num {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .sku-name {
-    font-family: var(--display);
-    font-size: 21px;
-    font-weight: 900;
-    text-transform: uppercase;
-    line-height: 1.05;
-    margin-bottom: 6px;
-    letter-spacing: 0.3px;
-  }
-  .sku-ac  .sku-name { color: var(--label); }
-  .sku-cdc .sku-name { color: var(--a1); }
-  .sku-edc .sku-name { color: var(--a2); }
-
-  .sku-arch {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 22px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .sku-specs {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-    margin-bottom: 20px;
-  }
-  .sku-spec {
-    padding: 10px 12px;
-    background: var(--s2);
-    border: 1px solid var(--border);
-  }
-  .spec-lbl {
-    font-family: var(--mono);
-    font-size: 7px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 3px;
-    display: block;
-  }
-  .spec-val {
-    font-family: var(--display);
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
-    line-height: 1.3;
-  }
-  .sku-efficiency {
-    font-family: var(--mono);
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-    padding: 18px 12px 14px;
-    background: var(--s1);
-    border: 1px solid var(--border);
-    border-top-width: 2px;
-  }
-  .sku-ac  .sku-efficiency { color: var(--muted);  border-top-color: var(--border2); }
-  .sku-cdc .sku-efficiency { color: var(--a1);     border-top-color: var(--a1); }
-  .sku-edc .sku-efficiency { color: var(--a2);     border-top-color: var(--a2); }
-  .sku-eff-lbl {
-    display: block;
-    font-size: 8px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  /* ── DEEP DIVE ── */
-  .dd-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 32px;
-  }
-  @media (max-width: 680px) { .dd-grid { grid-template-columns: 1fr; } }
-  .dd-panel { background: var(--s1); padding: 36px 32px; }
-  .dd-tag {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .dd-cdc .dd-tag { color: var(--a1); }
-  .dd-edc .dd-tag { color: var(--a2); }
-  .dd-panel h3 {
-    font-family: var(--display);
-    font-size: 24px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .dd-cdc h3 { color: var(--a1); }
-  .dd-edc h3 { color: var(--a2); }
-  .dd-subarch {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 22px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .dd-points {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .dd-pt {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-family: var(--display);
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1.65;
-  }
-  .dd-icon { font-family: var(--mono); font-size: 10px; flex-shrink: 0; margin-top: 2px; }
-  .dd-cdc .dd-icon { color: var(--a1); }
-  .dd-edc .dd-icon { color: var(--a2); }
-  .dd-verdict {
-    margin-top: 22px;
-    padding: 14px 16px;
-    background: var(--s2);
-    font-family: var(--mono);
-    font-size: 10px;
-    line-height: 1.7;
-    border-left: 2px solid;
-  }
-  .dd-cdc .dd-verdict { color: var(--a1); border-color: var(--a1); }
-  .dd-edc .dd-verdict { color: var(--a2); border-color: var(--a2); }
-
-  /* ── CEH™ VALIDATION ── */
-  .val-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 32px;
-  }
-  @media (max-width: 768px) { .val-grid { grid-template-columns: 1fr; } }
-  .val-card {
-    background: var(--s1);
-    padding: 28px 24px;
-  }
-  .val-tag {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--a3);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .val-card h3 {
-    font-family: var(--display);
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 12px;
-  }
-  .val-card p {
-    font-family: var(--display);
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1.7;
-  }
-  .val-data {
-    margin-top: 14px;
-    padding: 8px 12px;
-    background: var(--s2);
-    border-left: 2px solid var(--a3);
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--a3);
-    line-height: 1.6;
-  }
-
-  /* ── PLACEHOLDER SECTIONS ── */
-  .placeholder-block {
-    margin-top: 32px;
-    border: 1px dashed var(--border2);
-    padding: 64px 40px;
-    text-align: center;
-    background: var(--s2);
-  }
-  .ph-icon {
-    font-family: var(--mono);
-    font-size: 28px;
-    color: var(--border2);
-    margin-bottom: 16px;
-  }
-  .ph-title {
-    font-family: var(--display);
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--label);
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-  }
-  .ph-desc {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--muted);
-    line-height: 2;
-    letter-spacing: 0.5px;
-  }
-
-  /* ── CONFIDENTIAL FOOTER ── */
-  .conf-footer {
-    background: var(--s1);
-    border-top: 1px solid var(--border);
-    padding: 32px 0;
-    margin-top: 80px;
-  }
-  .conf-footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-  }
-  .cf-brand {
-    font-family: var(--display);
-    font-size: 16px;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: #fff;
-    letter-spacing: 1px;
-  }
-  .cf-brand span { color: var(--a2); }
-  .cf-notice {
-    font-family: var(--mono);
-    font-size: 8px;
-    color: var(--muted);
-    line-height: 1.9;
-    letter-spacing: 0.3px;
-    max-width: 560px;
-  }
+  /* Platform page: classification banner pushes nav down */
+  .site-nav { top: 30px; }
+  main { padding-top: 94px; }
 </style>
 </head>
 <body style="visibility:hidden">
 
-<!-- ═══ CLASSIFICATION BANNER ══════════════════════════════════════════ -->
+<!-- ═══ CLASSIFICATION BANNER ══════════════════════════════════════ -->
 <div class="classif-banner">
   <span>Confidential</span>
   <span class="cb-sep">·</span>
-  <span>DGE&amp;I — Restricted Distribution</span>
+  <span>DGE&amp;I — Institutional Capital Discussion</span>
   <span class="cb-sep">·</span>
-  <span>Authorized Investors Only</span>
+  <span>Authorized Investors Only · Subject to NDA</span>
 </div>
 
-<!-- ═══ NAV ════════════════════════════════════════════════════════════ -->
+<!-- ═══ NAVIGATION ══════════════════════════════════════════════════ -->
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
     <div class="nav-brand-group">
       <img src="/images/dg-logo.svg" alt="DGE&amp;I" class="nav-dg-logo">
-      <div class="nav-logo">
-        <span class="nav-logo-mark">OAK RIDGE <span>MANAGEMENT</span></span>
-        <span class="nav-logo-tag-inv">DGE&amp;I Investor Portal</span>
+      <div class="nav-brand-divider"></div>
+      <div class="nav-brand">
+        <span class="nav-brand-name">Oak Ridge Management</span>
+        <span class="nav-brand-tag">DGE&amp;I Investor Portal</span>
       </div>
     </div>
     <button class="nav-logout-btn" id="logout-btn">Log Out</button>
@@ -547,67 +43,67 @@
 
 <main>
 
-<!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
+<!-- ═══ HERO ════════════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="wrap">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap;">
-      <div style="flex:1;min-width:0;">
-    <span class="eyebrow orange">▸ DGE&amp;I · Platform Valuation · Confidential</span>
-    <h1>Platform<br><em class="orange">Valuation</em></h1>
-    <p class="hero-sub">
-      DGE&amp;I (Dahlhauser Galbraith Energy &amp; Infrastructure) is the first
-      commercial BTM compute infrastructure deployment built on CEH™ measurement.
-      The Power Block platform delivers structural energy cost advantage validated
-      against the CEH™ standard.
-    </p>
+    <div class="hero-layout">
+      <div class="hero-content">
+        <span class="eyebrow rust">DGE&amp;I · Platform Valuation · Confidential</span>
+        <h1>Platform Valuation</h1>
+        <p class="hero-sub-lg">
+          DGE&amp;I (Dahlhauser Galbraith Energy &amp; Infrastructure) is the first
+          commercial BTM compute infrastructure deployment built on CEH™ measurement.
+          The Power Block platform delivers structural energy cost advantage validated
+          against the CEH™ standard.
+        </p>
+      </div>
+      <div class="hero-dg-stamp" style="width:180px;">
+        <img src="/images/dg-logo.svg" alt="Dahlhauser Galbraith Energy &amp; Infrastructure">
+        <div class="dg-stamp-label">Dahlhauser Galbraith E&amp;I</div>
+      </div>
+    </div>
 
     <div class="tile-row">
-      <div class="tile t-orange">
+      <div class="tile t-navy">
         <div class="tile-label">Generation Architecture</div>
         <div class="tile-value">125%</div>
         <div class="tile-sub">of rated nameplate · 4 PB + N+1</div>
       </div>
-      <div class="tile t-orange">
+      <div class="tile t-navy">
         <div class="tile-label">Power Block SKUs</div>
         <div class="tile-value">3</div>
         <div class="tile-sub">AC · Core DC · Edge DC</div>
       </div>
-      <div class="tile t-orange">
+      <div class="tile t-rust">
         <div class="tile-label">Rack Density (Current)</div>
         <div class="tile-value">400+ kW</div>
         <div class="tile-sub">per rack · DG Edge DC</div>
       </div>
-      <div class="tile t-green">
+      <div class="tile t-forest">
         <div class="tile-label">Rack Density (2027 Target)</div>
         <div class="tile-value">1 MW+</div>
         <div class="tile-sub">NVIDIA roadmap · Rubin gen</div>
       </div>
     </div>
-      </div>
-      <div style="flex-shrink:0;padding-top:12px;">
-        <img src="/images/dg-logo.svg" alt="Dahlhauser Galbraith Energy &amp; Infrastructure" style="width:200px;display:block;opacity:0.9;">
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ═══ POWER BLOCK SYSTEMS ════════════════════════════════════════════ -->
-<section class="section">
+<!-- ═══ POWER BLOCK SYSTEMS ═════════════════════════════════════════ -->
+<section class="section alt">
   <div class="wrap">
-    <div class="section-hdr orange">Power Block Systems</div>
-    <p style="font-size:15px;font-weight:300;color:var(--text);line-height:1.8;max-width:700px;margin-bottom:8px;">
+    <div class="section-hdr navy">Power Block Systems</div>
+    <p style="font-size:15px;color:var(--text-muted);line-height:1.8;max-width:720px;margin-bottom:6px;">
       Built on Bloom Energy solid-oxide fuel cells, the Power Block platform combines
       three interchangeable SKUs, an intelligent Energy Management System (EMS), and
-      a 125% generation architecture. Because AI compute rarely runs at 100% utilization
+      a 125% generation architecture. Because AI compute rarely sustains 100% utilization
       24/7/365, the EMS automatically exports every unused kilowatt-hour while preserving
-      full N+1+1 redundancy. The result: power becomes a profit center rather than a cost.
+      full N+1+1 redundancy — power becomes a profit center rather than a cost.
     </p>
-    <div class="footnote" style="border:none;padding:0;margin-bottom:0;">
-      Foundation technology: Bloom Energy solid-oxide fuel cells · native ~800 V DC output ·
-      clean generation · minimal water use
-    </div>
+    <p class="footnote" style="border:none;padding:0;margin-bottom:0;margin-top:6px;">
+      Foundation technology: Bloom Energy solid-oxide fuel cells · native ~800 V DC output · clean generation · minimal water use
+    </p>
 
-    <div class="cap-grid">
+    <div class="card-grid-3">
       <div class="cap-card">
         <div class="cap-num">01 · Efficiency</div>
         <div class="cap-title">Unprecedented Rack Density</div>
@@ -635,7 +131,7 @@
       <div class="cap-card">
         <div class="cap-num">05 · Grid Services</div>
         <div class="cap-title">Active Grid Stabilization</div>
-        <p class="cap-desc">Synthetic inertia, sub-second frequency response, voltage support, and peak shaving delivered as active grid stabilization services — creating additional revenue and utility partnership value.</p>
+        <p class="cap-desc">Synthetic inertia, sub-second frequency response, voltage support, and peak shaving delivered as active grid stabilization services — additional revenue and utility partnership value.</p>
         <span class="cap-metric">Sub-second frequency response</span>
       </div>
       <div class="cap-card">
@@ -648,14 +144,14 @@
   </div>
 </section>
 
-<!-- ═══ 125% ARCHITECTURE ══════════════════════════════════════════════ -->
+<!-- ═══ 125% ARCHITECTURE ════════════════════════════════════════════ -->
 <section class="section">
   <div class="wrap">
-    <div class="section-hdr orange">125% Generation Architecture</div>
-    <div class="arch-grid">
+    <div class="section-hdr rust">125% Generation Architecture</div>
+    <div class="card-grid-2">
 
       <div class="arch-panel">
-        <div class="arch-label">▸ Design Principle</div>
+        <div class="arch-label">Design Principle</div>
         <h3>Oversized by Design</h3>
         <p>
           Every DGE&amp;I facility is sized to generate 125% of maximum rated
@@ -676,7 +172,7 @@
       </div>
 
       <div class="arch-panel">
-        <div class="arch-label">▸ Revenue Flow</div>
+        <div class="arch-label">Revenue Flow</div>
         <h3>Power as Profit Center</h3>
         <p>
           Traditional data center economics treat power as a fixed operating cost.
@@ -684,23 +180,23 @@
         </p>
         <div class="rev-flow">
           <div class="rf-row">
-            <span class="rf-arrow">▸</span>
+            <span class="rf-arrow">→</span>
             <span>Bloom SOFC generates 125% of rated nameplate</span>
           </div>
           <div class="rf-row">
-            <span class="rf-arrow">▸</span>
+            <span class="rf-arrow">→</span>
             <span>Compute load consumes ~70–85% at typical utilization</span>
           </div>
           <div class="rf-row">
-            <span class="rf-arrow">▸</span>
+            <span class="rf-arrow">→</span>
             <span>EMS identifies surplus in real time · preserves N+1 reserve</span>
           </div>
           <div class="rf-row">
-            <span class="rf-arrow">▸</span>
+            <span class="rf-arrow">→</span>
             <span>Surplus exported to utility tie via DC-AC inversion</span>
           </div>
           <div class="rf-row">
-            <span class="rf-arrow">▸</span>
+            <span class="rf-arrow">→</span>
             <span>Grid stabilization services billed additionally</span>
             <span class="rf-result">Power = Revenue</span>
           </div>
@@ -711,11 +207,11 @@
   </div>
 </section>
 
-<!-- ═══ SKU COMPARISON ═════════════════════════════════════════════════ -->
-<section class="section">
+<!-- ═══ SKU COMPARISON ═══════════════════════════════════════════════ -->
+<section class="section alt">
   <div class="wrap">
-    <div class="section-hdr orange">Power Block SKUs — Three Interchangeable Architectures</div>
-    <p style="font-size:14px;font-weight:300;color:var(--text);line-height:1.8;max-width:680px;margin-bottom:8px;">
+    <div class="section-hdr navy">Power Block SKUs — Three Interchangeable Architectures</div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;max-width:700px;margin-bottom:8px;">
       All three SKUs share the same Bloom SOFC foundation and EMS platform.
       Architecture selection is driven by customer infrastructure profile, utility
       interconnection constraints, and target rack density requirements.
@@ -785,8 +281,8 @@
 
       <!-- SKU 3: Edge DC -->
       <div class="sku-card sku-edc flagship">
-        <div class="sku-badge">Flagship</div>
         <div class="sku-accent"></div>
+        <div class="sku-badge">Flagship</div>
         <div class="sku-num">SKU 03 · New AI Factories</div>
         <div class="sku-name">DG Edge<br>DC</div>
         <div class="sku-arch">NVIDIA-Native · 800 VDC</div>
@@ -818,18 +314,18 @@
   </div>
 </section>
 
-<!-- ═══ CORE DC vs EDGE DC DEEP DIVE ═══════════════════════════════════ -->
+<!-- ═══ CORE DC vs EDGE DC DEEP DIVE ════════════════════════════════ -->
 <section class="section">
   <div class="wrap">
-    <div class="section-hdr orange">Architecture Deep Dive — Core DC vs Edge DC</div>
-    <p style="font-size:14px;font-weight:300;color:var(--text);line-height:1.8;max-width:680px;margin-bottom:8px;">
+    <div class="section-hdr navy">Architecture Deep Dive — Core DC vs Edge DC</div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;max-width:700px;margin-bottom:8px;">
       The real distinction between Core DC and Edge DC is not only rack density — it is
       scalability ceiling and ecosystem alignment.
     </p>
-    <div class="dd-grid">
+    <div class="card-grid-2">
 
       <div class="dd-panel dd-cdc">
-        <div class="dd-tag">▸ SKU 02 · Practical DC-Native</div>
+        <div class="dd-tag">SKU 02 · Practical DC-Native</div>
         <h3>Core DC</h3>
         <div class="dd-subarch">Standard DC-to-DC · ~400 VDC</div>
         <div class="dd-points">
@@ -856,7 +352,7 @@
       </div>
 
       <div class="dd-panel dd-edc">
-        <div class="dd-tag">▸ SKU 03 · Flagship Architecture</div>
+        <div class="dd-tag">SKU 03 · Flagship Architecture</div>
         <h3>Edge DC</h3>
         <div class="dd-subarch">NVIDIA-Native 800 VDC · Bloom-Native</div>
         <div class="dd-points">
@@ -886,19 +382,19 @@
   </div>
 </section>
 
-<!-- ═══ CEH™ METHODOLOGY VALIDATION ═══════════════════════════════════ -->
-<section class="section">
+<!-- ═══ CEH™ METHODOLOGY VALIDATION ═════════════════════════════════ -->
+<section class="section alt">
   <div class="wrap">
-    <div class="section-hdr green">
-      <span class="pulse"></span>CEH™ Methodology Validation
+    <div class="section-hdr forest">
+      <span class="pulse" style="margin-right:0;"></span>CEH™ Methodology Validation
     </div>
-    <p style="font-size:14px;font-weight:300;color:var(--text);line-height:1.8;max-width:700px;margin-bottom:8px;">
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;max-width:720px;margin-bottom:8px;">
       The Power Block platform is the commercial BTM deployment that validates the CEH™
       standard with real measured data. Every DGE&amp;I facility produces verifiable inputs
       to the CEH™ formula — closing the loop between the published standard and
       live infrastructure performance.
     </p>
-    <div class="val-grid">
+    <div class="card-grid-3">
       <div class="val-card">
         <div class="val-tag"><span class="pulse"></span>BTM Energy Rate</div>
         <h3>BTM Cost Advantage</h3>
@@ -943,49 +439,54 @@
       </div>
     </div>
 
-    <div class="formula-bar" style="margin-top:32px;">
-      <div class="f-label">CEH™ Formula — validated by DGE&amp;I deployments</div>
-      <div class="f-eq">
+    <div class="formula-bar">
+      <div class="formula-label">CEH™ Formula — validated by DGE&amp;I deployments</div>
+      <div class="formula-eq">
         <span class="c1">CEH™</span> = ( <span class="c2">TDP_W</span> × Units × Util% × PUE ) ÷ 1,000 ÷ <span class="c3">Output_Units/hr</span>
         &nbsp;&nbsp;|&nbsp;&nbsp;
         <span class="c1">CEH™ Cost</span> = CEH™ × <span class="c2">$/kWh (BTM: ~$0.04 vs grid: ~$0.10)</span>
       </div>
-      <div class="f-cite">
+      <div class="formula-cite">
         Power Block BTM deployments provide the $/kWh and Output_Units/hr inputs that drive the BTM advantage column in the CEH™ Index.
-        Full methodology: <a href="/standard/methodology/" style="color:var(--a1)">oakridgemanagement.net/standard/methodology ↗</a>
+        Full methodology: <a href="/standard/methodology/">oakridgemanagement.net/standard/methodology ↗</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SITE PORTFOLIO ═════════════════════════════════════════════════ -->
+<!-- ═══ SITE PORTFOLIO — MASTER VALUATION TABLE ══════════════════════ -->
 <section class="section">
   <div class="wrap">
-    <div class="section-hdr orange">DGE&amp;I Site Portfolio — Master Valuation Table</div>
-    <p style="font-size:14px;font-weight:300;color:var(--text);line-height:1.8;max-width:700px;margin-bottom:28px;">
+    <div class="section-hdr navy">DGE&amp;I Site Portfolio — Master Valuation Table</div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;max-width:720px;margin-bottom:4px;">
       11 sites across two tiers. As-Is → Shovel-Ready valuations based on April 2026 market comparables.
-      ⭑ denotes flagship sites. Ownership color: <span style="color:var(--a3);">Contract</span> ·
-      <span style="color:var(--a1);">Owned</span> · <span style="color:var(--a4);">LOI / PSA</span>.
+      ⭑ denotes flagship sites.
+    </p>
+    <p style="font-size:12px;font-family:var(--mono);color:var(--text-muted);margin-bottom:0;">
+      Ownership:
+      <span class="status-pill pill-forest" style="margin:0 4px;">Under Contract</span>
+      <span class="status-pill pill-navy" style="margin:0 4px;">Owned</span>
+      <span class="status-pill pill-amber" style="margin:0 4px;">LOI / PSA</span>
     </p>
 
-    <!-- Platform summary -->
-    <div class="tile-row" style="margin-bottom:32px;">
-      <div class="tile t-orange">
+    <!-- Platform summary tiles -->
+    <div class="tile-row">
+      <div class="tile t-navy">
         <div class="tile-label">Total Sites</div>
         <div class="tile-value">11</div>
         <div class="tile-sub">5 Tier 1 · 6 Tier 2</div>
       </div>
-      <div class="tile t-orange">
+      <div class="tile t-navy">
         <div class="tile-label">Gross Platform Capacity</div>
         <div class="tile-value">5.25 GW</div>
         <div class="tile-sub">4.05 GW Net IT · 3.05 GW Compute</div>
       </div>
-      <div class="tile t-orange">
+      <div class="tile t-rust">
         <div class="tile-label">As-Is Mid Value</div>
         <div class="tile-value">$1.49B</div>
         <div class="tile-sub">April 2026 market comps</div>
       </div>
-      <div class="tile t-green">
+      <div class="tile t-forest">
         <div class="tile-label">Shovel-Ready Value</div>
         <div class="tile-value">$2.86B</div>
         <div class="tile-sub">~93% avg uplift · $385M controlled</div>
@@ -1012,173 +513,202 @@
         <tbody>
 
           <!-- ── TIER 1 ── -->
-          <tr style="background:var(--s2);">
-            <td colspan="10" style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--a2);padding:10px 14px;border-top:1px solid var(--border2);">
-              Tier 1 · Advanced Adaptive Reuse · 793.8 MW Gross · 612.4 MW Net IT · 5 Sites
+          <tr class="tier-row">
+            <td colspan="10">Tier 1 · Advanced Adaptive Reuse · 793.8 MW Gross · 612.4 MW Net IT · 5 Sites</td>
+          </tr>
+
+          <tr>
+            <td>
+              <span class="td-site-name">St. Paul</span>
+              <span class="td-site-sub">Minnesota · Near-Ready</span>
             </td>
+            <td><span class="status-pill pill-forest">Under Contract</span></td>
+            <td class="r td-muted">48.6 MW</td>
+            <td class="r td-muted">37.4 MW</td>
+            <td class="r td-muted">28.2 MW</td>
+            <td class="r" style="font-weight:600;">$60M</td>
+            <td class="r td-rust">$95M</td>
+            <td class="r td-forest">+58%</td>
+            <td class="r td-muted">$16M</td>
+            <td class="td-muted">2027</td>
           </tr>
 
           <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">St. Paul</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Minnesota · Near-Ready</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a3);">Under Contract</span></td>
-            <td class="r">48.6 MW</td>
-            <td class="r">37.4 MW</td>
-            <td class="r">28.2 MW</td>
-            <td class="r white">$60M</td>
-            <td class="r orange">$95M</td>
-            <td class="r green">+58%</td>
-            <td class="r">$16M</td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2027</td>
+            <td>
+              <span class="td-site-name">Savannah</span>
+              <span class="td-site-sub">Georgia · Contract Imminent (~60d)</span>
+            </td>
+            <td><span class="status-pill pill-forest">Under Contract</span></td>
+            <td class="r td-muted">153.9 MW</td>
+            <td class="r td-muted">118.8 MW</td>
+            <td class="r td-muted">89.3 MW</td>
+            <td class="r" style="font-weight:600;">$170M</td>
+            <td class="r td-rust">$240M</td>
+            <td class="r td-forest">+41%</td>
+            <td class="r td-muted">$75M</td>
+            <td class="td-muted">2027–2028</td>
           </tr>
 
           <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Savannah</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Georgia · Contract Imminent (~60d)</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a3);">Under Contract</span></td>
-            <td class="r">153.9 MW</td>
-            <td class="r">118.8 MW</td>
-            <td class="r">89.3 MW</td>
-            <td class="r white">$170M</td>
-            <td class="r orange">$240M</td>
-            <td class="r green">+41%</td>
-            <td class="r">$75M</td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2027–2028</td>
+            <td>
+              <span class="td-site-name">Montgomery</span>
+              <span class="td-site-sub">Alabama · Gas Available</span>
+            </td>
+            <td><span class="status-pill pill-navy">Owned</span></td>
+            <td class="r td-muted">48.6 MW</td>
+            <td class="r td-muted">37.5 MW</td>
+            <td class="r td-muted">28.2 MW</td>
+            <td class="r" style="font-weight:600;">$50M</td>
+            <td class="r td-rust">$70M</td>
+            <td class="r td-forest">+40%</td>
+            <td class="r td-muted">$30M</td>
+            <td class="td-muted">2028</td>
           </tr>
 
           <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Montgomery</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Alabama · Gas Available</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a1);">Owned</span></td>
-            <td class="r">48.6 MW</td>
-            <td class="r">37.5 MW</td>
-            <td class="r">28.2 MW</td>
-            <td class="r white">$50M</td>
-            <td class="r orange">$70M</td>
-            <td class="r green">+40%</td>
-            <td class="r">$30M <span style="color:var(--a1);font-size:8px;letter-spacing:1px;">owned</span></td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028</td>
+            <td>
+              <span class="td-site-name">North Charleston</span>
+              <span class="td-site-sub">South Carolina · Transmission &lt;1 Mile</span>
+            </td>
+            <td><span class="status-pill pill-amber">LOI / PSA</span></td>
+            <td class="r td-muted">388.8 MW</td>
+            <td class="r td-muted">300.0 MW</td>
+            <td class="r td-muted">225.7 MW</td>
+            <td class="r" style="font-weight:600;">$250M</td>
+            <td class="r td-rust">$380M</td>
+            <td class="r td-forest">+52%</td>
+            <td class="r td-muted">$130M</td>
+            <td class="td-muted">2028–2029</td>
           </tr>
 
           <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">North Charleston</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">South Carolina · Transmission &lt;1 Mile</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a4);">Under LOI / PSA</span></td>
-            <td class="r">388.8 MW</td>
-            <td class="r">300.0 MW</td>
-            <td class="r">225.7 MW</td>
-            <td class="r white">$250M</td>
-            <td class="r orange">$380M</td>
-            <td class="r green">+52%</td>
-            <td class="r">$130M</td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028–2029</td>
-          </tr>
-
-          <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Vanore</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Tennessee · Existing Power + Upgrade</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a4);">Under LOI / PSA</span></td>
-            <td class="r">153.9 MW</td>
-            <td class="r">118.8 MW</td>
-            <td class="r">89.3 MW</td>
-            <td class="r white">$115M</td>
-            <td class="r orange">$170M</td>
-            <td class="r green">+48%</td>
-            <td class="r">$30M</td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028</td>
+            <td>
+              <span class="td-site-name">Vanore</span>
+              <span class="td-site-sub">Tennessee · Existing Power + Upgrade</span>
+            </td>
+            <td><span class="status-pill pill-amber">LOI / PSA</span></td>
+            <td class="r td-muted">153.9 MW</td>
+            <td class="r td-muted">118.8 MW</td>
+            <td class="r td-muted">89.3 MW</td>
+            <td class="r" style="font-weight:600;">$115M</td>
+            <td class="r td-rust">$170M</td>
+            <td class="r td-forest">+48%</td>
+            <td class="r td-muted">$30M</td>
+            <td class="td-muted">2028</td>
           </tr>
 
           <!-- ── TIER 2 ── -->
-          <tr style="background:var(--s2);">
-            <td colspan="10" style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--a2);padding:10px 14px;border-top:1px solid var(--border2);">
-              Tier 2 · De-Risked Greenfield · 4.46 GW Gross · 3.44 GW Net IT · 6 Sites · ⭑ Flagship
+          <tr class="tier-row">
+            <td colspan="10">Tier 2 · De-Risked Greenfield · 4.46 GW Gross · 3.44 GW Net IT · 6 Sites · ⭑ Flagship</td>
+          </tr>
+
+          <tr>
+            <td>
+              <span class="td-site-name">Bowman ⭑</span>
+              <span class="td-site-sub">South Carolina · LOI Signed ✓</span>
             </td>
+            <td><span class="status-pill pill-navy">Owned / LOI</span></td>
+            <td class="r td-muted">1.30 GW</td>
+            <td class="r td-muted">1.00 GW</td>
+            <td class="r td-muted">752.2 MW</td>
+            <td class="r" style="font-weight:600;">$250M</td>
+            <td class="r td-rust">$600M</td>
+            <td class="r td-forest">+140%</td>
+            <td class="r td-muted">$21M</td>
+            <td class="td-muted">2029–2032</td>
           </tr>
 
           <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Bowman ⭑</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">South Carolina · LOI Signed ✓</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a1);">Owned / LOI / PSA</span></td>
-            <td class="r">1.30 GW</td>
-            <td class="r">1.00 GW</td>
-            <td class="r">752.2 MW</td>
-            <td class="r white">$250M</td>
-            <td class="r orange">$600M</td>
-            <td class="r green">+140%</td>
-            <td class="r">$21M</td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2029–2032</td>
+            <td>
+              <span class="td-site-name">Jefferson</span>
+              <span class="td-site-sub">Georgia · Contract ~90 Days</span>
+            </td>
+            <td><span class="status-pill pill-forest">Under Contract</span></td>
+            <td class="r td-muted">388.8 MW</td>
+            <td class="r td-muted">300.0 MW</td>
+            <td class="r td-muted">225.7 MW</td>
+            <td class="r" style="font-weight:600;">$130M</td>
+            <td class="r td-rust">$300M</td>
+            <td class="r td-forest">+131%</td>
+            <td class="r td-muted">$13M</td>
+            <td class="td-muted">2028–2029</td>
           </tr>
 
           <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Jefferson</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Georgia · Contract ~90 Days</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a3);">Under Contract</span></td>
-            <td class="r">388.8 MW</td>
-            <td class="r">300.0 MW</td>
-            <td class="r">225.7 MW</td>
-            <td class="r white">$130M</td>
-            <td class="r orange">$300M</td>
-            <td class="r green">+131%</td>
-            <td class="r">$13M</td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028–2029</td>
+            <td>
+              <span class="td-site-name">Union Parish ⭑</span>
+              <span class="td-site-sub">Louisiana · LOI In Negotiation</span>
+            </td>
+            <td><span class="status-pill pill-amber">Under PSA</span></td>
+            <td class="r td-muted">2.59 GW</td>
+            <td class="r td-muted">2.00 GW</td>
+            <td class="r td-muted">1.50 GW</td>
+            <td class="r" style="font-weight:600;">$400M</td>
+            <td class="r td-rust">$900M</td>
+            <td class="r td-forest">+125%</td>
+            <td class="r td-muted">$100M</td>
+            <td class="td-muted">2030–2032</td>
           </tr>
 
           <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Union Parish ⭑</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Louisiana · LOI In Negotiation</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a4);">Under PSA</span></td>
-            <td class="r">2.59 GW</td>
-            <td class="r">2.00 GW</td>
-            <td class="r">1.50 GW</td>
-            <td class="r white">$400M</td>
-            <td class="r orange">$900M</td>
-            <td class="r green">+125%</td>
-            <td class="r">$100M</td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2030–2032</td>
+            <td>
+              <span class="td-site-name">Silver Springs</span>
+              <span class="td-site-sub">Nevada · LOI Signed ✓</span>
+            </td>
+            <td><span class="status-pill pill-navy">Owned</span></td>
+            <td class="r td-muted">129.6 MW</td>
+            <td class="r td-muted">100.0 MW</td>
+            <td class="r td-muted">75.2 MW</td>
+            <td class="r" style="font-weight:600;">$40M</td>
+            <td class="r td-rust">$70M</td>
+            <td class="r td-forest">+75%</td>
+            <td class="r td-muted">$15M</td>
+            <td class="td-muted">2028–2029</td>
           </tr>
 
           <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Silver Springs</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Nevada · LOI Signed ✓</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a1);">Owned</span></td>
-            <td class="r">129.6 MW</td>
-            <td class="r">100.0 MW</td>
-            <td class="r">75.2 MW</td>
-            <td class="r white">$40M</td>
-            <td class="r orange">$70M</td>
-            <td class="r green">+75%</td>
-            <td class="r">$15M <span style="color:var(--a1);font-size:8px;letter-spacing:1px;">owned</span></td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028–2029</td>
+            <td>
+              <span class="td-site-name">Reno</span>
+              <span class="td-site-sub">Nevada · LOI Pending</span>
+            </td>
+            <td><span class="status-pill pill-navy">Owned</span></td>
+            <td class="r td-muted">16.2 MW</td>
+            <td class="r td-muted">12.5 MW</td>
+            <td class="r td-muted">9.4 MW</td>
+            <td class="r" style="font-weight:600;">$7M</td>
+            <td class="r td-rust">$13M</td>
+            <td class="r td-forest">+86%</td>
+            <td class="r td-muted">$5M</td>
+            <td class="td-muted">2028</td>
           </tr>
 
           <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Reno</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Nevada · LOI Pending</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a1);">Owned</span></td>
-            <td class="r">16.2 MW</td>
-            <td class="r">12.5 MW</td>
-            <td class="r">9.4 MW</td>
-            <td class="r white">$7M</td>
-            <td class="r orange">$13M</td>
-            <td class="r green">+86%</td>
-            <td class="r">$5M <span style="color:var(--a1);font-size:8px;letter-spacing:1px;">owned</span></td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028</td>
-          </tr>
-
-          <tr>
-            <td><span style="font-family:var(--display);font-size:13px;font-weight:600;color:#fff;display:block;">Macon</span><span style="font-family:var(--mono);font-size:8px;color:var(--muted);display:block;margin-top:2px;">Georgia · LOI Pending</span></td>
-            <td><span style="font-family:var(--mono);font-size:9px;color:var(--a1);">Owned</span></td>
-            <td class="r">32.4 MW</td>
-            <td class="r">25.0 MW</td>
-            <td class="r">18.8 MW</td>
-            <td class="r white">$13M</td>
-            <td class="r orange">$23M</td>
-            <td class="r green">+73%</td>
-            <td class="r">$4M <span style="color:var(--a1);font-size:8px;letter-spacing:1px;">owned</span></td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2028–2029</td>
+            <td>
+              <span class="td-site-name">Macon</span>
+              <span class="td-site-sub">Georgia · LOI Pending</span>
+            </td>
+            <td><span class="status-pill pill-navy">Owned</span></td>
+            <td class="r td-muted">32.4 MW</td>
+            <td class="r td-muted">25.0 MW</td>
+            <td class="r td-muted">18.8 MW</td>
+            <td class="r" style="font-weight:600;">$13M</td>
+            <td class="r td-rust">$23M</td>
+            <td class="r td-forest">+73%</td>
+            <td class="r td-muted">$4M</td>
+            <td class="td-muted">2028–2029</td>
           </tr>
 
           <!-- ── PLATFORM TOTAL ── -->
-          <tr style="background:var(--s1);border-top:2px solid var(--a2);">
-            <td colspan="2" style="font-family:var(--mono);font-size:10px;color:#fff;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;">Platform Total · 11 Sites</td>
-            <td class="r" style="color:#fff;font-weight:700;">5.25 GW</td>
-            <td class="r" style="color:#fff;font-weight:700;">4.05 GW</td>
-            <td class="r" style="color:#fff;font-weight:700;">3.05 GW</td>
-            <td class="r orange" style="font-size:13px;font-weight:700;">$1.49B</td>
-            <td class="r green"  style="font-size:13px;font-weight:700;">$2.86B</td>
-            <td class="r green"  style="font-size:13px;font-weight:700;">~93%</td>
-            <td class="r" style="color:var(--text);">$385M controlled</td>
-            <td style="font-family:var(--mono);font-size:11px;color:var(--text);">2027–2032</td>
+          <tr class="total-row">
+            <td colspan="2" style="white-space:nowrap;">Platform Total · 11 Sites</td>
+            <td class="r">5.25 GW</td>
+            <td class="r">4.05 GW</td>
+            <td class="r">3.05 GW</td>
+            <td class="r td-rust">$1.49B</td>
+            <td class="r td-forest">$2.86B</td>
+            <td class="r td-forest">~93%</td>
+            <td class="r" style="opacity:0.7;">$385M</td>
+            <td style="opacity:0.7;">2027–2032</td>
           </tr>
 
         </tbody>
@@ -1193,10 +723,10 @@
   </div>
 </section>
 
-<!-- ═══ LP MATERIALS ════════════════════════════════════════════════════ -->
+<!-- ═══ LP MATERIALS ═════════════════════════════════════════════════ -->
 <section class="section" style="border-bottom:none;padding-bottom:80px;">
   <div class="wrap">
-    <div class="section-hdr orange">LP Materials &amp; Financial Summary</div>
+    <div class="section-hdr navy">LP Materials &amp; Financial Summary</div>
     <div class="placeholder-block">
       <div class="ph-icon">[ ]</div>
       <div class="ph-title">Content Pending</div>
@@ -1211,17 +741,17 @@
 
 </main>
 
-<!-- ═══ CONFIDENTIAL FOOTER ════════════════════════════════════════════ -->
+<!-- ═══ CONFIDENTIAL FOOTER ══════════════════════════════════════════ -->
 <footer class="conf-footer">
   <div class="conf-footer-inner">
-    <div style="display:flex;align-items:center;gap:16px;">
-      <img src="/images/dg-logo.svg" alt="DGE&amp;I" style="height:44px;width:auto;opacity:0.8;flex-shrink:0;">
-      <div class="cf-brand">OAK RIDGE <span>MANAGEMENT</span> / DGE&amp;I</div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <img src="/images/dg-logo.svg" alt="DGE&amp;I" style="height:40px;width:auto;opacity:0.7;flex-shrink:0;">
+      <div class="cf-brand">Oak Ridge Management / DGE&amp;I</div>
     </div>
     <div class="cf-notice">
-      CONFIDENTIAL — This document contains proprietary and commercially sensitive information
-      of Oak Ridge Management / DGE&amp;I. Distribution is strictly restricted to authorized
-      investors and personnel. Unauthorized disclosure is prohibited. All access is logged.
+      CONFIDENTIAL — Institutional Capital Discussion — Subject to NDA.
+      This document contains proprietary and commercially sensitive information of Oak Ridge Management / DGE&amp;I.
+      Distribution is strictly restricted to authorized investors and personnel. All access is logged.
       CEH™ is a trademark of Oak Ridge Management. First published April 21, 2026.
     </div>
   </div>
