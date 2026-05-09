@@ -48,7 +48,22 @@ This file tracks all GitHub repos, Netlify sites, domains, deployments, and tool
 
 ## Open Questions
 - Which GitHub repo controls each live site?
+  - oakridgemanagement.net = https://github.com/danielcobb007-debug/oakridgemanagement
+  - cehstandard.com = https://github.com/danielcobb007-debug/oakridgemanagement
+  - cehinfrastructureindex.com = https://github.com/danielcobb007-debug/ceh-pricing-engine
+
 - Which Netlify deployment maps to each custom domain?
+  - oakridgemanagement.net = boisterous-fenglisu-4a91dc
+  - cehinfrastructureindex.com = cehinfratstructureindex
+  - cehstandard.com = superlative-puffpuff-3cc501
+
 - Are the sites separate repos or one repo?
+  - oakridgemanagement.net and cehstandard.com are in the oakridgemanagement repo
+  - cehinfrastructureindex.com is in the ceh-pricing-engine repo
+
 - Which assets are duplicated?
+  - UNKNOWN — needs Codex audit across both repos
+
 - Which repo should become the ORM master monorepo?
+  - oakridgemanagement
+  
