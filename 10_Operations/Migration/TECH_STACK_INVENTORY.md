@@ -20,7 +20,7 @@ This file tracks all GitHub repos, Netlify sites, domains, deployments, and tool
 
 | Site Name | Netlify URL | Custom Domain | GitHub Repo Connected | Status | Notes |
 |---|---|---|---|---|---|
-| UNKNOWN | UNKNOWN | oakridgemanagement.net | oakridgemanagement | ACTIVE | Domain-to-repo mapping verified. Specific Netlify site identity should be re-confirmed in Netlify UI if needed. |
+| boisterous-fenglisu-4a91dc | UNKNOWN | oakridgemanagement.net | oakridgemanagement | ACTIVE — DEPLOY FROZEN | Production branch set to `master` in Netlify. `master` no longer exists on remote (only `main` and `staging`). Site is serving stale frozen deploy. Netlify will not redeploy on push to `main` until branch config is corrected. |
 | superlative-puffpuff-3cc501 | UNKNOWN | cehstandard.com | ceh-pricing-engine | ACTIVE | Source currently confirmed as root index.html in ceh-pricing-engine, not oakridgemanagement. Public surface remains governance-sensitive / transitional. |
 | cehinfratstructureindex | UNKNOWN | cehinfrastructureindex.com | ceh-pricing-engine | ACTIVE | Source currently confirmed as ceh-pricing-engine. CEH Index canonical/root behavior should be tracked as transitional where applicable. |
 
@@ -71,3 +71,4 @@ This file tracks all GitHub repos, Netlify sites, domains, deployments, and tool
 - Which repo should become the ORM master monorepo?
   - UNDECIDED
   - Governance position: do not consolidate yet
+
