@@ -20,7 +20,7 @@ This file tracks all GitHub repos, Netlify sites, domains, deployments, and tool
 
 | Site Name | Netlify URL | Custom Domain | GitHub Repo Connected | Status | Notes |
 |---|---|---|---|---|---|
-| boisterous-fenglisu-4a91dc | UNKNOWN | oakridgemanagement.net | oakridgemanagement | ACTIVE — DEPLOY FROZEN | Production branch set to `master` in Netlify. `master` no longer exists on remote (only `main` and `staging`). Site is serving stale frozen deploy. Netlify will not redeploy on push to `main` until branch config is corrected. |
+| boisterous-fenglisu-4a91dc | UNKNOWN | oakridgemanagement.net | oakridgemanagement | ACTIVE | Production branch updated to `main` (2026-05-10). Previously frozen on non-existent `master` branch. Resolved via ORM-001; auto-deploy from `main` now active. |
 | superlative-puffpuff-3cc501 | UNKNOWN | cehstandard.com | ceh-pricing-engine | ACTIVE | Source currently confirmed as root index.html in ceh-pricing-engine, not oakridgemanagement. Public surface remains governance-sensitive / transitional. |
 | cehinfratstructureindex | UNKNOWN | cehinfrastructureindex.com | ceh-pricing-engine | ACTIVE | Source currently confirmed as ceh-pricing-engine. CEH Index canonical/root behavior should be tracked as transitional where applicable. |
 

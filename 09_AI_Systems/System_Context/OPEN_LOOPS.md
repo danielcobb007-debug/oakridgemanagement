@@ -9,18 +9,14 @@ Each entry: what it is, why it matters, and what resolves it.
 ## CRITICAL
 
 ### ORM-001 — oakridgemanagement.net deploy is frozen
-**Status:** OPEN
+**Status:** RESOLVED
 **Discovered:** 2026-05-10
+**Resolved:** 2026-05-10
 
-Netlify site `boisterous-fenglisu-4a91dc` is configured to deploy from the `master` branch of `danielcobb007-debug/oakridgemanagement`. The `master` branch no longer exists on the remote — only `main` and `staging` exist. The site is currently serving a stale frozen deploy. Pushes to `main` or `staging` do NOT trigger a redeploy of `oakridgemanagement.net`.
+Netlify site `boisterous-fenglisu-4a91dc` was configured to deploy from the `master` branch, which no longer existed on the remote. Site was serving a stale frozen deploy.
 
-**Risk:** Live production site is decoupled from source control. Governance changes, HTML fixes, and content updates committed to `main` will not deploy until this is resolved.
+**Resolution applied:** Option A — Netlify production branch updated from `master` to `main`. Governance changes merged via PR #1 (staging → main, commit `91d969c`). Deploy triggered manually; published as `main@91d969c`. Site validated live at `oakridgemanagement.net` (HTTP 200, title confirmed). Auto-deploy from `main` is now active.
 
-**Resolution options:**
-- Option A: Update Netlify site `boisterous-fenglisu-4a91dc` to deploy from `main` instead of `master` — requires verifying that `main` branch content matches the intended live state before enabling auto-deploy.
-- Option B: Create a `master` branch on the remote pointing at `main` — simpler but perpetuates the naming inconsistency.
-
-**Decision required by:** Daniel Cobb
 **Cross-reference:** `10_Operations/Migration/TECH_STACK_INVENTORY.md`
 
 ---
