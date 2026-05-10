@@ -1,280 +1,143 @@
-\# GPT PROJECT CONTEXT — 2026-05-10
+# GPT PROJECT CONTEXT — 2026-05-10
 
-
-
-\## Project
-
-
+## Project
 
 Oak Ridge Management (ORM) Platform Control Layer
 
-
-
-\## Objective
-
-
+## Objective
 
 Establish a governed AI-assisted development and deployment environment for:
 
+- Oak Ridge Management
+- CEH Standard
+- CEH Infrastructure Index
+- DGE&I support infrastructure
+- future ORM-controlled digital assets
 
+---
 
-\- Oak Ridge Management
+# Current Architecture
 
-\- CEH Standard
+## Branch Structure
 
-\- CEH Infrastructure Index
-
-\- DGE\&I support infrastructure
-
-\- future ORM-controlled digital assets
-
-
-
-\---
-
-
-
-\# Current Architecture
-
-
-
-\## Branch Structure
-
-
-
-\### main
+### main
 
 Production-safe branch.
 
 Used for:
+- stable deployments
+- approved production state
+- protected operational baseline
 
-\- stable deployments
-
-\- approved production state
-
-\- protected operational baseline
-
-
-
-\### staging
+### staging
 
 Validation and experimentation branch.
 
 Used for:
+- Claude/Codex iteration
+- governance development
+- deployment testing
+- documentation updates
+- pre-production refinement
 
-\- Claude/Codex iteration
+---
 
-\- governance development
+# Governance Files Created
 
-\- deployment testing
+- MASTER_CONTEXT.md
+- DECISIONS.md
+- SESSION_LOG.md
+- SYSTEM_MAP.md
+- AI_CONTRACT.md
+- BRAND_RULES.md
+- DEPLOYMENT_RULES.md
+- AUDIT_CHECKLIST.md
+- BRANCH_STRATEGY.md
+- NETLIFY_DEPLOYMENT_MAP.md
+- ENVIRONMENT_VARIABLES_AUDIT.md
+- README.md
+- .gitignore
 
-\- documentation updates
+---
 
-\- pre-production refinement
-
-
-
-\---
-
-
-
-\# Governance Files Created
-
-
-
-\- MASTER\_CONTEXT.md
-
-\- DECISIONS.md
-
-\- SESSION\_LOG.md
-
-\- SYSTEM\_MAP.md
-
-\- AI\_CONTRACT.md
-
-\- BRAND\_RULES.md
-
-\- DEPLOYMENT\_RULES.md
-
-\- AUDIT\_CHECKLIST.md
-
-\- BRANCH\_STRATEGY.md
-
-\- NETLIFY\_DEPLOYMENT\_MAP.md
-
-\- ENVIRONMENT\_VARIABLES\_AUDIT.md
-
-\- README.md
-
-\- .gitignore
-
-
-
-\---
-
-
-
-\# GitHub Status
-
-
+# GitHub Status
 
 Repo:
-
-\- danielcobb007-debug/oakridgemanagement
-
-
+- danielcobb007-debug/oakridgemanagement
 
 Branches:
-
-\- main
-
-\- staging
-
-
+- main
+- staging
 
 Remote tracking:
-
-\- functioning correctly
-
-
+- functioning correctly
 
 GitHub default branch:
-
-\- main
-
-
+- main
 
 Working tree:
+- clean
 
-\- clean
+---
 
+# Operational Philosophy
 
+- Governance before scale
+- No uncontrolled deployments
+- Shared assets centralized
+- AI-assisted workflows audited
+- Claude builds
+- Codex validates
+- Human strategic authority retained
 
-\---
+---
 
-
-
-\# Operational Philosophy
-
-
-
-\- Governance before scale
-
-\- No blind migrations
-
-\- No uncontrolled deployments
-
-\- Preserve live systems
-
-\- Shared assets centralized later
-
-\- Claude builds
-
-\- Codex audits
-
-\- Human strategic authority retained
-
-
-
-\---
-
-
-
-\# Current Deployment Understanding
-
-
+# Current Deployment Understanding
 
 Domains:
-
-\- oakridgemanagement.net
-
-\- cehstandard.com
-
-\- cehinfrastructureindex.com
-
-
+- oakridgemanagement.net
+- cehstandard.com
+- cehinfrastructureindex.com
 
 Known issue:
-
-\- deployment governance currently trails source control governance
-
-
+- deployment governance currently trails source control governance
 
 Need:
+- Netlify deployment audit
+- environment variable audit
+- branch deployment mapping
+- rollback procedures
 
-\- Netlify deployment audit
+---
 
-\- environment variable audit
+# Immediate Recommended Next Steps
 
-\- branch deployment mapping
+1. Audit Netlify settings
+2. Identify current production branch mappings
+3. Document deployment build settings
+4. Review repo folder structure
+5. Identify misplaced governance documents
+6. Begin shared asset architecture
+7. Establish PR workflow from staging -> main
+8. Evaluate future monorepo strategy
+9. Establish AI workflow conventions
+10. Map external repos and deployment dependencies
 
-\- rollback procedures
+---
 
-
-
-\---
-
-
-
-\# Immediate Recommended Next Steps
-
-
-
-1\. Audit Netlify settings
-
-2\. Identify current production branch mappings
-
-3\. Document deployment build settings
-
-4\. Review repo folder structure
-
-5\. Identify misplaced governance documents
-
-6\. Begin shared asset architecture
-
-7\. Establish PR workflow from staging -> main
-
-8\. Evaluate future monorepo strategy
-
-9\. Establish AI workflow conventions
-
-10\. Map external repos and deployment dependencies
-
-
-
-\---
-
-
-
-\# Important Notes
-
-
+# Important Notes
 
 The ORM environment is no longer experimental.
 
-
-
 The system now has:
-
-\- governed Git structure
-
-\- deployment governance beginnings
-
-\- security governance beginnings
-
-\- AI operational structure
-
-\- rollback-capable source control
-
-\- production/staging separation
-
-
+- governed Git structure
+- deployment governance beginnings
+- security governance beginnings
+- AI operational structure
+- rollback-capable source control
+- production/staging separation
 
 Future work should preserve:
-
-\- operational discipline
-
-\- deployment safety
-
-\- governance-first architecture
-
+- operational discipline
+- deployment safety
+- governance-first architecture
