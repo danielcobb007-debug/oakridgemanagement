@@ -11,8 +11,8 @@ Use it to track operational readiness, not abstract policy.
 | Domain | Sitemap | Robots.txt | Canonical URLs | Metadata | Google Indexing | Netlify Status | Last Checked |
 |---|---|---|---|---|---|---|---|
 | `oakridgemanagement.net` | LIVE — 12 URLs · 2026-05-11 | LIVE — non-www canonical | PRESENT · non-www · all 13 indexable pages verified | COMPLETE · all public pages have title + description + canonical | UNKNOWN | LIVE | 2026-05-11 |
-| `cehstandard.com` | NOT VERIFIED | NOT VERIFIED | VERIFY PAGE-BY-PAGE | VERIFY PAGE-BY-PAGE | UNKNOWN | LIVE / TRANSITIONAL | 2026-05-11 |
-| `cehinfrastructureindex.com` | NOT VERIFIED | NOT VERIFIED | VERIFY PAGE-BY-PAGE | VERIFY PAGE-BY-PAGE | UNKNOWN | LIVE / TRANSITIONAL | 2026-05-11 |
+| `cehstandard.com` | NOT VERIFIED | NOT VERIFIED | PARTIAL — homepage self-canonical previously verified; route-level audit still needed | PARTIAL — homepage metadata previously verified; page-level coverage still needs audit | UNKNOWN | LIVE / TRANSITIONAL | 2026-05-11 |
+| `cehinfrastructureindex.com` | NOT VERIFIED | NOT VERIFIED | TRANSITIONAL / VERIFY — prior canonical ambiguity and root-surface sensitivity require route-by-route review | PARTIAL / VERIFY — page-level metadata needs audit against live surface behavior | UNKNOWN | LIVE / TRANSITIONAL | 2026-05-11 |
 | Future ORM Landing Page | TBD | TBD | TBD | TBD | TBD | TBD | UNKNOWN |
 
 ---
@@ -38,5 +38,7 @@ Suggested status values:
 - All 13 public pages on `oakridgemanagement.net` have verified canonical URLs using non-www host form. No host inconsistency.
 - All 12 public ORM pages now have consistent mobile nav. Button markup added to all pages. `js/nav.js` handles toggle on 11 pages; homepage uses equivalent inline JS. CSS open state in `shared.css`.
 - `CEHWhitepaperv1.0OakRidge.pdf` referenced in `/resources/` does not exist. Download button will 404. Needs PDF created and placed at root.
+- `cehstandard.com` and `cehinfrastructureindex.com` are currently sourced from `ceh-pricing-engine` and should be tracked as separate canonical surfaces despite shared operational infrastructure.
+- CEH Standard homepage canonical and `og:url` were previously verified as self-referential to `cehstandard.com`, but route-level ownership and login-flow assumptions still need audit.
+- CEH Infrastructure Index remains the most SEO-sensitive surface. Treat canonical/root behavior as transitional until route-by-route verification is completed.
 - CEH Standard and CEH Infrastructure Index must be tracked as distinct canonical surfaces even if they currently share operational infrastructure.
-
