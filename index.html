@@ -702,6 +702,15 @@ const nav = document.getElementById('site-nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 10);
 }, { passive: true });
+
+const mobileBtn = document.querySelector('.nav-mobile-btn');
+if (mobileBtn) {
+  mobileBtn.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('mobile-open');
+    mobileBtn.setAttribute('aria-expanded', isOpen);
+    mobileBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+}
 </script>
 
 <!-- Netlify Identity: handles #invite_token and #recovery_token hashes from email links -->

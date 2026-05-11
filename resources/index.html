@@ -100,6 +100,9 @@
     </ul>
     <a href="/investor/" class="nav-investor-cta">Investor</a>
     <a href="/contact/" class="nav-cta">Contact</a>
+    <button class="nav-mobile-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -275,5 +278,6 @@
 const nav = document.getElementById('site-nav');
 window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
 </script>
+<script src="/js/nav.js"></script>
 </body>
 </html>
