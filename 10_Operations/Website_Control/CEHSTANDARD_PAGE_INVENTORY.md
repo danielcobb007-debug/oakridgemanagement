@@ -47,7 +47,7 @@ Governance note:
 | `#contact` | Section anchor | Contact / inquiry section | VERIFIED LIVE | CEH Standard | In-page anchor only. |
 | `#whitepaper` | Section anchor | Whitepaper request section | VERIFIED LIVE | CEH Standard | In-page anchor only. |
 | `/pages/methodology` | Page | Methodology page | VERIFIED LIVE | CEH Standard | Title and canonical align with CEH Standard. Source file: `pages/methodology.html` on `main`. |
-| `/pages/benchmark-index` | Page | Full benchmark index and methodology | VERIFIED LIVE | Governance-sensitive | Live page title is CEH Index-focused and behaves more like a CEH Index surface hosted under CEH Standard. Source file still needs exact repo-path confirmation. |
+| `/pages/benchmark-index` | Page | Full benchmark index and methodology | VERIFIED LIVE | Governance-sensitive | Live page title is CEH Index-focused and behaves more like a CEH Index surface hosted under CEH Standard. Source file: `pages/benchmark-index.html` on `main`. |
 | `/ceh-index` | Page | Bridge or entry point to CEH Index | VERIFIED LIVE | Governance-sensitive | Live page is CEH Index v1.0 content on `cehstandard.com`, not a redirect. Source file: `ceh-index.html` on `main`. |
 | `/capital-stack` | Page | Capital framing page | VERIFIED LIVE | Governance-sensitive | Live page is DGE&I capital-stack content under `cehstandard.com`. Source file: `capital-stack.html` on `main`. |
 | `/pages/horsepower-standard` | Page | Analogy / explainer page | VERIFIED LIVE | CEH Standard | Live page frames CEH as a standards-defining measurement concept. Source file: `pages/horsepower-standard.html` on `main`. |
@@ -70,13 +70,9 @@ These are currently safe to treat as CEH Standard homepage sections:
 - `#contact`
 - `#whitepaper`
 
-## Class 2: Likely CEH Standard routes
+## Class 2: Verified CEH Standard routes
 
-These appear likely to belong to CEH Standard, but still need route verification:
-
-- `/pages/horsepower-standard`
-
-Verified CEH Standard routes:
+These are verified live and operationally safe to treat as CEH Standard-owned pages:
 
 - `/pages/methodology`
 - `/pages/horsepower-standard`
@@ -107,11 +103,10 @@ These should not be changed casually during page-copy or SEO work:
 
 # Immediate Audit Priorities
 
-1. Confirm exact repo path for `/pages/benchmark-index`.
-2. Confirm whether `/ceh-index` should remain a hosted CEH Index page on `cehstandard.com` or be treated as a transitional bridge surface only.
-3. Confirm whether `/capital-stack` is intentionally public on CEH Standard or should be reclassified as DGE&I-sensitive content.
-4. Confirm whether `/pages/partners` should remain under CEH Standard or be treated as a governance-sensitive ecosystem page.
-5. Confirm whether partner/login flows intentionally land on CEH Index protected surfaces.
+1. Confirm whether `/ceh-index` should remain a hosted CEH Index page on `cehstandard.com` or be treated as a transitional bridge surface only.
+2. Confirm whether `/capital-stack` is intentionally public on CEH Standard or should be reclassified as DGE&I-sensitive content.
+3. Confirm whether `/pages/partners` should remain under CEH Standard or be treated as a governance-sensitive ecosystem page.
+4. Confirm whether partner/login flows intentionally land on CEH Index protected surfaces.
 
 ---
 
@@ -160,7 +155,7 @@ Assessment:
 - behaves like CEH Index content
 - hosted under CEH Standard domain
 - high governance sensitivity
-- exact source file path still needs confirmation, but the route is live and clearly implemented in the CEH Standard deployment tree
+- source file verified: `pages/benchmark-index.html`
 
 ## `/capital-stack`
 
@@ -249,6 +244,6 @@ Claude should not edit governance-sensitive routes as if they were ordinary stan
 
 # Next Recommended Build Tasks
 
-- Verify `/pages/methodology`
-- Inspect source ownership for the CEH Standard homepage and referenced page routes
-- Create a second-pass inventory once source ownership is confirmed
+- Freeze governance-sensitive CEH routes from casual implementation edits until explicit approval is given
+- Use the implementation map to scope Claude work to safe CEH Standard pages only
+- Create a second-pass cleanup plan for mixed-surface CEH Standard routes
