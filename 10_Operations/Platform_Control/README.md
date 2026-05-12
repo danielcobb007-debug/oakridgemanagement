@@ -2,9 +2,9 @@
 
 ## Purpose
 
-The Platform Control Layer governs operational truth, institutional continuity, AI orchestration, deployment discipline, architectural boundaries, and implementation governance across the Oak Ridge Management ecosystem.
+The Platform Control Layer governs operational truth, institutional continuity, AI orchestration, deployment discipline, architectural boundaries, implementation governance, and standards management across the Oak Ridge Management ecosystem.
 
-It exists to ensure the ORM ecosystem remains:
+Its purpose is to ensure the ORM ecosystem remains:
 
 - governable
 - auditable
@@ -13,6 +13,7 @@ It exists to ensure the ORM ecosystem remains:
 - operationally coherent
 - resistant to AI drift
 - resistant to implementation entropy
+- structurally normalized
 
 ---
 
@@ -26,69 +27,86 @@ They do not independently define it.
 
 ---
 
+# Operating Philosophy
+
+ORM operates under the principle that:
+
+- governance precedes deployment
+- documentation precedes migration
+- architecture precedes implementation
+- platform truth precedes public presentation
+- operational clarity precedes automation
+- implementation mapping precedes restructuring
+- institutional continuity overrides conversational convenience
+
+The objective is not speed alone.
+
+The objective is controlled scalability.
+
+---
+
 # Directory Structure
 
 ## Governance/
 
-Permanent institutional governance documents.
+Defines institutional authority, arbitration logic, operating constraints, and platform governance hierarchy.
 
 Examples:
 
-- source-of-truth hierarchy
+- SOURCE_OF_TRUTH_HIERARCHY.md
 - governance rules
-- operating principles
-- constitutional architecture
 - escalation rules
+- constitutional operating principles
 - institutional constraints
 
-Highest authority layer.
+Highest authority layer within Platform Control.
 
 ---
 
 ## AI_Operations/
 
-AI orchestration and operational role definitions.
+Defines AI orchestration roles, operational boundaries, escalation routing, and implementation expectations.
 
 Examples:
 
-- AI role model
-- AI operating expectations
-- orchestration rules
-- escalation routing
+- AI_ROLE_MODEL.md
+- AI workflow coordination
+- orchestration logic
+- AI governance rules
 - implementation boundaries
-- workflow coordination
+- escalation procedures
 
 ---
 
 ## Architecture/
 
-System architecture and boundary definition.
+Defines system structure, canonical relationships, namespace ownership, and platform boundary management.
 
 Examples:
 
-- platform vs website architecture
-- canonical structure
-- route ownership
+- PLATFORM_VS_WEBSITE_ARCHITECTURE.md
+- canonical structure maps
 - implementation mapping
-- structural normalization
-- ecosystem relationships
+- ecosystem relationship models
+- route ownership logic
+- structural normalization planning
 
 ---
 
 ## Active_Workstreams/
 
-Temporary operational coordination layer.
+Temporary operational coordination layer for active implementation and sequencing.
 
 Examples:
 
-- active work
+- active work tracking
+- remediation planning
+- migration sequencing
 - open loops
-- migration planning
-- remediation tracking
-- current implementation sequencing
 - next-session context
+- implementation coordination
 
-Operationally dynamic.
+Operationally dynamic and transitional.
 
 ---
 
@@ -99,8 +117,8 @@ Deployment governance and operational release control.
 Examples:
 
 - deployment rules
-- release sequencing
 - rollback procedures
+- release sequencing
 - deployment verification
 - environment governance
 - production safety controls
@@ -109,16 +127,16 @@ Examples:
 
 ## Audit/
 
-Verification and integrity management.
+Verification, drift detection, consistency management, and implementation validation.
 
 Examples:
 
-- implementation audits
 - repo verification
-- drift detection
-- consistency checks
+- implementation audits
 - governance validation
-- operational review procedures
+- operational integrity reviews
+- consistency checks
+- deployment verification procedures
 
 ---
 
@@ -128,42 +146,47 @@ Institutional continuity and retained operational intelligence.
 
 Examples:
 
-- session continuity
-- persistent operational context
 - historical decisions
-- architecture evolution
+- session continuity
 - implementation history
+- architecture evolution
+- persistent operational context
+- governance continuity tracking
 
 ---
 
 ## Standards/
 
-Methodology and standards governance.
+Standards governance, methodology management, terminology control, and benchmark separation.
 
 Examples:
 
 - CEH Standard governance
+- methodology governance
 - terminology standards
-- methodology rules
-- standards classification
-- benchmark governance
+- benchmark classification
 - standards/public boundary management
+- standards neutrality governance
 
 ---
 
-# Operational Philosophy
+# Relationship to Website Layer
 
-ORM operates under the principle that:
+The website layer is downstream from the Platform Control Layer.
 
-- governance precedes deployment
-- documentation precedes migration
-- architecture precedes implementation
-- platform truth precedes public presentation
-- operational clarity precedes automation
+The website communicates approved institutional truth.
 
-The objective is not speed alone.
+The website does not define institutional truth.
 
-The objective is controlled scalability.
+Website implementation must defer to:
+
+- governance rules
+- architecture boundaries
+- implementation mapping
+- standards governance
+- source-of-truth hierarchy
+
+If conflict exists between website behavior and platform governance, platform governance controls.
 
 ---
 
