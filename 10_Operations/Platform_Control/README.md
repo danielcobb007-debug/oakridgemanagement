@@ -155,6 +155,21 @@ Examples:
 
 ---
 
+## Registry/
+
+Indexed governance control layer for doctrine, candidate-state tracking, supersession lineage, and registry maintenance workflows.
+
+Examples:
+
+- doctrine indexing
+- candidate tracking
+- supersession tracking
+- registry operating workflow
+- governance observability support
+- anti-resurrection lineage control
+
+---
+
 ## Standards/
 
 Standards governance, methodology management, terminology control, and benchmark separation.
@@ -167,6 +182,19 @@ Examples:
 - benchmark classification
 - standards/public boundary management
 - standards neutrality governance
+
+---
+
+# Governance Registry Layer
+
+The Governance Registry Layer provides indexed control over doctrine, active candidates, supersession, and registry operations. It supports enforcement and observability maturity by preventing accidental canonization, stale doctrine resurrection, and cross-domain contamination.
+
+Registry artifacts:
+
+- `Registry/DOCTRINE_REGISTRY.md` - authoritative index of canonical doctrine and operational-state artifacts
+- `Registry/ACTIVE_CANDIDATES.md` - governed tracking space for unresolved, exploratory, or pre-promotion concepts
+- `Registry/SUPERSESSION_REGISTRY.md` - lineage control for replaced, deprecated, reframed, abandoned, or subordinated concepts
+- `Registry/REGISTRY_OPERATING_WORKFLOW.md` - operating procedure for registry updates, promotion handling, supersession handling, and cross-domain conflict notation
 
 ---
 
