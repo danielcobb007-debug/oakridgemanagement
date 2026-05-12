@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oak Ridge Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper: #f4f2ee;
+      --ink: #0d0d0d;
+      --graphite: #3a3a3a;
+      --ash: #7a7874;
+      --mist: #c9c6c0;
+      --hairline: rgba(13, 13, 13, 0.12);
+      --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+      --sans: "IBM Plex Sans", system-ui, sans-serif;
+      --gutter: clamp(1.25rem, 5vw, 5rem);
+      --measure: 38rem;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    main {
+      min-height: 100vh;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 0.38fr) minmax(0, 1fr);
+      column-gap: clamp(1rem, 4vw, 4rem);
+      padding: clamp(2.5rem, 8vh, 6rem) var(--gutter) clamp(3rem, 10vh, 7rem);
+      align-items: end;
+    }
+
+    .hero-spine {
+      border-left: 1px solid var(--hairline);
+      padding-left: clamp(1rem, 2.5vw, 2.25rem);
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: clamp(0.5rem, 2vh, 1.5rem);
+      padding-bottom: 0.25rem;
+    }
+
+    .hero-spine p {
+      font-size: 0.6875rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--ash);
+      line-height: 1.6;
+      max-width: 12em;
+    }
+
+    .hero-body {
+      padding-bottom: clamp(0.25rem, 1vh, 0.75rem);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(3.25rem, 11.5vw, 9.25rem);
+      line-height: 0.88;
+      letter-spacing: -0.045em;
+      color: var(--ink);
+      max-width: 6ch;
+    }
+
+    .hero-title .line-2 {
+      display: block;
+      margin-left: clamp(0.15em, 2.5vw, 0.35em);
+      font-style: italic;
+      color: var(--graphite);
+    }
+
+    .hero-lede {
+      margin-top: clamp(2.5rem, 6vh, 4.5rem);
+      max-width: min(var(--measure), 88vw);
+      margin-left: clamp(0, 8vw, 6rem);
+      font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+      line-height: 1.75;
+      color: var(--graphite);
+      font-weight: 300;
+    }
+
+    /* —— Orientation —— */
+    .orientation {
+      padding: clamp(5rem, 14vh, 11rem) var(--gutter) clamp(4rem, 11vh, 9rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, min(42rem, 100%));
+      column-gap: clamp(2rem, 8vw, 10rem);
+    }
+
+    .orientation::before {
+      content: "";
+      grid-column: 1;
+      border-top: 1px solid var(--hairline);
+      margin-top: 0.35em;
+      max-width: clamp(4rem, 18vw, 14rem);
+      height: 0;
+      align-self: start;
+    }
+
+    .orientation-copy {
+      grid-column: 2;
+    }
+
+    .orientation-copy p + p {
+      margin-top: clamp(2rem, 5vh, 3.25rem);
+    }
+
+    .orientation-copy .primary {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.35vw, 2.125rem);
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      font-weight: 400;
+      max-width: 26ch;
+    }
+
+    .orientation-copy .secondary {
+      font-size: clamp(0.875rem, 1vw, 0.9375rem);
+      line-height: 1.85;
+      color: var(--ash);
+      max-width: 52ch;
+      padding-left: clamp(0, 4vw, 3rem);
+      border-left: 1px solid transparent;
+    }
+
+    @media (min-width: 720px) {
+      .orientation-copy .secondary {
+        border-left-color: var(--hairline);
+        padding-left: clamp(1.5rem, 3vw, 2.75rem);
+      }
+    }
+
+    /* —— Continuation —— */
+    .continuation {
+      padding: clamp(3.5rem, 10vh, 8rem) var(--gutter) clamp(6rem, 18vh, 12rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: start;
+    }
+
+    .continuation-field {
+      min-height: clamp(10rem, 28vh, 22rem);
+      position: relative;
+      border-left: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      margin-right: clamp(0, 4vw, 3rem);
+    }
+
+    .continuation-field::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: clamp(3rem, 12vw, 8rem);
+      height: 1px;
+      background: var(--hairline);
+    }
+
+    .continuation-prose {
+      padding-top: clamp(0.5rem, 2vh, 1.25rem);
+      font-family: var(--serif);
+      font-size: clamp(1.125rem, 1.65vw, 1.375rem);
+      line-height: 1.5;
+      letter-spacing: -0.015em;
+      color: var(--graphite);
+      max-width: 22ch;
+    }
+
+    .continuation-prose em {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: clamp(3rem, 10vh, 5rem);
+      }
+      .hero-spine {
+        border-left: none;
+        border-top: 1px solid var(--hairline);
+        padding-left: 0;
+        padding-top: clamp(1.5rem, 4vh, 2.5rem);
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 2rem;
+      }
+      .hero-spine p { max-width: none; }
+      .hero-title { max-width: none; }
+      .hero-lede { margin-left: 0; }
+      .orientation {
+        grid-template-columns: 1fr;
+      }
+      .orientation::before {
+        display: none;
+      }
+      .orientation-copy {
+        grid-column: 1;
+      }
+      .orientation-copy .secondary {
+        border-left: none;
+        padding-left: 0;
+      }
+      .continuation {
+        grid-template-columns: 1fr;
+      }
+      .continuation-field::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="hero-spine">
+        <p>ORM</p>
+      </div>
+      <div class="hero-body">
+        <h1 class="hero-title">Oak Ridge<span class="line-2">Management</span></h1>
+        <p class="hero-lede">Governed structure for standards, platforms, and long-horizon infrastructure—held apart on purpose, held together by design.</p>
+      </div>
+    </header>
+
+    <section class="orientation">
+      <div class="orientation-copy">
+        <p class="primary">The work is upstream: boundaries, precedence, and the quiet discipline of what must not collapse when everything else moves.</p>
+        <p class="secondary">ORM does not compete for attention at the point of execution. It stabilizes the field in which execution becomes legible—so judgment can accumulate without turning into noise.</p>
+      </div>
+    </section>
+
+    <section class="continuation">
+      <div class="continuation-field" aria-hidden="true"></div>
+      <p class="continuation-prose">What follows is the <em>same order</em>, extended—layers kept distinct, coherence enforced without spectacle.</p>
+    </section>
+  </main>
+</body>
+</html>
