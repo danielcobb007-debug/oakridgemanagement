@@ -1,5 +1,25 @@
 # WEBSITE_BUILD_QUEUE
 
+## Operational Authority
+
+This document operates under the ORM Platform Control Layer.
+
+Current operational state reference:
+
+- `10_Operations/Platform_Control/Active_Workstreams/CURRENT_OPERATIONAL_STATE.md`
+- `10_Operations/Platform_Control/Architecture/OPERATIONAL_EXECUTION_MODEL.md`
+
+Website implementation work must follow the governed execution pipeline:
+
+`Strategy Decision`
+→ `Markdown Documentation`
+→ `Claude Implementation`
+→ `Codex Verification`
+→ `Git Commit`
+→ `Deployment`
+
+Website Control does not independently define institutional governance or standards authority.
+
 ## Purpose
 
 This queue tracks what should be built, updated, reviewed, or deployed next across ORM-controlled websites.

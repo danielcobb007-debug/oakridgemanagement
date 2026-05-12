@@ -1,5 +1,48 @@
 # CEH_ROUTE_IMPLEMENTATION_MAP
 
+## Governance Context
+
+This implementation map operates under the ORM Platform Control Layer and governed operational execution model.
+
+Authoritative references include:
+
+- `10_Operations/Platform_Control/Architecture/OPERATIONAL_EXECUTION_MODEL.md`
+- `10_Operations/Platform_Control/Standards/STANDARDS_GOVERNANCE.md`
+- `10_Operations/Platform_Control/Governance/SOURCE_OF_TRUTH_HIERARCHY.md`
+- `10_Operations/Platform_Control/Active_Workstreams/CURRENT_OPERATIONAL_STATE.md`
+
+This document exists to map implementation ownership and operational route behavior.
+
+It does not independently define:
+
+- canonical standards authority
+- commercialization authority
+- institutional topology decisions
+- governance policy
+
+Route classification and remediation decisions must preserve separation between:
+
+- CEH Standard
+- CEH Infrastructure Index
+- commercialization surfaces
+- public website implementation
+
+## Route Classification Authority
+
+Operational route handling must follow:
+
+- `10_Operations/Website_Control/CEH_ROUTE_CLASSIFICATION.md`
+
+Route classifications determine:
+
+- implementation safety
+- escalation requirements
+- deployment sensitivity
+- remediation sequencing
+- governance review thresholds
+
+Classification overrides implementation convenience.
+
 ## Purpose
 
 This document maps the current CEH Standard public routes on `cehstandard.com` to their confirmed source files in:
