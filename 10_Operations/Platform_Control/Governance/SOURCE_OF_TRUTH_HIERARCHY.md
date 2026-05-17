@@ -80,6 +80,7 @@ Includes:
 - OPEN_LOOPS.md
 - ACTIVE_WORKSTREAMS.md
 - NEXT_SESSION_CONTEXT.md
+- distilled context summaries that have been explicitly approved for working use
 - remediation plans
 - migration plans
 - session debriefs
@@ -99,6 +100,9 @@ Includes:
 - ChatGPT / Bea conversations
 - Claude conversations
 - Codex outputs
+- `09_AI_Systems/Incoming/` raw imports
+- `09_AI_Systems/Session_Extraction/` working extraction artifacts
+- `09_AI_Systems/Distilled_Context/Pending/` unstabilized distilled summaries
 - generated prompts
 - temporary drafts
 - implementation suggestions
@@ -138,6 +142,8 @@ AI systems operating within the ORM ecosystem are expected to:
 - maintain clean implementation traceability
 - identify conflicts before executing changes
 - defer to the documented authority hierarchy when uncertainty exists
+- preserve provenance when importing AI-session material
+- promote extracted memory into the correct markdown destination intentionally
 
 ---
 

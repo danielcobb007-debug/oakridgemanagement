@@ -40,6 +40,17 @@ Meaning:
 - the current bottleneck is disciplined execution
 - the main risks are now decision risk and drift risk rather than discovery risk
 
+Transition note:
+
+ORM remains in `PHASE 5 — OPERATIONALIZATION`, but is now transitioning toward `PHASE 6 — ENFORCEMENT & OBSERVABILITY MATURITY`.
+
+That transition is justified because:
+
+- route classification is operational
+- route enforcement semantics are operational
+- route observability semantics are operational
+- the first governed Class A execution cycle has now been completed successfully
+
 ---
 
 # Current Platform Reality
@@ -57,10 +68,15 @@ Current condition:
 - operational execution model is documented
 - active workstream coordination exists
 - platform-level AI governance exists
+- route-governance enforcement semantics now exist
+- route-governance observability semantics now exist
+- a Command Huddle prototype now exists as a 5-day operating trial under Platform Control
 
 Operational implication:
 
 The platform now has enough control structure to support real execution without adding abstract governance by default.
+
+The new Command Huddle layer may assist daily operating focus, but it remains downstream from governed markdown and is not a system of record.
 
 ## Multi-Agent Execution Model
 
@@ -84,6 +100,10 @@ Current condition:
 Operational implication:
 
 AI usage is now role-governed rather than ad hoc.
+
+Proof point:
+
+- the first full governed implementation cycle has now been completed successfully on CEH Standard Class A routes
 
 ---
 
@@ -132,6 +152,8 @@ Current condition:
 - route-level live behavior has been audited
 - route-to-file ownership is documented
 - safe implementation lanes now exist
+- first Class A modernization cycle has been completed and committed
+- route classification, enforcement, and observability semantics are now in force for CEH route handling
 
 Safe CEH Standard routes:
 
@@ -207,6 +229,16 @@ Examples:
 - changing route ownership during content work
 - mixing SEO cleanup with structural cleanup
 
+## Risk Class 4 — Reconciliation Risk
+
+The main unresolved operational reconciliation risk is the shared `ceh-pricing-engine` reality across CEH Standard and CEH Infrastructure Index.
+
+Examples:
+
+- shared repo creating future branch or publish-root ambiguity
+- CEH Standard and CEH Index changes landing in the same implementation tree
+- route-level cleanup outpacing repo/deployment reconciliation
+
 ---
 
 # Current Control Readiness
@@ -228,7 +260,7 @@ The platform now has a documented orchestration model and clear separation betwe
 `MODERATE`
 
 ORM is operationally strong.
-CEH Standard is controllable but still transitional.
+CEH Standard is now controllable and proven inside Class A lanes, but still transitional outside those lanes.
 CEH Index still requires deeper normalization.
 
 ## Deployment Readiness
@@ -236,6 +268,12 @@ CEH Index still requires deeper normalization.
 `MODERATE`
 
 Deployment discipline is improving, but shared `ceh-pricing-engine` operational reality still creates sensitivity.
+
+## Enforcement & Observability Readiness
+
+`MODERATE TO STRONG`
+
+Enforcement and observability semantics now exist and have working operational precedent, but they have not yet been exercised on higher-sensitivity route classes.
 
 ---
 
@@ -247,11 +285,11 @@ Apply the operating system to live execution instead of expanding governance by 
 
 ## Priority 2
 
-Formalize CEH route classification and remediation sequencing for mixed-surface routes.
+Apply route classification, remediation sequencing, and enforcement semantics to mixed-surface CEH routes deliberately.
 
 ## Priority 3
 
-Normalize legacy website-control artifacts so they align with the platform execution model.
+Confirm live results of the first governed CEH Class A execution cycle and preserve resulting precedent.
 
 ## Priority 4
 
@@ -265,15 +303,19 @@ Current example:
 
 - missing whitepaper PDF
 
+## Priority 6
+
+Evaluate whether the Command Huddle trial improves execution focus without creating truth, boundary, or persistence drift.
+
 ---
 
 # Next Safe Actions
 
 1. Keep platform architecture stable and avoid unnecessary restructuring.
-2. Use the execution pipeline as the default operating model for public work.
+2. Confirm live CEH Class A results after deployment and record any findings.
 3. Treat CEH mixed-surface cleanup as the main active operational decision zone.
-4. Keep Claude inside documented safe lanes.
-5. Use Codex verification before committing public-surface changes.
+4. Keep Claude inside documented safe lanes and class-aware implementation briefs.
+5. Use Codex verification and route audit semantics before committing sensitive public-surface changes.
 6. Normalize operational state into markdown whenever reality changes.
 
 ---
@@ -298,12 +340,16 @@ Escalate through governance before implementation if:
 - platform orchestration model
 - ORM website production baseline
 - CEH Standard implementation visibility
+- Class A governed execution precedent
+- route enforcement and observability semantics
 
 ## What is transitional
 
 - CEH Standard mixed-surface routes
 - CEH Index public-surface normalization
 - some legacy website-control assumptions
+- shared `ceh-pricing-engine` reconciliation reality
+- the new Command Huddle prototype operating layer
 
 ## What is unsafe to do casually
 
@@ -318,6 +364,8 @@ Escalate through governance before implementation if:
 - route-by-route remediation planning
 - safer Claude implementation
 - scalable multi-agent operational use
+- policy-aware execution inside Class A lanes
+- higher-discipline verification before Class B, D, and E route work
 
 ---
 

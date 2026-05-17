@@ -57,7 +57,7 @@ Establish institutional governance, operational architecture, deployment discipl
 
 ## Current State
 
-IN PROGRESS
+ACTIVE OPERATIONAL CONTROL
 
 Core governance framework established.
 
@@ -71,6 +71,14 @@ Primary operational namespaces now exist:
 - Memory
 - Standards
 - Active Workstreams
+
+Operational milestone status:
+
+- governed multi-agent execution model established
+- active operational state tracking established
+- route-governance enforcement established
+- route-governance observability established
+- 5-day Command Huddle prototype trial established as a non-canonical execution interface
 
 ---
 
@@ -102,17 +110,19 @@ Key documents include:
 
 - normalize remaining legacy operational documents
 - establish deployment/repo operational automation later
-- integrate governance into actual CEH workflows
+- continue integrating governance into actual CEH workflows
 - map operational ownership more explicitly
-- establish standards classification framework
+- preserve enforcement semantics as execution expands
+- evaluate whether the Command Huddle trial improves focus without creating a shadow system of record
 
 ---
 
 ## Next Safe Actions
 
 - normalize remaining namespaces carefully
-- tie governance into live workflows
+- tie governance into live workflows repeatedly and deliberately
 - establish operational dashboards later if needed
+- keep the Command Huddle trial seeded-state only and preserve the `3 Must-Win Plays / 5 Supporting Tasks / 2 Quick Hits` execution model
 - avoid uncontrolled governance sprawl
 - preserve implementation simplicity where possible
 
@@ -128,11 +138,18 @@ Establish CEH as a governed institutional standard independent from commercializ
 
 ## Current State
 
-ACTIVE STRATEGIC DEVELOPMENT
+ACTIVE GOVERNED EXECUTION
 
 CEH governance boundaries are beginning to formalize.
 
 Standards governance layer now exists.
+
+Route-level governance now also exists through:
+
+- route classification
+- route enforcement semantics
+- route observability semantics
+- governed Class A implementation precedent
 
 ---
 
@@ -153,6 +170,8 @@ Standards governance layer now exists.
 - methodology formalization
 - trademark sequencing
 - benchmark governance structure
+- mixed-surface route remediation sequencing
+- CEH Standard vs CEH Index repo/deployment reconciliation
 
 ---
 
@@ -174,11 +193,11 @@ Normalize website implementation, route ownership, deployment sequencing, and pl
 
 ## Current State
 
-PARTIALLY NORMALIZED
+OPERATIONALIZING
 
 Architecture separation established conceptually.
 
-Further operational normalization still required.
+Further operational normalization still required, but governed execution is now functioning in practice.
 
 ---
 
@@ -195,9 +214,10 @@ Further operational normalization still required.
 ## Open Loops
 
 - continue route normalization
-- verify implementation maps
 - continue CEH surface cleanup
 - establish canonical deployment sequencing
+- confirm live results of CEH Class A modernization
+- extend route intelligence model to CEH Infrastructure Index
 
 ---
 

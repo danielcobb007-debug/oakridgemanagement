@@ -110,6 +110,28 @@ Operationally dynamic and transitional.
 
 ---
 
+## Command_Huddle/
+
+Prototype operating-huddle layer for bounded execution trials.
+
+Examples:
+
+- React dashboard prototypes
+- operating-trial control notes
+- non-canonical daily command surfaces
+
+This namespace is for execution interfaces only.
+
+It does not replace governance markdown, legal documents, standards doctrine, or institutional memory.
+
+Current status:
+
+- `ORM Command Huddle` registered as a 5-day operating trial
+- seeded-state prototype only
+- no persistence or external database wiring
+
+---
+
 ## Deployment/
 
 Deployment governance and operational release control.
@@ -205,6 +227,10 @@ The website layer is downstream from the Platform Control Layer.
 The website communicates approved institutional truth.
 
 The website does not define institutional truth.
+
+The Command Huddle layer is also downstream from Platform Control doctrine.
+
+It may translate governed truth into daily action, but it may not become a competing record system.
 
 Website implementation must defer to:
 
