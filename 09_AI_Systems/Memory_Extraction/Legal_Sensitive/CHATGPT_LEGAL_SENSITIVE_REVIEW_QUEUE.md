@@ -1,0 +1,84 @@
+# ChatGPT Legal Sensitive Review Queue
+
+This queue is ChatGPT-derived metadata only and requires manual review before any broader use.
+
+- conversations in queue: 74
+
+## Conversations
+
+| source_system | source_file | conversation_id | title | update_time | primary_domain | sensitivity_flags | promotion_status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ChatGPT | conversations-007.json | 96ac080a-8036-45e0-a859-fc37a836abc4 | Slander in Divorce Proceedings | 2023-10-29T06:22:26Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-000.json | 2ece0bf9-d73e-4f92-8d01-f1dd46b9c7ae | Taxing CEOs for Equity. | 2024-06-04T13:17:16Z | SBR_HUB_Benefits | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|personal_private\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-000.json | 66df1fef-3f28-8000-9493-a7960a54cc5e | Stop-Loss Trends & Challenges | 2024-09-10T12:28:04Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-000.json | 680bdcb7-b844-8000-a2bc-d1364b3fc28a | Plan Mirroring Endorsement Importance | 2025-04-25T19:05:10Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68195baf-3d9c-8000-96e9-29c32bf18430 | Introducing New Partner Safely | 2025-05-06T16:54:39Z | Legal_Papering | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68406eca-6560-8000-9536-2a0c3cf87709 | HUB KC Broker Agenda | 2025-06-05T13:24:36Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 6898b038-fa98-832f-9123-6278da3a886a | Spendthrift trust explanation | 2025-08-10T15:05:23Z | Legal_Papering | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 689cb356-dab0-832e-afdc-bdb89e875be5 | Goal and objective summary | 2025-08-13T15:52:35Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 689f1fe2-5968-8331-98c4-8a21a6924f8a | Train GPT for analysis | 2025-08-15T12:04:09Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 689b7b48-9d14-8331-8071-0821df770bac | Evaluate QumulusAI opportunity | 2025-08-18T14:41:19Z | ORM | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68af1b91-2540-832e-a467-36fd9f276ca8 | Stop-loss carrier preferences | 2025-08-27T15:04:24Z | Legal_Papering | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68b08d1e-01c4-8329-91d3-b2b8b8cf4a22 | Hospital non-profit approval | 2025-08-28T17:23:13Z | Legal_Papering | investor_capital_sensitive\|legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68c0996c-49f4-8332-9c02-5c0653a41557 | Excel vs screenshot upload | 2025-09-09T21:47:54Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68d29cd5-a9c8-8328-8b80-4185ba9eb9d0 | Extracting contact lists | 2025-09-23T13:14:02Z | Legal_Papering | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68d1b9bd-5a48-832e-be08-dac34d6e0484 | Branch · Wholesaling opportunity advice | 2025-09-24T13:32:45Z | Legal_Papering | code_repo_sensitive\|legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68d41c12-09b0-8328-a914-8bce505cc904 | Executive summary comparison | 2025-09-24T16:39:34Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68d52e17-6cac-8321-9bf3-326c84bb7cf9 | Stop-loss marketing summary | 2025-09-25T12:08:49Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68d57879-6b38-8327-9620-3dbc6b8c69f4 | Executive overview creation | 2025-09-25T17:16:23Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 68e7a7cd-0790-8328-af98-12c64f097dcb | Plan performance analysis | 2025-10-09T12:28:51Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68d55da7-e89c-832c-8492-9b31cf68a01d | Visitation and parenting plan | 2025-10-13T21:37:58Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 68f1201c-48a4-832e-aa1f-eed4138bc7fb | Contract conversion explanation | 2025-10-16T16:42:01Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 68f16aea-7e64-8326-b53b-acbb0760fcc2 | Client email draft response | 2025-10-16T22:04:08Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 68f6169f-9428-8332-9638-771afc0d4092 | Stop-loss marketing analysis | 2025-10-20T11:17:47Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 68f637f3-b70c-8322-a991-f04edced7654 | Million dollar gift structure | 2025-10-20T13:27:06Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 69049ce7-0144-8325-8fec-3379b8a590ce | Renewal pricing comparison | 2025-10-31T21:53:52Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 69262d10-084c-8330-a128-adba3393207f | PILOT Strategy | 2025-11-25T22:43:00Z | ORM | investor_capital_sensitive\|legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 69132beb-8b34-8327-9d06-d028f9b4e2a3 | Entity structure options | 2025-11-25T23:48:49Z | ORM | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|personal_private\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 6926406e-4438-8328-9db1-c584b3308a28 | Partner Points Table | 2025-11-25T23:49:28Z | Legal_Papering | investor_capital_sensitive\|legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 692e4247-fe3c-832e-ae1e-031c9b166b20 | Business listing evaluation | 2025-12-02T01:40:28Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 6930caa0-a88c-8328-8d45-bd66b50e81b5 | Respond to request | 2025-12-03T23:43:52Z | Legal_Papering | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 693ad41b-8b68-8330-ae6a-8645d423fa0e | Mortgage reply draft | 2025-12-11T16:50:48Z | Legal_Papering | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 6941959b-e224-8325-8e81-e86ac2819827 | Executive summary articulation | 2025-12-16T17:59:16Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 694a80d4-f32c-8332-b7b9-244f533ce3e6 | Document Summary Review | 2025-12-23T11:49:26Z | ORM | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 69626fc6-b174-832f-91f2-ac94fc8f2ca7 | LLC vs Other Structures | 2026-01-10T19:56:57Z | ORM | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|personal_private\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 6973a06b-506c-832f-99f0-4b3d91b67efb | Response Strategy Advice | 2026-01-23T17:06:16Z | Legal_Papering | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 6993a44e-18a8-832c-b72c-84e72a79bed0 | DGEI Opportunity Summary | 2026-02-17T09:50:55Z | DGEI | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 69957d2a-4368-832a-a42c-4debe1aa4d2b | Helm Architecture | 2026-02-18T09:58:12Z | DGEI | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|personal_private\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 69964964-f0cc-832b-b046-38785b7b59cf | Agreement Review Recommendations | 2026-02-18T23:31:40Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 6997949d-6c30-832a-889e-b3834b03106d | Capital Partner Strategy | 2026-02-19T22:59:51Z | DGEI | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69982710-3b50-832c-b302-c5dbc80f043e | ClickUp Overview | 2026-02-21T14:24:28Z | ORM | legal_sensitive\|partner_consent_required\|personal_private\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 692dd3c1-ef38-8332-ae23-ae7309da47f2 | Personal assistant contract | 2026-02-23T19:41:44Z | Legal_Papering | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 699cc7e2-b738-832b-8831-cab34628987d | Job Opportunity Clarification | 2026-02-23T21:39:33Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a2229e-19bc-8325-99d0-462cf95e7c49 | Urgent Texting Strategy | 2026-02-27T23:36:18Z | Legal_Papering | investor_capital_sensitive\|legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a33800-5734-832a-82f0-32d003d390bf | SC Data Center Proposal | 2026-03-02T15:59:48Z | QumulusAI_VFG_Compute | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a387a0-0738-8328-9b3e-38673dd5bc21 | DGEI Canvas Layout Prompt | 2026-03-02T22:19:16Z | DGEI | legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a95424-5060-8325-a529-f5cc0e050073 | Platform Architect Leadership | 2026-03-05T12:57:42Z | QumulusAI_VFG_Compute | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a8398f-dea0-832e-9a26-8583bc72c242 | Meeting Prep with QAI | 2026-03-05T19:56:52Z | DGEI | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69b716a3-c9a0-832c-b1ed-1e5ce1f0f9f2 | Power Supercycle Waves | 2026-03-15T22:03:23Z | DGEI | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69b85bcc-5c98-8325-a53b-8018ed6f5091 | Strategic Review of Pitch | 2026-03-16T19:58:01Z | QumulusAI_VFG_Compute | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69baa2a6-6e18-8331-b26c-e33823247d7f | Tax Strategy for Revenue Sharing | 2026-03-18T13:30:12Z | ORM | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69baab3d-b978-8331-9c2f-7a805b021a2f | Boone Plan Termination | 2026-03-18T13:46:06Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69c008ee-ac7c-8329-8844-d336f981a38d | Transitioning to DG Energy | 2026-03-22T15:42:34Z | DGEI | legal_sensitive\|partner_consent_required\|personal_private\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69c150a6-87d4-8329-81a3-145fa4df4756 | Partnership Email Refinement | 2026-03-23T14:40:42Z | Legal_Papering | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69c3d435-ae2c-832d-9931-866276089726 | CP&IO Role as Industrial Engine | 2026-03-26T19:21:38Z | DGEI | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69c7b95b-2474-832d-b2b1-ea403522c9b9 | Matt's AI Infrastructure Design | 2026-03-28T12:35:51Z | QumulusAI_VFG_Compute | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69cecab7-8704-832e-846d-1b133a233d36 | Review for Wayne | 2026-04-02T20:04:28Z | ORM | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69d3f5d8-5238-8329-af66-9dadedd8f0c6 | DGE&I Platform Strategy | 2026-04-06T22:28:54Z | QumulusAI_VFG_Compute | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69d42d05-1474-8332-8607-4ee2695a1345 | Georgia Home Listing Period | 2026-04-06T23:27:12Z | Legal_Papering | legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69dd6901-cb68-83ea-be71-4a3a4278e57c | Cushman Call Summary | 2026-04-13T23:35:33Z | QumulusAI_VFG_Compute | legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69e1079d-c700-83ea-bc33-63b9d48eb3a6 | Stop-loss Market Opportunity | 2026-04-16T16:26:42Z | Legal_Papering | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69e18c28-c780-83ea-b8e7-103422e8899b | Roofing Insurance Issues | 2026-04-17T01:29:41Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69e1f3fc-4284-83ea-aa35-8442bfd5bbc3 | Building the Flywheel | 2026-04-17T09:22:38Z | ORM | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69e1fcd4-4254-83ea-be94-b38a6d99f7eb | Formalizing Advisory Role | 2026-04-17T10:19:37Z | DGEI | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69e24336-5110-83ea-80ae-e49a20040cdb | Corporate Matter Text Draft | 2026-04-18T00:47:56Z | ORM | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69e607b9-6ce0-83ea-9858-caf14f6d2dee | ORM Automation and Branding | 2026-04-20T11:04:07Z | ORM | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69fdc0bb-7b4c-83ea-97ed-32ef3363cef7 | Codex Automation in SBR | 2026-05-08T14:32:36Z | SBR_HUB_Benefits | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69ff6dcd-4c84-83ea-973f-8aecdf84f15f | Platform Control Layer 5/9/26 | 2026-05-09T19:32:03Z | ORM | investor_capital_sensitive\|legal_sensitive\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 6a0369ff-94d0-83ea-934c-2292e8bead26 | Platform Evolution for Hyperscalers | 2026-05-12T17:57:54Z | QumulusAI_VFG_Compute | legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 6a036a61-e144-83ea-a02d-75447b302d0a | DGEI Cushman Updates | 2026-05-12T18:00:20Z | DGEI | legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 6a037426-d34c-83ea-957d-edcda467e1c7 | Platform Control Continuation | 2026-05-14T11:28:46Z | ORM | legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 6a05ec58-5400-83ea-a6fe-15f1f6efa273 | CEH Composable Architecture | 2026-05-16T10:19:33Z | CEH | legal_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 6a084636-4904-83ea-8979-18843281b59f | ORM Command Layer Init | 2026-05-16T10:27:06Z | ORM | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|personal_private\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 6a049228-0a6c-83ea-bfbb-9c6b5276ec01 | Turbine Deal Strategy | 2026-05-16T11:52:09Z | ORM | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|sbr_hub_sensitive | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 6a083d10-9bac-83ea-aede-0c0ac02cdb21 | Viktor AI Overview | 2026-05-16T12:41:52Z | ORM | legal_sensitive\|partner_consent_required\|personal_private\|sbr_hub_sensitive | Raw / Unreviewed |

@@ -42,3 +42,44 @@ coverage/
 # Temporary Files
 *.tmp
 *.temp
+
+# ORM AI Memory / Local Artifacts — Added 2026-05-17
+
+# Office lock files
+.~lock.*
+~$*
+
+# OS junk files
+desktop.ini
+
+# Additional temporary and backup files
+*.bak
+*.swp
+*.swo
+
+# Raw ChatGPT export ZIP files
+09_AI_Systems/ChatGPT_Export/Raw/*.zip
+09_AI_Systems/ChatGPT_Export/Raw/**/*.zip
+
+# Raw export media/audio/video files
+*.wav
+*.mp3
+*.mp4
+*.mov
+*.m4a
+*.heic
+*.webp
+
+# Large raw archive binaries
+*.msg
+
+# Local Claude/Codex app-state folders if copied into repo
+.codex/
+.claude/
+**/.codex/
+**/.claude/
+
+# Common generated temp/cache directories
+.cache/
+tmp/
+temp/

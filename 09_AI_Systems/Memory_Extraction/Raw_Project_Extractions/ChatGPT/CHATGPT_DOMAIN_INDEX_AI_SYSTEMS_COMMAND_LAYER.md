@@ -1,0 +1,45 @@
+# AI_Systems_Command_Layer ChatGPT Domain Index
+
+This file contains raw and unreviewed ChatGPT-derived metadata. It is not canonical ORM memory.
+
+- source_system: ChatGPT
+- conversations in domain: 33
+- source index: C:\Users\dpc\Oak Ridge Management(1)\Oak Ridge Management - Documents\09_AI_Systems\Memory_Extraction\Reports\CHATGPT_CONVERSATION_INDEX.csv
+
+## Conversations
+
+| source_system | source_file | conversation_id | title | create_time | update_time | approximate_message_count | sensitivity_flags | promotion_status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ChatGPT | conversations-000.json | 0ab15b9f-c4f7-4c67-9b5c-c3adfef9b67c |  | 2022-12-12T20:04:15Z | 2022-12-12T20:04:15Z | 3 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | fc7ba434-d7a9-4a95-afb9-bad627df0e49 | Trinity Logo Request | 2024-08-14T23:45:19Z | 2024-08-14T23:46:04Z | 11 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-000.json | 67c306fe-0048-8000-a649-599bd15feb81 | Dining Room Conversion Tips | 2025-03-01T13:09:18Z | 2025-03-02T18:24:15Z | 43 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-000.json | 6807fdb6-368c-8000-a733-8eb70e4a3e71 | Golf Photo Roast | 2025-04-22T20:36:06Z | 2025-04-22T22:21:33Z | 13 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68270cdf-e3cc-8000-942a-b947ec3d63a4 | Master Bedroom Design Help | 2025-05-16T10:01:05Z | 2025-05-16T10:49:52Z | 49 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 687d0b46-90e4-8000-9efc-29e0e4bb9395 | ChatGPT Social Media Help | 2025-07-20T15:29:11Z | 2025-07-20T15:40:49Z | 20 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 6897b4ba-27ec-8328-8f5a-41ff49d5b467 | Professional photo ideas | 2025-08-09T20:51:52Z | 2025-08-09T21:10:54Z | 12 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68a1f32b-6de0-832f-8e56-2fa1f0680c66 | T-shirt design ideas | 2025-08-17T15:20:31Z | 2025-08-18T23:28:11Z | 21 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 68bd947f-5ea0-832c-913d-39b9f5d15753 | Agent vs Grok comparison | 2025-09-07T14:20:25Z | 2025-09-07T15:48:38Z | 221 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 68e85580-3a60-8321-8c69-891c0abb19f8 | Selfie transformation request | 2025-10-10T00:38:47Z | 2025-10-10T00:42:19Z | 14 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 690a0cc7-4200-832c-bae2-bff608875b88 | Financial data analysis prompt | 2025-11-04T14:25:18Z | 2025-11-04T14:29:00Z | 13 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 690e050a-515c-8326-9505-bad4e076f3b3 | Double billing fix | 2025-11-07T14:41:31Z | 2025-11-07T14:41:36Z | 10 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-002.json | 69145572-542c-8332-8cbb-775e10fc4843 | Handling broken trust | 2025-11-12T09:42:06Z | 2025-11-12T09:42:43Z | 10 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 691f294b-ea94-8330-8be4-ba93a2fd1dbf | Rewrite and IG prompt | 2025-11-20T14:45:30Z | 2025-11-20T14:47:02Z | 7 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 693999fd-2f20-832f-9309-a4ecfc964cd5 | Edit photo without dog | 2025-12-10T16:04:28Z | 2025-12-10T16:08:56Z | 18 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 693d6495-5b00-8332-b7e2-5495070cd1ce | Using ChatGPT and Copilot | 2025-12-13T13:06:10Z | 2025-12-13T13:06:37Z | 10 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 69456f29-b73c-8327-874b-cd630c5ff33d | Beatrice location inquiry | 2025-12-19T15:28:42Z | 2025-12-19T15:51:54Z | 11 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 69626822-b630-8328-a219-70b3b8d753a0 | Recover Deleted Conversation | 2026-01-10T14:54:32Z | 2026-01-10T14:54:47Z | 8 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 696401b1-b828-8328-b39b-128f2dec1e74 | Photo Editing Request | 2026-01-11T20:01:54Z | 2026-01-11T20:02:33Z | 10 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 696951e9-65b4-8329-8a22-960091c9ee41 | Instagram Automation Tracking | 2026-01-15T20:45:29Z | 2026-01-16T01:55:11Z | 116 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 696aef4f-3878-832d-bff6-5f56490aa706 | Amy Request Clarification | 2026-01-17T02:09:43Z | 2026-01-17T02:12:16Z | 16 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 696b99cc-e99c-8329-894f-3fbf58f209a7 | Excel Time and Pay Tracker | 2026-01-17T14:16:46Z | 2026-01-17T19:22:58Z | 35 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 696f772a-641c-832b-b61e-9a495f6df728 | Italian wine recommendation | 2026-01-20T12:38:03Z | 2026-01-20T13:23:18Z | 39 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 6999c033-4224-8331-a543-9aa4b33dd6fc | Download Request Status | 2026-02-21T14:24:52Z | 2026-02-21T14:24:58Z | 9 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a4e94b-2dfc-8327-b97c-0d25552faa91 | Cinematic Night Scene | 2026-03-02T01:35:08Z | 2026-03-02T02:02:58Z | 14 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 699f4aa5-ffec-8329-ae4f-004a56cc5188 | AI Portal Concierge | 2026-02-25T19:17:09Z | 2026-03-03T12:54:52Z | 37 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a8492a-79d0-832f-996d-9ea22faebc57 | Profile Photo Request | 2026-03-04T15:01:18Z | 2026-03-04T15:03:31Z | 17 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a1a11c-f480-832a-8902-22b100383550 | Emotional Impact of "Past Lives" | 2026-02-27T13:50:33Z | 2026-03-11T01:43:28Z | 23 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69d1517e-bc30-832f-91a8-3bcb411d2841 | Open claw meaning | 2026-04-04T17:59:30Z | 2026-04-06T15:28:55Z | 182 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69ee3e9b-c6e8-83ea-b975-5a1cf3c7443d | Cursor Not Showing Fix | 2026-04-26T16:34:56Z | 2026-04-26T16:39:56Z | 13 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69f93d29-8244-83ea-8795-bc1c3b5eaf48 | Social Media Headshot Request | 2026-05-05T00:44:22Z | 2026-05-08T12:41:23Z | 18 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69ff4f96-18c0-83ea-be2c-6a65ee6bee87 | Cannon Logo Design Request | 2026-05-09T15:15:54Z | 2026-05-09T16:55:13Z | 76 | promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 6a033e3e-bdb0-83ea-b607-6c2487b5898d | Codex Mobile vs Desktop | 2026-05-12T14:50:55Z | 2026-05-12T14:53:15Z | 26 | promotion_candidate | Raw / Unreviewed |

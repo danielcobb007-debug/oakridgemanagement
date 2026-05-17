@@ -1,0 +1,18 @@
+# Claude Partner Consent Review Queue
+
+This queue is Claude-derived metadata only and requires manual review before any broader use.
+
+- sessions in queue: 8
+
+## Sessions
+
+| source_system | source_file | session_id | ai_title | workspace_hint | last_timestamp | primary_domain | sensitivity_flags | promotion_status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Claude | C:\Users\dpc\.claude\projects\c--Users-dpc-Oak-Ridge-Management-1--DG-Energy---Infrastruction---Documents-01-Platform-01-Thesis-and-Narrative-CEH-Index\f3800bbd-a7b8-4241-8062-af98db8aaecc.jsonl | f3800bbd-a7b8-4241-8062-af98db8aaecc | Review CEH exam context files | CEH Index | 2026-04-29T14:24:18 | ORM | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| Claude | C:\Users\dpc\.claude\projects\c--Users-dpc-Oak-Ridge-Management-1--DG-Energy---Infrastruction---Documents-01-Platform-01-Thesis-and-Narrative-CEH-Index\6ff113bc-83b2-4fc1-bf2e-aac00a567e49.jsonl | 6ff113bc-83b2-4fc1-bf2e-aac00a567e49 | Debug issue with application runtime | CEH Index | 2026-04-29T15:24:22 | ORM | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| Claude | C:\Users\dpc\.claude\projects\c--Users-dpc-Oak-Ridge-Management-1--DG-Energy---Infrastruction---Documents-01-Platform-01-Thesis-and-Narrative-CEH-Index\98256a9b-5c93-4315-b898-9355f2c53776.jsonl | 98256a9b-5c93-4315-b898-9355f2c53776 | Oak Ridge Management website design | CEH Index | 2026-04-29T23:18:28 | ORM | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| Claude | C:\Users\dpc\.claude\projects\c--Users-dpc-Oak-Ridge-Management-1--DG-Energy---Infrastruction---Documents-01-Platform-01-Thesis-and-Narrative-CEH-Index\2d66ac0c-e6a5-4ce3-a1dc-a35b739eda6f.jsonl | 2d66ac0c-e6a5-4ce3-a1dc-a35b739eda6f | Incorporate CEH logos into website | CEH Index | 2026-04-30T01:05:42 | ORM | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| Claude | C:\Users\dpc\.claude\projects\c--Users-dpc-Oak-Ridge-Management-1--DG-Energy---Infrastruction---Documents-01-Platform-01-Thesis-and-Narrative-CEH-Index\e89670d0-bad8-4338-98c9-1c75e6cb2348.jsonl | e89670d0-bad8-4338-98c9-1c75e6cb2348 | Fix Netlify error on invitation feature | CEH Index | 2026-05-02T13:05:41 | ORM | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| Claude | C:\Users\dpc\.claude\projects\c--Users-dpc-Oak-Ridge-Management-1--DG-Energy---Infrastruction---Documents-01-Platform-01-Thesis-and-Narrative-CEH-Index\b99569ed-987b-4c8c-8a49-c29adf6ea375.jsonl | b99569ed-987b-4c8c-8a49-c29adf6ea375 | Build CEH Infrastructure Index institutional platform | CEH Index | 2026-05-02T14:46:45 | ORM | code_repo_sensitive\|partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| Claude | C:\Users\dpc\.claude\projects\c--Users-dpc-OneDrive---Oak-Ridge-Management--1--Documents-GitHub-oakridgemanagement\ef342f2b-84db-494d-b5db-f5fe25912dd9.jsonl | ef342f2b-84db-494d-b5db-f5fe25912dd9 | Add cehinfrastructureindex.com to website | oakridgemanagement | 2026-05-04T21:51:24 | ORM | code_repo_sensitive\|partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| Claude | C:\Users\dpc\.claude\projects\c--Users-dpc-OneDrive---Oak-Ridge-Management--1--ORM-01-DGEI-Infrastructure\d135511b-9c0d-4b67-a3b8-c18f5a4cf9cb.jsonl | d135511b-9c0d-4b67-a3b8-c18f5a4cf9cb | Complete IC Memo using CEH-Pricing-Engine and DGE&I | 01_DGEI_Infrastructure | 2026-05-05T20:05:44 | ORM | partner_consent_required\|promotion_candidate | Raw / Unreviewed |

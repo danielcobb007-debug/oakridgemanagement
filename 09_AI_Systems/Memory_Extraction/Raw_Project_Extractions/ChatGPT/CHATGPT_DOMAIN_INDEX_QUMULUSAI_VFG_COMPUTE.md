@@ -1,0 +1,74 @@
+# QumulusAI_VFG_Compute ChatGPT Domain Index
+
+This file contains raw and unreviewed ChatGPT-derived metadata. It is not canonical ORM memory.
+
+- source_system: ChatGPT
+- conversations in domain: 62
+- source index: C:\Users\dpc\Oak Ridge Management(1)\Oak Ridge Management - Documents\09_AI_Systems\Memory_Extraction\Reports\CHATGPT_CONVERSATION_INDEX.csv
+
+## Conversations
+
+| source_system | source_file | conversation_id | title | create_time | update_time | approximate_message_count | sensitivity_flags | promotion_status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ChatGPT | conversations-000.json | 5ab4abaa-564c-4996-b0eb-f8dd17ff250e |  | 2022-12-14T21:06:56Z | 2022-12-14T21:06:56Z | 7 | partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-000.json | 24a5ee77-aa00-4993-a9f8-889e14e0236a | Grad Party Planning Checklist | 2024-04-23T20:53:58Z | 2024-04-23T20:54:51Z | 3 | partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | d598ab54-7a3a-483c-a51d-80b4c4cc837a | PGA Championships in Minnesota | 2024-05-13T22:13:28Z | 2024-05-13T22:13:42Z | 8 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 777dd5b6-f1e1-46cf-8764-55edbff12136 | Week 1 NFL Pick | 2024-09-05T13:58:44Z | 2024-09-10T14:05:58Z | 25 | partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-000.json | 67008665-7d28-8000-806a-44ad09341dbc | Auburn Georgia Touchdown Odds | 2024-10-05T00:20:53Z | 2024-10-05T00:21:44Z | 12 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-000.json | 67a12331-d164-8000-84ea-a6fdadb555f9 | Investment Opportunities Summary | 2025-02-03T20:12:34Z | 2025-02-16T15:53:53Z | 19 | investor_capital_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 6895e94a-f920-8320-83f6-f7634dbd7fd5 | Investment opportunity summary | 2025-08-08T12:11:32Z | 2025-08-08T12:17:02Z | 6 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-001.json | 684c6739-59d8-8000-ba25-99e8cf08a091 | Investment Opportunity Summary | 2025-06-13T18:00:26Z | 2025-09-11T18:55:22Z | 18 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-000.json | 67b499af-c904-8000-a623-33879f37f6cc | Active Depreciation Strategy Email | 2025-02-18T14:31:12Z | 2025-12-26T21:25:37Z | 77 | investor_capital_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 69447e5e-2380-832a-9fba-65f33dcee354 | QumulusAI as neocloud | 2025-12-18T22:21:19Z | 2026-01-14T19:46:30Z | 171 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 696e552d-6050-8328-8341-1497bcc1018d | AI Chat Synopsis Creation | 2026-01-19T16:00:54Z | 2026-01-19T16:07:16Z | 15 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 69813aba-5228-8327-9afa-03f29773ee1a | Toast Framing for Ethos | 2026-02-03T00:01:35Z | 2026-02-03T00:03:32Z | 13 | partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 69834b62-5d98-8325-89d4-306cdc594060 | Offer assistance | 2026-02-04T13:37:52Z | 2026-02-04T15:46:38Z | 37 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 696fd802-df8c-8327-9f44-22256345c0a7 | Executive-Level Storage Opportunities | 2026-01-20T19:31:50Z | 2026-02-05T19:05:43Z | 146 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 696104df-54d8-832f-8e5d-b4562c85d1c7 | DGOC QumulusAI Opportunity Analysis | 2026-01-09T13:39:18Z | 2026-02-05T19:06:05Z | 332 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 697fc366-3310-832e-b728-f62d65e37850 | Email Draft for Intro Call | 2026-02-01T21:19:37Z | 2026-02-05T19:06:20Z | 8 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 6973c3fd-e974-832f-97e7-45b5cdfd013b | Explaining Infrastructure to Buddy | 2026-01-23T18:55:10Z | 2026-02-05T19:06:42Z | 20 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 69722e72-8a08-8330-bb94-8b741da1d278 | AI Compute Ecosystem Strategy | 2026-01-22T14:05:05Z | 2026-02-05T19:07:00Z | 64 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 698c8732-55a0-8328-9ad4-2fa73ecac59c | Golf Club Interest Statement | 2026-02-11T13:42:12Z | 2026-02-11T13:46:33Z | 12 | partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-003.json | 69541ad7-cb2c-8329-8de7-3668aa94e149 | SPV Investment Strategy Feasibility | 2025-12-30T18:35:57Z | 2026-02-11T23:43:37Z | 48 | investor_capital_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 6990d78b-43a4-8333-8c35-da7dd115e3fb | Career Fork-in-the-Road | 2026-02-14T20:14:11Z | 2026-02-16T15:49:26Z | 238 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 699cb0ae-1178-832a-af8d-60334af2fdbf | Target Market Strategy | 2026-02-23T19:55:50Z | 2026-02-25T00:24:22Z | 133 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a07890-09d8-8331-bc97-bdcd14263d56 | Defend or Own the Room | 2026-02-26T16:45:11Z | 2026-02-26T17:04:05Z | 30 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a18a7d-27cc-8331-9551-eabeb584721f | IP Protection for Infrastructure | 2026-02-27T12:14:47Z | 2026-02-27T12:17:26Z | 16 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a1baec-fa9c-832b-a756-b44bc2b315f7 | AI Model Cross-Testing | 2026-02-27T15:40:31Z | 2026-02-27T15:49:29Z | 23 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-004.json | 6973c7ef-5e98-832e-81ef-d278436cd54b | Artificial by Design | 2026-01-23T19:11:55Z | 2026-02-27T16:52:04Z | 135 | investor_capital_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a110b4-a228-8331-b801-45565e9e51de | Modular Power Spine Design | 2026-02-27T03:34:43Z | 2026-02-27T18:21:37Z | 152 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a313bd-c64c-8327-8636-b389ac671053 | Intro Text Request | 2026-02-28T16:12:15Z | 2026-02-28T16:40:04Z | 18 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a33800-5734-832a-82f0-32d003d390bf | SC Data Center Proposal | 2026-02-28T18:46:50Z | 2026-03-02T15:59:48Z | 14 | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a5aa2f-7df0-832d-8faa-8a258fd03a8c | Gas South Procurement Strategy | 2026-03-02T15:18:56Z | 2026-03-02T17:59:53Z | 18 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a6e78c-bd40-8328-b130-d55f4f05df18 | Text Draft for Patrick | 2026-03-03T13:52:55Z | 2026-03-03T14:01:40Z | 22 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a74a05-140c-832a-8732-593a70e7dcae | QAI Lease Pricing Estimate | 2026-03-03T20:52:29Z | 2026-03-03T20:52:37Z | 11 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a74a43-cc88-832a-aac7-e4a946e9b2ca | QAI Lease Pricing Estimate | 2026-03-03T20:53:30Z | 2026-03-03T22:28:47Z | 18 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a81cd4-c910-8327-bcd4-dc8e4e5dd9c4 | Claude DGE&I Project Instructions | 2026-03-04T11:52:28Z | 2026-03-04T11:54:12Z | 12 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a760ac-db38-8333-ad5a-12a3031f8a8e | File Re-upload Request | 2026-03-03T22:29:14Z | 2026-03-04T12:02:49Z | 96 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a840a2-43c8-8330-9b61-f060f20852ef | Monthly Income from Leased Sites | 2026-03-04T14:24:35Z | 2026-03-04T14:30:42Z | 17 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a95424-5060-8325-a529-f5cc0e050073 | Platform Architect Leadership | 2026-03-05T10:00:45Z | 2026-03-05T12:57:42Z | 15 | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a9929b-f7a4-832f-9c24-b12cdad2303a | Cumulus AI Holdings Calculation | 2026-03-05T14:26:51Z | 2026-03-05T14:29:23Z | 17 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a93fb1-8854-8328-bff3-c9c836475af9 | Design \| Motion Molecule to Machine | 2026-03-05T08:33:05Z | 2026-03-12T18:19:50Z | 52 | investor_capital_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69b85bcc-5c98-8325-a53b-8018ed6f5091 | Strategic Review of Pitch | 2026-03-16T19:37:00Z | 2026-03-16T19:58:01Z | 15 | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69b8770b-2928-8333-b1af-fb633556afa0 | AI Data Centers Water Impact | 2026-03-16T21:34:22Z | 2026-03-16T22:17:12Z | 15 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69bab16f-a888-832f-a3d5-60f476c0fa94 | File Expired Re-upload Request | 2026-03-18T14:06:53Z | 2026-03-18T14:19:44Z | 42 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69bc85d5-6394-8329-ba74-647525c94f95 | AI Power Infrastructure | 2026-03-19T23:25:41Z | 2026-03-21T15:58:57Z | 16 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69bc6a57-6aec-832e-95d2-6770c4c6d403 | Site Plan Rendering Choices | 2026-03-19T21:28:00Z | 2026-03-21T18:47:29Z | 103 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69bff0db-277c-832a-baf0-e74490c258dc | AI Infrastructure Campus Plan | 2026-03-22T13:38:45Z | 2026-03-22T13:40:21Z | 12 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69bfef57-a7f0-832c-b54a-105f21fa2de5 | GPT Recommendations for Site Plan | 2026-03-22T13:33:07Z | 2026-03-22T14:17:48Z | 76 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69c12782-be84-8326-bc5a-9ac1c18cebe7 | AI Infrastructure Feedback | 2026-03-23T11:44:11Z | 2026-03-23T11:45:02Z | 14 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69c7b95b-2474-832d-b2b1-ea403522c9b9 | Matt's AI Infrastructure Design | 2026-03-28T11:20:17Z | 2026-03-28T12:35:51Z | 70 | investor_capital_sensitive\|legal_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69ca98fa-0938-832d-957d-38d61ff9bfab | Matt Tyler Energy Opportunity | 2026-03-30T15:38:42Z | 2026-03-31T07:55:22Z | 17 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69d3f5d8-5238-8329-af66-9dadedd8f0c6 | DGE&I Platform Strategy | 2026-04-06T18:05:14Z | 2026-04-06T22:28:54Z | 23 | investor_capital_sensitive\|legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-005.json | 69a8dd1e-7210-832c-846d-0d6b91cb4b1f | ABD Opportunity in AI | 2026-03-05T01:32:37Z | 2026-04-08T15:18:03Z | 36 | investor_capital_sensitive\|partner_consent_required\|personal_private | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69dd6901-cb68-83ea-be71-4a3a4278e57c | Cushman Call Summary | 2026-04-13T22:07:15Z | 2026-04-13T23:35:33Z | 30 | legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69ddf973-a950-83ea-99e2-a2fd5aee03c8 | What is GitHub | 2026-04-14T08:23:24Z | 2026-04-14T08:26:57Z | 22 | code_repo_sensitive\|partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69e22957-77d0-83ea-b88d-637b1d4b29e2 | Flywheel Model Build | 2026-04-17T12:36:40Z | 2026-04-18T19:16:58Z | 100 | code_repo_sensitive\|partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69e4c626-10b8-83ea-b078-dd3fb81550d5 | Casual greeting | 2026-04-19T12:10:22Z | 2026-04-19T12:21:07Z | 47 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69e4e00e-7f50-83ea-b149-bef3ee5ccf1d | Power Block Flyer | 2026-04-19T14:01:25Z | 2026-04-19T15:19:43Z | 67 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69e88f0f-8cd8-83ea-8d00-6fc482acabf5 | Connecting AI to Android | 2026-04-22T09:05:17Z | 2026-04-22T09:08:03Z | 11 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 69f0c71c-23ac-83ea-afc4-6432acf10156 | Greeting exchange | 2026-04-28T14:41:43Z | 2026-04-28T14:44:00Z | 29 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-006.json | 6a025c4e-7e14-83ea-aa37-84312419e07d | Data Center Power Strategy | 2026-05-11T22:46:58Z | 2026-05-11T23:16:10Z | 23 | investor_capital_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 6a0369ff-94d0-83ea-934c-2292e8bead26 | Platform Evolution for Hyperscalers | 2026-05-12T17:57:31Z | 2026-05-12T17:57:54Z | 17 | legal_sensitive\|partner_consent_required | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 6a06fcc5-52d0-83ea-a9a7-8f5ea2204dcb | Endeavor Energy Analysis | 2026-05-15T11:00:39Z | 2026-05-15T11:05:11Z | 19 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
+| ChatGPT | conversations-007.json | 6a06ff9b-2c88-83ea-a1e0-c46dbfae773b | Modular Data Center Lease | 2026-05-15T11:12:31Z | 2026-05-15T11:24:35Z | 23 | partner_consent_required\|promotion_candidate | Raw / Unreviewed |
