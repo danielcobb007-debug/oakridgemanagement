@@ -1,0 +1,60 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>ORM · Status & Tags</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; padding: 22px 24px; background: #faf9f6; font-family: 'Inter', sans-serif; color: #1f2937; }
+  .group { margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid #ebe7d7; }
+  .group:last-child { border-bottom: none; }
+  .lbl { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.4px; color: #4b5563; text-transform: uppercase; margin-bottom: 10px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+  .stage { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.3px; padding: 3px 9px; border: 1px solid; text-transform: uppercase; }
+  .stage.forest { color: #1f4d36; border-color: #1f4d36; background: #e9f1ec; }
+  .stage.bronze { color: #8a6a2a; border-color: #8a6a2a; background: #f0e8d2; }
+  .stage.navy   { color: #142b4a; border-color: #142b4a; background: #eef2f9; }
+  .stage.slate  { color: #3c5982; border-color: #3c5982; background: #eef2f8; }
+  .stage.charcoal { color: #2b3340; border-color: #2b3340; background: #e9ebef; }
+
+  .meta { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.6px; color: #4b5563; border: 1px solid #cdc7b7; padding: 2px 8px; text-transform: uppercase; background: #fff; }
+
+  .doc-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.6px; padding: 3px 8px; text-transform: uppercase; }
+  .doc-tag.restricted { color: #8a2a2a; border: 1px solid #8a2a2a; background: #f5e7e7; }
+  .doc-tag.nda { color: #8a6a2a; border: 1px solid #8a6a2a; background: #f0e8d2; }
+  .doc-tag.confidential { color: #4b5563; border: 1px solid #4b5563; background: #fff; }
+  .doc-tag.granted { color: #1f4d36; border: 1px solid #1f4d36; background: #e9f1ec; }
+
+  .pulse { display: inline-flex; align-items: center; gap: 7px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.5px; color: #1f4d36; text-transform: uppercase; }
+  .pulse::before { content: ''; width: 6px; height: 6px; background: #1f4d36; border-radius: 50%; animation: pls 2s infinite; }
+  @keyframes pls { 0%,100%{opacity:1} 50%{opacity:.3} }
+</style></head><body>
+  <div class="group">
+    <div class="lbl">Workstream stage badges</div>
+    <div class="row">
+      <span class="stage forest">Operating</span>
+      <span class="stage bronze">Active Mandates</span>
+      <span class="stage navy">Published v1.0</span>
+      <span class="stage slate">Position</span>
+      <span class="stage charcoal">Ongoing</span>
+    </div>
+  </div>
+  <div class="group">
+    <div class="lbl">Document / access tags</div>
+    <div class="row">
+      <span class="doc-tag restricted">Restricted</span>
+      <span class="doc-tag nda">NDA Required</span>
+      <span class="doc-tag confidential">Confidential</span>
+      <span class="doc-tag granted">Access Granted</span>
+      <span class="meta">Diligence Preview</span>
+      <span class="meta">v1.0 · APR 2026</span>
+    </div>
+  </div>
+  <div class="group">
+    <div class="lbl">Live indicator (uses forest, not lime)</div>
+    <div class="row">
+      <span class="pulse">Active workstream</span>
+    </div>
+  </div>
+</body></html>

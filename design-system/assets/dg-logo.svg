@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+
+  
+  <rect width="600" height="450" fill="white"></rect>
+
+  
+  <rect x="80" y="22" width="440" height="318" fill="#252d3c"></rect>
+
+  
+  <rect x="89" y="31" width="422" height="300" fill="none" stroke="#5a6272" stroke-width="1.5"></rect>
+
+  
+  <rect x="152" y="56" width="296" height="222" fill="white"></rect>
+
+  
+  <path fill-rule="evenodd" fill="#252d3c" d="&#xA;    M 190,75&#xA;    L 308,75&#xA;    A 92,92 0 1 1 308,259&#xA;    L 190,259&#xA;    Z&#xA;&#xA;    M 242,121&#xA;    L 308,121&#xA;    A 46,46 0 1 1 308,213&#xA;    L 242,213&#xA;    Z&#xA;  "></path>
+
+  
+  <rect x="278" y="167" width="76" height="46" fill="#252d3c"></rect>
+
+  
+  <text x="300" y="315" font-family="&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="4.5" fill="#c2cad5" text-anchor="middle">ENERGY &amp; INFRASTRUCTURE</text>
+
+  
+  <text x="300" y="408" font-family="&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif" font-size="27" font-weight="300" letter-spacing="16" fill="#828ea0" text-anchor="middle">D G E &amp; I</text>
+
+</svg>

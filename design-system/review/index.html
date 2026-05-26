@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1180,initial-scale=1">
+<title>ORM Design System — Full-Page Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#faf9f6; --bg-alt:#f4f2eb; --rule:#e0dccc; --rule-soft:#ebe7d7;
+    --text:#1f2937; --muted:#4b5563; --light:#9ca3af; --navy:#142b4a; --bronze:#8a6a2a; --forest:#1f4d36; --charcoal:#2b3340;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.65; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 56px 32px 80px; }
+
+  /* Header */
+  header.review-head { padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid var(--rule); }
+  .review-eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; color: var(--bronze); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+  .review-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--bronze); }
+  h1.review-title { font-family: 'Source Serif 4', serif; font-size: 40px; font-weight: 600; color: var(--navy); letter-spacing: -0.6px; line-height: 1.1; margin: 0 0 14px; }
+  .review-sub { font-size: 15.5px; color: var(--muted); max-width: 740px; margin: 0; }
+
+  /* TOC */
+  .toc { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 56px; padding: 20px 24px; background: #fff; border: 1px solid var(--rule-soft); }
+  @media (max-width: 720px) { .toc { grid-template-columns: 1fr; } }
+  .toc-item { display: flex; gap: 12px; align-items: baseline; padding: 6px 0; font-size: 13.5px; }
+  .toc-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--light); letter-spacing: 0.5px; width: 28px; }
+  .toc-name { color: var(--navy); font-weight: 500; }
+  .toc-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.5px; color: var(--muted); text-transform: uppercase; margin-left: auto; padding: 2px 7px; border: 1px solid; }
+  .tag-orm   { color: var(--navy);    border-color: var(--navy); }
+  .tag-inv   { color: var(--bronze);  border-color: var(--bronze); }
+  .tag-ceh   { color: var(--charcoal);border-color: var(--charcoal); }
+
+  /* Sections */
+  .item { padding-top: 56px; padding-bottom: 56px; border-top: 1px solid var(--rule); }
+  .item-meta { display: flex; align-items: baseline; gap: 14px; margin-bottom: 4px; }
+  .item-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--light); letter-spacing: 0.5px; }
+  .item-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.6px; text-transform: uppercase; padding: 2px 8px; border: 1px solid; }
+  .item h2 { font-family: 'Source Serif 4', serif; font-size: 26px; font-weight: 600; color: var(--navy); letter-spacing: -0.3px; margin: 0 0 8px; }
+  .item .lede { font-size: 14.5px; color: var(--muted); max-width: 740px; margin: 0 0 22px; }
+
+  /* Screenshot frame */
+  .frame { background: #fff; border: 1px solid var(--rule); padding: 1px; margin-bottom: 20px; }
+  .frame img { display: block; width: 100%; height: auto; }
+
+  /* Two-column meta grid */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; margin-top: 8px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .meta-card { background: #fff; border: 1px solid var(--rule-soft); padding: 18px 20px; }
+  .meta-h { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.4px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--rule-soft); }
+  .meta-card ul { margin: 0; padding: 0; list-style: none; }
+  .meta-card li { padding: 5px 0; display: grid; grid-template-columns: 100px 1fr; gap: 10px; align-items: baseline; font-size: 12.5px; }
+  .meta-card li:first-child { padding-top: 0; }
+  .meta-card .k { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--light); letter-spacing: 0.5px; text-transform: uppercase; }
+  .meta-card .v { color: var(--text); }
+  .meta-card .v code { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--navy); background: var(--bg-alt); padding: 1px 5px; border: 1px solid var(--rule-soft); }
+  .meta-card .v.muted { color: var(--muted); }
+
+  /* Caveat block */
+  .caveat {
+    margin-top: 6px;
+    background: #fff;
+    border: 1px solid var(--rule-soft);
+    border-left: 2px solid var(--bronze);
+    padding: 12px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.85;
+    letter-spacing: 0.2px;
+  }
+  .caveat b { color: var(--text); font-weight: 500; }
+  .caveat-empty { border-left-color: var(--forest); color: var(--forest); }
+
+  /* Footnote */
+  .foot { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); line-height: 1.85; }
+  .foot b { color: var(--text); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="review-head">
+    <div class="review-eyebrow">Oak Ridge Management · Design System · Consolidated Review</div>
+    <h1 class="review-title">Full-page review · seven surfaces</h1>
+    <p class="review-sub">
+      A page-level inventory of the design system for one consolidated revision pass.
+      Each section shows the current rendered state, the files/components that produce it,
+      its brand-hierarchy tag, and any remaining caveats.
+    </p>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-item"><span class="toc-num">01</span><span class="toc-name">ORM Public — Full homepage</span><span class="toc-tag tag-orm">ORM Public</span></div>
+    <div class="toc-item"><span class="toc-num">02</span><span class="toc-name">DGE&amp;I Investor / Partner Portal</span><span class="toc-tag tag-inv">Investor Portal</span></div>
+    <div class="toc-item"><span class="toc-num">03</span><span class="toc-name">Operating Domains</span><span class="toc-tag tag-orm">ORM Public</span></div>
+    <div class="toc-item"><span class="toc-num">04</span><span class="toc-name">Active Workstreams</span><span class="toc-tag tag-orm">ORM Public</span></div>
+    <div class="toc-item"><span class="toc-num">05</span><span class="toc-name">Operating Perimeter (Is / Is Not)</span><span class="toc-tag tag-orm">ORM Public</span></div>
+    <div class="toc-item"><span class="toc-num">06</span><span class="toc-name">Strategic Conversations / inquiry</span><span class="toc-tag tag-orm">ORM Public</span></div>
+    <div class="toc-item"><span class="toc-num">07</span><span class="toc-name">CEH™ technical surface examples</span><span class="toc-tag tag-ceh">CEH Technical</span></div>
+  </nav>
+
+  <!-- 01 — ORM Public homepage -->
+  <section class="item" id="s01">
+    <div class="item-meta">
+      <span class="item-num">§ 01</span>
+      <span class="item-tag tag-orm">ORM Public</span>
+    </div>
+    <h2>ORM Public — Full homepage</h2>
+    <p class="lede">
+      The parent ORM site. Institutional warm-stone, navy authority, bronze accents used sparingly, forest as support, charcoal/slate for structure. Sentence-case editorial serif headings on a stone canvas.
+    </p>
+
+    <div class="frame"><img src="01-orm-public-full.png" alt="Full ORM public homepage"></div>
+
+    <div class="grid">
+      <div class="meta-card">
+        <div class="meta-h">Files / components</div>
+        <ul>
+          <li><span class="k">Entry</span><span class="v"><code>ui_kits/public-site/index.html</code></span></li>
+          <li><span class="k">Stylesheet</span><span class="v"><code>ui_kits/public-site/orm-public.css</code></span></li>
+          <li><span class="k">JSX</span><span class="v">Nav · Hero · OperatingDomains · CurrentThesis · ActiveWorkstreams · OperatingPrinciples · OperatingPerimeter · FounderCard · StrategicConversations · Footer</span></li>
+        </ul>
+      </div>
+      <div class="meta-card">
+        <div class="meta-h">Status &amp; caveats</div>
+        <ul>
+          <li><span class="k">Direction</span><span class="v">Approved — institutional warm-stone</span></li>
+          <li><span class="k">Type</span><span class="v">Source Serif 4 + Inter + IBM Plex Mono (open-source stand-ins; licensed swap documented in README)</span></li>
+          <li><span class="k">Open</span><span class="v">Confirm copy on the four domains and on the founder card</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="caveat"><b>Caveats.</b> No real photography or imagery anywhere in the system. The Investor item in the nav has been replaced by an "Access" / "Request a Conversation" CTA — confirm that's the right intent. Disclosure language in footer should be reviewed by counsel before any production deploy.</div>
+  </section>
+
+  <!-- 02 — Investor Portal -->
+  <section class="item" id="s02">
+    <div class="item-meta">
+      <span class="item-num">§ 02</span>
+      <span class="item-tag tag-inv">Investor Portal</span>
+    </div>
+    <h2>DGE&amp;I Investor / Partner Portal</h2>
+    <p class="lede">
+      ORM access-layer ribbon, DGE&amp;I masthead, hero with disclosure box and memo stamp, seven document-card modules, site portfolio table, Power Block comparison, capital-architecture diagram, data-room index.
+    </p>
+
+    <div class="frame"><img src="02-investor-portal-full.png" alt="Full DGE&I investor portal"></div>
+
+    <div class="grid">
+      <div class="meta-card">
+        <div class="meta-h">Files / components</div>
+        <ul>
+          <li><span class="k">Entry</span><span class="v"><code>ui_kits/investor-portal/index.html</code></span></li>
+          <li><span class="k">Stylesheet</span><span class="v"><code>ui_kits/investor-portal/partner-portal.css</code></span></li>
+          <li><span class="k">JSX</span><span class="v">OrmRibbon · InvestorNav · PortalHero · PortalModules · SitePortfolio · PowerBlocks · CapitalArchitecture · DataRoom · PortalFooter</span></li>
+        </ul>
+      </div>
+      <div class="meta-card">
+        <div class="meta-h">Status &amp; caveats</div>
+        <ul>
+          <li><span class="k">Direction</span><span class="v">Approved — data-room aesthetic</span></li>
+          <li><span class="k">Sites</span><span class="v">St. Paul · Savannah · Bowman · Montgomery + pipeline. Confirm capacity / status accuracy.</span></li>
+          <li><span class="k">Compliance</span><span class="v">All "fund / invest now / returns" language removed. NDA / non-circumvention / advisor-clearance language present.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="caveat"><b>Caveats.</b> Data-room document list is illustrative. Capital Architecture diagram shows conceptual HoldCo / Capital / ProjectCo nodes; numbers and node identities need a counsel + sponsor pass before production.</div>
+  </section>
+
+  <!-- 03 — Operating Domains -->
+  <section class="item" id="s03">
+    <div class="item-meta"><span class="item-num">§ 03</span><span class="item-tag tag-orm">ORM Public</span></div>
+    <h2>Operating Domains</h2>
+    <p class="lede">2×2 institutional grid. Approved direction; single-accent navy stub, sentence-case h3, editorial serif desc.</p>
+
+    <div class="frame"><img src="03-operating-domains.png" alt="Operating Domains 4-up"></div>
+
+    <div class="grid">
+      <div class="meta-card">
+        <div class="meta-h">Files / components</div>
+        <ul>
+          <li><span class="k">Preview</span><span class="v"><code>preview/components-track-cards.html</code></span></li>
+          <li><span class="k">Live</span><span class="v"><code>ui_kits/public-site/OperatingDomains.jsx</code></span></li>
+          <li><span class="k">Domains</span><span class="v">Platform Strategy · Market Standards &amp; IP · Strategic Capital · Operating Intelligence</span></li>
+        </ul>
+      </div>
+      <div class="meta-card">
+        <div class="meta-h">Status &amp; caveats</div>
+        <ul>
+          <li><span class="k">Direction</span><span class="v">Approved</span></li>
+          <li><span class="k">Open</span><span class="v">Confirm Strategic Capital scope wording (compute, infra-adjacent, pre-IPO?)</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — Active Workstreams -->
+  <section class="item" id="s04">
+    <div class="item-meta"><span class="item-num">§ 04</span><span class="item-tag tag-orm">ORM Public</span></div>
+    <h2>Active Workstreams</h2>
+    <p class="lede">Institutional table — workstream · domain · stage · focus · surface. Stage badges use forest / bronze / navy / slate / charcoal.</p>
+
+    <div class="frame"><img src="06-active-workstreams.png" alt="Active Workstreams table in context"></div>
+
+    <div class="grid">
+      <div class="meta-card">
+        <div class="meta-h">Files / components</div>
+        <ul>
+          <li><span class="k">Live</span><span class="v"><code>ui_kits/public-site/ActiveWorkstreams.jsx</code></span></li>
+          <li><span class="k">Rows</span><span class="v">DGE&amp;I · CEH™ Standard · CEH™ Index · QumulusAI exposure · SPV strategy · Operating Intelligence</span></li>
+        </ul>
+      </div>
+      <div class="meta-card">
+        <div class="meta-h">Status &amp; caveats</div>
+        <ul>
+          <li><span class="k">Direction</span><span class="v">Approved (table is on the public site, in context)</span></li>
+          <li><span class="k">Open</span><span class="v">Confirm six entries + stage labels. Should QumulusAI be more / less prominent?</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="caveat"><b>Caveats.</b> Surface labels ("Partner portal · gated", "Private", "cehstandard.com") need to match what's actually publishable. Stage chips deliberately read as "today's status" — they should be edited as workstreams move.</div>
+  </section>
+
+  <!-- 05 — Operating Perimeter -->
+  <section class="item" id="s05">
+    <div class="item-meta"><span class="item-num">§ 05</span><span class="item-tag tag-orm">ORM Public</span></div>
+    <h2>Operating Perimeter (Is / Is Not)</h2>
+    <p class="lede">Two-column boundary statement. Forest accent on "Is," charcoal on "Is Not." Closing disclosure paragraph.</p>
+
+    <div class="frame"><img src="04-operating-perimeter.png" alt="Operating Perimeter Is/Is Not"></div>
+
+    <div class="grid">
+      <div class="meta-card">
+        <div class="meta-h">Files / components</div>
+        <ul>
+          <li><span class="k">Preview</span><span class="v"><code>preview/components-is-isnot.html</code></span></li>
+          <li><span class="k">Live</span><span class="v"><code>ui_kits/public-site/OperatingPerimeter.jsx</code></span></li>
+        </ul>
+      </div>
+      <div class="meta-card">
+        <div class="meta-h">Status &amp; caveats</div>
+        <ul>
+          <li><span class="k">Direction</span><span class="v">Approved</span></li>
+          <li><span class="k">Compliance</span><span class="v">"Not a fund / not a registered investment adviser / not a public capital-raising surface" language present.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="caveat"><b>Caveats.</b> Counsel review recommended on the four "Is Not" items and the closing disclosure paragraph. The benefits-business "Is Not" item was removed per direction.</div>
+  </section>
+
+  <!-- 06 — Strategic Conversations -->
+  <section class="item" id="s06">
+    <div class="item-meta"><span class="item-num">§ 06</span><span class="item-tag tag-orm">ORM Public</span></div>
+    <h2>Strategic Conversations / inquiry</h2>
+    <p class="lede">Qualified intake form (preview) and four-category conversation grid (homepage section). "Submit Inquiry →" CTA, restricted-access disclosure box.</p>
+
+    <div class="frame"><img src="05-strategic-conversations.png" alt="Strategic Conversations inquiry form"></div>
+
+    <div class="grid">
+      <div class="meta-card">
+        <div class="meta-h">Files / components</div>
+        <ul>
+          <li><span class="k">Preview</span><span class="v"><code>preview/components-forms.html</code></span></li>
+          <li><span class="k">Live</span><span class="v"><code>ui_kits/public-site/StrategicConversations.jsx</code></span></li>
+          <li><span class="k">Categories</span><span class="v">Infrastructure &amp; Energy · Capital Partners · Compute Counterparties · Strategic Collaborators</span></li>
+        </ul>
+      </div>
+      <div class="meta-card">
+        <div class="meta-h">Status &amp; caveats</div>
+        <ul>
+          <li><span class="k">Direction</span><span class="v">Approved</span></li>
+          <li><span class="k">Open</span><span class="v">Confirm conversations@oakridgemanagement.net is the right inbound mailto.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="caveat"><b>Caveats.</b> Form is presentational only — needs a real backend (Netlify Forms, Formspree, or equivalent) and a counsel-approved disclosure before going live.</div>
+  </section>
+
+  <!-- 07 — CEH technical -->
+  <section class="item" id="s07">
+    <div class="item-meta"><span class="item-num">§ 07</span><span class="item-tag tag-ceh">CEH Technical</span></div>
+    <h2>CEH™ technical surface examples</h2>
+    <p class="lede">Subordinate to ORM. Deep-slate surface, muted cyan / deep green / muted gold / copper / muted red accents — only on CEH-specific pages. All values labelled "illustrative" and "subject to methodology validation."</p>
+
+    <div class="frame"><img src="07-ceh-comparison-table.png" alt="CEH Technical Comparison Table"></div>
+    <div class="frame"><img src="08-ceh-methodology-callout.png" alt="CEH Methodology Callout"></div>
+    <div class="frame"><img src="09-ceh-preview-strip.png" alt="CEH Methodology Preview Strip"></div>
+    <div class="frame"><img src="10-ceh-technical-palette.png" alt="CEH Technical Accent System"></div>
+
+    <div class="grid">
+      <div class="meta-card">
+        <div class="meta-h">Files</div>
+        <ul>
+          <li><span class="k">Table</span><span class="v"><code>preview/components-table.html</code></span></li>
+          <li><span class="k">Callout</span><span class="v"><code>preview/components-formula-bar.html</code></span></li>
+          <li><span class="k">Strip</span><span class="v"><code>preview/components-ticker.html</code></span></li>
+          <li><span class="k">Palette</span><span class="v"><code>preview/colors-public-accents.html</code></span></li>
+        </ul>
+      </div>
+      <div class="meta-card">
+        <div class="meta-h">Status &amp; caveats</div>
+        <ul>
+          <li><span class="k">Direction</span><span class="v">Approved as CEH-only technical surface</span></li>
+          <li><span class="k">Language</span><span class="v">"Methodology preview · v0.1 draft framework" everywhere; nothing reads as a certified public index.</span></li>
+          <li><span class="k">Out of scope here</span><span class="v">No full CEH page exists yet — only these technical modules. Tell us when to build the full CEH-specific page.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="caveat caveat-empty">
+      <b>Open.</b> Decide whether to retire the legacy Bloomberg-dark CSS (<code>assets/css/shared.css</code>) or move it into a <code>ui_kits/ceh-technical/</code> subfolder as the source for the eventual CEH page.
+    </div>
+  </section>
+
+  <!-- Stale items / system caveats -->
+  <section class="item" id="caveats">
+    <div class="item-meta"><span class="item-num">§ 08</span><span class="item-tag tag-orm">System</span></div>
+    <h2>Remaining caveats &amp; stale items across the system</h2>
+
+    <div class="grid">
+      <div class="meta-card">
+        <div class="meta-h">Legacy / stale</div>
+        <ul>
+          <li><span class="k">Legacy CSS</span><span class="v">Bloomberg-dark <code>assets/css/shared.css</code> + <code>assets/css/investor-theme.css</code> preserved from the source deployment. Not referenced by current kits.</span></li>
+          <li><span class="k">Legacy JSX</span><span class="v muted">Ticker, TrackGrid, FormulaBar, IndexTable, GradeStrip, IsIsNot, Citation under <code>ui_kits/public-site/</code> remain available for a future CEH page; not loaded by the current homepage.</span></li>
+          <li><span class="k">Wordmark</span><span class="v">ORM is live HTML text (no SVG logo). DGE&amp;I monogram is the only "real" logo asset and is reserved for DGE&amp;I surfaces.</span></li>
+        </ul>
+      </div>
+      <div class="meta-card">
+        <div class="meta-h">Open asks</div>
+        <ul>
+          <li><span class="k">Type</span><span class="v">Drop in licensed Mercury / Söhne / Founders Grotesk / GT America via <code>--serif</code> / <code>--sans</code> / <code>--mono</code> when ready.</span></li>
+          <li><span class="k">Imagery</span><span class="v">System is image-free. Commission boardroom photography, DGE&amp;I site renders, or capital-structure diagrams if those are wanted.</span></li>
+          <li><span class="k">Counsel</span><span class="v">Review all "Is Not", disclosure, and CEH "illustrative" language before production.</span></li>
+          <li><span class="k">CEH page</span><span class="v">Modules exist; the full CEH page itself does not. Confirm whether to build that next.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">
+    <b>Tab access.</b> The Design System tab in this project shows every registered preview card and both UI kits — open it for the live, click-thru versions. This file is a static review snapshot for the consolidated revision pass.
+  </p>
+</div>
+</body>
+</html>

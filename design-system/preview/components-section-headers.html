@@ -1,0 +1,74 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Section Headers — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#faf9f6; --rule:#d4cfbf; --rule-soft:#e5e1d4;
+    --text:#1f2937; --muted:#4b5563; --light:#9ca3af;
+    --navy:#142b4a; --slate:#3c5982; --forest:#1f4d36; --bronze:#8a6a2a; --charcoal:#2b3340;
+  }
+  body { margin: 0; padding: 0; background: var(--bg); font-family: 'Inter', sans-serif; color: var(--text); }
+  .variant { padding: 22px 24px; border-bottom: 1px solid var(--rule-soft); }
+  .variant:last-child { border-bottom: none; }
+  .variant-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 1.5px; color: var(--light); text-transform: uppercase; margin-bottom: 14px; }
+
+  .sh { padding-left: 16px; border-left: 2px solid var(--rule); position: relative; }
+  .sh-pub    { border-left-color: var(--forest); }
+  .sh-inv    { border-left-color: var(--bronze); }
+  .sh-ceh    { border-left-color: var(--slate); }
+
+  .sh-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--light); margin-bottom: 6px; }
+  .sh-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--bronze); text-transform: uppercase; margin-bottom: 10px; }
+  .sh-inv .sh-eyebrow { color: var(--bronze); }
+  .sh-ceh .sh-eyebrow { color: var(--slate); }
+  .sh-pub .sh-eyebrow { color: var(--forest); }
+
+  .sh-title { font-family: 'Source Serif 4', Georgia, serif; font-size: 26px; font-weight: 600; color: var(--navy); margin: 0 0 8px; letter-spacing: -0.3px; line-height: 1.15; }
+  .sh-desc { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 680px; margin: 0; }
+  .sh-meta { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.5px; }
+
+  /* Section dividers (smaller, between sub-sections) */
+  .div-row { display: flex; align-items: center; gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--bronze); text-transform: uppercase; padding-top: 12px; border-top: 1px solid var(--rule); }
+  .div-row .rule { flex: 1; height: 1px; background: var(--rule); }
+</style></head><body>
+  <div class="variant">
+    <div class="variant-label">Variant 1 · Public ORM Section Header</div>
+    <div class="sh sh-pub">
+      <div class="sh-num">01</div>
+      <div class="sh-eyebrow">Oak Ridge Management · Private Operating Platform</div>
+      <h2 class="sh-title">Operating Domains</h2>
+      <p class="sh-desc">Strategy, capital architecture, market standards, and operating intelligence across infrastructure, compute, energy, and private-market platforms.</p>
+      <div class="sh-meta">DGE&amp;I &nbsp;/&nbsp; CEH™ &nbsp;/&nbsp; QumulusAI &nbsp;/&nbsp; SPV Strategy &nbsp;/&nbsp; Advisory</div>
+    </div>
+  </div>
+
+  <div class="variant">
+    <div class="variant-label">Variant 2 · Investor Portal Section Header</div>
+    <div class="sh sh-inv">
+      <div class="sh-num">02</div>
+      <div class="sh-eyebrow">Restricted Partner Access · DGE&amp;I Workstream</div>
+      <h2 class="sh-title">Power Infrastructure Models</h2>
+      <p class="sh-desc">Standardized deployment frameworks used to evaluate site readiness, power availability, capital requirements, and speed-to-compute.</p>
+      <div class="sh-meta">Grid-Connected &nbsp;/&nbsp; Hybrid &nbsp;/&nbsp; Behind-the-Meter Dispatchable</div>
+    </div>
+  </div>
+
+  <div class="variant">
+    <div class="variant-label">Variant 3 · CEH™ Technical Section Header</div>
+    <div class="sh sh-ceh">
+      <div class="sh-num">03</div>
+      <div class="sh-eyebrow">CEH™ Standard · Measurement Framework</div>
+      <h2 class="sh-title">Compute Energy Hour</h2>
+      <p class="sh-desc">A developing framework for measuring the relationship between compute output, energy consumption, cost, and infrastructure efficiency.</p>
+      <div class="sh-meta">v1.0 · First published April 21, 2026 · Open for replication</div>
+    </div>
+  </div>
+
+  <div class="variant" style="padding-top:18px;">
+    <div class="variant-label">Sub-section divider · used between modules</div>
+    <div class="div-row"><span>§ 01 · Platform Strategy</span><span class="rule"></span><span>06 modules</span></div>
+  </div>
+</body></html>

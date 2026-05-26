@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Buttons — ORM Public</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; padding: 22px 24px; background: #faf9f6; font-family: 'Inter', sans-serif; color: #1f2937; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 22px; }
+  .row { display: flex; flex-direction: column; gap: 10px; }
+  .lbl { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.4px; color: #4b5563; text-transform: uppercase; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; padding: 11px 22px; border: 1px solid transparent; letter-spacing: 0.2px; cursor: pointer; }
+  .btn-navy   { background: #142b4a; color: #fff; border-color: #142b4a; }
+  .btn-navy:hover { background: #2b4d7b; }
+  .btn-bronze { background: #8a6a2a; color: #fff; border-color: #8a6a2a; }
+  .btn-bronze:hover { background: #a98947; }
+  .btn-out-navy { background: transparent; color: #142b4a; border-color: #142b4a; }
+  .btn-out-navy:hover { background: #142b4a; color: #fff; }
+  .btn-out-bronze { background: transparent; color: #8a6a2a; border-color: #8a6a2a; }
+  .btn-out-bronze:hover { background: #8a6a2a; color: #fff; }
+  .text-cta { font-family: 'Inter', sans-serif; font-size: 13px; color: #142b4a; font-weight: 500; padding-top: 8px; border-top: 1px solid #ebe7d7; display: inline-flex; align-items: center; gap: 6px; }
+  .text-cta::after { content: '→'; color: #8a6a2a; }
+</style></head><body>
+  <div class="grid">
+    <div class="row"><div class="lbl">Primary · Navy</div><div><button class="btn btn-navy">Explore Operating Domains →</button></div></div>
+    <div class="row"><div class="lbl">Accent · Bronze</div><div><button class="btn btn-bronze">Request Access →</button></div></div>
+    <div class="row"><div class="lbl">Outline · Navy</div><div><button class="btn btn-out-navy">Submit Inquiry →</button></div></div>
+    <div class="row"><div class="lbl">Outline · Bronze</div><div><button class="btn btn-out-bronze">Request a Strategic Conversation</button></div></div>
+    <div class="row" style="grid-column:1/-1"><div class="lbl">Text CTA · in-card</div><span class="text-cta">View Platform Strategy</span></div>
+  </div>
+</body></html>

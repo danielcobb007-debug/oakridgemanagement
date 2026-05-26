@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Borders & Accents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; padding: 22px 24px; background: #faf9f6; font-family: 'Inter', sans-serif; color: #1f2937; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .cell { background: #fff; border: 1px solid #ebe7d7; padding: 18px; position: relative; min-height: 110px; }
+  .top    { border-top: 2px solid #8a6a2a; }
+  .top-short::before { content: ''; position: absolute; top: 0; left: 0; width: 28px; height: 2px; background: #8a6a2a; }
+  .left-forest { border-left: 2px solid #1f4d36; }
+  .left-navy   { border-left: 2px solid #142b4a; }
+  .left-charcoal { border-left: 2px solid #2b3340; }
+  .dashed { border-top: 1px dashed #cdc7b7; padding-top: 12px; }
+
+  .lbl { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.4px; color: #4b5563; text-transform: uppercase; margin-bottom: 8px; }
+  .name { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #1f2937; }
+</style></head><body>
+  <div class="grid">
+    <div class="cell top-short"><div class="lbl">28px top bronze stub</div><div class="name">.domain-card · .conv-card</div></div>
+    <div class="cell top"><div class="lbl">Full 2px top stripe</div><div class="name">.flagship card</div></div>
+    <div class="cell left-forest"><div class="lbl">2px left · forest</div><div class="name">.perimeter-col.is</div></div>
+    <div class="cell left-charcoal"><div class="lbl">2px left · charcoal</div><div class="name">.perimeter-col.isnot</div></div>
+    <div class="cell left-navy"><div class="lbl">2px left · navy</div><div class="name">.section-head</div></div>
+    <div class="cell"><div class="lbl">Dashed inner rule</div><div class="dashed"><div class="name">card sub-divider</div></div></div>
+  </div>
+</body></html>

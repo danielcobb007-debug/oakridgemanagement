@@ -1,0 +1,99 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Request a Strategic Conversation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#faf9f6; --rule:#d4cfbf; --rule-soft:#e5e1d4; --bg-alt:#f4f2eb;
+    --text:#1f2937; --muted:#4b5563; --light:#9ca3af;
+    --navy:#142b4a; --navy-mid:#2b4d7b; --slate:#3c5982;
+    --forest:#1f4d36; --bronze:#8a6a2a; --bronze-light:#f6efdc;
+  }
+  body { margin: 0; padding: 22px 24px; background: var(--bg); font-family: 'Inter', sans-serif; color: var(--text); font-size: 14px; line-height: 1.6; }
+  .head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+  .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--bronze); display: flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--bronze); }
+  .title { font-family: 'Source Serif 4', Georgia, serif; font-size: 24px; font-weight: 600; color: var(--navy); letter-spacing: -0.3px; line-height: 1.15; }
+  .sub { font-size: 13.5px; color: var(--muted); line-height: 1.6; max-width: 640px; }
+
+  .form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 22px; }
+  @media (max-width: 720px) { .form { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.wide { grid-column: 1 / -1; }
+  label { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; }
+  .input, .select, .textarea {
+    background: #fff;
+    border: 1px solid var(--rule);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 150ms, box-shadow 150ms;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .input:focus, .select:focus, .textarea:focus { border-color: var(--navy); box-shadow: inset 2px 0 0 var(--bronze); }
+  .textarea { min-height: 96px; resize: vertical; font-family: 'Source Serif 4', Georgia, serif; line-height: 1.55; }
+
+  .submit-row { grid-column: 1/-1; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 6px; }
+  .btn-submit {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 600;
+    color: #fff; background: var(--navy);
+    padding: 11px 22px; border: 1px solid var(--navy);
+    letter-spacing: 0.3px; cursor: pointer;
+    transition: background 150ms;
+  }
+  .btn-submit:hover { background: var(--navy-mid); }
+  .submit-note { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.3px; }
+
+  .disclosure {
+    grid-column: 1/-1; margin-top: 4px;
+    background: var(--bg-alt);
+    border: 1px solid var(--rule-soft);
+    border-left: 2px solid var(--bronze);
+    padding: 12px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px; color: var(--muted); line-height: 1.8;
+  }
+  .disclosure b { color: var(--text); font-weight: 500; }
+</style></head><body>
+  <div class="head">
+    <div class="eyebrow">Oak Ridge Management · Strategic Conversations</div>
+    <div class="title">Request a Strategic Conversation</div>
+    <p class="sub">ORM engages selectively with capital partners, infrastructure operators, strategic counterparties, advisors, and platform collaborators where there is clear alignment around complex market formation, capital architecture, or operating strategy.</p>
+  </div>
+
+  <div class="form">
+    <div class="field"><label>Name</label><input class="input" value="Daniel Cobb"></div>
+    <div class="field"><label>Email</label><input class="input" type="email" value="dc@example.com"></div>
+    <div class="field"><label>Organization</label><input class="input" value="—"></div>
+    <div class="field">
+      <label>Conversation Type</label>
+      <select class="select">
+        <option>Platform Strategy</option>
+        <option>Infrastructure / Energy</option>
+        <option>Strategic Capital</option>
+        <option>CEH™ / Market Standards</option>
+        <option>Advisory / Operating Intelligence</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field wide">
+      <label>Context</label>
+      <textarea class="textarea">Qualified introduction — exploring alignment on platform architecture, capital formation, or operating intelligence.</textarea>
+    </div>
+
+    <div class="disclosure">
+      <b>Restricted.</b> Submissions are reviewed privately. ORM does not provide open investment offerings through this website. Any confidential materials, portal access, or transaction discussions may require NDA, non-circumvention, and advisor clearance.
+    </div>
+
+    <div class="submit-row">
+      <button class="btn-submit">Submit Inquiry →</button>
+      <span class="submit-note">By invitation or qualified introduction.</span>
+    </div>
+  </div>
+</body></html>

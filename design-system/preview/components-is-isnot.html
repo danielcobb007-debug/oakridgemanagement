@@ -1,0 +1,110 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Defining the Operating Perimeter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#faf9f6; --rule:#e0dccc; --rule-soft:#ebe7d7;
+    --text:#1f2937; --muted:#4b5563; --light:#9ca3af;
+    --navy:#142b4a; --slate:#3c5982; --forest:#1f4d36; --bronze:#8a6a2a; --charcoal:#2b3340;
+  }
+  body { margin: 0; padding: 24px 26px 26px; background: var(--bg); font-family: 'Inter', sans-serif; color: var(--text); }
+  .head { margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.4px; color: var(--bronze); text-transform: uppercase; margin-bottom: 8px; }
+  .title { font-family: 'Source Serif 4', Georgia, serif; font-size: 24px; font-weight: 600; color: var(--navy); margin: 0 0 8px; letter-spacing: -0.3px; line-height: 1.15; }
+  .lede { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; max-width: 880px; }
+
+  .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 820px) { .columns { grid-template-columns: 1fr; } }
+
+  .col { background: #fff; border: 1px solid var(--rule-soft); padding: 22px 22px 18px; position: relative; }
+  .col-is    { border-top: 2px solid var(--forest); }
+  .col-isnot { border-top: 2px solid var(--charcoal); }
+
+  .col-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule-soft); }
+  .col-is    .col-label { color: var(--forest); }
+  .col-isnot .col-label { color: var(--charcoal); }
+
+  .item { padding: 12px 0; border-top: 1px dashed var(--rule); display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: baseline; }
+  .item:first-of-type { border-top: none; padding-top: 4px; }
+  .marker { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--light); }
+  .col-is    .marker { color: var(--forest); }
+  .col-isnot .marker { color: var(--charcoal); }
+  .item-h { font-size: 14px; font-weight: 600; color: var(--navy); margin: 0 0 4px; letter-spacing: -0.1px; }
+  .item-d { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; color: var(--text); line-height: 1.55; margin: 0; }
+
+  .footnote {
+    margin-top: 18px;
+    padding: 12px 16px;
+    background: #f4f2eb;
+    border: 1px solid var(--rule-soft);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.85;
+    letter-spacing: 0.2px;
+  }
+  .footnote b { color: var(--text); font-weight: 500; }
+</style></head><body>
+  <div class="head">
+    <div class="eyebrow">Oak Ridge Management · Platform Boundaries</div>
+    <h2 class="title">Defining the Operating Perimeter</h2>
+    <p class="lede">ORM exists to coordinate platform strategy, capital architecture, market standards, and operating intelligence across complex private-market workstreams. It is intentionally structured as a principal-led operating platform, not a public product company or open advisory shop.</p>
+  </div>
+
+  <div class="columns">
+    <div class="col col-is">
+      <div class="col-label">Oak Ridge Management Is</div>
+
+      <div class="item"><span class="marker">§</span><div>
+        <div class="item-h">A private operating and strategy platform</div>
+        <p class="item-d">The parent coordination layer for platform architecture, capital formation, market standards, and strategic workstreams.</p>
+      </div></div>
+
+      <div class="item"><span class="marker">§</span><div>
+        <div class="item-h">A principal-led platform</div>
+        <p class="item-d">Built around selective relationships, proprietary thesis development, and direct involvement in complex market formation.</p>
+      </div></div>
+
+      <div class="item"><span class="marker">§</span><div>
+        <div class="item-h">A sponsor of standards and IP</div>
+        <p class="item-d">Owner and sponsor of CEH™ and related measurement frameworks for compute-energy underwriting and infrastructure intelligence.</p>
+      </div></div>
+
+      <div class="item"><span class="marker">§</span><div>
+        <div class="item-h">A coordinator of strategic platform relationships</div>
+        <p class="item-d">Aligned with DGE&amp;I and other active workstreams where infrastructure, compute, energy, and capital converge.</p>
+      </div></div>
+    </div>
+
+    <div class="col col-isnot">
+      <div class="col-label">Oak Ridge Management Is Not</div>
+
+      <div class="item"><span class="marker">—</span><div>
+        <div class="item-h">Not a fund or registered investment adviser</div>
+        <p class="item-d">ORM does not present itself as a public investment vehicle or provide investment advice through this website.</p>
+      </div></div>
+
+      <div class="item"><span class="marker">—</span><div>
+        <div class="item-h">Not a single-product company</div>
+        <p class="item-d">CEH™ is one workstream within ORM, not the entirety of the platform.</p>
+      </div></div>
+
+      <div class="item"><span class="marker">—</span><div>
+        <div class="item-h">Not an open-engagement consultancy</div>
+        <p class="item-d">ORM engages selectively by relationship, alignment, and qualified strategic relevance.</p>
+      </div></div>
+
+      <div class="item"><span class="marker">—</span><div>
+        <div class="item-h">Not a public capital-raising surface</div>
+        <p class="item-d">This website is informational. Confidential materials, portal access, and transaction discussions occur off-site under appropriate diligence and approval controls.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <b>Disclosure.</b> Materials on this website are informational. Nothing here constitutes investment advice, an offer to sell, or a solicitation of any security or interest. Confidential materials and portal access are provided only to approved counterparties and may be subject to NDA, non-circumvention, and disclosure controls.
+  </div>
+</body></html>

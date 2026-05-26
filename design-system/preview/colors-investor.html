@@ -1,0 +1,84 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>ORM Palette · Hierarchy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#faf9f6; --rule:#e0dccc; --rule-soft:#ebe7d7; --text:#1f2937; --muted:#4b5563; --light:#9ca3af; --navy:#142b4a; --bronze:#8a6a2a; }
+  body { margin: 0; padding: 22px 24px; background: var(--bg); font-family: 'Inter', sans-serif; color: var(--text); }
+  .head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule-soft); }
+  .head .h { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; color: var(--navy); letter-spacing: -0.2px; }
+  .head .meta { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.5px; color: var(--muted); text-transform: uppercase; }
+
+  /* Hierarchy row — navy big, bronze accent stripe, forest small, structure small */
+  .hier { display: grid; grid-template-columns: 1.6fr 0.7fr 0.7fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (max-width: 760px) { .hier { grid-template-columns: 1fr 1fr; } }
+  .swatch { background: #fff; padding: 14px 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 56px; margin-bottom: 8px; }
+  .swarm { display: flex; gap: 3px; height: 10px; }
+  .swarm span { flex: 1; }
+  .role-tag { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: 0.5px; color: var(--muted); text-transform: uppercase; }
+  .name { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; color: var(--navy); letter-spacing: -0.2px; }
+  .role { font-family: 'Inter', sans-serif; font-size: 11.5px; color: var(--muted); line-height: 1.55; }
+  .hex { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--text); }
+
+  .navy   .chip { background: #142b4a; }
+  .navy   .swarm span:nth-child(1) { background: #142b4a; } .navy .swarm span:nth-child(2) { background: #2b4d7b; } .navy .swarm span:nth-child(3) { background: #3c5982; } .navy .swarm span:nth-child(4) { background: #eef2f9; }
+  .bronze .chip { background: #8a6a2a; }
+  .bronze .swarm span:nth-child(1) { background: #8a6a2a; } .bronze .swarm span:nth-child(2) { background: #a98947; } .bronze .swarm span:nth-child(3) { background: #f0e8d2; } .bronze .swarm span:nth-child(4) { background: #dcc998; }
+  .forest .chip { background: #1f4d36; }
+  .forest .swarm span:nth-child(1) { background: #1f4d36; } .forest .swarm span:nth-child(2) { background: #2e7a55; } .forest .swarm span:nth-child(3) { background: #e9f1ec; } .forest .swarm span:nth-child(4) { background: #cfe2d6; }
+  .struct .chip { background: linear-gradient(180deg, #2b3340 0%, #2b3340 33%, #4b5563 33%, #4b5563 66%, #9ca3af 66%, #9ca3af 100%); }
+  .struct .swarm span:nth-child(1) { background: #2b3340; } .struct .swarm span:nth-child(2) { background: #4b5563; } .struct .swarm span:nth-child(3) { background: #9ca3af; } .struct .swarm span:nth-child(4) { background: #e0dccc; }
+
+  .foot { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--muted); line-height: 1.85; }
+  .foot b { color: var(--text); font-weight: 500; }
+</style></head><body>
+  <div class="head">
+    <span class="h">ORM Public · Color Hierarchy</span>
+    <span class="meta">Navy primary · Bronze accent · Forest support · Charcoal/Slate structure</span>
+  </div>
+
+  <div class="hier">
+    <div class="swatch navy">
+      <div class="chip"></div>
+      <div class="swarm"><span></span><span></span><span></span><span></span></div>
+      <span class="role-tag">Primary · Authority</span>
+      <div class="name">Navy</div>
+      <p class="role">Headlines, wordmark, masthead, key section heads, primary CTAs.</p>
+      <div class="hex">#142B4A · #2B4D7B · #3C5982 · #EEF2F9</div>
+    </div>
+    <div class="swatch bronze">
+      <div class="chip"></div>
+      <div class="swarm"><span></span><span></span><span></span><span></span></div>
+      <span class="role-tag">Accent · Used sparingly</span>
+      <div class="name">Bronze</div>
+      <p class="role">Small caps labels, eyebrows, thin rules, premium callouts.</p>
+      <div class="hex">#8A6A2A · #A98947 · #F0E8D2</div>
+    </div>
+    <div class="swatch forest">
+      <div class="chip"></div>
+      <div class="swarm"><span></span><span></span><span></span><span></span></div>
+      <span class="role-tag">Support · Affirmative</span>
+      <div class="name">Forest</div>
+      <p class="role">Platform/operating themes, "active" or "approved" states, subtle highlights.</p>
+      <div class="hex">#1F4D36 · #2E7A55 · #E9F1EC</div>
+    </div>
+    <div class="swatch struct">
+      <div class="chip"></div>
+      <div class="swarm"><span></span><span></span><span></span><span></span></div>
+      <span class="role-tag">Text · Structure</span>
+      <div class="name">Charcoal · Slate</div>
+      <p class="role">Body copy, metadata, divider rules, document indexes, form fields.</p>
+      <div class="hex">#2B3340 · #4B5563 · #9CA3AF · #E0DCCC</div>
+    </div>
+  </div>
+
+  <p class="foot">
+    <b>Brand separation.</b> ORM stays in the navy / bronze / forest / charcoal system. CEH's
+    cyan technical palette is reserved for CEH-specific surfaces only — it does not appear on
+    the public ORM site. No neon, no lime green, no electric orange, no black as a dominant
+    background.
+  </p>
+</body></html>

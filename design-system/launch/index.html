@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1180,initial-scale=1">
+<title>ORM Design System — Launch Readiness Package</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#faf9f6; --bg-alt:#f4f2eb; --rule:#e0dccc; --rule-soft:#ebe7d7;
+    --text:#1f2937; --muted:#4b5563; --light:#9ca3af;
+    --navy:#142b4a; --bronze:#8a6a2a; --forest:#1f4d36; --charcoal:#2b3340;
+    --amber:#a87632; --crimson:#8a3a2a;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 56px 32px 80px; }
+
+  /* Header */
+  header.head { padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid var(--rule); }
+  .eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; color: var(--bronze); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--bronze); }
+  h1.title { font-family: 'Source Serif 4', serif; font-size: 42px; font-weight: 600; color: var(--navy); letter-spacing: -0.6px; line-height: 1.1; margin: 0 0 14px; }
+  .sub { font-size: 15.5px; color: var(--muted); max-width: 760px; margin: 0; }
+
+  /* Approval banner */
+  .approval { display: grid; grid-template-columns: 220px 1fr; gap: 0; margin: 32px 0 8px; background: #fff; border: 1px solid var(--rule); }
+  .approval-status { background: var(--navy); color: #fff; padding: 22px 24px; }
+  .approval-status .k { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.6px; text-transform: uppercase; opacity: 0.7; }
+  .approval-status .v { font-family: 'Source Serif 4', serif; font-size: 22px; font-weight: 600; line-height: 1.2; margin-top: 6px; }
+  .approval-body { padding: 22px 28px; font-size: 13.5px; color: var(--text); }
+  .approval-body strong { color: var(--navy); font-weight: 600; }
+  .approval-body p { margin: 0 0 6px; }
+  .approval-body p:last-child { margin-bottom: 0; }
+
+  /* TOC */
+  .toc { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 14px; margin: 36px 0 56px; padding: 20px 24px; background: #fff; border: 1px solid var(--rule-soft); }
+  @media (max-width: 720px) { .toc, .grid, .col2, .approval { grid-template-columns: 1fr !important; } }
+  .toc-item { display: flex; gap: 12px; align-items: baseline; padding: 6px 0; font-size: 13px; }
+  .toc-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--light); letter-spacing: 0.5px; width: 28px; }
+  .toc-name { color: var(--navy); font-weight: 500; }
+  .toc-name a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
+  .toc-name a:hover { border-bottom-color: var(--bronze); color: var(--bronze); }
+
+  /* Sections */
+  .item { padding-top: 48px; padding-bottom: 8px; border-top: 1px solid var(--rule); }
+  .item-meta { display: flex; align-items: baseline; gap: 14px; margin-bottom: 4px; }
+  .item-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--light); letter-spacing: 0.5px; }
+  .item-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.6px; text-transform: uppercase; padding: 2px 8px; border: 1px solid; }
+  .tag-orm { color: var(--navy); border-color: var(--navy); }
+  .tag-inv { color: var(--bronze); border-color: var(--bronze); }
+  .tag-ceh { color: var(--charcoal); border-color: var(--charcoal); }
+  .tag-ops { color: var(--forest); border-color: var(--forest); }
+  .tag-warn { color: var(--crimson); border-color: var(--crimson); }
+  .item h2 { font-family: 'Source Serif 4', serif; font-size: 28px; font-weight: 600; color: var(--navy); letter-spacing: -0.3px; margin: 6px 0 10px; }
+  .item .lede { font-size: 14.5px; color: var(--muted); max-width: 780px; margin: 0 0 24px; }
+
+  /* File tree */
+  pre.tree { background: #fff; border: 1px solid var(--rule-soft); padding: 22px 26px; margin: 0 0 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.75; color: var(--text); overflow-x: auto; white-space: pre; }
+  pre.tree .dim { color: var(--light); }
+  pre.tree .com { color: var(--muted); font-style: normal; }
+  pre.tree .new { color: var(--forest); }
+  pre.tree .legacy { color: var(--bronze); }
+  pre.tree .warn { color: var(--crimson); }
+  pre.tree b { color: var(--navy); font-weight: 600; }
+
+  /* Card grid */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; margin-top: 10px; }
+  .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; margin-top: 10px; }
+  .card { background: #fff; border: 1px solid var(--rule-soft); padding: 20px 22px; }
+  .card .h { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.4px; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule-soft); display: flex; align-items: center; gap: 10px; }
+  .card .h .stub { width: 14px; height: 2px; background: var(--navy); display: inline-block; }
+  .card.bronze .h .stub { background: var(--bronze); }
+  .card.charcoal .h .stub { background: var(--charcoal); }
+  .card.forest .h .stub { background: var(--forest); }
+  .card.crimson .h .stub { background: var(--crimson); }
+  .card ul { margin: 0; padding: 0; list-style: none; }
+  .card li { padding: 6px 0; display: grid; grid-template-columns: 120px 1fr; gap: 12px; align-items: baseline; font-size: 12.5px; border-bottom: 1px dotted var(--rule-soft); }
+  .card li:last-child { border-bottom: 0; }
+  .card .k { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--light); letter-spacing: 0.5px; text-transform: uppercase; }
+  .card .v { color: var(--text); }
+  .card .v.muted { color: var(--muted); }
+  .card code, code.inline { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--navy); background: var(--bg-alt); padding: 1px 5px; border: 1px solid var(--rule-soft); white-space: nowrap; }
+
+  /* Numbered steps */
+  ol.steps { counter-reset: step; list-style: none; padding: 0; margin: 8px 0 0; }
+  ol.steps > li { counter-increment: step; padding: 18px 22px 20px 64px; background: #fff; border: 1px solid var(--rule-soft); margin-bottom: 10px; position: relative; }
+  ol.steps > li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 20px; top: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--bronze); letter-spacing: 0.5px; font-weight: 500; }
+  ol.steps .step-title { font-family: 'Source Serif 4', serif; font-size: 16.5px; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+  ol.steps .step-body { font-size: 13px; color: var(--text); line-height: 1.7; }
+  ol.steps .step-body p { margin: 0 0 6px; }
+  ol.steps .step-body p:last-child { margin-bottom: 0; }
+  ol.steps pre.cmd { background: var(--charcoal); color: #f4f2eb; padding: 12px 16px; margin: 10px 0 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; line-height: 1.7; overflow-x: auto; border-left: 2px solid var(--bronze); white-space: pre; }
+  ol.steps pre.cmd .c { color: #9aa3a8; }
+  ol.steps pre.cmd .p { color: #c4b58a; }
+
+  /* Caveat block */
+  .caveat {
+    margin-top: 14px;
+    background: #fff;
+    border: 1px solid var(--rule-soft);
+    border-left: 2px solid var(--bronze);
+    padding: 14px 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.85;
+    letter-spacing: 0.2px;
+  }
+  .caveat b { color: var(--text); font-weight: 500; }
+  .caveat-warn { border-left-color: var(--crimson); }
+  .caveat-warn b { color: var(--crimson); }
+  .caveat-ok { border-left-color: var(--forest); color: var(--forest); }
+  .caveat-ok b { color: var(--forest); }
+
+  /* Pre-deploy edit table */
+  table.edits { width: 100%; border-collapse: collapse; margin-top: 10px; background: #fff; border: 1px solid var(--rule-soft); }
+  table.edits thead th { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; color: var(--muted); text-transform: uppercase; text-align: left; padding: 12px 14px; background: var(--bg-alt); border-bottom: 1px solid var(--rule); }
+  table.edits td { padding: 14px 14px; font-size: 12.5px; vertical-align: top; border-bottom: 1px solid var(--rule-soft); }
+  table.edits tr:last-child td { border-bottom: 0; }
+  table.edits td.pri { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  table.edits td.pri.must { color: var(--crimson); }
+  table.edits td.pri.should { color: var(--bronze); }
+  table.edits td.pri.nice { color: var(--forest); }
+  table.edits td.area { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--navy); white-space: nowrap; }
+  table.edits td.what { color: var(--text); }
+  table.edits td.owner { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+
+  /* Inline */
+  p { margin: 0 0 12px; }
+  a { color: var(--navy); text-decoration: underline; text-decoration-color: var(--bronze); text-underline-offset: 3px; }
+  a:hover { color: var(--bronze); }
+
+  /* Footnote */
+  .foot { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); line-height: 1.85; }
+  .foot b { color: var(--text); font-weight: 500; }
+
+  /* Numbered cards row */
+  .key-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 8px 0 28px; }
+  @media (max-width: 720px) { .key-stats { grid-template-columns: 1fr 1fr; } }
+  .stat { background: #fff; border: 1px solid var(--rule-soft); padding: 18px 20px; border-top: 2px solid var(--navy); }
+  .stat.bronze { border-top-color: var(--bronze); }
+  .stat.forest { border-top-color: var(--forest); }
+  .stat.charcoal { border-top-color: var(--charcoal); }
+  .stat .n { font-family: 'Source Serif 4', serif; font-size: 32px; font-weight: 600; color: var(--navy); line-height: 1; letter-spacing: -0.5px; }
+  .stat .l { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <div class="eyebrow">Oak Ridge Management · Design System · Launch readiness</div>
+    <h1 class="title">Launch-readiness package · v1</h1>
+    <p class="sub">
+      A handoff document for moving the design system out of iteration and into implementation. File map by surface, remaining caveats,
+      pre-deploy edit list, and instructions for exporting to the GitHub repo / Netlify deploy preview. Not a production launch approval.
+    </p>
+
+    <div class="approval">
+      <div class="approval-status">
+        <div class="k">Status</div>
+        <div class="v">Design-system approval · pending content + legal review</div>
+      </div>
+      <div class="approval-body">
+        <p><strong>Approved as the visual / architectural system:</strong> ORM Public (warm-stone institutional) · Investor Portal (restricted, data-room) · CEH Technical (dark, methodology-only).</p>
+        <p><strong>Not approved for production deploy</strong> until: final copy is locked, counsel reviews the Is/Is Not and footer disclosures, the CEH page is built (or explicitly deferred), and one diligence pass on the Investor Portal site portfolio numbers.</p>
+        <p><strong>Hard rules preserved:</strong> no Georgia Benefits Group on the ORM website · no fund / invest-now / guaranteed-return / registered-adviser language · DGE&amp;I monogram only on DGE&amp;I surfaces.</p>
+      </div>
+    </div>
+
+    <div class="key-stats">
+      <div class="stat"><div class="n">3</div><div class="l">surfaces</div></div>
+      <div class="stat bronze"><div class="n">73</div><div class="l">design files</div></div>
+      <div class="stat forest"><div class="n">19</div><div class="l">react components</div></div>
+      <div class="stat charcoal"><div class="n">22</div><div class="l">preview cards</div></div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-item"><span class="toc-num">01</span><span class="toc-name"><a href="#s01">Full generated file tree</a></span></div>
+    <div class="toc-item"><span class="toc-num">02</span><span class="toc-name"><a href="#s02">Files powering the ORM public site</a></span></div>
+    <div class="toc-item"><span class="toc-num">03</span><span class="toc-name"><a href="#s03">Files powering the Investor Portal</a></span></div>
+    <div class="toc-item"><span class="toc-num">04</span><span class="toc-name"><a href="#s04">Files powering CEH Technical surfaces</a></span></div>
+    <div class="toc-item"><span class="toc-num">05</span><span class="toc-name"><a href="#s05">Shared foundations &amp; preview</a></span></div>
+    <div class="toc-item"><span class="toc-num">06</span><span class="toc-name"><a href="#s06">Remaining caveats</a></span></div>
+    <div class="toc-item"><span class="toc-num">07</span><span class="toc-name"><a href="#s07">Pre-deploy edit list</a></span></div>
+    <div class="toc-item"><span class="toc-num">08</span><span class="toc-name"><a href="#s08">Export / deploy instructions</a></span></div>
+  </nav>
+
+  <!-- 01 — Full file tree -->
+  <section class="item" id="s01">
+    <div class="item-meta"><span class="item-num">§ 01</span><span class="item-tag tag-ops">Generated files</span></div>
+    <h2>Full generated file tree</h2>
+    <p class="lede">Everything in this project, color-coded by lineage. Green = new system files written here. Bronze = legacy CSS / JSX preserved from the existing deployment as reference. All other files are review artifacts, previews, or shared foundations.</p>
+
+<pre class="tree">
+<b>.</b>
+├── <b>README.md</b>                                  <span class="com"># design-system overview · voice · tokens · asset inventory</span>
+├── <span class="dim">SKILL.md</span>                                   <span class="com"># agent-skill metadata</span>
+├── <b>colors_and_type.css</b>                        <span class="com"># shared design tokens — both surfaces</span>
+│
+├── <b>assets/</b>
+│   ├── <span class="legacy">css/shared.css</span>                         <span class="com"># LEGACY Bloomberg-dark CSS · reference only</span>
+│   ├── <span class="legacy">css/investor-theme.css</span>                 <span class="com"># LEGACY investor stylesheet · reference only</span>
+│   ├── <span class="legacy">js/nav.js</span>                              <span class="com"># LEGACY mobile-nav toggle</span>
+│   ├── <span class="new">dg-logo.svg</span>                            <span class="com"># DGE&amp;I monogram · investor-portal masthead only</span>
+│   ├── <span class="new">dg-favicon.svg</span>
+│   └── <span class="new">orm-favicon.svg</span>
+│
+├── <b>ui_kits/public-site/</b>                       <span class="new">► ORM public homepage</span>
+│   ├── <b>index.html</b>                             <span class="com"># composed homepage entry</span>
+│   ├── <b>orm-public.css</b>                         <span class="com"># institutional stylesheet (primary)</span>
+│   ├── README.md
+│   ├── <span class="new">Nav.jsx · Hero.jsx</span>
+│   ├── <span class="new">OperatingDomains.jsx · CurrentThesis.jsx</span>
+│   ├── <span class="new">ActiveWorkstreams.jsx · OperatingPrinciples.jsx</span>
+│   ├── <span class="new">OperatingPerimeter.jsx · FounderCard.jsx</span>
+│   ├── <span class="new">StrategicConversations.jsx · Footer.jsx</span>
+│   └── <span class="legacy">Ticker · TrackGrid · FormulaBar · IndexTable</span>      <span class="com"># LEGACY — retained for future CEH page</span>
+│       <span class="legacy">GradeStrip · IsIsNot · Citation</span>
+│
+├── <b>ui_kits/investor-portal/</b>                   <span class="new">► DGE&amp;I investor / partner portal</span>
+│   ├── <b>index.html</b>
+│   ├── <b>partner-portal.css</b>                     <span class="com"># data-room stylesheet</span>
+│   ├── README.md
+│   ├── <span class="new">OrmRibbon.jsx</span>                          <span class="com"># ORM access ribbon (parent control signal)</span>
+│   ├── <span class="new">InvestorNav.jsx · PortalHero.jsx</span>
+│   ├── <span class="new">PortalModules.jsx · SitePortfolio.jsx</span>
+│   ├── <span class="new">PowerBlocks.jsx · CapitalArchitecture.jsx</span>
+│   └── <span class="new">DataRoom.jsx · PortalFooter.jsx</span>
+│
+├── <span class="dim">preview/</span>                                   <span class="com"># 22 design-system review cards (registered as assets)</span>
+│   ├── colors-public-neutrals.html  · colors-public-accents.html
+│   ├── colors-investor.html
+│   ├── type-public.html · type-investor.html · type-scale.html
+│   ├── spacing-scale.html · borders-accents.html · iconography.html
+│   ├── brand-logo.html
+│   ├── components-section-headers.html · components-track-cards.html
+│   ├── components-is-isnot.html · components-forms.html
+│   ├── components-buttons-public.html · components-buttons-investor.html
+│   ├── components-stat-tiles.html · components-status-badges.html
+│   ├── components-sku-cards.html
+│   └── <span class="warn">components-table.html · components-formula-bar.html</span>    <span class="com"># CEH-only modules</span>
+│       <span class="warn">components-ticker.html</span>
+│
+├── <span class="dim">review/</span>                                    <span class="com"># consolidated review snapshot</span>
+│   ├── index.html
+│   └── 01–10 *.png                                <span class="com"># surface screenshots</span>
+│
+├── <span class="dim">launch/</span>                                    <span class="com"># YOU ARE HERE — handoff document</span>
+│   └── index.html
+│
+└── <b>ORM Design System Review.html</b>              <span class="com"># standalone bundled review (1.08 MB)</span>
+</pre>
+
+    <div class="caveat"><b>Read the colors.</b> <span style="color:var(--forest)">Green</span> = new system, the production source of truth. <span style="color:var(--bronze)">Bronze</span> = legacy code preserved from the existing Netlify deployment — kept as reference, not loaded by any current page. <span style="color:var(--crimson)">Red</span> = CEH-only previews that must not leak onto the ORM public site.</div>
+  </section>
+
+  <!-- 02 — ORM Public -->
+  <section class="item" id="s02">
+    <div class="item-meta"><span class="item-num">§ 02</span><span class="item-tag tag-orm">ORM Public</span></div>
+    <h2>Files powering the ORM public site</h2>
+    <p class="lede">Warm-stone institutional. Navy + bronze + forest + charcoal. No CEH-dark surface; no Georgia Benefits Group. Entry point is <code class="inline">ui_kits/public-site/index.html</code>.</p>
+
+    <div class="col2">
+      <div class="card">
+        <div class="h"><span class="stub"></span>Entry &amp; stylesheet</div>
+        <ul>
+          <li><span class="k">Entry</span><span class="v"><code>ui_kits/public-site/index.html</code></span></li>
+          <li><span class="k">Stylesheet</span><span class="v"><code>ui_kits/public-site/orm-public.css</code></span></li>
+          <li><span class="k">Tokens</span><span class="v"><code>colors_and_type.css</code></span></li>
+          <li><span class="k">Favicon</span><span class="v"><code>assets/orm-favicon.svg</code></span></li>
+          <li><span class="k">README</span><span class="v"><code>ui_kits/public-site/README.md</code></span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="h"><span class="stub"></span>Active components (load order)</div>
+        <ul>
+          <li><span class="k">01 Nav</span><span class="v"><code>Nav.jsx</code></span></li>
+          <li><span class="k">02 Hero</span><span class="v"><code>Hero.jsx</code></span></li>
+          <li><span class="k">03 Domains</span><span class="v"><code>OperatingDomains.jsx</code></span></li>
+          <li><span class="k">04 Thesis</span><span class="v"><code>CurrentThesis.jsx</code></span></li>
+          <li><span class="k">05 Workstreams</span><span class="v"><code>ActiveWorkstreams.jsx</code></span></li>
+          <li><span class="k">06 Principles</span><span class="v"><code>OperatingPrinciples.jsx</code></span></li>
+          <li><span class="k">07 Perimeter</span><span class="v"><code>OperatingPerimeter.jsx</code></span></li>
+          <li><span class="k">08 Founder</span><span class="v"><code>FounderCard.jsx</code></span></li>
+          <li><span class="k">09 Inquiry</span><span class="v"><code>StrategicConversations.jsx</code></span></li>
+          <li><span class="k">10 Footer</span><span class="v"><code>Footer.jsx</code></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="caveat"><b>Architecture.</b> Inline-React via Babel-standalone (matches the existing Netlify deployment pattern in <code class="inline">Oak Ridge Management - Documents/</code>). No build step required to deploy. Components share scope via <code class="inline">window.*</code> assignment — see each JSX file's bottom export block. If/when moving to a real build pipeline (Vite/Next), the components are already cleanly separated for migration.</div>
+  </section>
+
+  <!-- 03 — Investor Portal -->
+  <section class="item" id="s03">
+    <div class="item-meta"><span class="item-num">§ 03</span><span class="item-tag tag-inv">Investor Portal</span></div>
+    <h2>Files powering the DGE&amp;I Investor / Partner Portal</h2>
+    <p class="lede">Restricted data-room environment under ORM control. ORM access-layer ribbon at the top. DGE&amp;I masthead. Entry is <code class="inline">ui_kits/investor-portal/index.html</code>. Route in production: <code class="inline">/investor/platform/</code> behind Netlify Identity (investor role).</p>
+
+    <div class="col2">
+      <div class="card bronze">
+        <div class="h"><span class="stub"></span>Entry &amp; stylesheet</div>
+        <ul>
+          <li><span class="k">Entry</span><span class="v"><code>ui_kits/investor-portal/index.html</code></span></li>
+          <li><span class="k">Stylesheet</span><span class="v"><code>ui_kits/investor-portal/partner-portal.css</code></span></li>
+          <li><span class="k">Tokens</span><span class="v"><code>colors_and_type.css</code></span></li>
+          <li><span class="k">Favicon</span><span class="v"><code>assets/dg-favicon.svg</code></span></li>
+          <li><span class="k">Logo</span><span class="v"><code>assets/dg-logo.svg</code></span></li>
+          <li><span class="k">README</span><span class="v"><code>ui_kits/investor-portal/README.md</code></span></li>
+        </ul>
+      </div>
+      <div class="card bronze">
+        <div class="h"><span class="stub"></span>Active components (load order)</div>
+        <ul>
+          <li><span class="k">01 Ribbon</span><span class="v"><code>OrmRibbon.jsx</code></span></li>
+          <li><span class="k">02 Nav</span><span class="v"><code>InvestorNav.jsx</code></span></li>
+          <li><span class="k">03 Hero</span><span class="v"><code>PortalHero.jsx</code></span></li>
+          <li><span class="k">04 Modules</span><span class="v"><code>PortalModules.jsx</code></span></li>
+          <li><span class="k">05 Sites</span><span class="v"><code>SitePortfolio.jsx</code></span></li>
+          <li><span class="k">06 Power blocks</span><span class="v"><code>PowerBlocks.jsx</code></span></li>
+          <li><span class="k">07 Architecture</span><span class="v"><code>CapitalArchitecture.jsx</code></span></li>
+          <li><span class="k">08 Data room</span><span class="v"><code>DataRoom.jsx</code></span></li>
+          <li><span class="k">09 Footer</span><span class="v"><code>PortalFooter.jsx</code></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="caveat caveat-warn"><b>Gating belongs at Netlify, not in the design.</b> The portal HTML/CSS/JSX is presentational — the page assumes access has already been granted upstream. Routing rule lives in <code class="inline">netlify.toml</code>: <code class="inline">/investor/platform/*</code> → 200 if Role=investor, else 302 → <code class="inline">/login/</code>. Do not embed access logic in the JSX.</div>
+  </section>
+
+  <!-- 04 — CEH Technical -->
+  <section class="item" id="s04">
+    <div class="item-meta"><span class="item-num">§ 04</span><span class="item-tag tag-ceh">CEH Technical</span></div>
+    <h2>Files powering CEH Technical surfaces</h2>
+    <p class="lede">Deep-slate methodology layer. <strong>Modules only — no composed CEH page exists yet.</strong> The components below are production-ready and live as preview cards; a full <code class="inline">ui_kits/ceh-technical/</code> page is the next surface to build, on confirmation.</p>
+
+    <div class="col2">
+      <div class="card charcoal">
+        <div class="h"><span class="stub"></span>Live preview modules</div>
+        <ul>
+          <li><span class="k">Table</span><span class="v"><code>preview/components-table.html</code></span></li>
+          <li><span class="k">Callout</span><span class="v"><code>preview/components-formula-bar.html</code></span></li>
+          <li><span class="k">Ticker strip</span><span class="v"><code>preview/components-ticker.html</code></span></li>
+          <li><span class="k">Palette</span><span class="v"><code>preview/colors-public-accents.html</code></span></li>
+        </ul>
+      </div>
+      <div class="card charcoal">
+        <div class="h"><span class="stub"></span>Source JSX (reusable)</div>
+        <ul>
+          <li><span class="k">Table</span><span class="v"><code>ui_kits/public-site/IndexTable.jsx</code></span></li>
+          <li><span class="k">Callout</span><span class="v"><code>ui_kits/public-site/FormulaBar.jsx</code></span></li>
+          <li><span class="k">Strip</span><span class="v"><code>ui_kits/public-site/Ticker.jsx · GradeStrip.jsx</code></span></li>
+          <li><span class="k">Grid</span><span class="v"><code>ui_kits/public-site/TrackGrid.jsx</code></span></li>
+          <li><span class="k">Citation</span><span class="v"><code>ui_kits/public-site/Citation.jsx</code></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="caveat"><b>Recommendation.</b> Move the CEH JSX components into their own <code class="inline">ui_kits/ceh-technical/</code> folder when the full CEH page is commissioned. Until then, leaving them under <code class="inline">ui_kits/public-site/</code> is fine — they are not loaded by the public homepage and only render under the dark-surface CSS in the previews. Legacy <code class="inline">assets/css/shared.css</code> is the styling foundation for that future page.</div>
+  </section>
+
+  <!-- 05 — Shared foundations -->
+  <section class="item" id="s05">
+    <div class="item-meta"><span class="item-num">§ 05</span><span class="item-tag tag-ops">Foundations</span></div>
+    <h2>Shared foundations &amp; preview cards</h2>
+    <p class="lede">Tokens and previews used by both surfaces. The previews are registered as assets in the Design System tab — they're not pages, they're documentation artifacts.</p>
+
+    <div class="col2">
+      <div class="card forest">
+        <div class="h"><span class="stub"></span>Tokens / foundations</div>
+        <ul>
+          <li><span class="k">Tokens</span><span class="v"><code>colors_and_type.css</code></span></li>
+          <li><span class="k">Type swap</span><span class="v">Edit <code>--serif</code> / <code>--sans</code> / <code>--mono</code> in this file + both kit stylesheets — entire system inherits</span></li>
+          <li><span class="k">Spacing</span><span class="v"><code>--sp-1</code> (4px) … <code>--sp-11</code> (96px). 8pt scale.</span></li>
+          <li><span class="k">Colors</span><span class="v">Navy <code>#142B4A</code> · Bronze <code>#8A6A2A</code> · Forest <code>#1F4D36</code> · Stone <code>#FAF9F6</code> / <code>#F4F2EB</code></span></li>
+        </ul>
+      </div>
+      <div class="card forest">
+        <div class="h"><span class="stub"></span>Preview cards (Design System tab)</div>
+        <ul>
+          <li><span class="k">Colors</span><span class="v">3 cards — neutrals, public accents, investor</span></li>
+          <li><span class="k">Type</span><span class="v">3 cards — public, investor, scale</span></li>
+          <li><span class="k">Spacing</span><span class="v">3 cards — spacing, borders, iconography</span></li>
+          <li><span class="k">Brand</span><span class="v">1 card — logo / wordmark</span></li>
+          <li><span class="k">Components</span><span class="v">12 cards — see <code>preview/</code></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 — Caveats -->
+  <section class="item" id="s06">
+    <div class="item-meta"><span class="item-num">§ 06</span><span class="item-tag tag-warn">Caveats</span></div>
+    <h2>Remaining caveats — every open item, in one place</h2>
+    <p class="lede">All caveats consolidated from the review pass. Items are tagged by who needs to clear them.</p>
+
+    <div class="grid">
+      <div class="card crimson">
+        <div class="h"><span class="stub"></span>Legal / counsel</div>
+        <ul>
+          <li><span class="k">Disclosures</span><span class="v">Counsel review on the four "Is Not" items, the closing perimeter paragraph, and the public-site footer disclosure language.</span></li>
+          <li><span class="k">Portal</span><span class="v">NDA / non-circumvention / advisor-clearance language on the investor portal needs counsel sign-off.</span></li>
+          <li><span class="k">CEH</span><span class="v">"Illustrative · methodology preview · v0.1 draft framework" labels should be confirmed by counsel before any CEH page goes live.</span></li>
+          <li><span class="k">Trademark</span><span class="v">CEH™ usage and "Compute Energy Hour" first-use convention should be reviewed against the trademark registration.</span></li>
+        </ul>
+      </div>
+      <div class="card bronze">
+        <div class="h"><span class="stub"></span>Content / diligence</div>
+        <ul>
+          <li><span class="k">Domains</span><span class="v">Confirm copy on the four operating domains, especially Strategic Capital scope (compute · infra-adjacent · pre-IPO?).</span></li>
+          <li><span class="k">Workstreams</span><span class="v">Confirm six rows + stage labels. Should QumulusAI be more / less prominent?</span></li>
+          <li><span class="k">Sites</span><span class="v">St. Paul · Savannah · Bowman · Montgomery + pipeline — capacity / status accuracy + order.</span></li>
+          <li><span class="k">Founder</span><span class="v">Restrained copy on the founder card — keep minimal or add a brief background pointer?</span></li>
+          <li><span class="k">Capital arch.</span><span class="v">HoldCo / Capital / ProjectCo nodes + figures need a sponsor pass.</span></li>
+          <li><span class="k">Data room</span><span class="v">Document list is illustrative — replace with real index before invite-out.</span></li>
+          <li><span class="k">Inbox</span><span class="v">Confirm <code>conversations@oakridgemanagement.net</code> is the right inbound mailto.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="h"><span class="stub"></span>Technical / build</div>
+        <ul>
+          <li><span class="k">Type</span><span class="v">Fonts are open-source stand-ins (Source Serif 4 · Inter · IBM Plex Mono). Swap <code>--serif</code> / <code>--sans</code> / <code>--mono</code> when Mercury / Söhne / GT America are licensed.</span></li>
+          <li><span class="k">Imagery</span><span class="v">System is deliberately image-free. Boardroom photography / DGE&amp;I renders / capital-structure diagrams to be commissioned.</span></li>
+          <li><span class="k">Form</span><span class="v">Strategic Conversations form is presentational — needs Netlify Forms / Formspree wiring before launch.</span></li>
+          <li><span class="k">DG mark</span><span class="v">DGE&amp;I monogram is hand-coded SVG path. Replace with a clean vector export when one exists.</span></li>
+          <li><span class="k">Legacy CSS</span><span class="v"><code>assets/css/shared.css</code> + <code>investor-theme.css</code>: keep as CEH foundation, or move to <code>ui_kits/ceh-technical/</code>?</span></li>
+        </ul>
+      </div>
+      <div class="card forest">
+        <div class="h"><span class="stub"></span>Decisions you owe me</div>
+        <ul>
+          <li><span class="k">CEH page</span><span class="v">Build the full CEH page next, or defer until methodology v1.0 is locked?</span></li>
+          <li><span class="k">Branch</span><span class="v">Land this work on <code>staging</code> (per BRANCH_STRATEGY.md) for Netlify deploy preview, then promote to <code>main</code> after sign-off.</span></li>
+          <li><span class="k">Repo</span><span class="v">Push into <a href="https://github.com/danielcobb007-debug/oakridgemanagement">danielcobb007-debug/oakridgemanagement</a> alongside the existing Netlify-deployed source, or land in a fresh branch and PR.</span></li>
+          <li><span class="k">Investor route</span><span class="v">Production target: <code>/investor/platform/</code> behind Netlify Identity. Keep <code>/investor/</code> public as the marketing landing, or also gate it?</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — Pre-deploy edits -->
+  <section class="item" id="s07">
+    <div class="item-meta"><span class="item-num">§ 07</span><span class="item-tag tag-warn">Pre-deploy</span></div>
+    <h2>Recommended edits before deploy</h2>
+    <p class="lede">Priority-ordered. <span style="color:var(--crimson)">Must</span> blocks production. <span style="color:var(--bronze)">Should</span> blocks invite-out. <span style="color:var(--forest)">Nice</span> can ship after.</p>
+
+    <table class="edits">
+      <thead>
+        <tr><th style="width:90px">Priority</th><th style="width:200px">Area</th><th>What</th><th style="width:140px">Owner</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="pri must">Must</td>
+          <td class="area">Disclosures</td>
+          <td class="what">Counsel pass on Is/Is Not, footer disclosure, and investor-portal NDA language. Nothing about "fund / invest now / guaranteed" remains in copy — verify once more before push.</td>
+          <td class="owner">Counsel</td>
+        </tr>
+        <tr>
+          <td class="pri must">Must</td>
+          <td class="area">Investor gating</td>
+          <td class="what">Verify <code class="inline">netlify.toml</code> Identity rule on <code class="inline">/investor/platform/*</code>. Confirm staging deploy preview enforces the 302 to <code class="inline">/login/</code> for non-investor visitors.</td>
+          <td class="owner">Ops</td>
+        </tr>
+        <tr>
+          <td class="pri must">Must</td>
+          <td class="area">Robots / SEO</td>
+          <td class="what">Confirm <code class="inline">&lt;meta name="robots" content="noindex, nofollow"&gt;</code> on the investor portal HTML head (already present). Confirm <code class="inline">index, follow</code> on the ORM public site.</td>
+          <td class="owner">Ops</td>
+        </tr>
+        <tr>
+          <td class="pri must">Must</td>
+          <td class="area">Inbox routing</td>
+          <td class="what">Provision <code class="inline">conversations@oakridgemanagement.net</code> and confirm it routes to the right person before the inquiry form is wired to send.</td>
+          <td class="owner">Ops</td>
+        </tr>
+        <tr>
+          <td class="pri should">Should</td>
+          <td class="area">Form backend</td>
+          <td class="what">Wire Strategic Conversations form to Netlify Forms or Formspree. Add server-side rate limit and basic spam guard. No submission logic in the JSX itself.</td>
+          <td class="owner">Eng</td>
+        </tr>
+        <tr>
+          <td class="pri should">Should</td>
+          <td class="area">Site portfolio</td>
+          <td class="what">Sponsor pass on St. Paul / Savannah / Bowman / Montgomery — capacity, stage, MW/site. Update <code class="inline">SitePortfolio.jsx</code> with confirmed numbers.</td>
+          <td class="owner">DGE&amp;I</td>
+        </tr>
+        <tr>
+          <td class="pri should">Should</td>
+          <td class="area">Capital arch.</td>
+          <td class="what">Replace illustrative HoldCo / Capital / ProjectCo nodes with the real cap-stack diagram in <code class="inline">CapitalArchitecture.jsx</code>.</td>
+          <td class="owner">DGE&amp;I + Counsel</td>
+        </tr>
+        <tr>
+          <td class="pri should">Should</td>
+          <td class="area">Data room</td>
+          <td class="what">Replace illustrative document list with the real index. Confirm document-access state badges (Restricted / NDA / Confidential) per item.</td>
+          <td class="owner">DGE&amp;I</td>
+        </tr>
+        <tr>
+          <td class="pri should">Should</td>
+          <td class="area">Workstreams</td>
+          <td class="what">Lock the six rows + stage chips on <code class="inline">ActiveWorkstreams.jsx</code>. Adjust QumulusAI prominence per direction.</td>
+          <td class="owner">Principal</td>
+        </tr>
+        <tr>
+          <td class="pri nice">Nice</td>
+          <td class="area">Typography</td>
+          <td class="what">When Mercury / Söhne / GT America licenses land, swap <code class="inline">--serif</code> / <code class="inline">--sans</code> / <code class="inline">--mono</code> in <code class="inline">colors_and_type.css</code> + both kit stylesheets. Delete Google Fonts <code class="inline">&lt;link&gt;</code> tags.</td>
+          <td class="owner">Eng</td>
+        </tr>
+        <tr>
+          <td class="pri nice">Nice</td>
+          <td class="area">Imagery</td>
+          <td class="what">Commission boardroom-quality photography + DGE&amp;I site renders. Add hero image to Investor Portal only. Public ORM site remains image-free until decided.</td>
+          <td class="owner">Brand</td>
+        </tr>
+        <tr>
+          <td class="pri nice">Nice</td>
+          <td class="area">DG monogram</td>
+          <td class="what">Replace hand-coded SVG path in <code class="inline">assets/dg-logo.svg</code> with a vector export from the design tool of record.</td>
+          <td class="owner">Brand</td>
+        </tr>
+        <tr>
+          <td class="pri nice">Nice</td>
+          <td class="area">Legacy CSS</td>
+          <td class="what">Move <code class="inline">assets/css/shared.css</code> + <code class="inline">investor-theme.css</code> into <code class="inline">ui_kits/ceh-technical/</code> as the foundation for the CEH page — or archive if CEH page is deferred indefinitely.</td>
+          <td class="owner">Eng</td>
+        </tr>
+        <tr>
+          <td class="pri nice">Nice</td>
+          <td class="area">CEH page</td>
+          <td class="what">If approved: compose <code class="inline">ui_kits/ceh-technical/index.html</code> using the existing CEH modules + dark-surface CSS. Target route <code class="inline">/standard/methodology/</code> on cehstandard.com.</td>
+          <td class="owner">Eng + Principal</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 08 — Deploy instructions -->
+  <section class="item" id="s08">
+    <div class="item-meta"><span class="item-num">§ 08</span><span class="item-tag tag-ops">Export</span></div>
+    <h2>Export / deploy instructions</h2>
+    <p class="lede">Three paths: (A) push into the existing GitHub repo on a feature branch and use Netlify deploy preview; (B) export as a local repo and deploy fresh; (C) hand off the standalone HTML for review. The repo path is recommended — it aligns with the existing <code class="inline">main</code> / <code class="inline">staging</code> branch strategy.</p>
+
+    <h3 style="font-family:'Source Serif 4',serif;font-size:18px;color:var(--navy);margin:24px 0 12px;font-weight:600;">A — Push to the GitHub repo (recommended)</h3>
+
+    <ol class="steps">
+      <li>
+        <div class="step-title">Download this project</div>
+        <div class="step-body">
+          <p>Use the project download from the top-right of this workspace, or ask Claude to present the project for download. You'll get a zip of everything in the file tree above.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-title">Clone the repo and create a feature branch off <code class="inline">staging</code></div>
+        <div class="step-body">
+<pre class="cmd"><span class="c"># clone the existing repo</span>
+git clone git@github.com:danielcobb007-debug/oakridgemanagement.git
+cd oakridgemanagement
+
+<span class="c"># branch off staging per BRANCH_STRATEGY.md</span>
+git checkout staging
+git pull
+git checkout -b feature/design-system-v1</pre>
+        </div>
+      </li>
+      <li>
+        <div class="step-title">Copy the new files into the repo</div>
+        <div class="step-body">
+          <p>Unzip the project export and copy these directories into the repo root, preserving structure:</p>
+<pre class="cmd"><span class="p">colors_and_type.css</span>
+<span class="p">ui_kits/public-site/</span>
+<span class="p">ui_kits/investor-portal/</span>
+<span class="p">assets/orm-favicon.svg</span>
+<span class="p">assets/dg-favicon.svg</span>
+<span class="p">assets/dg-logo.svg</span>
+<span class="p">README.md</span>          <span class="c"># overwrites or merges with the existing repo README</span></pre>
+          <p>Do <strong>not</strong> overwrite the existing <code class="inline">assets/css/shared.css</code>, <code class="inline">assets/css/investor-theme.css</code>, or <code class="inline">netlify.toml</code> — those are the existing deployment's source of truth. The new system reads from <code class="inline">ui_kits/public-site/orm-public.css</code> and <code class="inline">ui_kits/investor-portal/partner-portal.css</code> independently.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-title">Wire the routes</div>
+        <div class="step-body">
+          <p>Decide which surfaces this PR replaces. Recommended minimal landing:</p>
+<pre class="cmd"><span class="c"># public homepage</span>
+cp ui_kits/public-site/index.html index.html
+<span class="c"># OR keep both during cutover:</span>
+mkdir -p preview-v1
+cp ui_kits/public-site/index.html preview-v1/index.html
+
+<span class="c"># investor portal landing</span>
+cp ui_kits/investor-portal/index.html investor/platform/index.html</pre>
+          <p>Fix relative paths after copying — the kits assume <code class="inline">../../assets/</code> for favicons. Update <code class="inline">href</code>s if the file lands at repo root.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-title">Push the branch and open the Netlify deploy preview</div>
+        <div class="step-body">
+<pre class="cmd">git add .
+git commit -m "design-system v1: ORM public + DGE&amp;I portal"
+git push -u origin feature/design-system-v1</pre>
+          <p>Netlify will auto-build a deploy preview URL for the PR (per <code class="inline">NETLIFY_DEPLOYMENT_MAP.md</code> — staging environment, AI-assisted iteration safe zone). Share that URL for counsel + sponsor review. Do not merge to <code class="inline">main</code> until every <strong>Must</strong> item in § 07 is cleared.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-title">Promotion to production</div>
+        <div class="step-body">
+          <p>After all Must items clear: open a PR from <code class="inline">feature/design-system-v1</code> → <code class="inline">staging</code>, validate the staging deploy, then PR <code class="inline">staging</code> → <code class="inline">main</code>. <code class="inline">main</code> is the production-protected branch — only approved deployments land here.</p>
+        </div>
+      </li>
+    </ol>
+
+    <h3 style="font-family:'Source Serif 4',serif;font-size:18px;color:var(--navy);margin:32px 0 12px;font-weight:600;">B — Local repo / fresh deploy</h3>
+    <ol class="steps">
+      <li>
+        <div class="step-title">Initialize a clean repo from the export</div>
+        <div class="step-body">
+<pre class="cmd">unzip oak-ridge-management-design-system.zip
+cd oak-ridge-management-design-system
+git init
+git add .
+git commit -m "initial: ORM design system v1"
+git remote add origin git@github.com:&lt;org&gt;/&lt;repo&gt;.git
+git push -u origin main</pre>
+        </div>
+      </li>
+      <li>
+        <div class="step-title">Add the minimal <code class="inline">netlify.toml</code></div>
+        <div class="step-body">
+          <p>Copy the gating + redirect rules from the existing deployment's <code class="inline">netlify.toml</code> (in <code class="inline">Oak Ridge Management - Documents/</code>) — specifically the <code class="inline">/investor/platform/*</code> Identity gate and the trailing-slash canonicalization redirects. Set <code class="inline">[build] publish = "."</code> — this is a static site, no build step.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-title">Connect Netlify and deploy</div>
+        <div class="step-body">
+          <p>In Netlify: New site → Import from Git → select the repo → branch <code class="inline">main</code> → publish directory <code class="inline">.</code>. Add the production domains (<code class="inline">oakridgemanagement.net</code>, etc.) per <code class="inline">CANONICAL_DOMAIN_REGISTRY.md</code>. Enable Netlify Identity for the investor-role JWT before pointing real DNS.</p>
+        </div>
+      </li>
+    </ol>
+
+    <h3 style="font-family:'Source Serif 4',serif;font-size:18px;color:var(--navy);margin:32px 0 12px;font-weight:600;">C — Standalone HTML handoff (review only)</h3>
+    <ol class="steps">
+      <li>
+        <div class="step-title">Use the bundled review file</div>
+        <div class="step-body">
+          <p>The file <code class="inline">ORM Design System Review.html</code> at the project root is a fully self-contained single-file artifact (1.08 MB, no external dependencies, works offline). Forward it for non-technical review. It contains the consolidated screenshots + caveats but is not deployable — it's a review snapshot only.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="caveat caveat-ok"><b>Note on the existing repo.</b> The local <code>Oak Ridge Management - Documents/</code> folder contains a working Netlify deployment with its own governance docs (<code>00_Governance/</code>, <code>10_Operations/</code>). The new design system is <em>additive</em> — drop the new files into <code>ui_kits/</code>, keep the existing routing, favicons, and governance scaffolding as-is. The two coexist cleanly until cutover.</div>
+  </section>
+
+  <p class="foot">
+    <b>Status.</b> Design system is approved as architecture. Implementation can begin on <code class="inline">staging</code> immediately. Production deploy is gated on the Must items in § 07. ·
+    <b>Next decision.</b> Confirm (a) which branch to land this on, (b) whether the CEH page is the next surface to build, and (c) whether the investor portal launches with the data room populated or with placeholder rows behind a "coming soon" state. ·
+    <b>Open questions back to you →</b> see § 06 "Decisions you owe me."
+  </p>
+</div>
+</body>
+</html>

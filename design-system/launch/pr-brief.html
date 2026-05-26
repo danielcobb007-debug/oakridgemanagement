@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1180,initial-scale=1">
+<title>PR Brief — feature/design-system-v1 → staging</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#faf9f6; --bg-alt:#f4f2eb; --rule:#e0dccc; --rule-soft:#ebe7d7;
+    --text:#1f2937; --muted:#4b5563; --light:#9ca3af;
+    --navy:#142b4a; --bronze:#8a6a2a; --forest:#1f4d36; --charcoal:#2b3340; --crimson:#8a3a2a;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 56px 32px 80px; }
+
+  header.head { padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid var(--rule); }
+  .eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; color: var(--bronze); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--bronze); }
+  h1.title { font-family: 'Source Serif 4', serif; font-size: 40px; font-weight: 600; color: var(--navy); letter-spacing: -0.6px; line-height: 1.1; margin: 0 0 14px; }
+  .sub { font-size: 15.5px; color: var(--muted); max-width: 760px; margin: 0; }
+
+  /* PR meta strip */
+  .pr-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 32px 0 0; background: #fff; border: 1px solid var(--rule); }
+  @media (max-width: 720px) { .pr-strip { grid-template-columns: 1fr 1fr; } }
+  .pr-cell { padding: 18px 20px; border-right: 1px solid var(--rule-soft); }
+  .pr-cell:last-child { border-right: 0; }
+  .pr-cell .k { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.5px; color: var(--light); text-transform: uppercase; margin-bottom: 6px; }
+  .pr-cell .v { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--navy); font-weight: 500; }
+  .pr-cell.green .v { color: var(--forest); }
+  .pr-cell.bronze .v { color: var(--bronze); }
+
+  /* Section */
+  .item { padding-top: 48px; padding-bottom: 8px; border-top: 1px solid var(--rule); }
+  .item-meta { display: flex; align-items: baseline; gap: 14px; margin-bottom: 4px; }
+  .item-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--light); letter-spacing: 0.5px; }
+  .item-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.6px; text-transform: uppercase; padding: 2px 8px; border: 1px solid; }
+  .tag-orm { color: var(--navy); border-color: var(--navy); }
+  .tag-ops { color: var(--forest); border-color: var(--forest); }
+  .tag-warn { color: var(--crimson); border-color: var(--crimson); }
+  .item h2 { font-family: 'Source Serif 4', serif; font-size: 28px; font-weight: 600; color: var(--navy); letter-spacing: -0.3px; margin: 6px 0 10px; }
+  .item .lede { font-size: 14.5px; color: var(--muted); max-width: 780px; margin: 0 0 24px; }
+
+  /* Commands */
+  pre.cmd { background: var(--charcoal); color: #f4f2eb; padding: 18px 22px; margin: 12px 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.75; overflow-x: auto; border-left: 2px solid var(--bronze); white-space: pre; }
+  pre.cmd .c { color: #9aa3a8; }
+  pre.cmd .p { color: #c4b58a; }
+  pre.cmd .ok { color: #7eb89b; }
+  pre.cmd .warn { color: #d49a7e; }
+
+  /* File tree */
+  pre.tree { background: #fff; border: 1px solid var(--rule-soft); padding: 22px 26px; margin: 0 0 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.75; color: var(--text); overflow-x: auto; white-space: pre; }
+  pre.tree .dim { color: var(--light); }
+  pre.tree .com { color: var(--muted); }
+  pre.tree .new { color: var(--forest); }
+  pre.tree .legacy { color: var(--bronze); }
+  pre.tree .warn { color: var(--crimson); }
+  pre.tree b { color: var(--navy); font-weight: 600; }
+
+  /* Card grid */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; margin-top: 10px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .card { background: #fff; border: 1px solid var(--rule-soft); padding: 20px 22px; }
+  .card .h { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.4px; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule-soft); display: flex; align-items: center; gap: 10px; }
+  .card .h .stub { width: 14px; height: 2px; background: var(--navy); display: inline-block; }
+  .card.forest .h .stub { background: var(--forest); }
+  .card.bronze .h .stub { background: var(--bronze); }
+  .card.crimson .h .stub { background: var(--crimson); }
+  .card ul { margin: 0; padding: 0; list-style: none; }
+  .card li { padding: 7px 0; font-size: 13px; border-bottom: 1px dotted var(--rule-soft); display: flex; gap: 10px; align-items: baseline; }
+  .card li:last-child { border-bottom: 0; }
+  .card li .glyph { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; width: 16px; flex-shrink: 0; }
+  .card li.ok .glyph { color: var(--forest); }
+  .card li.warn .glyph { color: var(--crimson); }
+  .card li.info .glyph { color: var(--bronze); }
+  .card code, code.inline { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--navy); background: var(--bg-alt); padding: 1px 5px; border: 1px solid var(--rule-soft); white-space: nowrap; }
+
+  /* Changes table */
+  table.changes { width: 100%; border-collapse: collapse; margin-top: 10px; background: #fff; border: 1px solid var(--rule-soft); }
+  table.changes thead th { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; color: var(--muted); text-transform: uppercase; text-align: left; padding: 12px 14px; background: var(--bg-alt); border-bottom: 1px solid var(--rule); }
+  table.changes td { padding: 13px 14px; font-size: 12.5px; vertical-align: top; border-bottom: 1px solid var(--rule-soft); }
+  table.changes tr:last-child td { border-bottom: 0; }
+  table.changes td.file { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--navy); white-space: nowrap; }
+  table.changes td.kind { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+  table.changes td.kind.edit { color: var(--bronze); }
+  table.changes td.kind.new { color: var(--forest); }
+  table.changes td.before { color: var(--muted); font-style: italic; }
+  table.changes td.after { color: var(--text); }
+  .diff-arrow { font-family: 'IBM Plex Mono', monospace; color: var(--bronze); padding: 0 6px; }
+
+  /* Status table */
+  table.status { width: 100%; border-collapse: collapse; margin-top: 10px; background: #fff; border: 1px solid var(--rule-soft); }
+  table.status thead th { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; color: var(--muted); text-transform: uppercase; text-align: left; padding: 12px 14px; background: var(--bg-alt); border-bottom: 1px solid var(--rule); }
+  table.status td { padding: 13px 14px; font-size: 12.5px; vertical-align: top; border-bottom: 1px solid var(--rule-soft); }
+  table.status tr:last-child td { border-bottom: 0; }
+  table.status td.pri { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+  table.status td.pri.must { color: var(--crimson); }
+  table.status td.pri.should { color: var(--bronze); }
+  table.status td.pri.nice { color: var(--forest); }
+  table.status td.state { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; white-space: nowrap; }
+  table.status td.state.done { color: var(--forest); }
+  table.status td.state.open { color: var(--crimson); }
+  table.status td.state.partial { color: var(--bronze); }
+  table.status td.area { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--navy); white-space: nowrap; }
+
+  /* Caveat */
+  .caveat { margin-top: 14px; background: #fff; border: 1px solid var(--rule-soft); border-left: 2px solid var(--bronze); padding: 14px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--muted); line-height: 1.85; letter-spacing: 0.2px; }
+  .caveat b { color: var(--text); font-weight: 500; }
+  .caveat.ok { border-left-color: var(--forest); color: var(--forest); }
+  .caveat.ok b { color: var(--forest); }
+  .caveat.warn { border-left-color: var(--crimson); }
+  .caveat.warn b { color: var(--crimson); }
+
+  /* PR description block */
+  .pr-desc { background: #fff; border: 1px solid var(--rule); padding: 26px 30px; margin-top: 12px; }
+  .pr-desc h3 { font-family: 'Source Serif 4', serif; font-size: 18px; color: var(--navy); margin: 18px 0 8px; font-weight: 600; }
+  .pr-desc h3:first-child { margin-top: 0; }
+  .pr-desc ul { margin: 6px 0 0; padding-left: 22px; }
+  .pr-desc li { font-size: 13.5px; line-height: 1.7; margin-bottom: 4px; }
+  .pr-desc code { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--navy); background: var(--bg-alt); padding: 1px 5px; border: 1px solid var(--rule-soft); }
+  .pr-desc p { margin: 0 0 8px; font-size: 13.5px; line-height: 1.7; }
+
+  /* Section sub-head */
+  h3.subh { font-family: 'Source Serif 4', serif; font-size: 18px; color: var(--navy); margin: 28px 0 10px; font-weight: 600; }
+  p { margin: 0 0 12px; }
+  a { color: var(--navy); text-decoration: underline; text-decoration-color: var(--bronze); text-underline-offset: 3px; }
+  a:hover { color: var(--bronze); }
+
+  .foot { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); line-height: 1.85; }
+  .foot b { color: var(--text); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <div class="eyebrow">Oak Ridge Management · Design System · PR briefing</div>
+    <h1 class="title">PR brief · <code style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--navy);background:var(--bg-alt);padding:2px 10px;border:1px solid var(--rule-soft);font-weight:500;">feature/design-system-v1</code> → <code style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--bronze);background:var(--bg-alt);padding:2px 10px;border:1px solid var(--rule-soft);font-weight:500;">staging</code></h1>
+    <p class="sub">
+      Pre-merge briefing for the design-system v1 PR. Captures the exact git commands, the final file tree of what's being added,
+      every file changed (including the CEH-language softening pass following CEH page deferral), and the remaining Must / Should / Nice list.
+    </p>
+
+    <div class="pr-strip">
+      <div class="pr-cell"><div class="k">Target repo</div><div class="v">danielcobb007-debug/oakridgemanagement</div></div>
+      <div class="pr-cell green"><div class="k">Branch</div><div class="v">feature/design-system-v1</div></div>
+      <div class="pr-cell bronze"><div class="k">Base</div><div class="v">staging</div></div>
+      <div class="pr-cell"><div class="k">CEH page</div><div class="v">Deferred</div></div>
+    </div>
+  </header>
+
+  <!-- 01 — Decisions captured -->
+  <section class="item">
+    <div class="item-meta"><span class="item-num">§ 01</span><span class="item-tag tag-ops">Decisions</span></div>
+    <h2>Decisions captured in this PR</h2>
+
+    <div class="grid">
+      <div class="card forest">
+        <div class="h"><span class="stub"></span>From the launch-readiness reply</div>
+        <ul>
+          <li class="ok"><span class="glyph">✓</span><span><strong>CEH technical page deferred.</strong> Components stay in the system as reserved assets; no <code>ui_kits/ceh-technical/</code> in this PR.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span><strong>CEH language softened</strong> on the ORM public site to: developing framework · methodology preview · subject to validation · not a certified public index · not an externally adopted benchmark.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span><strong>Branch:</strong> <code>feature/design-system-v1</code> off <code>staging</code>, per BRANCH_STRATEGY.md.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span><strong>PR target:</strong> <code>staging</code>, not <code>main</code>.</span></li>
+        </ul>
+      </div>
+      <div class="card forest">
+        <div class="h"><span class="stub"></span>Architecture preserved</div>
+        <ul>
+          <li class="ok"><span class="glyph">✓</span><span>ORM Public · Investor Portal · CEH Technical surfaces remain clearly separated.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span><code>launch/index.html</code> preserved as the readiness package.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span><code>review/index.html</code> preserved as the standalone review artifact.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span>No major visual changes — only CEH copy + one stale CSS comment fix.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span>DGE&amp;I monogram remains on DGE&amp;I surfaces only.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 — Audit confirmations -->
+  <section class="item">
+    <div class="item-meta"><span class="item-num">§ 02</span><span class="item-tag tag-ops">Audits</span></div>
+    <h2>Audit confirmations — answers to your pre-PR questions</h2>
+
+    <div class="grid">
+      <div class="card forest">
+        <div class="h"><span class="stub"></span>Georgia Benefits Group exclusion</div>
+        <ul>
+          <li class="ok"><span class="glyph">✓</span><span><strong>Zero matches</strong> for <code>georgia benefits</code>, <code>GBG</code>, or "benefits group" across the entire project.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span>Confirmed not present in any production-path file (<code>ui_kits/public-site/*</code>, <code>ui_kits/investor-portal/*</code>, any CSS, any README).</span></li>
+          <li class="info"><span class="glyph">·</span><span>The string "Georgia" only appears as (a) the CSS generic-serif fallback <code>Georgia, serif</code> — the Microsoft font, not the entity — and (b) "Atlanta, Georgia" as the firm's location on the founder card and hero memo.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span>GBG is excluded completely from ORM public and investor portal surfaces.</span></li>
+        </ul>
+      </div>
+      <div class="card bronze">
+        <div class="h"><span class="stub"></span>Legacy Bloomberg-dark file isolation</div>
+        <ul>
+          <li class="ok"><span class="glyph">✓</span><span><strong>Three legacy files preserved</strong> in <code>assets/css/shared.css</code>, <code>assets/css/investor-theme.css</code>, <code>assets/js/nav.js</code>.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span><strong>Not loaded</strong> by either production entry — <code>ui_kits/public-site/index.html</code> only imports <code>orm-public.css</code>; <code>ui_kits/investor-portal/index.html</code> only imports <code>partner-portal.css</code>.</span></li>
+          <li class="ok"><span class="glyph">✓</span><span><strong>No <code>@import</code></strong> from either production stylesheet to the legacy files.</span></li>
+          <li class="info"><span class="glyph">·</span><span>Fixed one stale comment in <code>partner-portal.css</code> that said "Layered on top of investor-theme.css" — it never was; now reads "Self-contained stylesheet (does NOT depend on legacy investor-theme.css / shared.css)."</span></li>
+          <li class="info"><span class="glyph">·</span><span><strong>Legacy CEH JSX</strong> (<code>Ticker · TrackGrid · FormulaBar · IndexTable · GradeStrip · IsIsNot · Citation</code>) remains under <code>ui_kits/public-site/</code> but is <strong>not loaded</strong> by the public homepage — only by individual preview cards.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — Files changed in this pass -->
+  <section class="item">
+    <div class="item-meta"><span class="item-num">§ 03</span><span class="item-tag tag-warn">CEH pass</span></div>
+    <h2>Files changed in the CEH-language softening pass</h2>
+    <p class="lede">Per direction: CEH stays in the system as a workstream / IP asset only, framed as a developing framework. Every CEH reference on the ORM public site was edited for tone. No visual changes.</p>
+
+    <table class="changes">
+      <thead>
+        <tr><th style="width:280px">File</th><th style="width:80px">Kind</th><th>Change</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="file">ui_kits/public-site/ActiveWorkstreams.jsx</td>
+          <td class="kind edit">Edit</td>
+          <td>
+            CEH™ Standard stage: <span class="before">"Published v1.0"</span><span class="diff-arrow">→</span><span class="after">"Methodology preview"</span><br>
+            CEH™ Index stage: <span class="before">"Live"</span><span class="diff-arrow">→</span><span class="after">"Internal draft"</span><br>
+            Focus copy + table footnote rewritten to: "developing measurement framework", "draft methodology", "subject to validation", "not a certified public index or externally adopted benchmark."
+          </td>
+        </tr>
+        <tr>
+          <td class="file">ui_kits/public-site/OperatingDomains.jsx</td>
+          <td class="kind edit">Edit</td>
+          <td>
+            Domain 02 CTA: <span class="before">"Explore CEH™ Standard"</span><span class="diff-arrow">→</span><span class="after">"About CEH™ (in development)"</span><br>
+            Domain 02 desc appended with "CEH™ is a developing framework — methodology preview, subject to validation."
+          </td>
+        </tr>
+        <tr>
+          <td class="file">ui_kits/public-site/OperatingPerimeter.jsx</td>
+          <td class="kind edit">Edit</td>
+          <td>
+            <em>Is</em> row 03: <span class="before">"Owner and sponsor of CEH™…"</span><span class="diff-arrow">→</span><span class="after">"Developer and sponsor of CEH™ — a draft measurement framework… Methodology preview, subject to validation; not a certified public index."</span><br>
+            <em>Is Not</em> row 02: appended "a developing methodology framework… not an externally adopted benchmark unless separately established."
+          </td>
+        </tr>
+        <tr>
+          <td class="file">ui_kits/public-site/FounderCard.jsx</td>
+          <td class="kind edit">Edit</td>
+          <td>
+            Bio: <span class="before">"originator of the CEH™ standard"</span><span class="diff-arrow">→</span><span class="after">"originator of the CEH™ methodology framework (in development)"</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="file">ui_kits/public-site/Footer.jsx</td>
+          <td class="kind edit">Edit</td>
+          <td>
+            External link labels: <span class="before">"CEH™ Standard ↗"</span><span class="diff-arrow">→</span><span class="after">"CEH™ Standard (preview) ↗"</span>, "CEH™ Index ↗" → "CEH™ Index (internal draft) ↗"<br>
+            Base trademark line expanded with "refers to a developing methodology framework — methodology preview, subject to validation."
+          </td>
+        </tr>
+        <tr>
+          <td class="file">ui_kits/investor-portal/partner-portal.css</td>
+          <td class="kind edit">Edit</td>
+          <td>
+            File-header comment corrected: removed misleading "Layered on top of investor-theme.css" line; now states explicitly that the stylesheet is self-contained and does NOT depend on legacy files.
+          </td>
+        </tr>
+        <tr>
+          <td class="file">launch/pr-brief.html</td>
+          <td class="kind new">New</td>
+          <td>This document.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caveat ok"><b>No JSX visuals touched.</b> No styles, no layouts, no colors, no spacing. Only copy strings inside <code>.jsx</code> data arrays and the one CSS comment line. The components render identically.</div>
+  </section>
+
+  <!-- 04 — Files changed outside the design-system scope -->
+  <section class="item">
+    <div class="item-meta"><span class="item-num">§ 04</span><span class="item-tag tag-ops">Scope</span></div>
+    <h2>Files changed outside the design-system scope</h2>
+
+    <div class="caveat ok"><b>None.</b> Every edit in this PR lives under <code>ui_kits/public-site/</code>, <code>ui_kits/investor-portal/</code>, or <code>launch/</code>. No edits to <code>assets/css/shared.css</code>, <code>assets/css/investor-theme.css</code>, <code>assets/js/nav.js</code>, <code>netlify.toml</code> (in the target repo), <code>00_Governance/</code>, <code>10_Operations/</code>, or any other governance / deployment file. The PR is additive and content-scoped.</div>
+  </section>
+
+  <!-- 05 — Final file tree -->
+  <section class="item">
+    <div class="item-meta"><span class="item-num">§ 05</span><span class="item-tag tag-orm">File tree</span></div>
+    <h2>Final file tree being added to the repo</h2>
+    <p class="lede">What the PR adds when dropped into the target repo. Existing files in the repo (netlify.toml, /investor/platform/, governance docs, etc.) are not modified.</p>
+
+<pre class="tree">
+<b>oakridgemanagement/</b>                            <span class="com"># existing repo on branch feature/design-system-v1</span>
+│
+├── <span class="dim">[existing files unchanged]</span>                  <span class="com"># index.html, netlify.toml, 00_Governance/, 10_Operations/, etc.</span>
+│
+├── <span class="new">colors_and_type.css</span>                        <span class="com">+ NEW · shared design tokens</span>
+│
+├── <span class="new">assets/orm-favicon.svg</span>                     <span class="com">+ NEW · ORM favicon</span>
+├── <span class="new">assets/dg-favicon.svg</span>                      <span class="com">+ NEW · DGE&amp;I favicon</span>
+├── <span class="new">assets/dg-logo.svg</span>                         <span class="com">+ NEW · DGE&amp;I monogram</span>
+│   <span class="legacy">assets/css/shared.css         (preserved · reference only · not loaded)</span>
+│   <span class="legacy">assets/css/investor-theme.css (preserved · reference only · not loaded)</span>
+│   <span class="legacy">assets/js/nav.js              (preserved · legacy)</span>
+│
+├── <span class="new">ui_kits/public-site/</span>                       <span class="com">+ NEW · ORM public homepage</span>
+│   ├── <b>index.html</b>
+│   ├── <b>orm-public.css</b>
+│   ├── README.md
+│   ├── Nav.jsx · Hero.jsx
+│   ├── OperatingDomains.jsx                       <span class="warn">(edited · CEH copy)</span>
+│   ├── CurrentThesis.jsx · ActiveWorkstreams.jsx  <span class="warn">(edited · CEH copy)</span>
+│   ├── OperatingPrinciples.jsx
+│   ├── OperatingPerimeter.jsx                     <span class="warn">(edited · CEH copy)</span>
+│   ├── FounderCard.jsx                            <span class="warn">(edited · CEH copy)</span>
+│   ├── StrategicConversations.jsx · Footer.jsx    <span class="warn">(edited · CEH copy)</span>
+│   └── <span class="dim">Ticker · TrackGrid · FormulaBar · IndexTable</span>   <span class="com"># reserved CEH components, not loaded</span>
+│       <span class="dim">GradeStrip · IsIsNot · Citation</span>
+│
+├── <span class="new">ui_kits/investor-portal/</span>                   <span class="com">+ NEW · DGE&amp;I investor / partner portal</span>
+│   ├── <b>index.html</b>
+│   ├── <b>partner-portal.css</b>                       <span class="warn">(comment fixed)</span>
+│   ├── README.md
+│   ├── OrmRibbon.jsx · InvestorNav.jsx
+│   ├── PortalHero.jsx · PortalModules.jsx
+│   ├── SitePortfolio.jsx · PowerBlocks.jsx
+│   ├── CapitalArchitecture.jsx · DataRoom.jsx
+│   └── PortalFooter.jsx
+│
+├── <span class="new">preview/</span>                                   <span class="com">+ NEW · 22 design-system review cards (documentation only)</span>
+│
+├── <span class="new">review/</span>                                    <span class="com">+ NEW · consolidated review snapshot (artifact)</span>
+│   ├── index.html
+│   └── 01–10 *.png
+│
+├── <span class="new">launch/</span>                                    <span class="com">+ NEW · launch-readiness + this PR brief</span>
+│   ├── index.html                                 <span class="com"># launch-readiness package · preserved</span>
+│   └── pr-brief.html                              <span class="com"># this document</span>
+│
+├── <span class="new">README.md</span>                                  <span class="com">+ NEW or MERGE · design-system overview</span>
+└── <span class="new">SKILL.md</span>                                   <span class="com">+ NEW · agent-skill metadata</span>
+</pre>
+
+    <div class="caveat"><b>Path note.</b> The existing repo deploys the live Netlify site from its root <code>index.html</code>. <strong>This PR does not touch that file.</strong> The new design-system surfaces sit under <code>ui_kits/</code> and are reviewable via Netlify deploy preview at <code>/ui_kits/public-site/</code> and <code>/ui_kits/investor-portal/</code>. Promoting them into the root (i.e. overwriting <code>index.html</code> and gating <code>/investor/platform/</code>) is a separate, explicit cutover step — not part of this PR.</div>
+  </section>
+
+  <!-- 06 — Exact git commands -->
+  <section class="item">
+    <div class="item-meta"><span class="item-num">§ 06</span><span class="item-tag tag-ops">Git</span></div>
+    <h2>Exact git commands</h2>
+    <p class="lede">Run these from a local checkout of the target repo. The design-system files are exported from this workspace as a zip; unzip into a working folder before the <code>cp</code> step.</p>
+
+    <h3 class="subh">1 · Set up the branch</h3>
+<pre class="cmd"><span class="c"># clone (or cd into existing checkout)</span>
+git clone git@github.com:danielcobb007-debug/oakridgemanagement.git
+cd oakridgemanagement
+
+<span class="c"># sync staging</span>
+git checkout staging
+git pull origin staging
+
+<span class="c"># branch off staging per BRANCH_STRATEGY.md</span>
+git checkout -b feature/design-system-v1</pre>
+
+    <h3 class="subh">2 · Copy the design-system files into the working tree</h3>
+<pre class="cmd"><span class="c"># from the unzipped workspace export (adjust SRC to your path)</span>
+SRC=<span class="p">~/Downloads/oak-ridge-management-design-system</span>
+
+<span class="c"># shared tokens + readme</span>
+cp <span class="p">$SRC/colors_and_type.css</span>      .
+cp <span class="p">$SRC/README.md</span>                README.design-system.md   <span class="c"># side-by-side; merge later</span>
+cp <span class="p">$SRC/SKILL.md</span>                 .
+
+<span class="c"># favicons + DG monogram (these are new files, not overwrites)</span>
+cp <span class="p">$SRC/assets/orm-favicon.svg</span>  assets/
+cp <span class="p">$SRC/assets/dg-favicon.svg</span>   assets/
+cp <span class="p">$SRC/assets/dg-logo.svg</span>      assets/
+
+<span class="c"># UI kits</span>
+mkdir -p ui_kits
+cp -R <span class="p">$SRC/ui_kits/public-site</span>      ui_kits/
+cp -R <span class="p">$SRC/ui_kits/investor-portal</span>  ui_kits/
+
+<span class="c"># preview + review + launch artifacts</span>
+cp -R <span class="p">$SRC/preview</span>  .
+cp -R <span class="p">$SRC/review</span>   .
+cp -R <span class="p">$SRC/launch</span>   .
+
+<span class="c"># DO NOT touch (these live in the repo already, preserve as-is):</span>
+<span class="c">#   index.html  ·  netlify.toml  ·  assets/css/*.css  ·  assets/js/nav.js</span>
+<span class="c">#   00_Governance/ · 10_Operations/ · 04_DGEI_Relationship/  etc.</span></pre>
+
+    <h3 class="subh">3 · Verify nothing legacy was overwritten</h3>
+<pre class="cmd"><span class="c"># confirm the existing deployed site is untouched</span>
+git status --short index.html netlify.toml assets/css/ assets/js/
+
+<span class="c"># expected output: empty (no changes to those paths)</span>
+<span class="ok"># ↑ if any of those show up as M, stop and revert before committing</span></pre>
+
+    <h3 class="subh">4 · Commit and push</h3>
+<pre class="cmd">git add .
+git status   <span class="c"># review what's staged</span>
+
+git commit -m <span class="p">"design-system v1: ORM public + DGE&amp;I portal + CEH-language softening"</span> \
+           -m <span class="p">"Adds ui_kits/public-site/ and ui_kits/investor-portal/ as new surfaces. CEH framed as developing methodology framework (preview, subject to validation, not a certified public index). No changes to root index.html, netlify.toml, or any governance docs. CEH technical page deferred per direction."</span>
+
+git push -u origin feature/design-system-v1</pre>
+
+    <h3 class="subh">5 · Open the PR against <code style="font-size:14px">staging</code></h3>
+<pre class="cmd"><span class="c"># GitHub will surface the PR URL after push. Or use gh CLI:</span>
+gh pr create \
+  --base staging \
+  --head feature/design-system-v1 \
+  --title <span class="p">"design-system v1: ORM public + DGE&amp;I portal"</span> \
+  --body-file launch/pr-description.md
+
+<span class="c"># PR description body (copy from § 07 of this brief)</span></pre>
+
+    <div class="caveat warn"><b>Do not PR to <code>main</code>.</b> Per BRANCH_STRATEGY.md and NETLIFY_DEPLOYMENT_MAP.md, <code>main</code> is production-protected and only accepts approved merges from <code>staging</code>. This PR's base must be <code>staging</code>. After Netlify deploy-preview review and sign-off, a second PR (staging → main) handles promotion.</div>
+  </section>
+
+  <!-- 07 — PR description -->
+  <section class="item">
+    <div class="item-meta"><span class="item-num">§ 07</span><span class="item-tag tag-orm">Body</span></div>
+    <h2>PR description (paste into GitHub)</h2>
+
+    <div class="pr-desc">
+      <h3>Summary</h3>
+      <p>Adds the ORM design system v1 as new surfaces under <code>ui_kits/</code>. Two production-ready kits (ORM Public, DGE&amp;I Investor Portal) plus reserved CEH technical components. No changes to the currently-deployed root <code>index.html</code>, <code>netlify.toml</code>, or any governance / operations docs. CEH framed as a developing methodology framework throughout — methodology preview, subject to validation, not a certified public index.</p>
+
+      <h3>What this PR adds</h3>
+      <ul>
+        <li><code>ui_kits/public-site/</code> — institutional warm-stone ORM homepage (Source Serif 4 / Inter / IBM Plex Mono · navy / bronze / forest / charcoal). 10 React components.</li>
+        <li><code>ui_kits/investor-portal/</code> — DGE&amp;I restricted partner portal. Data-room aesthetic, ORM access-layer ribbon, 9 React components.</li>
+        <li><code>colors_and_type.css</code> — shared design tokens for both surfaces.</li>
+        <li><code>preview/</code> — 22 design-system review cards (documentation, not pages).</li>
+        <li><code>review/</code> — consolidated review snapshot with screenshots.</li>
+        <li><code>launch/</code> — readiness package + this PR briefing.</li>
+        <li><code>assets/orm-favicon.svg</code>, <code>assets/dg-favicon.svg</code>, <code>assets/dg-logo.svg</code> — new SVG assets.</li>
+      </ul>
+
+      <h3>What this PR does <em>not</em> touch</h3>
+      <ul>
+        <li>Root <code>index.html</code> (current deployed site).</li>
+        <li><code>netlify.toml</code> (existing redirect + Identity gate rules).</li>
+        <li><code>assets/css/shared.css</code> + <code>assets/css/investor-theme.css</code> (legacy Bloomberg-dark, preserved as reference; not loaded by either new kit).</li>
+        <li><code>assets/js/nav.js</code>.</li>
+        <li><code>00_Governance/</code>, <code>10_Operations/</code>, <code>04_DGEI_Relationship/</code> and any other documentation directories.</li>
+      </ul>
+
+      <h3>CEH language pass</h3>
+      <p>Per direction (CEH page deferred until methodology v1.0 is locked), every CEH reference on the ORM public site was softened. Stage chips: "Published v1.0" → "Methodology preview"; "Live" → "Internal draft". Body copy across <code>ActiveWorkstreams.jsx</code>, <code>OperatingDomains.jsx</code>, <code>OperatingPerimeter.jsx</code>, <code>FounderCard.jsx</code>, <code>Footer.jsx</code> framed as: developing framework · methodology preview · subject to validation · not a certified public index · not an externally adopted benchmark unless separately established.</p>
+
+      <h3>Hard rules preserved</h3>
+      <ul>
+        <li>No Georgia Benefits Group on ORM public or investor portal (audited — zero matches).</li>
+        <li>No "fund / invest now / guaranteed return / registered adviser" language.</li>
+        <li>DGE&amp;I monogram only on DGE&amp;I surfaces.</li>
+        <li>CEH technical (dark) surface stays out of the ORM public site.</li>
+      </ul>
+
+      <h3>Review checklist (for staging deploy preview)</h3>
+      <ul>
+        <li>Visit <code>/ui_kits/public-site/</code> on the deploy-preview URL — verify warm-stone institutional aesthetic, all 10 sections render, CEH language reads as a developing framework.</li>
+        <li>Visit <code>/ui_kits/investor-portal/</code> — verify ORM access ribbon, DGE&amp;I masthead, data-room cards.</li>
+        <li>Open <code>/review/</code> and <code>/launch/</code> as snapshot artifacts.</li>
+        <li>Confirm root <code>/</code> still serves the existing deployed site unchanged.</li>
+        <li>Confirm <code>/investor/platform/</code> Netlify Identity gate still enforces (this PR does not change the gate).</li>
+      </ul>
+
+      <h3>Out of scope for this PR (next steps)</h3>
+      <ul>
+        <li>Counsel review of Is/Is Not + footer + portal disclosures.</li>
+        <li>Cutover: replacing root <code>index.html</code> with the new homepage (separate explicit PR).</li>
+        <li>Routing <code>/investor/platform/</code> to the new investor portal.</li>
+        <li>Real Site Portfolio numbers + real Data Room index.</li>
+        <li>Strategic Conversations form backend.</li>
+        <li>CEH technical page (deferred).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 08 — Status of Must / Should / Nice -->
+  <section class="item">
+    <div class="item-meta"><span class="item-num">§ 08</span><span class="item-tag tag-warn">Status</span></div>
+    <h2>Unresolved Must / Should / Nice items</h2>
+    <p class="lede">From the launch-readiness package, updated with what this PR moves and what remains for follow-up PRs.</p>
+
+    <table class="status">
+      <thead>
+        <tr><th style="width:80px">Priority</th><th style="width:160px">Area</th><th style="width:120px">Status</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="pri must">Must</td>
+          <td class="area">Disclosures</td>
+          <td class="state open">Open</td>
+          <td>Counsel pass on Is/Is Not, footer disclosure, investor-portal NDA language still required before <code>staging</code>→<code>main</code>.</td>
+        </tr>
+        <tr>
+          <td class="pri must">Must</td>
+          <td class="area">CEH framing</td>
+          <td class="state done">Done · this PR</td>
+          <td>"Developing framework / methodology preview / subject to validation / not a certified public index / not an externally adopted benchmark" applied across all five ORM public components that reference CEH.</td>
+        </tr>
+        <tr>
+          <td class="pri must">Must</td>
+          <td class="area">Investor gating</td>
+          <td class="state open">Open</td>
+          <td>Verify Netlify Identity rule on <code>/investor/platform/*</code> in the deploy preview. No change required to <code>netlify.toml</code> in this PR.</td>
+        </tr>
+        <tr>
+          <td class="pri must">Must</td>
+          <td class="area">Robots / SEO</td>
+          <td class="state done">Done</td>
+          <td>Investor portal head has <code>noindex,nofollow</code>; public site has <code>index,follow</code>. Confirmed.</td>
+        </tr>
+        <tr>
+          <td class="pri must">Must</td>
+          <td class="area">Inbox routing</td>
+          <td class="state open">Open</td>
+          <td>Provision <code>conversations@oakridgemanagement.net</code> before wiring the inquiry form to send.</td>
+        </tr>
+        <tr>
+          <td class="pri must">Must</td>
+          <td class="area">GBG exclusion</td>
+          <td class="state done">Done · audited</td>
+          <td>Zero matches. ORM public and investor portal surfaces are clean.</td>
+        </tr>
+        <tr>
+          <td class="pri should">Should</td>
+          <td class="area">Form backend</td>
+          <td class="state open">Open</td>
+          <td>Wire Strategic Conversations form to Netlify Forms or Formspree.</td>
+        </tr>
+        <tr>
+          <td class="pri should">Should</td>
+          <td class="area">Site portfolio</td>
+          <td class="state open">Open</td>
+          <td>Sponsor pass on St. Paul / Savannah / Bowman / Montgomery — real capacity / stage / MW numbers.</td>
+        </tr>
+        <tr>
+          <td class="pri should">Should</td>
+          <td class="area">Capital arch.</td>
+          <td class="state open">Open</td>
+          <td>Replace illustrative HoldCo / Capital / ProjectCo nodes with the real cap-stack diagram.</td>
+        </tr>
+        <tr>
+          <td class="pri should">Should</td>
+          <td class="area">Data room</td>
+          <td class="state open">Open</td>
+          <td>Replace illustrative document list with the real index + per-item access state.</td>
+        </tr>
+        <tr>
+          <td class="pri should">Should</td>
+          <td class="area">Workstreams</td>
+          <td class="state partial">Partial</td>
+          <td>Stage chips softened for CEH. Six rows + remaining stage labels still need a final sponsor lock; QumulusAI prominence to be confirmed.</td>
+        </tr>
+        <tr>
+          <td class="pri nice">Nice</td>
+          <td class="area">Typography</td>
+          <td class="state open">Open</td>
+          <td>Swap <code>--serif</code> / <code>--sans</code> / <code>--mono</code> in <code>colors_and_type.css</code> + both kit stylesheets when Mercury / Söhne / GT America licenses land.</td>
+        </tr>
+        <tr>
+          <td class="pri nice">Nice</td>
+          <td class="area">Imagery</td>
+          <td class="state open">Open</td>
+          <td>System is image-free by design. Commission only when ready.</td>
+        </tr>
+        <tr>
+          <td class="pri nice">Nice</td>
+          <td class="area">DG monogram</td>
+          <td class="state open">Open</td>
+          <td>Replace hand-coded SVG path with proper vector export.</td>
+        </tr>
+        <tr>
+          <td class="pri nice">Nice</td>
+          <td class="area">Legacy CSS</td>
+          <td class="state partial">Partial</td>
+          <td>Files preserved + isolated + stale comment corrected. Final disposition (keep as CEH foundation vs. move to <code>ui_kits/ceh-technical/</code> vs. archive) deferred along with the CEH page.</td>
+        </tr>
+        <tr>
+          <td class="pri nice">Nice</td>
+          <td class="area">CEH page</td>
+          <td class="state done">Deferred · per direction</td>
+          <td>CEH stays as workstream / IP asset. Components reserved under <code>ui_kits/public-site/</code> (Ticker, IndexTable, FormulaBar, etc.) until methodology v1.0 is locked.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p class="foot">
+    <b>What I am handing you.</b> All in-project edits are committed to this workspace and ready to export. Run the git commands in § 06 from a local checkout; everything else (CEH language, audits, stale-comment fix, file tree, PR description) is already prepared. ·
+    <b>What I cannot do from here.</b> I cannot push to GitHub or open the PR from this environment — those steps are yours. ·
+    <b>If anything moves.</b> Tell me which Must items clear in the deploy-preview review and I'll prep the follow-up PR for <code>staging → main</code> with the corresponding edit list.
+  </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Operating Domains</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#faf9f6; --rule:#e0dccc; --rule-soft:#ebe7d7;
+    --text:#1f2937; --muted:#4b5563; --light:#9ca3af;
+    --navy:#142b4a; --slate:#3c5982; --forest:#1f4d36; --bronze:#8a6a2a; --charcoal:#2b3340;
+  }
+  body { margin: 0; padding: 24px 26px 26px; background: var(--bg); font-family: 'Inter', sans-serif; color: var(--text); }
+  .head { margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.4px; color: var(--bronze); text-transform: uppercase; margin-bottom: 8px; }
+  .title { font-family: 'Source Serif 4', Georgia, serif; font-size: 24px; font-weight: 600; color: var(--navy); margin: 0 0 8px; letter-spacing: -0.3px; line-height: 1.15; }
+  .lede { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; max-width: 720px; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--rule-soft);
+    padding: 22px 22px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    transition: border-color 150ms;
+  }
+  .card:hover { border-color: var(--rule); }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 28px; height: 2px;
+    background: var(--navy);
+  }
+
+  .num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--light); letter-spacing: 0.5px; }
+  .title-card { font-size: 17px; font-weight: 700; color: var(--navy); letter-spacing: -0.2px; margin: 0; }
+  .meta { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: 0.2px; }
+  .desc { font-family: 'Source Serif 4', Georgia, serif; font-size: 13.5px; color: var(--text); line-height: 1.55; flex: 1; margin: 4px 0 0; }
+  .cta { font-size: 12px; color: var(--navy); font-weight: 500; padding-top: 10px; border-top: 1px solid var(--rule-soft); margin-top: 4px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: gap 150ms; }
+  .cta:hover { gap: 10px; }
+  .cta::after { content: '→'; color: var(--bronze); }
+</style></head><body>
+  <div class="head">
+    <div class="eyebrow">Oak Ridge Management · Operating Architecture</div>
+    <h2 class="title">Operating Domains</h2>
+    <p class="lede">Oak Ridge Management coordinates strategy, capital architecture, market standards, and operating intelligence across markets where infrastructure, compute, energy, and private capital are converging.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <span class="num">01</span>
+      <h3 class="title-card">Platform Strategy</h3>
+      <div class="meta">DGE&amp;I · Energy Infrastructure · Compute</div>
+      <p class="desc">Platform formation across energy infrastructure, behind-the-meter generation, data centers, and AI compute.</p>
+      <span class="cta">View Platform Strategy</span>
+    </div>
+    <div class="card">
+      <span class="num">02</span>
+      <h3 class="title-card">Market Standards &amp; IP</h3>
+      <div class="meta">CEH™ · Underwriting · Index Development</div>
+      <p class="desc">Development of measurement frameworks and intellectual property for compute-energy efficiency, infrastructure underwriting, and market standardization.</p>
+      <span class="cta">Explore CEH™ Standard</span>
+    </div>
+    <div class="card">
+      <span class="num">03</span>
+      <h3 class="title-card">Strategic Capital</h3>
+      <div class="meta">Private Investments · SPVs · Compute Exposure</div>
+      <p class="desc">Direct private investments, SPV structures, capital partnerships, and strategic exposure to infrastructure-adjacent compute opportunities.</p>
+      <span class="cta">View Capital Themes</span>
+    </div>
+    <div class="card">
+      <span class="num">04</span>
+      <h3 class="title-card">Operating Intelligence</h3>
+      <div class="meta">Advisory · Command Layer · Transaction Framing</div>
+      <p class="desc">Capital architecture, commercial strategy, partner alignment, diligence framing, and decision systems for complex platform-building work.</p>
+      <span class="cta">Explore Operating Intelligence</span>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>CEH™ Methodology Preview · Comparative Metrics Strip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --surface:#141a26; --surface-2:#1c2335; --surface-3:#232c41; --rule:#2a3142; --rule-soft:#222a3a;
+    --text:#d4d8e3; --muted:#8a92a6; --light:#5a6379; --white:#fff;
+    --cyan:#2b9bc2; --green:#357a55; --gold:#b08a3a; --copper:#9c5530;
+  }
+  body { margin: 0; padding: 22px 24px; background: var(--surface); font-family: 'Inter', sans-serif; color: var(--text); }
+
+  .head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 6px; }
+  .head .h { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; color: var(--white); letter-spacing: 0.2px; }
+  .head .meta { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.5px; color: var(--muted); text-transform: uppercase; }
+  .sub { font-family: 'Inter', sans-serif; font-size: 12.5px; color: var(--muted); margin: 0 0 14px; max-width: 760px; }
+
+  .strip-wrap { background: var(--surface-2); border: 1px solid var(--rule); }
+  .strip-meta {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 14px;
+    background: var(--surface-3);
+    border-bottom: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .strip-meta .label-cyan {
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    padding: 2px 8px;
+    font-size: 9px;
+  }
+  .strip-meta .sep { color: var(--rule); }
+  .strip-meta .right { margin-left: auto; }
+
+  .strip { display: grid; grid-template-columns: repeat(5, 1fr); }
+  @media (max-width: 900px) { .strip { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .strip { grid-template-columns: 1fr; } }
+
+  .cell {
+    padding: 14px 16px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule-soft);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .cell:last-child { border-right: none; }
+  @media (max-width: 900px) { .cell:nth-child(2n) { border-right: none; } }
+
+  .row { display: grid; grid-template-columns: 96px 1fr; gap: 8px; align-items: baseline; }
+  .row .k { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.5px; color: var(--light); text-transform: uppercase; }
+  .row .v { font-family: 'Inter', sans-serif; font-size: 12.5px; color: var(--text); }
+  .row .v.mono { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; }
+  .row .v.cyan   { color: var(--cyan); }
+  .row .v.green  { color: var(--green); }
+  .row .v.gold   { color: var(--gold); }
+  .row .v.copper { color: var(--copper); }
+  .row .v.muted  { color: var(--muted); }
+
+  .compute { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+  .compute-meta { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--muted); letter-spacing: 0.3px; }
+
+  .footer { padding: 10px 14px; background: var(--surface-3); border-top: 1px solid var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.3px; line-height: 1.75; }
+  .footer b { color: var(--text); font-weight: 500; }
+</style></head><body>
+  <div class="head">
+    <span class="h">CEH™ Methodology Preview · Comparative Metrics</span>
+    <span class="meta">CEH-specific surface · v0.1 draft framework</span>
+  </div>
+  <p class="sub">A static comparative strip used inside CEH-specific pages to illustrate the relative shape of CEH values across compute classes. Not a live data feed.</p>
+
+  <div class="strip-wrap">
+    <div class="strip-meta">
+      <span class="label-cyan">Illustrative</span>
+      <span>Methodology Preview · v0.1</span>
+      <span class="sep">|</span>
+      <span>Sample outputs · subject to validation</span>
+      <span class="right">5 compute classes</span>
+    </div>
+
+    <div class="strip">
+      <div class="cell">
+        <div>
+          <div class="compute">NVIDIA B200</div>
+          <div class="compute-meta">Blackwell class · 2025</div>
+        </div>
+        <div class="row"><span class="k">CEH Value</span><span class="v mono cyan">1.07 × 10⁻¹⁰</span></div>
+        <div class="row"><span class="k">Cost Basis</span><span class="v mono copper">$0.009 / M · grid</span></div>
+        <div class="row"><span class="k">Grade</span><span class="v green">S · Draft</span></div>
+        <div class="row"><span class="k">Status</span><span class="v muted">Preview</span></div>
+      </div>
+      <div class="cell">
+        <div>
+          <div class="compute">NVIDIA H200</div>
+          <div class="compute-meta">Hopper class · 2024</div>
+        </div>
+        <div class="row"><span class="k">CEH Value</span><span class="v mono cyan">2.21 × 10⁻¹⁰</span></div>
+        <div class="row"><span class="k">Cost Basis</span><span class="v mono copper">$0.019 / M · grid</span></div>
+        <div class="row"><span class="k">Grade</span><span class="v cyan">A · Draft</span></div>
+        <div class="row"><span class="k">Status</span><span class="v muted">Preview</span></div>
+      </div>
+      <div class="cell">
+        <div>
+          <div class="compute">Google TPU v4</div>
+          <div class="compute-meta">TPU class · 2023</div>
+        </div>
+        <div class="row"><span class="k">CEH Value</span><span class="v mono cyan">2.63 × 10⁻¹⁰</span></div>
+        <div class="row"><span class="k">Cost Basis</span><span class="v mono copper">$0.022 / M · grid</span></div>
+        <div class="row"><span class="k">Grade</span><span class="v cyan">A · Draft</span></div>
+        <div class="row"><span class="k">Status</span><span class="v muted">Preview</span></div>
+      </div>
+      <div class="cell">
+        <div>
+          <div class="compute">NVIDIA H100 SXM</div>
+          <div class="compute-meta">Hopper class · 2023</div>
+        </div>
+        <div class="row"><span class="k">CEH Value</span><span class="v mono cyan">3.18 × 10⁻¹⁰</span></div>
+        <div class="row"><span class="k">Cost Basis</span><span class="v mono copper">$0.027 / M · grid</span></div>
+        <div class="row"><span class="k">Grade</span><span class="v cyan">A · Draft</span></div>
+        <div class="row"><span class="k">Status</span><span class="v muted">Preview</span></div>
+      </div>
+      <div class="cell">
+        <div>
+          <div class="compute">NVIDIA L40S</div>
+          <div class="compute-meta">Ada Lovelace class · 2023</div>
+        </div>
+        <div class="row"><span class="k">CEH Value</span><span class="v mono cyan">5.43 × 10⁻¹⁰</span></div>
+        <div class="row"><span class="k">Cost Basis</span><span class="v mono copper">$0.046 / M · grid</span></div>
+        <div class="row"><span class="k">Grade</span><span class="v gold">B · Draft</span></div>
+        <div class="row"><span class="k">Status</span><span class="v muted">Preview</span></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <b>Disclosure.</b> Illustrative methodology preview. Values shown are sample outputs and subject to validation. Nothing here constitutes a live market index, certified benchmark, or investment advice. Reserved for CEH-specific surfaces only.
+    </div>
+  </div>
+</body></html>
