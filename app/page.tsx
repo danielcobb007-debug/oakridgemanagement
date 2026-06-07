@@ -12,15 +12,14 @@ export default function Home() {
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm text-zinc-400">
             <a href="#about" className="hover:text-amber-400 transition-colors">About</a>
-            <a href="#strategy" className="hover:text-amber-400 transition-colors">Strategy</a>
-            <a href="#portfolio" className="hover:text-amber-400 transition-colors">Portfolio</a>
+            <a href="#platforms" className="hover:text-amber-400 transition-colors">Platforms</a>
             <a href="#contact" className="hover:text-amber-400 transition-colors">Contact</a>
           </div>
           <a
             href="#contact"
             className="text-sm font-medium bg-amber-400 text-zinc-950 px-4 py-2 rounded hover:bg-amber-300 transition-colors"
           >
-            Get in Touch
+            Qualified Access
           </a>
         </div>
       </nav>
@@ -31,47 +30,46 @@ export default function Home() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-amber-400/20 bg-amber-400/5">
               <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-              <span className="text-amber-400 text-xs font-medium tracking-wide uppercase">Private Investment Office</span>
+              <span className="text-amber-400 text-xs font-medium tracking-wide uppercase">Principal-Led Private Operating Platform</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-black tracking-tight text-zinc-50 leading-[1.05] mb-6">
-              Capital Deployed<br />
-              <span className="text-amber-400">With Precision.</span>
+              Capital Architecture.<br />
+              <span className="text-amber-400">Principal-Led.</span>
             </h1>
             <p className="text-lg md:text-xl text-zinc-400 leading-relaxed max-w-2xl mb-10">
-              Oak Ridge Management is a private investment office focused on real estate acquisition,
-              structured capital, and long-term asset control across high-conviction opportunities.
+              Oak Ridge Management is a Georgia-based holding company and capital allocator organized to coordinate strategic platforms across infrastructure investment, intellectual property origination, and AI-adjacent capital activity.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#strategy"
+                href="#platforms"
                 className="inline-flex items-center justify-center gap-2 bg-amber-400 text-zinc-950 font-semibold px-8 py-4 rounded hover:bg-amber-300 transition-colors"
               >
-                Our Strategy
+                Active Platforms
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
               <a
-                href="#portfolio"
+                href="#about"
                 className="inline-flex items-center justify-center gap-2 border border-zinc-700 text-zinc-300 font-semibold px-8 py-4 rounded hover:border-zinc-500 hover:text-zinc-100 transition-colors"
               >
-                Portfolio
+                About ORM
               </a>
             </div>
           </div>
 
-          {/* Stats row */}
+          {/* Descriptor tiles */}
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-zinc-800/50 rounded-xl overflow-hidden border border-zinc-800">
             {[
-              { label: "Assets Under Management", value: "$40M+", sub: "Across entities" },
-              { label: "Real Estate Holdings", value: "12+", sub: "Active properties" },
-              { label: "Years Operating", value: "8+", sub: "Track record" },
-              { label: "Entities Managed", value: "6", sub: "HoldCo structure" },
-            ].map((stat) => (
-              <div key={stat.label} className="bg-zinc-900 px-6 py-8">
-                <div className="text-3xl font-black text-amber-400 mb-1">{stat.value}</div>
-                <div className="text-sm font-medium text-zinc-200 mb-0.5">{stat.label}</div>
-                <div className="text-xs text-zinc-500">{stat.sub}</div>
+              { label: "IP Origination & Stewardship", sub: "CEH™ methodology and standards governance infrastructure" },
+              { label: "Infrastructure Investment", sub: "Behind-the-meter compute and power asset deployment" },
+              { label: "Capital Architecture", sub: "Principal-led HoldCo and entity structuring" },
+              { label: "Strategic Platform Coordination", sub: "Affiliated workstreams and operating relationships" },
+            ].map((item) => (
+              <div key={item.label} className="bg-zinc-900 px-6 py-8">
+                <div className="w-2 h-2 rounded-full bg-amber-400 mb-4" />
+                <div className="text-sm font-semibold text-zinc-200 mb-1.5">{item.label}</div>
+                <div className="text-xs text-zinc-500 leading-relaxed">{item.sub}</div>
               </div>
             ))}
           </div>
@@ -85,31 +83,53 @@ export default function Home() {
             <div>
               <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4">About</p>
               <h2 className="text-4xl md:text-5xl font-black text-zinc-50 tracking-tight mb-6 leading-tight">
-                Built for Long-Term<br />Asset Control
+                Georgia-Based HoldCo<br />and Capital Allocator
               </h2>
               <p className="text-zinc-400 leading-relaxed mb-4">
-                Oak Ridge Management operates as a private investment office and holding company,
-                structured to acquire, develop, and manage assets across real estate, infrastructure,
-                and adjacent opportunities.
+                Oak Ridge Management, LLC (&ldquo;ORM&rdquo;) is a Georgia-based private holding and operating
+                platform led by Daniel Cobb.
               </p>
               <p className="text-zinc-400 leading-relaxed mb-4">
-                We operate under a HoldCo model — each asset or business sits inside a dedicated entity,
-                providing tax efficiency, liability isolation, and long-term optionality. We don&apos;t chase
-                trends; we build position.
+                ORM serves as the parent architecture for select strategic workstreams across infrastructure,
+                compute, energy, intellectual property, capital formation, and operating intelligence. The company
+                coordinates platform strategy, commercial architecture, IP origination, affiliated relationships,
+                and private capital activity across markets where energy, infrastructure, compute demand, and
+                capital formation are converging.
               </p>
               <p className="text-zinc-400 leading-relaxed">
-                Founded by Daniel Cobb, the firm has been quietly deploying capital into high-conviction
-                opportunities across the Southeast and beyond.
+                ORM is the originator and steward of the CEH™ methodology framework and maintains strategic
+                platform relationships with affiliated infrastructure and compute-related ventures, including
+                DG Energy &amp; Infrastructure. ORM does not operate as a public fund, registered investment
+                adviser, or open consulting platform.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { icon: "🏢", title: "HoldCo Structure", desc: "Entity-per-asset model for maximum tax efficiency and liability isolation." },
-                { icon: "📊", title: "Capital Allocation", desc: "Disciplined deployment across real estate, structured debt, and operating businesses." },
-                { icon: "🔒", title: "Asset Control", desc: "Long-term ownership mindset. We buy to hold, not to flip." },
-                { icon: "⚡", title: "Execution Speed", desc: "Private structure means fast decisions without committee delays." },
+                {
+                  icon: "⚙️",
+                  title: "HoldCo Architecture",
+                  desc: "Institutional parent entity governing intercompany relationships and capital allocation authority across affiliated ventures and platforms.",
+                },
+                {
+                  icon: "📐",
+                  title: "IP Origination",
+                  desc: "Originator and registered trademark holder of the CEH™ standard and associated standards governance and research infrastructure.",
+                },
+                {
+                  icon: "🔒",
+                  title: "Principal-Led Structure",
+                  desc: "Private operating platform under direct principal control. Not a fund, not a registered investment adviser, not a public offering vehicle.",
+                },
+                {
+                  icon: "⚡",
+                  title: "Platform Coordination",
+                  desc: "Strategic coordination of affiliated workstreams spanning infrastructure development, compute-energy research, and capital activity.",
+                },
               ].map((item) => (
-                <div key={item.title} className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 hover:border-amber-400/30 transition-colors">
+                <div
+                  key={item.title}
+                  className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 hover:border-amber-400/30 transition-colors"
+                >
                   <div className="text-2xl mb-3">{item.icon}</div>
                   <div className="font-semibold text-zinc-100 text-sm mb-2">{item.title}</div>
                   <div className="text-zinc-500 text-xs leading-relaxed">{item.desc}</div>
@@ -120,110 +140,164 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STRATEGY */}
-      <section id="strategy" className="py-24 px-6 border-t border-zinc-800/50 bg-zinc-900/30">
+      {/* ACTIVE PLATFORMS & WORKSTREAMS */}
+      <section id="platforms" className="py-24 px-6 border-t border-zinc-800/50 bg-zinc-900/30">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4">Strategy</p>
-            <h2 className="text-4xl md:text-5xl font-black text-zinc-50 tracking-tight">
-              How We Think About Capital
+          <div className="mb-16">
+            <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4">
+              Active Platforms &amp; Workstreams
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black text-zinc-50 tracking-tight max-w-2xl">
+              Coordinated Through ORM
             </h2>
+            <p className="text-zinc-500 text-sm mt-4 max-w-xl leading-relaxed">
+              The following platforms and workstreams operate under or in affiliation with ORM. Each represents
+              a distinct strategic function within the broader operating architecture.
+            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                number: "01",
-                title: "Asymmetric Upside",
-                desc: "We seek deals where downside is bounded and upside is outsized. Distressed assets, off-market transactions, and structured notes with equity kickers.",
-              },
-              {
-                number: "02",
-                title: "Tax-Aware Structure",
-                desc: "Every deal is structured with the exit in mind. Depreciation, 1031 exchanges, opportunity zones, and cost segregation are operational tools — not afterthoughts.",
-              },
-              {
-                number: "03",
-                title: "Operating Leverage",
-                desc: "We don't just own — we operate. Property management, construction oversight, and asset repositioning are done in-house to protect margin.",
-              },
-              {
-                number: "04",
-                title: "Entity Isolation",
-                desc: "Each asset lives in its own LLC or entity. HoldCo sits above, providing credit separation and clean exit optionality per property.",
-              },
-              {
-                number: "05",
-                title: "Velocity of Decisions",
-                desc: "No committees. No investment memos with 30-day approval cycles. We move when opportunity appears — and that speed is a competitive advantage.",
-              },
-              {
-                number: "06",
-                title: "Compounding Position",
-                desc: "Cash flow from stabilized assets funds acquisitions. The portfolio is designed to self-fund its own growth over a 10-year horizon.",
-              },
-            ].map((item) => (
-              <div key={item.number} className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/20 transition-colors group">
-                <div className="text-amber-400/40 font-black text-4xl mb-4 group-hover:text-amber-400/60 transition-colors">{item.number}</div>
-                <h3 className="font-bold text-zinc-100 text-lg mb-3">{item.title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{item.desc}</p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* CEH Methodology Framework */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8 hover:border-amber-400/20 transition-colors flex flex-col">
+              <div className="flex items-start justify-between mb-6">
+                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-400">
+                  IP Origination
+                </span>
+                <span className="text-zinc-600 text-xs">ORM Originated</span>
               </div>
-            ))}
+              <h3 className="font-bold text-zinc-100 text-xl mb-3">CEH™ Methodology Framework</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed mb-4 flex-1">
+                A developing compute-energy measurement concept originated and stewarded by ORM, intended to
+                evaluate the relationship between compute output, energy consumption, infrastructure efficiency,
+                cost, and related market inputs. First published April 21, 2026, and subject to ongoing
+                methodology development.
+              </p>
+              <p className="text-zinc-500 text-xs leading-relaxed italic border-t border-zinc-800 pt-4">
+                Subject to ongoing validation and methodology development. Not a certified public index or
+                externally adopted benchmark standard.
+              </p>
+              <a
+                href="https://cehstandard.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-amber-400 text-xs font-medium hover:text-amber-300 transition-colors"
+              >
+                cehstandard.com
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+
+            {/* CEH Infrastructure Index */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8 hover:border-amber-400/20 transition-colors flex flex-col">
+              <div className="flex items-start justify-between mb-6">
+                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-blue-400/10 text-blue-400">
+                  Research Platform
+                </span>
+                <span className="text-zinc-600 text-xs">ORM Governed</span>
+              </div>
+              <h3 className="font-bold text-zinc-100 text-xl mb-3">CEH Infrastructure Index™</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed mb-4 flex-1">
+                A research and publication platform for compute-energy infrastructure, benchmark concepts,
+                market structure analysis, and methodology development. Operates as an intelligence and
+                research platform for qualified institutional readers and strategic stakeholders.
+              </p>
+              <p className="text-zinc-500 text-xs leading-relaxed italic border-t border-zinc-800 pt-4">
+                A research and editorial platform. Not a finalized exchange-traded index or certified
+                external benchmark standard.
+              </p>
+              <a
+                href="https://cehinfrastructureindex.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-blue-400 text-xs font-medium hover:text-blue-300 transition-colors"
+              >
+                cehinfrastructureindex.com
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+
+            {/* DG Energy & Infrastructure */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8 hover:border-amber-400/20 transition-colors flex flex-col">
+              <div className="flex items-start justify-between mb-6">
+                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-green-400/10 text-green-400">
+                  Infrastructure
+                </span>
+                <span className="text-zinc-600 text-xs">Affiliated Platform</span>
+              </div>
+              <h3 className="font-bold text-zinc-100 text-xl mb-3">DG Energy &amp; Infrastructure</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed mb-4 flex-1">
+                A strategic infrastructure platform relationship focused on behind-the-meter power, adaptive
+                infrastructure deployment, and compute-oriented site development. DGE&amp;I operates as an
+                affiliated infrastructure development platform coordinated through ORM&apos;s capital and
+                strategic architecture.
+              </p>
+              <p className="text-zinc-500 text-xs leading-relaxed italic border-t border-zinc-800 pt-4">
+                An affiliated platform relationship. Qualified infrastructure inquiries available on a
+                confidential basis.
+              </p>
+            </div>
+
+            {/* Strategic Compute & Capital Exposure */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8 hover:border-amber-400/20 transition-colors flex flex-col">
+              <div className="flex items-start justify-between mb-6">
+                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-zinc-700 text-zinc-300">
+                  Capital Activity
+                </span>
+                <span className="text-zinc-600 text-xs">Principal-Led</span>
+              </div>
+              <h3 className="font-bold text-zinc-100 text-xl mb-3">Strategic Compute &amp; Capital Exposure</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed mb-4 flex-1">
+                Private investment, SPV, and AI-infrastructure-adjacent capital activity coordinated through
+                ORM&apos;s principal-led structure. Focused on early-stage positioning, infrastructure adjacency,
+                and long-term capital architecture across compute and power asset classes.
+              </p>
+              <p className="text-zinc-500 text-xs leading-relaxed italic border-t border-zinc-800 pt-4">
+                Private activity coordinated on a principal basis. Not a public offering. Qualified partner
+                access on a confidential review basis only.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* PORTFOLIO */}
-      <section id="portfolio" className="py-24 px-6 border-t border-zinc-800/50">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4">Portfolio</p>
-              <h2 className="text-4xl md:text-5xl font-black text-zinc-50 tracking-tight">
-                Active Holdings
-              </h2>
-            </div>
-            <span className="text-zinc-500 text-sm hidden md:block">Select assets — full portfolio available upon request</span>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { type: "Multi-Family Residential", location: "Southeast Region", status: "Stabilized", yield: "8.2% CoC" },
-              { type: "Commercial Mixed-Use", location: "Tennessee", status: "Value-Add", yield: "14% Proj. IRR" },
-              { type: "Single-Tenant NNN", location: "Regional", status: "Stabilized", yield: "6.8% CoC" },
-              { type: "Residential Portfolio", location: "Southeast Region", status: "Stabilized", yield: "9.1% CoC" },
-              { type: "Light Industrial", location: "Tennessee", status: "Repositioning", yield: "16% Proj. IRR" },
-              { type: "Structured Note", location: "Private Credit", status: "Active", yield: "11% Fixed" },
-            ].map((asset, i) => (
-              <div key={i} className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 hover:border-amber-400/20 transition-colors">
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${
-                    asset.status === "Stabilized" ? "bg-green-400/10 text-green-400" :
-                    asset.status === "Value-Add" ? "bg-amber-400/10 text-amber-400" :
-                    asset.status === "Repositioning" ? "bg-blue-400/10 text-blue-400" :
-                    "bg-zinc-700 text-zinc-300"
-                  }`}>
-                    {asset.status}
-                  </span>
-                  <span className="text-zinc-500 text-xs">{asset.location}</span>
-                </div>
-                <h3 className="font-semibold text-zinc-100 mb-1">{asset.type}</h3>
-                <div className="text-amber-400 font-bold text-lg">{asset.yield}</div>
-              </div>
-            ))}
-          </div>
+      {/* MARKET CONTEXT QUOTE */}
+      <section className="py-20 px-6 border-t border-zinc-800/50 bg-zinc-950">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-zinc-600 text-xs font-medium tracking-widest uppercase mb-8">Market Context</p>
+          <blockquote className="text-2xl md:text-3xl font-light text-zinc-300 leading-relaxed italic mb-6">
+            &ldquo;The demand for computing power is so large that a new asset class will spring up.&rdquo;
+          </blockquote>
+          <p className="text-zinc-500 text-sm mb-6">
+            — Larry Fink, Chairman &amp; CEO, BlackRock<br />
+            <span className="text-zinc-600 text-xs">Bloomberg / Milken Institute, May 7, 2026</span>
+          </p>
+          <p className="text-zinc-700 text-xs max-w-xl mx-auto leading-relaxed">
+            Quote provided for context only. Larry Fink and BlackRock have not reviewed, endorsed, or affiliated
+            with this organization or its products.
+          </p>
         </div>
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="py-24 px-6 border-t border-zinc-800/50 bg-zinc-900/30">
+      <section id="contact" className="py-24 px-6 border-t border-zinc-800/50">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-2xl mx-auto text-center">
             <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4">Contact</p>
             <h2 className="text-4xl md:text-5xl font-black text-zinc-50 tracking-tight mb-6">
-              Let&apos;s Talk
+              Qualified Partner Access
             </h2>
-            <p className="text-zinc-400 text-lg mb-10 leading-relaxed">
-              We work with a small group of partners, co-investors, and operators.
-              If you have a deal, a question, or a conversation worth having — reach out.
+            <p className="text-zinc-400 text-lg mb-4 leading-relaxed">
+              ORM engages with a select group of qualified partners, institutional counterparties, and
+              strategic collaborators. Inquiries are reviewed on a confidential basis.
+            </p>
+            <p className="text-zinc-500 text-sm mb-10 leading-relaxed">
+              Relevant inquiries may include infrastructure co-development, methodology collaboration,
+              capital architecture discussion, or IP licensing. ORM does not accept unsolicited
+              investment solicitations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -247,10 +321,11 @@ export default function Home() {
             <div className="w-6 h-6 bg-amber-400 rounded-sm flex items-center justify-center">
               <span className="text-zinc-950 font-black text-[10px]">ORM</span>
             </div>
-            <span className="text-zinc-500 text-sm">Oak Ridge Management</span>
+            <span className="text-zinc-500 text-sm">Oak Ridge Management, LLC</span>
           </div>
-          <p className="text-zinc-600 text-sm">
-            © {new Date().getFullYear()} Oak Ridge Management. All rights reserved.
+          <p className="text-zinc-600 text-xs text-center leading-relaxed">
+            © {new Date().getFullYear()} Oak Ridge Management, LLC. All rights reserved.
+            CEH™ and CEH Infrastructure Index™ are trademarks of Oak Ridge Management, LLC.
           </p>
         </div>
       </footer>
