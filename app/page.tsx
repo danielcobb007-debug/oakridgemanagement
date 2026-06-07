@@ -1,9 +1,21 @@
+ "use client";
+
+import { useState } from "react";
+
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: "#about", label: "About" },
+    { href: "#platforms", label: "Platforms" },
+    { href: "#contact", label: "Contact" },
+  ];
+
   return (
     <main className="min-h-screen bg-zinc-950">
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur-md">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-7 h-7 bg-amber-400 rounded-sm flex items-center justify-center">
               <span className="text-zinc-950 font-black text-xs">ORM</span>
@@ -11,17 +23,51 @@ export default function Home() {
             <span className="font-semibold text-zinc-100 tracking-tight">Oak Ridge Management</span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm text-zinc-400">
-            <a href="#about" className="hover:text-amber-400 transition-colors">About</a>
-            <a href="#platforms" className="hover:text-amber-400 transition-colors">Platforms</a>
-            <a href="#contact" className="hover:text-amber-400 transition-colors">Contact</a>
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href} className="hover:text-amber-400 transition-colors">
+                {link.label}
+              </a>
+            ))}
           </div>
-          <a
-            href="#contact"
-            className="text-sm font-medium bg-amber-400 text-zinc-950 px-4 py-2 rounded hover:bg-amber-300 transition-colors"
-          >
-            Qualified Access
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="#contact"
+              className="text-sm font-medium bg-amber-400 text-zinc-950 px-4 py-2 rounded hover:bg-amber-300 transition-colors"
+            >
+              Qualified Access
+            </a>
+            <button
+              type="button"
+              className="md:hidden inline-flex items-center justify-center rounded border border-zinc-800 px-3 py-2 text-zinc-300 transition-colors hover:border-zinc-600 hover:text-zinc-100"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav"
+              aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
+              onClick={() => setMobileMenuOpen((open) => !open)}
+            >
+              <span className="text-xs font-medium uppercase tracking-[0.2em]">
+                {mobileMenuOpen ? "Close" : "Menu"}
+              </span>
+            </button>
+          </div>
         </div>
+        {mobileMenuOpen && (
+          <div id="mobile-nav" className="border-t border-zinc-800/70 bg-zinc-950 md:hidden">
+            <div className="mx-auto max-w-7xl px-6 py-3">
+              <div className="flex flex-col gap-1 text-sm text-zinc-300">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="rounded px-2 py-3 transition-colors hover:bg-zinc-900 hover:text-amber-400"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* HERO */}

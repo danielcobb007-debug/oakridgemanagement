@@ -3,13 +3,21 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Oak Ridge Management",
-  description: "Strategic capital allocation and real estate investment management.",
+  description:
+    "Georgia-based holding company and capital allocator coordinating infrastructure investment, IP origination, and AI-adjacent capital activity.",
   openGraph: {
     title: "Oak Ridge Management",
-    description: "Strategic capital allocation and real estate investment management.",
+    description:
+      "Georgia-based holding company and capital allocator coordinating infrastructure investment, IP origination, and AI-adjacent capital activity.",
     url: "https://oakridgemanagement.net",
     siteName: "Oak Ridge Management",
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Oak Ridge Management",
+    description:
+      "Georgia-based holding company and capital allocator coordinating infrastructure investment, IP origination, and AI-adjacent capital activity.",
   },
 };
 
